@@ -10,6 +10,7 @@ import bgOne from '../styles/img/backgound-one.jpg';
 import bgTwo from '../styles/img/background-two.jpg';
 import bgThree from '../styles/img/background-three.jpg';
 import logo from '../styles/img/logo.png';
+import SocialButtons from './SocialButtons';
 
 /**
  * @author frank harerimana
@@ -140,6 +141,7 @@ export class Login extends PureComponent {
               <Link to="/forgotpassword">Forgot password?</Link>
             </form>
           </div>
+          <SocialButtons />
         </div>
       </div>
     );

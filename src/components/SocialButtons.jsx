@@ -28,9 +28,6 @@ class SocialLogin extends PureComponent {
   render() {
     return (
       <div className="log-btn">
-        <div className="title-login">
-          <p>Sign-in with</p>
-        </div>
         <div className="login-button-section">
           <div className="social-login-btn">
             <a className="social-btn" href={`${this.handlerClick('github')}`}>

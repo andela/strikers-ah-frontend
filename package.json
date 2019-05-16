@@ -12,6 +12,7 @@
     "enzyme": "^3.9.0",
     "enzyme-adapter-react-16": "^1.13.0",
     "font-awesome": "^4.7.0",
+    "joi-browser": "^13.4.0",
     "jwt-decode": "^2.2.0",
     "moxios": "^0.4.0",
     "prop-types": "^15.7.2",
@@ -23,9 +24,9 @@
     "react-router-dom": "^5.0.0",
     "react-scripts": "3.0.1",
     "redux": "^4.0.1",
-    "redux-devtools-extension": "^2.13.8",
     "redux-mock-store": "^1.5.3",
-    "redux-thunk": "^2.3.0"
+    "redux-thunk": "^2.3.0",
+    "redux-devtools-extension": "^2.13.8"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -59,6 +60,7 @@
     ]
   },
   "devDependencies": {
+    "chai": "^4.2.0",
     "eslint": "^5.16.0",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-config-prettier": "^4.2.0",
@@ -71,6 +73,7 @@
     "node-sass": "^4.12.0",
     "prettier": "^1.17.1",
     "pretty-quick": "^1.10.0",
+    "react-addons-test-utils": "^15.6.2",
     "redux-mock-store": "^1.5.3"
   }
 }

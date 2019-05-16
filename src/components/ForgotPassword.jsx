@@ -6,6 +6,10 @@ import { connect } from 'react-redux';
 import InputForm from './common/InputForm';
 import logo from '../styles/img/logo.png';
 import { forgotPassword } from '../redux/actions/forgotPassword';
+import '../styles/css/signup-style/signup-style.css';
+import bgOne from '../styles/img/backgound-one.jpg';
+import bgTwo from '../styles/img/background-two.jpg';
+import bgThree from '../styles/img/background-three.jpg';
 import SubmitButton from './common/SubmitButton';
 
 /**
@@ -21,6 +25,9 @@ export class ForgotPassword extends Component {
     this.state = { value: '' };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+
+    const bgImages = [bgOne, bgTwo, bgThree];
+    this.bgImage = bgImages[Math.floor(Math.random() * bgImages.length)];
   }
 
   /**
@@ -54,14 +61,22 @@ export class ForgotPassword extends Component {
       message = response ? response.message : '';
     }
     return (
-      <div className="container">
-        <div className="login-section">
-          <div className="logo">
-            <img src={logo} alt="authors haven" />
+      <div
+        className="aligner"
+        style={{ backgroundImage: `url(${this.bgImage})` }}
+      >
+        <div className="form_wrapper">
+          <div className="header_style">
+            <img src={logo} alt="Logo" className="logo" />
           </div>
-          <div className="log-text">
+
+          <div id="fogetpasswordFormAlign" className="log-text">
             <p>{message}</p>
-            <form id="forgotPasswordForm" onSubmit={this.handleSubmit}>
+            <form
+              id="forgotPasswordForm"
+              className="signup_form_style"
+              onSubmit={this.handleSubmit}
+            >
               <InputForm
                 type="email"
                 name="email"
@@ -70,12 +85,11 @@ export class ForgotPassword extends Component {
                 onChange={this.handleChange}
                 value={this.state.value}
               />
-              <Link to="/login" className="fo-btn">
+              <Link to="/login" id="fo-btn">
                 Back To Login
               </Link>
               <SubmitButton
-                className="login-btn"
-                id="btn"
+                id="forgetPasswordSubmitBtn"
                 type="submit"
                 value="Forgot Password"
               />
