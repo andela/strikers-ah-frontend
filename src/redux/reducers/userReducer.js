@@ -1,4 +1,5 @@
-import { EDIT_USER_PROFILE, GET_USER_PROFILE } from '../actions/types';
+// eslint-disable-next-line no-unused-vars
+import { EDIT_USER_PROFILE, GET_USER_PROFILE } from '../actionTypes/userTypes';
 
 const initialState = {
   user: {},
