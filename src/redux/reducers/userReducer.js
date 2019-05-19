@@ -1,14 +1,17 @@
-// eslint-disable-next-line no-unused-vars
-import { EDIT_USER_PROFILE, GET_USER_PROFILE } from '../actionTypes/userTypes';
+/* eslint-disable import/prefer-default-export */
+import { GET_USER_PROFILE } from '../actionTypes/userTypes';
 
-const initialState = {
-  user: {},
-};
-export default (state = initialState, action) => {
-  switch (action) {
-    default:
+const initialState = [];
+
+export const userProfile = (state = initialState, action) => {
+  const { type, payload } = action;
+  switch (type) {
+    case GET_USER_PROFILE:
       return {
         ...state,
+        user: payload,
       };
+    default:
+      return state;
   }
 };
