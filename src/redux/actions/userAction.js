@@ -1,8 +1,16 @@
-// eslint-disable-next-line no-unused-vars
-import { EDIT_USER_PROFILE, GET_USER_PROFILE } from '../actionTypes/userTypes';
+import jwt from 'jwt-decode';
+import { GET_USER_PROFILE } from '../actionTypes/userTypes';
 
-export const getLoggedInUserProfile = () => {
-  return () => {};
+export const getLoggedInUserProfile = token => {
+  const user = jwt(token);
+  const payload = {
+    username: user.username,
+    email: user.email,
+  };
+  return {
+    type: GET_USER_PROFILE,
+    payload,
+  };
 };
 
 export const editLoggedInUserProfile = () => {
