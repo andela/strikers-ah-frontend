@@ -3,7 +3,14 @@ import SocialButtons from './SocialButtons';
 import '../styles/css/login.css';
 import logo from '../styles/img/logo.png';
 
+/**
+ * @author frank harerimana
+ */
 class Login extends PureComponent {
+  /**
+   * @author frank harerimana
+   * @returns {*} render component
+   */
   render() {
     return (
       <div className="container">

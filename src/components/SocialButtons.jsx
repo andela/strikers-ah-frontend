@@ -7,7 +7,26 @@ import {
   faGithub,
 } from '@fortawesome/free-brands-svg-icons';
 
+/**
+ * Social login component
+ */
 class SocialLogin extends PureComponent {
+  /**
+   * @author frank harerimana
+   * @param {*} party
+   * @returns {*} social action
+   */
+  handlerClick(party) {
+    this.action = party;
+    return `https://strikers-ah-backend-staging.herokuapp.com/api/auth/${
+      this.action
+    }`;
+  }
+
+  /**
+   * @author frank harerimana
+   * @returns {*} component
+   */
   render() {
     return (
       <div className="log-btn">
@@ -16,26 +35,17 @@ class SocialLogin extends PureComponent {
         </div>
         <div className="login-button-section">
           <div className="social-login-btn">
-            <a
-              className="social-btn"
-              href="http://localhost:5000/api/auth/github"
-            >
+            <a className="social-btn" href={`${this.handlerClick('github')}`}>
               <FontAwesomeIcon className="fa-github fa-2x" icon={faGithub} />
             </a>
           </div>
           <div className="social-login-btn">
-            <a
-              className="social-btn"
-              href="http://localhost:5000/api/auth/twitter"
-            >
+            <a className="social-btn" href={`${this.handlerClick('twitter')}`}>
               <FontAwesomeIcon className="fa-twitter fa-2x" icon={faTwitter} />
             </a>
           </div>
           <div className="social-login-btn">
-            <a
-              className="social-btn"
-              href="http://localhost:5000/api/auth/facebook"
-            >
+            <a className="social-btn" href={`${this.handlerClick('facebook')}`}>
               <FontAwesomeIcon
                 className="fa-facebook-f fa-2x"
                 icon={faFacebook}
@@ -43,10 +53,7 @@ class SocialLogin extends PureComponent {
             </a>
           </div>
           <div className="social-login-btn">
-            <a
-              className="social-btn"
-              href="http://localhost:5000/api/auth/google"
-            >
+            <a className="social-btn" href={`${this.handlerClick('google')}`}>
               <FontAwesomeIcon
                 className="fa-google-plus-g fa-2x"
                 icon={faGooglePlus}

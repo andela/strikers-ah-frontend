@@ -4,7 +4,14 @@ import queryString from 'query-string';
 import { connect } from 'react-redux';
 import { getLoggedInUserProfile } from '../redux/actions/userAction';
 
+/**
+ * @author frank harerimana
+ */
 class Index extends Component {
+  /**
+   * @author frank
+   * @returns {*} state
+   */
   componentWillMount() {
     const user = localStorage.getItem('token');
     const url = this.props.location.search;
@@ -17,6 +24,10 @@ class Index extends Component {
     }
   }
 
+  /**
+   * @author frank harerimana
+   * @returns {*} render
+   */
   render() {
     if (this.props.userProfile.length !== 0) {
       const { user } = this.props.userProfile;
