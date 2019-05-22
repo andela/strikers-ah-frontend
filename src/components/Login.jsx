@@ -1,7 +1,9 @@
 import React, { PureComponent } from 'react';
+import { Link } from 'react-router-dom';
 import SocialButtons from './SocialButtons';
 import '../styles/css/login.css';
 import logo from '../styles/img/logo.png';
+import InputForm from './common/InputForm';
 
 /**
  * @author frank harerimana
@@ -20,11 +22,15 @@ class Login extends PureComponent {
           </div>
           <div className="log-text">
             <form>
-              <input type="text" placeholder="Email or Username" />
+              <InputForm
+                type="text"
+                name="email"
+                placeholder="Email or Username"
+              />
               <input type="password" placeholder="Password" />
-              <a href="false" className="fo-btn">
+              <Link to="/forgotpassword" className="fo-btn">
                 Forgot password
-              </a>
+              </Link>
               <button className="login-btn" type="submit">
                 Login
               </button>

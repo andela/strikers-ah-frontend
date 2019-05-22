@@ -1,5 +1,5 @@
 import jwt from 'jwt-decode';
-import { GET_USER_PROFILE } from '../actionTypes/userTypes';
+import { GET_USER_PROFILE, FORGOT_PASSWORD } from '../actionTypes/userTypes';
 
 export const getLoggedInUserProfile = token => {
   const user = jwt(token);
@@ -9,6 +9,16 @@ export const getLoggedInUserProfile = token => {
   };
   return {
     type: GET_USER_PROFILE,
+    payload,
+  };
+};
+
+export const forgotPassword = email => {
+  const payload = {
+    email,
+  };
+  return {
+    type: FORGOT_PASSWORD,
     payload,
   };
 };
