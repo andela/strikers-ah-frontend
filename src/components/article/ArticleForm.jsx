@@ -1,8 +1,8 @@
 /* eslint-disable react/destructuring-assignment */
 /* eslint-disable no-unused-vars */
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import createArticle from '../../redux/actions/articleAction';
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import createArticle from "../../redux/actions/articleAction";
 /**
  *@author: Innocent Nkunzi
  * @returns {*} Articleform
@@ -15,9 +15,9 @@ export class ArticleForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      title: '',
-      body: '',
-      taglist: [],
+      title: "",
+      body: "",
+      taglist: []
     };
     this.TitleContent = React.createRef();
     this.BodyContent = React.createRef();
@@ -28,9 +28,9 @@ export class ArticleForm extends Component {
     const data = {
       title: this.TitleContent.current
         ? this.TitleContent.current.innerHTML
-        : '',
-      body: this.BodyContent.current ? this.BodyContent.current.innerHTML : '',
-      taglist,
+        : "",
+      body: this.BodyContent.current ? this.BodyContent.current.innerHTML : "",
+      taglist
     };
     this.props.createArticle(data);
   };
@@ -87,10 +87,10 @@ export class ArticleForm extends Component {
   }
 }
 const mapStateToprops = state => ({
-  createArticle: state.createArticle.posts,
+  article: state.createArticle
 });
 
 export default connect(
   mapStateToprops,
-  { createArticle },
+  { createArticle }
 )(ArticleForm);

@@ -30,7 +30,7 @@ describe('action tests', () => {
         },
       },
     ];
-    await moxios.stubRequest(`${BACKEND_URL}/articles/`, {
+    await moxios.stubRequest(`${BACKEND_URL}/api/articles/`, {
       status: 201,
       response: {
         article: [''],
@@ -51,7 +51,7 @@ describe('action tests', () => {
         },
       },
     ];
-    await moxios.stubRequest(`${BACKEND_URL}/articles/`, {
+    await moxios.stubRequest(`${BACKEND_URL}/api/articles/`, {
       status: 400,
       response: {
         error: 'validation error',

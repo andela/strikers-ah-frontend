@@ -1,19 +1,20 @@
-import React, { PureComponent } from 'react';
-import { Redirect, Link } from 'react-router-dom';
-import { connect } from 'react-redux';
+import React, { PureComponent } from "react";
+import { Redirect, Link } from "react-router-dom";
+import { connect } from "react-redux";
 // import SocialButtons from './SocialButtons';
-import { login as loginAction } from '../actions/login.actions';
-import { valueChange } from '../actions/loginForm';
-import Input from './common/input';
-import '../styles/css/signup-style/signup-style.css';
-import bgOne from '../styles/img/backgound-one.jpg';
-import bgTwo from '../styles/img/background-two.jpg';
-import bgThree from '../styles/img/background-three.jpg';
-import logo from '../styles/img/logo.png';
-import SocialButtons from './SocialButtons';
+import { login as loginAction } from "../actions/login.actions";
+import { valueChange } from "../actions/loginForm";
+import Input from "./common/input";
+import "../styles/css/signup-style/signup-style.css";
+import bgOne from "../styles/img/backgound-one.jpg";
+import bgTwo from "../styles/img/background-two.jpg";
+import bgThree from "../styles/img/background-three.jpg";
+import logo from "../styles/img/logo.png";
+import SocialButtons from "./SocialButtons";
 
 /**
  * @author frank harerimana
+ * @returns {*} sdfafa
  */
 export class Login extends PureComponent {
   /**
@@ -32,7 +33,7 @@ export class Login extends PureComponent {
       // eslint-disable-next-line react/no-unused-state
       errors: {},
       // eslint-disable-next-line react/no-unused-state
-      values: {},
+      values: {}
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -98,7 +99,7 @@ export class Login extends PureComponent {
             <form
               className="signup_form_style"
               onSubmit={this.handleSubmit}
-              style={{ paddingBottom: '100px' }}
+              style={{ paddingBottom: "100px" }}
             >
               <Input
                 labelStyle="text_inputs"
@@ -149,10 +150,10 @@ export class Login extends PureComponent {
 }
 const mapStateToProps = state => ({
   login: state.userLogin,
-  values: state.valueChange,
+  values: state.valueChange
 });
 
 export default connect(
   mapStateToProps,
-  { loginAction, valueChange },
+  { loginAction, valueChange }
 )(Login);
