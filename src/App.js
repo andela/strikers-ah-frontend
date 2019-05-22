@@ -1,3 +1,5 @@
+/* eslint-disable react/jsx-filename-extension */
+/* eslint-disable require-jsdoc */
 import React from 'react';
 import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';

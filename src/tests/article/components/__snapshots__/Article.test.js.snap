@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`snapshot testing should render the CreateArticle 1`] = `ShallowWrapper {}`;
+
+exports[`snapshot testing should render the NoMatch when a route don't exist 1`] = `ShallowWrapper {}`;
+
+exports[`snapshot testing should render the article form 1`] = `ShallowWrapper {}`;
+
+exports[`snapshot testing should render the body 1`] = `ShallowWrapper {}`;
+
+exports[`snapshot testing should render the editor bar when a route don't exist 1`] = `ShallowWrapper {}`;
+
+exports[`snapshot testing should render the editor bar when a route don't exist 2`] = `ShallowWrapper {}`;
