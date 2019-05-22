@@ -5,13 +5,16 @@ import store from './redux/store';
 import Routes from './router';
 import './App.css';
 
+/**
+ * @author frank harerimana
+ * @returns {*} render
+ */
 function App() {
   return (
     <Provider store={store}>
       <BrowserRouter>
         <Routes />
       </BrowserRouter>
-      ,
     </Provider>
   );
 }
