@@ -15,7 +15,6 @@ export const getLoggedInUserProfile = token => {
 };
 
 export const forgotPassword = email => async dispatch => {
-  console.log(email);
   try {
     const { data } = await axios.post(
       'https://strikers-ah-backend.herokuapp.com/api/auth/forgetpassword',
@@ -28,7 +27,7 @@ export const forgotPassword = email => async dispatch => {
   } catch (error) {
     dispatch({
       type: FORGOT_PASSWORD,
-      payload: error,
+      payload: error.response.data,
     });
   }
 };

@@ -49,6 +49,11 @@ class ForgotPassword extends Component {
    * @returns {*} render
    */
   render() {
+    let message = '';
+    if (this.props.forgetPasswordState) {
+      const { response } = this.props.forgetPasswordState;
+      message = response ? response.message : '';
+    }
     return (
       <div className="container">
         <div className="login-section">
@@ -56,7 +61,7 @@ class ForgotPassword extends Component {
             <img src={logo} alt="authors haven" />
           </div>
           <div className="log-text">
-            {/* <p>{this.response}</p> */}
+            <p>{message}</p>
             <form onSubmit={this.handleSubmit}>
               <InputForm
                 type="email"
@@ -82,7 +87,7 @@ class ForgotPassword extends Component {
   }
 }
 const mapStateToProps = state => ({
-  forgotpassword: state.forgotpassword,
+  forgetPasswordState: state.forgotPassword,
 });
 
 export default connect(
