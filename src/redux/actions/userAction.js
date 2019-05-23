@@ -1,4 +1,5 @@
 import jwt from 'jwt-decode';
+import axios from 'axios';
 import { GET_USER_PROFILE, FORGOT_PASSWORD } from '../actionTypes/userTypes';
 
 export const getLoggedInUserProfile = token => {
@@ -16,23 +17,19 @@ export const getLoggedInUserProfile = token => {
 export const forgotPassword = email => async dispatch => {
   console.log(email);
   try {
-    const { response } = await fetch(
+    const { data } = await axios.post(
       'https://strikers-ah-backend.herokuapp.com/api/auth/forgetpassword',
-      {
-        method: 'post',
-        body: JSON.stringify(email),
-        headers: new Headers({
-          'Content-Type': 'application/json',
-        }),
-      },
+      { email },
     );
-    console.log(response);
     dispatch({
       type: FORGOT_PASSWORD,
-      payload: response,
+      payload: data,
     });
   } catch (error) {
-    console.log(error);
+    dispatch({
+      type: FORGOT_PASSWORD,
+      payload: error,
+    });
   }
 };
 
