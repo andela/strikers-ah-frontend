@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto');
-$color: (
-  primary: #f7f7f7,
+$color: (primary: #f7f7f7,
   accent: #ffffff,
   bord: #aaaaaa,
   card: #fbfeff,
@@ -36,6 +35,12 @@ body {
     margin-top: 150px;
     width: 34%;
     margin-bottom: 5%;
+    background: color(card);
+    box-shadow: 1px 0 5px 1px color(bord);
+    display: inline-block;
+    margin-left: 37.5%;
+    margin-top: 150px;
+    width: 25%;
 
     .logo {
       margin: 30px;
@@ -61,6 +66,32 @@ body {
         outline: none;
         padding: 10px 8px;
         width: 100%;
+      }
+
+      .help-block {
+        color: #f00;
+        font-size: 13px;
+      }
+
+      .alert {
+        padding: 5px 20px;
+        background-color: #f44336;
+        color: white;
+      }
+
+      .closebtn {
+        margin-left: 15px;
+        color: white;
+        font-weight: bold;
+        float: right;
+        font-size: 22px;
+        line-height: 20px;
+        cursor: pointer;
+        transition: 0.3s;
+      }
+
+      .closebtn:hover {
+        color: black;
       }
 
       input[type]:hover {
@@ -90,6 +121,7 @@ body {
         outline: none;
         padding: 10px 8px;
         width: 100%;
+        cursor: pointer;
       }
     }
 
@@ -115,74 +147,101 @@ body {
         display: flex;
         margin-bottom: 7%;
         justify-content: center;
+        border-top: 1px solid color(darker);
+        width: 100%;
 
-        .fo-btn:hover {
-          text-decoration: underline;
+        .title-login {
+          margin-left: 30px;
         }
 
-        .fa-twitter {
-          color: color(twitter);
-        }
-
-        .fa-github {
-          color: color(darker);
-        }
-
-        .fa-facebook-f {
-          color: color(facebook);
-        }
-
-        .fa-google-plus-g {
-          color: color(google);
-        }
-
-        .social-login-btn {
-          background: color(accent);
-          cursor: pointer;
-          display: flex;
+        .login-button-section {
           float: left;
-          height: 30px;
-          margin-right: 6px;
-          padding: 0 3%;
-          width: 5%;
-          background: #ffffff;
-        }
-      }
-    }
-    .createAccount {
-      display: flex;
-      justify-content: center;
-      margin-bottom: 6%;
+          width: 80%;
+          margin-left: 10%;
+          margin-bottom: 30px;
 
-      .makespace {
-        display: inline-block;
-        margin-left: 5px;
-      }
-    }
-  }
+          .fo-btn:hover {
+            text-decoration: underline;
+          }
 
-  @media only screen and (max-width: 1200px) {
-    .login-section {
-      margin-left: 30%;
-      width: 40%;
-      .log-btn {
-        .login-button-section {
+          .fa-twitter {
+            color: color(twitter);
+          }
+
+          .fa-github {
+            color: color(darker);
+          }
+
+          .fa-facebook-f {
+            color: color(facebook);
+          }
+
+          .fa-google-plus-g {
+            color: color(google);
+          }
+
           .social-login-btn {
-            padding: 0 7%;
+            background: color(accent);
+            cursor: pointer;
+            display: flex;
+            float: left;
+            height: 30px;
+            margin-right: 6px;
+            padding: 0 3%;
+            width: 5%;
+            background: #ffffff;
           }
         }
       }
+
+      .createAccount {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 6%;
+
+        .makespace {
+          display: inline-block;
+          margin-left: 5px;
+        }
+
+        border-radius: 5px;
+        box-shadow: 0 2px 3px 1px color(bord);
+        cursor: pointer;
+        float: left;
+        height: 30px;
+        margin-right: 6px;
+        padding: 15px;
+        text-align: center;
+        width: 10%;
+      }
     }
   }
-  @media only screen and (max-width: 600px) {
-    .login-section {
-      margin-left: 20%;
-      width: 60%;
-      .log-btn {
-        .login-button-section {
-          .social-login-btn {
-            padding: 0 7%;
-          }
+}
+
+@media only screen and (max-width: 1200px) {
+  .login-section {
+    margin-left: 30%;
+    width: 40%;
+
+    .log-btn {
+      .login-button-section {
+        .social-login-btn {
+          padding: 0 7%;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .login-section {
+    margin-left: 20%;
+    width: 60%;
+
+    .log-btn {
+      .login-button-section {
+        .social-login-btn {
+          padding: 0 7%;
         }
       }
     }
