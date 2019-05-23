@@ -1,15 +1,15 @@
 /* eslint-disable import/prefer-default-export */
-import { GET_USER_PROFILE } from '../actionTypes/userTypes';
+import { FORGOT_PASSWORD } from '../actionTypes/userTypes';
 
 const initialState = [];
 
-export const userProfile = (state = initialState, action) => {
+export const forgotPassword = (state = initialState, action) => {
   const { type, payload } = action;
   switch (type) {
-    case GET_USER_PROFILE:
+    case FORGOT_PASSWORD:
       return {
         ...state,
-        user: payload,
+        response: payload,
       };
     default:
       return state;

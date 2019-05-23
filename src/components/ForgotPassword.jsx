@@ -1,3 +1,4 @@
+/* eslint-disable react/destructuring-assignment */
 /* eslint-disable class-methods-use-this */
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
@@ -11,14 +12,25 @@ import SubmitButton from './common/SubmitButton';
  * Forgot Password Form
  */
 class ForgotPassword extends Component {
-  // /**
-  //  * @param {*} props
-  //  */
-  // constructor(props) {
-  //     super(props);
-  //     this.button = React.createRef();
-  //     this.handleChange =  this.handleChange.bind(this);
-  // }
+  /**
+   *
+   * @param {*} props
+   */
+  constructor(props) {
+    super(props);
+    this.state = { value: '' };
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  /**
+   * @author frank harerimana
+   * @param {*} e
+   * @returns {*} action
+   */
+  handleChange(e) {
+    this.setState({ value: e.target.value });
+  }
 
   /**
    * @author frank harerimana
@@ -27,25 +39,10 @@ class ForgotPassword extends Component {
    */
   handleSubmit(e) {
     e.preventDefault();
-    forgotPassword(e.target.value);
+    // console.log(this.state.value);
+    const email = this.state.value;
+    this.props.forgotPassword(email);
   }
-
-  //  /**
-  //  * @author frank harerimana
-  //  * @param {*} e
-  //  * @returns {*} validate
-  //  */
-  // handleChange(e){
-  //     e.preventDefault();
-  //     const email = e.target.value.toLowerCase()
-  //     const ex = /\S+@\S+\.\S+/;
-  //     const valid = ex.test(email);
-  //     if (valid === false) {
-  //         this.button.current.style.disabled='false';
-  //        console.log(email);
-  //     }
-
-  // }
 
   /**
    * @author frank
@@ -59,12 +56,15 @@ class ForgotPassword extends Component {
             <img src={logo} alt="authors haven" />
           </div>
           <div className="log-text">
-            <form method="post" onSubmit={this.handlerSubmit}>
+            {/* <p>{this.response}</p> */}
+            <form onSubmit={this.handleSubmit}>
               <InputForm
                 type="email"
                 name="email"
                 placeholder="Email or Username"
                 required
+                onChange={this.handleChange}
+                value={this.state.value}
               />
               <Link to="/login" className="fo-btn">
                 Back To Login
@@ -82,7 +82,7 @@ class ForgotPassword extends Component {
   }
 }
 const mapStateToProps = state => ({
-  userProfile: state.userProfile,
+  forgotpassword: state.forgotpassword,
 });
 
 export default connect(

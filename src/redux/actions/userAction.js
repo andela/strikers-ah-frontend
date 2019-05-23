@@ -13,14 +13,27 @@ export const getLoggedInUserProfile = token => {
   };
 };
 
-export const forgotPassword = email => {
-  const payload = {
-    email,
-  };
-  return {
-    type: FORGOT_PASSWORD,
-    payload,
-  };
+export const forgotPassword = email => async dispatch => {
+  console.log(email);
+  try {
+    const { response } = await fetch(
+      'https://strikers-ah-backend.herokuapp.com/api/auth/forgetpassword',
+      {
+        method: 'post',
+        body: JSON.stringify(email),
+        headers: new Headers({
+          'Content-Type': 'application/json',
+        }),
+      },
+    );
+    console.log(response);
+    dispatch({
+      type: FORGOT_PASSWORD,
+      payload: response,
+    });
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 export const editLoggedInUserProfile = () => {
