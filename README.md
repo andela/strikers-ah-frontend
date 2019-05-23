@@ -1,3 +1,9 @@
+[![CircleCI](https://circleci.com/gh/andela/strikers-ah-frontend.svg?style=svg)](https://circleci.com/gh/andela/strikers-ah-frontend)
+
+[![Maintainability](https://api.codeclimate.com/v1/badges/13fba3405a53cba0bddd/maintainability)](https://codeclimate.com/github/andela/strikers-ah-frontend/maintainability)
+
+[![Test Coverage](https://api.codeclimate.com/v1/badges/13fba3405a53cba0bddd/test_coverage)](https://codeclimate.com/github/andela/strikers-ah-frontend/test_coverage)
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
