@@ -2,6 +2,7 @@
 /* eslint-disable react/jsx-filename-extension */
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
+// eslint-disable-next-line import/no-named-as-default
 import Login from './components/Login';
 import Index from './components/Index';
 import { CreateArticle } from './components/article/CreateArticle';

@@ -13,7 +13,7 @@ import CreateAccount from './common/CreateAccount';
 /**
  * @author frank harerimana
  */
-class Login extends PureComponent {
+export class Login extends PureComponent {
   /**
    * @author Jacques Nyilinkindi
    * @returns {*} Constructor
