@@ -18,7 +18,7 @@ class SocialLogin extends PureComponent {
    */
   handlerClick(party) {
     this.action = party;
-    return `https://strikers-ah-backend.herokuapp.com/api/auth/${this.action}`;
+    return `http://localhost:5000/api/auth/${this.action}`;
   }
 
   /**

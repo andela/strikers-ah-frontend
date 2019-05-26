@@ -4,6 +4,7 @@ import SocialButtons from './SocialButtons';
 import '../styles/css/login.css';
 import logo from '../styles/img/logo.png';
 import InputForm from './common/InputForm';
+import CreateAccount from './common/CreateAccount';
 
 /**
  * @author frank harerimana
@@ -37,6 +38,7 @@ class Login extends PureComponent {
             </form>
           </div>
           <SocialButtons />
+          <CreateAccount />
         </div>
       </div>
     );
