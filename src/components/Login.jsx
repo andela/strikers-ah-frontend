@@ -1,11 +1,14 @@
 import React, { PureComponent } from 'react';
-import { Link , Redirect } from 'react-router-dom';
-
+import { Redirect, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import SocialButtons from './SocialButtons';
+// import SocialButtons from './SocialButtons';
 import { login as loginAction } from '../actions/login.actions';
 import { valueChange } from '../actions/loginForm';
-import '../styles/css/login.css';
+import Input from './common/input';
+import '../styles/css/signup-style/signup-style.css';
+import bgOne from '../styles/img/backgound-one.jpg';
+import bgTwo from '../styles/img/background-two.jpg';
+import bgThree from '../styles/img/background-three.jpg';
 import logo from '../styles/img/logo.png';
 import InputForm from './common/InputForm';
 import CreateAccount from './common/CreateAccount';
@@ -35,6 +38,9 @@ export class Login extends PureComponent {
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+
+    const bgImages = [bgOne, bgTwo, bgThree];
+    this.bgImage = bgImages[Math.floor(Math.random() * bgImages.length)];
   }
 
   /**
@@ -79,49 +85,63 @@ export class Login extends PureComponent {
     if (this.props.login.user.user) {
       return <Redirect to="/" />;
     }
+
     return (
-      <div className="container">
-        <div className="login-section">
-          <div className="logo">
-            <img src={logo} alt="authors haven" />
+      <div
+        className="aligner"
+        style={{ backgroundImage: `url(${this.bgImage})` }}
+      >
+        <div className="form_wrapper">
+          <div className="header_style">
+            <img src={logo} alt="Logo" className="logo" />
           </div>
           <div className="log-text">
-            <form onSubmit={this.handleSubmit}>
-              <input
-                type="text"
-                placeholder="Email"
+            <form
+              className="signup_form_style"
+              onSubmit={this.handleSubmit}
+              style={{ paddingBottom: '100px' }}
+            >
+              <Input
+                labelStyle="text_inputs"
                 name="email"
-                value={email}
+                type="text"
+                inputStyle="textboxStyle"
+                label="Email"
+                borderStyle="border"
+                innerLabelStyle="label"
                 onChange={this.handleChange}
+                error={errors}
+                errorStyle="errorStyle"
+                value={email}
               />
+              <br />
               {submitted && !email && (
                 <div className="help-block">Email is required</div>
               )}
-              <input
-                type="password"
-                placeholder="Password"
+              <Input
+                labelStyle="text_inputs"
                 name="password"
-                value={password}
+                type="password"
+                inputStyle="textboxStyle"
+                label="Password"
+                borderStyle="border"
                 onChange={this.handleChange}
+                innerLabelStyle="label"
+                error={errors}
+                errorStyle="errorStyle"
+                value={password}
               />
+              <br />
               {submitted && !password && (
                 <div className="help-block">Password is required</div>
               )}
-              <a href="false" className="fo-btn">
-                Forgot password
-              </a>
-              <button type="submit" className="login-btn">
-                Login
-              </button>
-            </form>
-            {Object.keys(errors).length > 0 && (
-              <div className="alert">
-                <strong>Opps! </strong> Invalid email or password
+              <div className="help-block">
+                {Object.keys(errors).length > 0 && `Invalid email or password`}
               </div>
-            )}
+              <input type="submit" value="Login" className="button_style" />
+              <Link to="/forgotpassword">Forgot password?</Link>
+            </form>
           </div>
-          <SocialButtons />
-          <CreateAccount />
         </div>
       </div>
     );

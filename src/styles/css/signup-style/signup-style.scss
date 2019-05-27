@@ -1,0 +1,207 @@
+$color: (
+  primary: darken(#f1f1f1, 15%),
+  form: #fff,
+  shadow1: rgba(0, 0, 0, 0.1),
+  shadow2: rgba(0, 0, 0, 0.19),
+  brand: #00aef9,
+);
+
+@function colors($color-name) {
+  @return map-get($color, $color-name);
+}
+
+$mobile: 980px;
+
+@mixin mobile {
+  @media (max-width: #{$mobile}) {
+    @content;
+  }
+}
+
+body {
+  background-color: colors(primary);
+}
+
+.aligner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+}
+
+.form_wrapper {
+  position: relative;
+  background-color: colors(form);
+  width: 40%;
+  margin: auto;
+  border-radius: 8px;
+
+  @include mobile {
+    width: 100%;
+    border-radius: 0px;
+  }
+
+  .textboxStyle {
+    width: 90%;
+    margin-bottom: 30px;
+  }
+  .text_inputs {
+    position: relative;
+    width: 100%;
+  }
+
+  .label {
+    position: absolute;
+    top: 10px;
+    left: 0;
+    color: gray;
+    font-size: 15px;
+    font-weight: 400;
+    transform-origin: 0 0;
+    transition: all 0.2s ease;
+  }
+  .errorStyle {
+    position: absolute;
+    top: 33px;
+    left: 0;
+    color: red;
+    font-size: 13px;
+    font-weight: 400;
+  }
+
+  .AfterSubmitError {
+    position: absolute;
+    left: 15%;
+    top: 63%;
+  }
+
+  .border {
+    position: absolute;
+    background: gray;
+    bottom: 0;
+    left: 0;
+    height: 1px;
+    transform: scaleX(0);
+    width: 100%;
+    transform-origin: 0 0;
+    transition: all 0.15s ease;
+  }
+
+  input {
+    appearance: none;
+    width: 100%;
+    border: 0;
+    font-family: inherit;
+    height: 40px;
+    font-size: 16px;
+    font-weight: 500;
+    border-bottom: 1px solid #c8ccd4;
+    background: none;
+    color: #223254;
+    transition: all 0.15s ease;
+    &:hover {
+      background: rgba(#223254, 0.03);
+    }
+    &:not(:placeholder-shown) + span {
+      color: #5a667f;
+      transform: translateY(-30px) scale(0.85);
+    }
+    &:focus {
+      outline: none;
+      background: none;
+      + span {
+        color: colors(brand);
+        transform: translateY(-30px) scale(0.85);
+      }
+    }
+  }
+
+  .button_style {
+    position: absolute;
+    left: 14%;
+    background: colors(brand);
+    color: #fff;
+    width: 25%;
+    border: none;
+    border-radius: 4px;
+    font-weight: bold;
+    font-size: 15px;
+    margin-top: 15px;
+    box-shadow: 0 3px 5px 0 colors(shadow1), 0 3px 5px 0 colors(shadow2);
+
+    &:hover {
+      background: colors(brand);
+      color: #fff;
+    }
+
+    @include mobile {
+      left: 36%;
+      margin-top: -15px;
+    }
+  }
+
+  .header_style {
+    text-align: center;
+    color: colors(brand);
+    margin: 15px;
+  }
+  .sub_header_style {
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+  }
+
+  .signup_form_style {
+    position: relative;
+    text-align: center;
+    padding: 5px 50px 200px 60px;
+
+    @include mobile {
+      padding: 5px 30px 200px 30px;
+    }
+
+    a {
+      position: absolute;
+      right: 12%;
+      bottom: 27%;
+      font-size: 14px;
+      text-decoration: none;
+      color: colors(brand);
+
+      span {
+        font-weight: bold;
+      }
+
+      @include mobile {
+        right: 20%;
+        bottom: 24%;
+      }
+    }
+
+    .register_with_social {
+      position: absolute;
+      left: 35%;
+      bottom: 16%;
+      color: gray;
+
+      @include mobile {
+        left: 30%;
+      }
+    }
+
+    .socials {
+      position: absolute;
+      bottom: 6%;
+      left: 31%;
+
+      img {
+        margin-right: 20px;
+      }
+
+      @include mobile {
+        left: 25%;
+      }
+    }
+  }
+}
