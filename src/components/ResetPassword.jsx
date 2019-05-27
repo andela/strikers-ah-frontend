@@ -7,7 +7,7 @@ import queryString from 'query-string';
 import InputForm from './common/InputForm';
 import logo from '../styles/img/logo.png';
 import { resetPassword } from '../redux/actions/forgotPassword';
-import SubmitButton from './common/SubmitButton';
+import SubmitButton from './common/submitButton';
 
 /**
  * Forgot Password Form

@@ -1,0 +1,252 @@
+@import 'common';
+@import 'animation';
+.profile-grid-off,
+.profile-grid {
+  padding: 2%;
+  position: relative;
+  .user-account-info {
+    padding: 1.5%;
+    box-shadow: 0px 0px 14px $box-shadow-color;
+    border-radius: 10px;
+    background: $color-white;
+    .statistics {
+      width: 100%;
+      border-top: 2px solid $color-right-gray;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      text-align: center;
+      margin-top: 1%;
+      padding-top: 1%;
+      .stat-label {
+        text-decoration: none;
+        color: $color-text-gray;
+        display: inline-block;
+        .value {
+          color: $color-black;
+          font-weight: bold;
+          font-size: 1.2em;
+        }
+      }
+    }
+    .user-account-flex {
+      position: relative;
+      display: flex;
+      .img-container {
+        position: relative;
+        height: 10em;
+        width: 10em;
+        margin-right: 2em;
+        text-align: center;
+        .add-img-toggler {
+          position: absolute;
+          background: $color-right-gray;
+          bottom: 0;
+          border: none;
+          outline: none;
+          left: 0;
+          width: 100%;
+          background: transparent;
+          font-weight: bolder;
+          color: transparent;
+          font-size: 2em;
+          &:hover {
+            animation-name: showAddImage;
+            animation-duration: 0.5s;
+            animation-iteration-count: 1;
+            animation-fill-mode: forwards;
+            color: white;
+          }
+        }
+        img {
+          width: 100%;
+          height: 100%;
+          cursor: pointer;
+          &:hover ~ .add-img-toggler {
+            z-index: 1;
+          }
+        }
+        &:hover .profile-image-label {
+          display: inline-block;
+        }
+        .uploadImageModal {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translateX(-50%);
+          height: 10em;
+          box-shadow: 1px 2px 8px $color-right-gray;
+          border-radius: 10px;
+          background: $color-white;
+          .btn-cancel {
+            background: $color-black;
+            color: $color-white-smoke;
+            float: right;
+            line-height: 20px;
+            width: 100px;
+            border: none;
+            outline: none;
+            font-size: 1.2em;
+            margin: 1%;
+            border-radius: 50px;
+            &:hover {
+              color: red;
+            }
+          }
+          form {
+            padding: 1%;
+            input {
+              margin: 1em;
+              outline: none;
+              height: 25px;
+              font-size: 18px;
+              background: $color-white-smoke;
+              border-radius: 5px;
+            }
+            input[type='submit'] {
+              border: 1px solid $color-blue;
+              outline: none;
+              height: 25px;
+              width: 100px;
+              border-radius: 5px;
+              font-size: 16px;
+              line-height: 25px;
+
+              &:hover {
+                background: $color-blue;
+                color: $color-white;
+              }
+            }
+          }
+        }
+      }
+      .info-container {
+        padding: 1em 0;
+        grid-area: 'info-container';
+        .name {
+          font-weight: 500;
+          font-size: 2em;
+        }
+        .username {
+          line-height: 40px;
+          color: $color-text-gray;
+        }
+        .bio {
+          padding: 1% 10px 1% 0px;
+          line-height: 30px;
+          color: $color-dark-text-gray;
+        }
+        .btn-follow {
+          float: right;
+          margin-right: 10px;
+          border: 1px solid $color-blue;
+          width: 100px;
+          padding: 5px;
+          border-radius: 5px;
+          color: $color-blue;
+          margin-top: 10px;
+          outline: none;
+          font-size: 0.9em;
+          transition: 0.2s;
+          &:hover {
+            box-shadow: 0px 0px 14px $box-shadow-color;
+            background: $color-blue;
+            color: $color-white;
+            transform: translateY(-2px);
+          }
+        }
+      }
+    }
+  }
+
+  .left-profile {
+    background: $color-white;
+    box-shadow: 0px 0px 14px $box-shadow-color;
+    border-radius: 10px;
+    li {
+      list-style-type: none;
+      border-top: 1px solid $color-gray-tertiary;
+      line-height: 35px;
+      padding-left: 10px;
+      .link {
+        text-decoration: none;
+        color: $color-text-gray;
+      }
+      .active {
+        color: $color-blue;
+      }
+    }
+    h3 {
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
+      line-height: 40px;
+      padding-left: 10px;
+      background: rgba(9, 129, 241, 0.89);
+      color: white;
+    }
+  }
+}
+.profile-grid {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  grid-column-gap: 2em;
+  grid-template-areas: 'left-profile user-account-flex';
+}
+@media screen and (max-width: 1500px) {
+  .profile-grid {
+    width: 80%;
+    margin: 2em auto;
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    grid-column-gap: 10px;
+    margin: 2em auto;
+  }
+}
+@media screen and (max-width: 1000px) {
+  .profile-grid {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    grid-column-gap: 4px;
+    width: 98%;
+    margin: 2em auto;
+  }
+}
+@media screen and (max-width: 815px) {
+  .profile-grid {
+    width: 80%;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-column-gap: 4px;
+    width: 98%;
+    margin: 2em auto;
+    .left-profile {
+      display: none;
+    }
+  }
+}
+@media screen and (max-width: 500px) {
+  .profile-grid-off {
+    display: grid;
+    grid-template-columns: 1fr;
+    width: 98%;
+    margin: 2em auto;
+    .user-account-flex {
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-column-gap: 0px;
+      grid-template-areas:
+        'image-container'
+        'info-container';
+      .info-container {
+        display: block;
+        width: 100%;
+        .name {
+          font-weight: 100;
+          font-size: 1em;
+        }
+      }
+    }
+  }
+  .profile-grid {
+    display: block;
+  }
+}

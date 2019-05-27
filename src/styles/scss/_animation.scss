@@ -1,0 +1,11 @@
+@keyframes showAddImage {
+  from {
+    background: transparent;
+    opacity: 0;
+  }
+
+  to {
+    background: $color-blue;
+    opacity: 0.7;
+  }
+}

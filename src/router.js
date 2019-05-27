@@ -8,6 +8,8 @@ import Index from './components/Index';
 import { CreateArticle } from './components/article/CreateArticle';
 import ForgotPassword from './components/ForgotPassword';
 import ResetPassword from './components/ResetPassword';
+import Profile from './components/profile';
+import EditProfile from './components/editProfile';
 
 const routes = () => (
   <Switch>
@@ -16,6 +18,8 @@ const routes = () => (
     <Route path="/article/create" component={CreateArticle} />
     <Route path="/forgotpassword" component={ForgotPassword} />
     <Route path="/resetpassword" component={ResetPassword} />
+    <Route path="/profile/edit" component={EditProfile} />
+    <Route path="/profile/:username" component={Profile} />
   </Switch>
 );
 

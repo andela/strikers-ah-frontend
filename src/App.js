@@ -14,11 +14,10 @@ import './App.css';
 function App() {
   return (
     <Provider store={store}>
-      <BrowserRouter>
+      <BrowserRouter test-data="browser-router">
         <Routes />
       </BrowserRouter>
     </Provider>
   );
 }
-
 export default App;
