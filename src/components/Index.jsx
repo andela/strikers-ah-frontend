@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 import queryString from 'query-string';
 import { connect } from 'react-redux';
-import { getLoggedInUserProfile } from '../redux/actions/userAction';
+import getSocialUser from '../redux/actions/socialLogin';
 
 /**
  * @author frank harerimana
@@ -18,9 +18,9 @@ class Index extends Component {
     const params = queryString.parse(url);
     if (params.token != null) {
       localStorage.setItem('token', params.token);
-      this.props.getLoggedInUserProfile(params.token);
+      this.props.getSocialUser(params.token);
     } else if (user != null) {
-      this.props.getLoggedInUserProfile(user);
+      this.props.getSocialUser(user);
     }
   }
 
@@ -29,9 +29,9 @@ class Index extends Component {
    * @returns {*} render
    */
   render() {
-    if (this.props.userProfile.length !== 0) {
-      const { user } = this.props.userProfile;
-      console.log(user);
+    if (this.props.socialLoginUser.length !== 0) {
+      // eslint-disable-next-line no-unused-vars
+      const { user } = this.props.socialLoginUser;
     }
     return (
       <div>
@@ -41,10 +41,10 @@ class Index extends Component {
   }
 }
 const mapStateToProps = state => ({
-  userProfile: state.userProfile,
+  socialLoginUser: state.socialLoginUser,
 });
 
 export default connect(
   mapStateToProps,
-  { getLoggedInUserProfile },
+  { getSocialUser },
 )(Index);
