@@ -2,7 +2,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import '../../enzymeConfig';
-import Login from '../../components/Login';
+import { Login } from '../../components/Login';
 import SocialButtons from '../../components/SocialButtons';
 
 describe('`login.jsx`', () => {
@@ -14,7 +14,19 @@ describe('`login.jsx`', () => {
   });
 
   test('should render', () => {
-    const wrapper = shallow(<Login />);
+    const props = {
+      values: {
+        email: '',
+        password: '',
+      },
+      login: {
+        errors: {},
+        user: {
+          user: {},
+        },
+      },
+    };
+    const wrapper = shallow(<Login {...props} />);
     expect(wrapper).toMatchSnapshot();
   });
 
