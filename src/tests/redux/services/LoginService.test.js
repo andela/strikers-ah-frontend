@@ -1,16 +1,16 @@
-import { login, logout } from '../../../actions/login.actions';
+import loginService from '../../../services/login.service';
 
 const credentials = {
   email: 'test@email.com',
   password: '#$#2!@4$AQ',
 };
-describe('login.actions.js', () => {
+describe('login.service.js', () => {
   test('should logout action', () => {
-    logout();
+    loginService.logout();
     expect();
   });
   test('should login action', () => {
-    login(credentials.email, credentials.password);
+    loginService.login(credentials.email, credentials.password);
     expect();
   });
 });

@@ -10,8 +10,6 @@ import bgOne from '../styles/img/backgound-one.jpg';
 import bgTwo from '../styles/img/background-two.jpg';
 import bgThree from '../styles/img/background-three.jpg';
 import logo from '../styles/img/logo.png';
-import InputForm from './common/InputForm';
-import CreateAccount from './common/CreateAccount';
 
 /**
  * @author frank harerimana

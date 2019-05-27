@@ -33,9 +33,6 @@ class Index extends Component {
       // eslint-disable-next-line no-unused-vars
       const { user } = this.props.socialLoginUser;
     }
-    if (this.props.userProfile.length !== 0) {
-      // const { user } = this.props.userProfile;
-    }
     return (
       <div>
         <p>home page component</p>
