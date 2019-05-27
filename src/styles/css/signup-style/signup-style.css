@@ -108,11 +108,7 @@ body {
   cursor: pointer;
 }
 
-.form_wrapper input:hover {
-  background: rgba(34, 50, 84, 0.03);
-}
-
-.form_wrapper input:not(:placeholder-shown) + span {
+.form_wrapper input:not(:placeholder-shown)+span {
   color: #5a667f;
   -webkit-transform: translateY(-30px) scale(0.85);
   transform: translateY(-30px) scale(0.85);
@@ -123,7 +119,7 @@ body {
   background: none;
 }
 
-.form_wrapper input:focus + span {
+.form_wrapper input:focus+span {
   color: #00aef9;
   -webkit-transform: translateY(-30px) scale(0.85);
   transform: translateY(-30px) scale(0.85);
