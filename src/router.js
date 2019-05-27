@@ -9,6 +9,8 @@ import Signup from './components/signup';
 import { CreateArticle } from './components/article/CreateArticle';
 import ForgotPassword from './components/ForgotPassword';
 import ResetPassword from './components/ResetPassword';
+import Profile from './components/profile';
+import EditProfile from './components/editProfile';
 
 const routes = () => (
   <Switch>
@@ -17,6 +19,8 @@ const routes = () => (
     <Route path="/forgotpassword" component={ForgotPassword} />
     <Route path="/resetpassword" component={ResetPassword} />
     <Route path="/signup" component={Signup} />
+    <Route path="/profile/edit" component={EditProfile} />
+    <Route path="/profile/:username" component={Profile} />
     <Route path="/" exact component={Index} />
   </Switch>
 );
