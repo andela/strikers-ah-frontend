@@ -18,7 +18,7 @@ class SocialLogin extends PureComponent {
    */
   handlerClick(party) {
     this.action = party;
-    return `http://localhost:5000/api/auth/${this.action}`;
+    return `https://strikers-ah-backend.herokuapp.com/api/auth/${this.action}`;
   }
 
   /**
@@ -28,9 +28,6 @@ class SocialLogin extends PureComponent {
   render() {
     return (
       <div className="log-btn">
-        <div className="title-login">
-          <p>Sign-in with</p>
-        </div>
         <div className="login-button-section">
           <div className="social-login-btn">
             <a className="social-btn" href={`${this.handlerClick('github')}`}>

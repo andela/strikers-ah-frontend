@@ -1,9 +1,6 @@
 /* eslint-disable react/jsx-filename-extension */
 /* eslint-disable require-jsdoc */
 import React from 'react';
-import { Provider } from 'react-redux';
-import { BrowserRouter } from 'react-router-dom';
-import store from './redux/store';
 import Routes from './router';
 import './App.css';
 
@@ -12,13 +9,7 @@ import './App.css';
  * @returns {*} render
  */
 function App() {
-  return (
-    <Provider store={store}>
-      <BrowserRouter>
-        <Routes />
-      </BrowserRouter>
-    </Provider>
-  );
+  return <Routes />;
 }
 
 export default App;
