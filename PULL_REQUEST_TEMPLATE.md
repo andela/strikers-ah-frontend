@@ -8,6 +8,6 @@
 
 #### What are the relevant pivotal tracker stories?
 
-#### Screenshots (if appropriate)
+#### Screenshots (if appropriate).
 
 #### Questions:
