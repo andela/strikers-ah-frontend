@@ -20,7 +20,13 @@ describe('test profile right side', () => {
           showForm: false,
           toggleEditProfile: jest.fn(),
         },
-        match: { params: { username: 'Mwibutsa' } },
+        userArticles: [
+          {
+            id: 1,
+            title: 'hello this is fake title',
+            description: 'this is a dummy description',
+          },
+        ],
       };
       wrapper = getConnectedComponent(RightProfile, {}, props);
     });
@@ -46,6 +52,7 @@ describe('test profile right side', () => {
           showForm: false,
           toggleEditProfile: jest.fn(),
         },
+        userArticles: [],
       };
       wrapper = getConnectedComponent(RightProfile, {}, props);
     });

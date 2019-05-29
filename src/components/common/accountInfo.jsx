@@ -14,6 +14,7 @@ const AccountInfo = ({
   owner,
   handleClick,
   showAddImageForm,
+  articles,
   currentValues: currentUserInfo,
 }) => {
   return (
@@ -21,13 +22,15 @@ const AccountInfo = ({
       <div className="user-account-flex">
         <div className="img-container">
           <img src={image} alt="" />
-          <button
-            className="add-img-toggler"
-            type="button"
-            onClick={showAddImageForm.toggleForm}
-          >
-            +
-          </button>
+          {owner && (
+            <button
+              className="add-img-toggler"
+              type="button"
+              onClick={showAddImageForm.toggleForm}
+            >
+              +
+            </button>
+          )}
 
           {owner && showAddImageForm.visible && (
             <UploadImageForm
@@ -41,7 +44,10 @@ const AccountInfo = ({
             <span className="name">{name}</span>
             <br />
             <span className="username">{`@${username}`}</span>
-            <ProfileButton label="Edit Profile" handleClick={handleClick} />
+            <ProfileButton
+              label={owner ? 'Edit profile' : 'Follow'}
+              handleClick={handleClick}
+            />
             <br />
             <span className="bio">{bio}</span>
           </div>
@@ -61,7 +67,7 @@ const AccountInfo = ({
         <Link to="/profile" className="stat-label">
           <span className="label">Articles</span>
           <br />
-          <span className="value">8</span>
+          <span className="value">{articles.length}</span>
         </Link>
       </div>
     </div>

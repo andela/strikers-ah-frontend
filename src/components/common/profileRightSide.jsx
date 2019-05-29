@@ -1,8 +1,10 @@
 import React from 'react';
 import AccountInfo from './accountInfo';
 import EditProfile from '../editProfile';
+import UserArticle from './userArticle';
+import '../../styles/css/userArticle.css';
 
-const RightProfile = ({ accountInfo, editProfile }) => {
+const RightProfile = ({ accountInfo, editProfile, userArticles }) => {
   const {
     firstname,
     lastname,
@@ -15,13 +17,6 @@ const RightProfile = ({ accountInfo, editProfile }) => {
   } = accountInfo;
   const { length: totalFollowers } = followers;
   const { length: totalFollowings } = followings;
-  if (!firstname && !lastname) {
-    return (
-      <h3 className="text-center" test-data="invaliUserNameComponent">
-        No user with that username is found
-      </h3>
-    );
-  }
   return (
     <div className="right-profile" test-data="rightProfileComponent">
       <AccountInfo
@@ -37,12 +32,24 @@ const RightProfile = ({ accountInfo, editProfile }) => {
         handleClick={editProfile.toggleEditProfile}
         showAddImageForm={editProfile.toggleShowImage}
         currentValues={accountInfo}
+        articles={userArticles}
       />
-      {editProfile.showForm && (
+      {owner && editProfile.showForm && (
         <EditProfile
           currentValues={accountInfo}
           toggleEditProfile={editProfile.toggleEditProfile}
         />
+      )}
+      {userArticles.length > 0 && (
+        <div className="user-articles">
+          <h1 className="title">Articles created</h1>
+
+          {!editProfile.showAddImageForm &&
+            userArticles &&
+            userArticles.map(article => {
+              return <UserArticle articles={article} key={article.id} />;
+            })}
+        </div>
       )}
     </div>
   );

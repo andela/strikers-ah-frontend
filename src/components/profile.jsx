@@ -1,15 +1,16 @@
+/* eslint-disable require-jsdoc */
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import LeftProfile from './common/leftProfile';
 import RightProfile from './common/profileRightSide';
-import { getUserProfile } from '../redux/actions/userAction';
+import { getUserProfile, getUserArticles } from '../redux/actions/userAction';
 import '../styles/css/profile.css';
+import { getLoggedInUser } from '../helpers/authentication';
 // import TextCard from './common/textCard';
 
 const menuList = [
   { id: '1', link: '/bookmarked-articles', label: 'Bookmarked Articles' },
   { id: '2', link: '/reading-history', label: 'Reading History' },
-  { id: '3', link: '/profile/change-password', label: 'Change Password' },
   { id: '4', link: '/logout', label: 'Sign Out' },
 ];
 class Profile extends Component {
@@ -17,11 +18,15 @@ class Profile extends Component {
     editProfile: { showForm: false, showImageForm: false },
   };
 
-  async componentDidMount() {
-    const { getUserProfile: getProfile } = this.props;
+  componentWillMount() {
+    const {
+      getUserProfile: getProfile,
+      getUserArticles: getArticles,
+    } = this.props;
     const { match } = this.props;
     const { username } = match.params;
-    await getProfile(username);
+    getProfile(username);
+    getArticles(username);
   }
 
   toggleEditProfile = () => {
@@ -38,6 +43,11 @@ class Profile extends Component {
 
   render() {
     const { accountInfo: user } = this.props;
+    const { articles } = this.props;
+    let userArticles = [];
+    if (Object.keys(articles).length) {
+      userArticles = articles.articles;
+    }
     let { profile } = user;
     profile = profile || user;
     const defaultUser = {
@@ -48,31 +58,35 @@ class Profile extends Component {
       followers: [],
       followings: [],
     };
-    const isLoggedIn = true;
+    const isLoggedIn = !!getLoggedInUser();
+    const owner = getLoggedInUser().id === profile.id;
     let containerClass = 'profile-grid';
-    if (!isLoggedIn) {
+    if (!isLoggedIn || !owner) {
       containerClass += '-off';
     }
     const { editProfile } = this.state;
     return (
       <div className="profile-page" test-data="profile-page">
         <div className={containerClass}>
-          <LeftProfile menuList={menuList} owner />
-          <RightProfile
-            accountInfo={{
-              ...defaultUser,
-              ...profile,
-              owner: true,
-            }}
-            editProfile={{
-              showForm: editProfile.showForm,
-              toggleEditProfile: this.toggleEditProfile,
-              toggleShowImage: {
-                visible: editProfile.showImageForm,
-                toggleForm: this.toggleShowImage,
-              },
-            }}
-          />
+          {owner && <LeftProfile menuList={menuList} owner />}
+          {profile.username && (
+            <RightProfile
+              accountInfo={{
+                ...defaultUser,
+                ...profile,
+                owner,
+              }}
+              editProfile={{
+                showForm: editProfile.showForm,
+                toggleEditProfile: this.toggleEditProfile,
+                toggleShowImage: {
+                  visible: editProfile.showImageForm,
+                  toggleForm: this.toggleShowImage,
+                },
+              }}
+              userArticles={userArticles}
+            />
+          )}
         </div>
       </div>
     );
@@ -81,9 +95,10 @@ class Profile extends Component {
 const mapStateToProps = state => {
   return {
     accountInfo: state.userProfile.user,
+    articles: state.userArticles,
   };
 };
 export default connect(
   mapStateToProps,
-  { getUserProfile },
+  { getUserProfile, getUserArticles },
 )(Profile);
