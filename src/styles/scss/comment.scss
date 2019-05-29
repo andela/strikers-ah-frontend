@@ -1,0 +1,49 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  padding: 0;
+}
+.comment-form {
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 10px;
+  border: none;
+  textarea {
+    width: 100%;
+    resize: none;
+    min-height: 6em;
+    border: none;
+    outline: none;
+    font-size: 1.2em;
+    color: #444;
+    box-shadow: 0px 0px 14px rgb(245, 243, 243);
+    border-radius: 5px;
+    padding: 1%;
+  }
+  .form-button {
+    font-size: 1.2em;
+    line-height: 2em;
+    width: 6em;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    background: rgb(3, 150, 235);
+    color: white;
+    transition: 0.5s;
+    margin-top: 1%;
+    &:hover {
+      transform: translateY(-2px);
+      background: rgb(21, 161, 241);
+    }
+  }
+  .text-area-label {
+    color: rgb(41, 40, 40);
+    font-weight: bold;
+    line-height: 40px;
+  }
+}
