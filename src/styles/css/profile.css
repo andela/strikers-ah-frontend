@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Kurale|Roboto+Condensed:300,400,400i,700,700i&display=swap');
 *,
 *::before,
 *::after {
@@ -111,6 +112,7 @@ body {
 }
 .profile-grid-off .user-account-info .user-account-flex .img-container img,
 .profile-grid .user-account-info .user-account-flex .img-container img {
+  object-fit: cover;
   width: 100%;
   height: 100%;
   cursor: pointer;
@@ -350,6 +352,10 @@ body {
 .profile-grid .left-profile li .link {
   text-decoration: none;
   color: #949292;
+}
+.profile-grid-off .left-profile li .link:hover,
+.profile-grid .left-profile li .link:hover {
+  color: #0788f1;
 }
 .profile-grid-off .left-profile li .active,
 .profile-grid .left-profile li .active {

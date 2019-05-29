@@ -29,7 +29,7 @@ const login = (email, password) => {
   return fetch(`${config.apiUrl}/auth/login`, requestOptions)
     .then(handleResponse)
     .then(user => {
-      localStorage.setItem('token', JSON.stringify(user.user.token));
+      localStorage.setItem('token', user.user.token);
       return user;
     });
 };

@@ -1,3 +1,4 @@
+/* eslint-disable require-jsdoc */
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {
@@ -35,8 +36,13 @@ class UploadImageForm extends Component {
           Cancel
         </button>
         <form className="profileImageInput" onSubmit={this.uploadImage}>
-          <input type="file" name="image" onChange={this.getFile} />
-          <input type="submit" value="Upload" />
+          <input
+            type="file"
+            name="image"
+            onChange={this.getFile}
+            test-data="fileInptu"
+          />
+          <input type="submit" value="Upload" test-data="uploadButton" />
         </form>
       </div>
     );

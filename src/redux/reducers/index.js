@@ -6,6 +6,7 @@ import { socialLoginUser } from './socialLogin';
 import valueChange from './loginForm';
 import userReducer from './userReducer';
 import profileFormReducer from './profileFormReducer';
+import userArticles from './userArticles';
 
 const rootReducer = combineReducers({
   createArticle,
@@ -15,6 +16,7 @@ const rootReducer = combineReducers({
   valueChange,
   userProfile: userReducer,
   profileForm: profileFormReducer,
+  userArticles,
 });
 
 export default rootReducer;
