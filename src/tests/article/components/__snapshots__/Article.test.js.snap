@@ -1,5 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Test the article component should render get all component 1`] = `ShallowWrapper {}`;
+
+exports[`Test the article component test the localstorage 1`] = `ShallowWrapper {}`;
+
 exports[`snapshot testing should render the CreateArticle 1`] = `ShallowWrapper {}`;
 
 exports[`snapshot testing should render the NoMatch when a route don't exist 1`] = `ShallowWrapper {}`;

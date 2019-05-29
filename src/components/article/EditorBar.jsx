@@ -1,9 +1,11 @@
 import React from 'react';
 import '../../styles/css/article.css';
+import Alert from './Alert';
 
 const EditorBar = () => {
   return (
     <div className="content">
+      <Alert />
       <section className="editor-tools">
         <div className="container">
           <div id="align-bartool">

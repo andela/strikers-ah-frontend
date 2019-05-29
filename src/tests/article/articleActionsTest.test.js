@@ -1,14 +1,13 @@
 import configureStore from 'redux-mock-store';
 import moxios from 'moxios';
 import thunk from 'redux-thunk';
-import axios from 'axios';
-import createArticle from '../../redux/actions/articleAction';
+import axios from '../../helpers/axios';
+import { createArticle } from '../../redux/actions/articleAction';
 import * as actions from '../../redux/actionTypes/articleType';
 
 const midleware = [thunk];
 const mockStore = configureStore(midleware);
-const { BACKEND_URL } = process.env;
-// const store = mockStore();
+const { REACT_APP_BACKEND } = process.env;
 describe('action tests', () => {
   //   beforeEach(() => {
   //     store.clearActions();
@@ -22,6 +21,7 @@ describe('action tests', () => {
 
   test('should dispatch create article action', async () => {
     const store = mockStore({});
+
     const expectedAction = [
       {
         type: actions.CREATE_ARTICLE,
@@ -30,7 +30,7 @@ describe('action tests', () => {
         },
       },
     ];
-    await moxios.stubRequest(`${BACKEND_URL}/api/articles/`, {
+    await moxios.stubRequest(`${REACT_APP_BACKEND}/api/articles/`, {
       status: 201,
       response: {
         article: [''],
@@ -51,7 +51,7 @@ describe('action tests', () => {
         },
       },
     ];
-    await moxios.stubRequest(`${BACKEND_URL}/api/articles/`, {
+    await moxios.stubRequest(`${REACT_APP_BACKEND}/api/articles/`, {
       status: 400,
       response: {
         error: 'validation error',

@@ -1,13 +1,15 @@
 import createArticle from '../../redux/reducers/articleReducer';
 import * as actionTypes from '../../redux/actionTypes/articleType';
-import initialState from '../../redux/reducers/ArticleInitialState';
 
+const initialState = {
+  allArticles: [],
+};
 describe('Article reducers', () => {
   test('should return an initialState if no state and action were defined', () => {
     expect(createArticle(undefined, {})).toEqual(initialState);
   });
 
-  test('should handle article creation', () => {
+  test('should handle create article', () => {
     expect(
       createArticle(undefined, {
         type: actionTypes.CREATE_ARTICLE,
