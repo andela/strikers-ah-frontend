@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import ProfileButton from './profileButton';
+import FollowButton from './FollowButton';
 import UploadImageForm from './UploadImageForm';
 import '../../styles/css/profile.css';
 
@@ -44,10 +45,7 @@ const AccountInfo = ({
             <span className="name">{name}</span>
             <br />
             <span className="username">{`@${username}`}</span>
-            <ProfileButton
-              label={owner ? 'Edit profile' : 'Follow'}
-              handleClick={handleClick}
-            />
+              {owner ? <ProfileButton label='Edit Profile' handleClick={handleClick}></ProfileButton> : <FollowButton className='btn btn-follow'/>}
             <br />
             <span className="bio">{bio}</span>
           </div>

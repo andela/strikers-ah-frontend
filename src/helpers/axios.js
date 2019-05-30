@@ -10,5 +10,6 @@ export default axios.create({
   headers: {
     'x-access-token': `${token}`,
     'x-auth-token': `${token}`,
+    Authorization: `Bearer ${token}`,
   },
 });

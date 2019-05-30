@@ -1,0 +1,39 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+$color: (
+  primary: #f7f7f7,
+  accent: #022710,
+  bold: #1883ca,
+  white: #fbfeff,
+  darker: #000,
+  borderRadius: 1em,
+);
+
+@function colors($name) {
+  @return map-get($color, $name);
+}
+
+#follow-btn {
+  color: colors(darker);
+  background-color: colors(white);
+  border-color: colors(bold);
+  font-size: colors(borderRadius);
+  font-family: auto;
+  cursor: pointer;
+}
+#following-btn {
+  color: colors(white);
+  border: none;
+  background-color: colors(bold);
+  font-size: colors(borderRadius);
+  font-family: auto;
+  cursor: pointer;
+}
+.onReadArticle {
+  padding: 0 0.3em;
+  border: 1px colors(darker) solid;
+  border-radius: 0.4em;
+}
+
+button:focus {
+  outline: 0;
+}

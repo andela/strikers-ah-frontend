@@ -8,6 +8,7 @@ import userReducer from './userReducer';
 import profileFormReducer from './profileFormReducer';
 import userArticles from './userArticles';
 import alertReducer from './alertReducer';
+import { following } from './Following';
 
 const rootReducer = combineReducers({
   Article,
@@ -19,6 +20,7 @@ const rootReducer = combineReducers({
   profileForm: profileFormReducer,
   userArticles,
   alertReducer,
+  following,
 });
 
 export default rootReducer;
