@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway&display=swap');
 html {
   height: 100%;
   margin: 0;
@@ -213,4 +214,142 @@ nav.icons div.search input[type='text'] {
 
 nav.icons div.search #search-button {
   margin-right: 10px;
+}
+
+.card {
+  float: left;
+  margin-top: 10px;
+  padding: 10px;
+  width: 25%;
+  height: 400px;
+  background-color: #ffffff;
+  border-color: #00aef9;
+  border-width: 1px;
+  box-shadow: #808e9b;
+  margin-right: 10px;
+}
+
+.card:hover {
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.card > img {
+  width: 100%;
+  height: 50%;
+}
+
+.card .contentDescription {
+  width: 100%;
+  margin-top: 10px;
+  word-wrap: break-word;
+}
+
+.card .contentDescription .articleCardHeader {
+  width: 100%;
+  text-align: center;
+  word-wrap: break-word;
+}
+
+.card .contentDescription .articleCardHeader p {
+  font-weight: bold;
+  font-size: 20px;
+  text-transform: capitalize;
+}
+
+div.alert {
+  width: 30%;
+  height: 30px;
+  display: inline-block;
+  background-color: #bb321f;
+  color: #ffffff;
+  margin-left: 30%;
+  margin-right: 30%;
+  border-radius: 5px;
+  margin-top: 10px;
+  padding: 30px;
+  font-size: 20px;
+}
+
+.contents {
+  background-color: #ffffff;
+  margin-top: 0;
+  min-height: 800px;
+}
+
+.contents .contentTitle {
+  width: 100%;
+  text-align: center;
+  padding: 10px;
+}
+
+.contents .contentBody p {
+  padding-left: 50px;
+  padding-right: 50px;
+  font-size: 20px;
+  word-wrap: break-word;
+}
+
+.contents .contentBody p img {
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  height: 500px;
+}
+
+.article-icons .icon {
+  margin-right: 10px;
+  display: inline-block;
+}
+
+.contentDescription a {
+  text-decoration: none;
+}
+
+.contentDescription a:link {
+  color: #2f3640;
+}
+
+.contentDescription a:visited {
+  color: #2f3640;
+}
+
+.card .contentDescription .buttons {
+  margin-bottom: 5px;
+  position: absolute;
+  margin-top: 10px;
+}
+
+.card .contentDescription .buttons .redButton {
+  background: #bb321f;
+  border: 0;
+  color: #ffff;
+  text-align: center;
+  display: inline-block;
+  font-size: 10px;
+  margin: 5px;
+  padding: 3px 12px;
+}
+
+.card .contentDescription .buttons .lightBlueButton {
+  background: #74b9ff;
+  border: 0;
+  color: #ffff;
+  text-align: center;
+  display: inline-block;
+  font-size: 10px;
+  margin: 5px;
+  padding: 3px 12px;
+}
+
+.card .articleDescription {
+  height: 65px;
+  margin-top: 5px;
+}
+
+.container .allArticlecontents {
+  background-color: #ffffff;
+  margin-top: 0;
+  height: 100%;
 }

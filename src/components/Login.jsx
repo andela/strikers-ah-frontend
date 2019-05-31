@@ -1,7 +1,6 @@
 import React, { PureComponent } from 'react';
 import { Redirect, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-// import SocialButtons from './SocialButtons';
 import { login as loginAction } from '../actions/login.actions';
 import { valueChange } from '../actions/loginForm';
 import Input from './common/input';
@@ -14,6 +13,7 @@ import SocialButtons from './SocialButtons';
 
 /**
  * @author frank harerimana
+ * @returns {*} logged in user
  */
 export class Login extends PureComponent {
   /**

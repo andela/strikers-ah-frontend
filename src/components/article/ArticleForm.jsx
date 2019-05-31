@@ -1,8 +1,11 @@
 /* eslint-disable react/destructuring-assignment */
 /* eslint-disable no-unused-vars */
 import React, { Component } from 'react';
+import sweeetAlert from 'sweetalert';
 import { connect } from 'react-redux';
-import createArticle from '../../redux/actions/articleAction';
+import { createArticle } from '../../redux/actions/articleAction';
+import alert from '../../redux/actions/alert';
+
 /**
  *@author: Innocent Nkunzi
  * @returns {*} Articleform
@@ -19,26 +22,26 @@ export class ArticleForm extends Component {
       body: '',
       taglist: [],
     };
-    this.TitleContent = React.createRef();
     this.BodyContent = React.createRef();
   }
 
   onSubmit = () => {
     const { title, body, taglist } = this.state;
     const data = {
-      title: this.TitleContent.current
-        ? this.TitleContent.current.innerHTML
-        : '',
+      title,
       body: this.BodyContent.current ? this.BodyContent.current.innerHTML : '',
       taglist,
     };
+    if (data.title === '') {
+      this.props.alert("title can't be empty", 'danger');
+    }
+    if (data.body === '') {
+      this.props.alert("body can't be empty", 'danger');
+    }
     this.props.createArticle(data);
+    sweeetAlert('Successfully!', 'Article published', 'success');
   };
 
-  // handleChange = event => {
-  //   const { name, value } = event.taget;
-  //   this.setState({ [name]: value });
-  // };
   handleChange = ({ target: { name, value } }) => {
     this.setState({ [name]: value });
   };
@@ -54,15 +57,16 @@ export class ArticleForm extends Component {
         <section className="text-area">
           <div className="container">
             <form className="form">
-              <div
-                contentEditable
-                id="title"
-                placeholder="Title goes here..."
-                name="title"
-                onChange={this.handleChange}
-                data-text="Title goes here"
-                ref={this.TitleContent}
-              />
+              <div>
+                <input
+                  type="text"
+                  name="title"
+                  onChange={this.handleChange}
+                  placeholder="Title goes here"
+                  id="title"
+                  maxLength="80"
+                />
+              </div>
               <div
                 contentEditable
                 id="body"
@@ -87,10 +91,10 @@ export class ArticleForm extends Component {
   }
 }
 const mapStateToprops = state => ({
-  createArticle: state.createArticle.posts,
+  article: state.Article,
 });
 
 export default connect(
   mapStateToprops,
-  { createArticle },
+  { createArticle, alert },
 )(ArticleForm);
