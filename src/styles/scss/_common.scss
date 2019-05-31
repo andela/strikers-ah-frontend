@@ -1,0 +1,23 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap');
+$color-right-gray: #ddd;
+$color-white: white;
+$color-white-smoke: rgba(245, 247, 248, 0.897);
+$color-black: #333;
+$color-blue: rgb(7, 136, 241);
+$color-text-gray: rgb(148, 146, 146);
+$color-gray-tertiary: rgb(240, 240, 240);
+$box-shadow-color: rgba(191, 191, 191, 0.24);
+$color-green: green;
+$color-dark-text-gray: rgb(83, 83, 83);
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Roboto Condensed', sans-serif;
+}
+body {
+  background: rgb(240, 240, 240);
+  font-family: 'Open Sans', sans-serif;
+}

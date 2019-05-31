@@ -1,0 +1,146 @@
+// @import 'common';
+@import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap');
+$color-right-gray: #ddd;
+$color-white: #fff;
+$color-white-smoke: rgba(245, 247, 248, 0.897);
+$color-black: #333;
+$color-blue: rgb(61, 151, 224);
+$color-dark-blue: rgb(6, 104, 184);
+$color-text-gray: rgb(148, 146, 146);
+$color-gray-tertiary: rgb(240, 240, 240);
+$box-shadow-color: rgba(191, 191, 191, 0.24);
+$color-green: green;
+$color-dark-text-gray: rgb(83, 83, 83);
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Roboto Condensed', sans-serif;
+}
+body {
+  background: $color-gray-tertiary;
+  font-family: 'Open Sans', sans-serif;
+}
+.form-container {
+  position: relative;
+  box-shadow: 0px 0px 14px $color-white-smoke;
+  border-radius: 10px;
+  margin-top: 0.1em;
+  position: relative;
+  background: $color-white;
+  padding: 1em 3em;
+  width: 100%;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  form {
+    padding: 1%;
+    .input-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-column-gap: 10px;
+    }
+  }
+  .input-container {
+    position: relative;
+    font-size: 16px;
+    padding: 14px 0;
+    border: none;
+    background: transparent;
+    outline: none;
+    color: $color-white;
+    .input-label {
+      position: absolute;
+      font-weight: 500;
+      top: 11px;
+      padding: 14px 0;
+      left: 0;
+      color: $color-text-gray;
+      z-index: 0;
+      transition: 0.5s;
+      &:hover {
+        cursor: text;
+      }
+    }
+    .text-area-label {
+      color: $color-text-gray;
+    }
+    input {
+      width: 100%;
+      font-size: 16px;
+      padding: 5px 0;
+      color: $color-black;
+      background: transparent;
+      border: none;
+      outline: none;
+      border-bottom: 1px solid $color-right-gray;
+      &:disabled ~ .input-label {
+        font-size: 12px;
+        top: -18px;
+        color: $color-dark-text-gray;
+      }
+      &:focus ~ .input-label,
+      &:valid ~ .input-label {
+        font-size: 12px;
+        top: -18px;
+        color: $color-blue;
+      }
+    }
+    input[disabled] {
+      color: $color-text-gray;
+    }
+  }
+  textarea {
+    padding: 2%;
+    width: 100%;
+    border: none;
+    box-shadow: 0px 0px 1px $color-right-gray;
+    font-size: 1.2em;
+    min-height: 4em;
+    color: $color-dark-text-gray;
+    outline: none;
+    &:focus ~ .text-area-label,
+    &:valid ~ .text-area-label {
+      font-size: 12px;
+      top: -18px;
+      color: $color-blue;
+    }
+    resize: none;
+  }
+  .form-button {
+    width: 100px;
+    height: 35px;
+    background: $color-blue;
+    color: $color-white;
+    font-size: 1.2em;
+    border: none;
+    outline: none;
+    margin: 1% 0;
+    font-weight: 500;
+    border-radius: 5px;
+    &:hover {
+      background: $color-dark-blue;
+    }
+  }
+  .form-header {
+    background: $color-white;
+    line-height: 50px;
+    text-align: center;
+    border-radius: 10px;
+    border-bottom-right-radius: 0;
+    font-weight: 600;
+    font-size: 1.3em;
+    color: $color-blue;
+  }
+}
+@media screen and (max-width: 420px) {
+  .form-container {
+    form {
+      padding: 1%;
+      .input-grid {
+        display: block;
+      }
+    }
+  }
+}
