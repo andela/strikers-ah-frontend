@@ -4,6 +4,7 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/destructuring-assignment */
 import React, { Component, Fragment } from 'react';
+import dotenv from 'dotenv';
 import sweeetAlert from 'sweetalert';
 import decodeToken from 'jwt-decode';
 import reactParser from 'html-react-parser';
@@ -17,6 +18,9 @@ import {
   deleteArticle,
 } from '../../redux/actions/articleAction';
 
+dotenv.config();
+
+const REACT_APP_FRONTENT = process.env.REACT_APP_BACKEND;
 /**
  *@author: Innocent Nkunzi
  * @returns {*} Articleform
@@ -110,7 +114,7 @@ export class AllArticles extends Component {
                         src={samplePic}
                       />
                       <div className="contentDescription">
-                        <a href={`http://localhost:3000/article/${item.slug}`}>
+                        <a href={`${REACT_APP_FRONTENT}/article/${item.slug}`}>
                           <div className="articleCardHeader">
                             <p>{reactParser(item.title)}</p>
                           </div>
@@ -131,7 +135,7 @@ export class AllArticles extends Component {
 
                               <button type="submit" className="lightBlueButton">
                                 <a
-                                  href={`http://localhost:3000/articlesedit/${
+                                  href={`${REACT_APP_FRONTENT}/articlesedit/${
                                     item.slug
                                   }/edit`}
                                 >
