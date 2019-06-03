@@ -15,6 +15,7 @@ import getOneArticle from './components/article/ReadArticle';
 import OneArticle from './components/article/EditArticle';
 import PrivateRoute from './PrivateRoute';
 import BookmarkedArticles from './components/article/bookmarkedArticles';
+import Settings from './components/Setting';
 
 const routes = () => (
   <Switch>
@@ -26,6 +27,7 @@ const routes = () => (
     <Route path="/signup" component={Signup} />
     <Route path="/profile/:username" component={Profile} />
     <Route path="/" exact component={Index} />
+    <Route path="/settings" component={Settings} />
     <PrivateRoute exact path="/article/:slug" component={getOneArticle} />
     <PrivateRoute
       exact

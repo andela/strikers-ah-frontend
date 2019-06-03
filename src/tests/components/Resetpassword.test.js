@@ -1,22 +1,28 @@
 /* eslint-disable react/jsx-filename-extension */
 import React from 'react';
+import configureStore from 'redux-mock-store';
 import { shallow } from 'enzyme';
 import '../../enzymeConfig';
-import { ForgotPassword } from '../../components/ForgotPassword';
+import { ResetPassword } from '../../components/ResetPassword';
 
-let props = {
+const mockStore = configureStore();
+const initialState = [{}];
+let props, store, wrapper;
+props = {
   handleSubmit: jest.fn(),
-  forgotPassword: jest.fn(),
+  resetPassword: jest.fn(),
   handleChange: jest.fn(),
-  forgetPasswordState: {
-    response: {
-      message: 'something',
-    },
-  },
+  forgetPasswordState: jest.fn(),
   mapStateToProps: jest.fn(),
+  location: {
+    search: 'something',
+  },
 };
-let wrapper = shallow(<ForgotPassword {...props} />);
-describe('`ForgotPassword.jsx`', () => {
+describe('`resetpassword.jsx`', () => {
+  beforeEach(() => {
+    store = mockStore(initialState);
+  });
+  wrapper = shallow(<ResetPassword store={store} {...props} />);
   test('should render', () => {
     expect(wrapper).toMatchSnapshot();
   });
@@ -26,18 +32,26 @@ describe('`ForgotPassword.jsx`', () => {
     wrapper.instance().forceUpdate();
     const fakeEvent = { preventDefault: () => {} };
 
-    const IsForm = wrapper.find('#forgotPasswordForm');
+    const IsForm = wrapper.find('#resetPasswordForm');
     IsForm.simulate('submit', fakeEvent);
     expect(IsForm.length).toBe(1);
     expect(spy).toHaveBeenCalled();
   });
   props = {
     handleSubmit: jest.fn(),
-    forgotPassword: jest.fn(),
+    resetPassword: jest.fn(),
     handleChange: jest.fn(),
     mapStateToProps: jest.fn(),
+    forgetPasswordState: {
+      response: {
+        message: 'something',
+      },
+    },
+    location: {
+      search: 'something',
+    },
   };
-  wrapper = shallow(<ForgotPassword {...props} />);
+  wrapper = shallow(<ResetPassword store={store} {...props} />);
   test('should `click the button`', () => {
     const spy = jest.spyOn(wrapper.instance(), 'handleChange');
     wrapper.instance().forceUpdate();
