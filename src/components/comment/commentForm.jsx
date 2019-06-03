@@ -1,6 +1,5 @@
 /* eslint-disable require-jsdoc */
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 import TextArea from '../common/textArea';
 import SubmitButton from '../common/SubmitButton';
 
@@ -16,12 +15,12 @@ class CommentForm extends Component {
   handleSubmit = e => {
     e.preventDefault();
     const { comment } = this.state;
-    const { addComment: saveComment } = this.props;
-    const { match } = this.props;
-    const { slug } = match.params;
+    const { saveComment } = this.props;
+    const { slug } = this.props;
     if (comment.length) {
       saveComment(comment, slug);
     }
+    this.setState({ comment: '' });
   };
 
   render() {
@@ -41,12 +40,4 @@ class CommentForm extends Component {
     );
   }
 }
-const mapStateToProps = state => {
-  return {
-    comment: state.comments,
-  };
-};
-export default connect(
-  mapStateToProps,
-  {},
-)(CommentForm);
+export default CommentForm;
