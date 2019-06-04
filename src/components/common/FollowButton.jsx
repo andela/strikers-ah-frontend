@@ -21,8 +21,8 @@ class FollowButton extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      username: 'frank'
-    }
+      username: 'frank',
+    };
     this.handleClick = this.handleClick.bind(this);
   }
 
@@ -93,14 +93,14 @@ class FollowButton extends Component {
     const { status } = this.props.following[0];
     return (
       // <div className="follow-btn-div">
-        <button
-          type="button"
-          id={status === 'following' ? 'following-btn' : 'follow-btn'}
-          className={this.props.className}
-          onClick={this.handleClick}
-        >
-          {status}
-        </button>
+      <button
+        type="button"
+        id={status === 'following' ? 'following-btn' : 'follow-btn'}
+        className={this.props.className}
+        onClick={this.handleClick}
+      >
+        {status}
+      </button>
       // </div>
     );
   }
