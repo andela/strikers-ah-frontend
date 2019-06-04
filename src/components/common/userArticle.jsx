@@ -1,21 +1,27 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import '../../styles/css/userArticle.css';
 
 const UserArticle = ({ articles }) => {
-  const { title, description, views, slug } = articles;
+  articles.image = articles.image === 'null' ? false : articles.image;
+  const { title, description, views, slug, image } = articles;
   return (
     <div className="user-article" test-data="userArticleComponent">
       <div className="article">
         <h3>
-          <Link to={`/articles/${slug}`}>{title}</Link>
+          <Link to={`/article/${slug}`}>{title}</Link>
         </h3>
-        <p>{description}</p>
+        <div>
+          <img src={image || 'http://lorempixel.com/400/200'} alt="" />
+        </div>
+        <p className="description">
+          {image && <img src={image} alt="" className="image" />}
+          {description}
+        </p>
       </div>
       <div className="stats-container">
         <div className="stats">
           <h3>Views</h3>
-          <strong>{views}</strong>
+          <span>{views}</span>
         </div>
       </div>
     </div>

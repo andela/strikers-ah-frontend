@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Moment from 'react-moment';
 import 'moment-timezone';
@@ -66,7 +67,9 @@ class Comment extends Component {
         </div>
 
         <div className="comment-body">
-          <span className="author-name">{author.username}</span>
+          <Link className="author-name" to={`/profile/${author.username}`}>
+            {author.username}
+          </Link>
           <p className="comment-body">
             {body} <br />
             <Moment className="time-stamp" fromNow>

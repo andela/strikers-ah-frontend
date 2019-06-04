@@ -19,7 +19,7 @@ describe('action tests', () => {
     moxios.uninstall(axios);
   });
 
-  test('should dispatch get user action', async () => {
+  test('should dispatch get comment Action', async () => {
     const store = mockStore({});
 
     const expectedState = { comments: { id: 1, body: 'mwibutsa' } };
@@ -35,7 +35,23 @@ describe('action tests', () => {
       expect(store.getActions().length).toBeDefined();
     });
   });
-  test('should dispatch get user action', async () => {
+  test('should dispatch get comment Action Failure', async () => {
+    const store = mockStore({});
+
+    const expectedState = { comments: { id: 1, body: 'mwibutsa' } };
+    moxios.wait(() => {
+      const request = moxios.requests.mostRecent();
+      request.respondWith({
+        status: 404,
+        response: expectedState,
+      });
+    });
+
+    return store.dispatch(getComments()).then(() => {
+      expect(store.getActions().length).toBeDefined();
+    });
+  });
+  test('should dispatch add comment Action', async () => {
     const store = mockStore({});
 
     const expectedState = { comments: { id: 1, body: 'mwibutsa' } };
@@ -51,7 +67,23 @@ describe('action tests', () => {
       expect(store.getActions().length).toBeDefined();
     });
   });
-  test('should dispatch get user action', async () => {
+  test('should dispatch Add comment Action', async () => {
+    const store = mockStore({});
+
+    const expectedState = { comments: { id: 1, body: 'mwibutsa' } };
+    moxios.wait(() => {
+      const request = moxios.requests.mostRecent();
+      request.respondWith({
+        status: 404,
+        response: expectedState,
+      });
+    });
+
+    return store.dispatch(addComment()).then(() => {
+      expect(store.getActions().length).toBeDefined();
+    });
+  });
+  test('should dispatch Edit comment Action', async () => {
     const store = mockStore({});
 
     const expectedState = { comments: { id: 1, body: 'mwibutsa' } };
@@ -67,7 +99,23 @@ describe('action tests', () => {
       expect(store.getActions().length).toBeDefined();
     });
   });
-  test('should dispatch get user action', async () => {
+  test('should dispatch Edit comment Action failure', async () => {
+    const store = mockStore({});
+
+    const expectedState = { comments: { id: 1, body: 'mwibutsa' } };
+    moxios.wait(() => {
+      const request = moxios.requests.mostRecent();
+      request.respondWith({
+        status: 404,
+        response: expectedState,
+      });
+    });
+
+    return store.dispatch(editComment()).then(() => {
+      expect(store.getActions().length).toBeDefined();
+    });
+  });
+  test('should dispatch delete comment Action', async () => {
     const store = mockStore({});
 
     const expectedState = { comments: { id: 1, body: 'mwibutsa' } };
@@ -75,6 +123,22 @@ describe('action tests', () => {
       const request = moxios.requests.mostRecent();
       request.respondWith({
         status: 200,
+        response: expectedState,
+      });
+    });
+
+    return store.dispatch(deleteComment()).then(() => {
+      expect(store.getActions().length).toBeDefined();
+    });
+  });
+  test('should dispatch delete comment Action', async () => {
+    const store = mockStore({});
+
+    const expectedState = { comments: { id: 1, body: 'mwibutsa' } };
+    moxios.wait(() => {
+      const request = moxios.requests.mostRecent();
+      request.respondWith({
+        status: 404,
         response: expectedState,
       });
     });

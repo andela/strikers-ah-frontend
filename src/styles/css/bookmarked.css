@@ -1,0 +1,56 @@
+@import url('https://fonts.googleapis.com/css?family=Mandali&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+h1 {
+  font-family: 'Mandali', sans-serif;
+}
+
+.bookmarked-article {
+  position: relative;
+  padding: 1%;
+  margin-top: 20px;
+  border: 2px solid #ddd;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+}
+.bookmarked-article .user-article {
+  width: 48%;
+  display: inline-block;
+  margin-left: auto;
+  margin-right: auto;
+  background: white;
+  padding: 1%;
+  border-radius: 1px;
+  box-shadow: 0px 0px 6px #f1eded;
+  transition: 0.5s;
+  margin: 1%;
+}
+.bookmarked-article .user-article:hover {
+  transform: translateY(-2px);
+  background: rgba(6, 176, 255, 0.1);
+}
+.bookmarked-article .user-article h3 {
+  font-family: 'Mandali', sans-serif;
+  text-align: center;
+  text-transform: capitalize;
+}
+.bookmarked-article .user-article h3 a {
+  text-decoration: none;
+  color: #2996d4;
+  text-decoration: underline;
+}
+.bookmarked-article .user-article .description {
+  margin-bottom: 1px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.2em;
+  letter-spacing: 1px;
+}
+.bookmarked-article .stats-container {
+  display: none;
+}
