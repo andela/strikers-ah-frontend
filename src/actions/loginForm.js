@@ -11,3 +11,4 @@ export const valueChange = value => {
 export const showErrors = () => {
   return {};
 };
+export const valueChangeType = VALUE_CHANGE;

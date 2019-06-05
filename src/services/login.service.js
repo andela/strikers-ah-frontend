@@ -1,14 +1,16 @@
-const config = {
-  apiUrl: 'http://localhost:5000/api',
-};
+import dotenv from 'dotenv';
+
+dotenv.config();
+const apiUrl = `${process.env.REACT_APP_BACKEND}api`;
 
 const logout = () => {
   localStorage.removeItem('token');
 };
 
-const handleResponse = response => {
-  return response.text().then(text => {
-    const data = text && JSON.parse(text);
+const handleResponse = async response => {
+  try {
+    const text = await response.text();
+    const data = await JSON.parse(text);
     if (!response.ok) {
       if (response.error) {
         logout();
@@ -16,8 +18,12 @@ const handleResponse = response => {
       const error = data && data.error;
       return Promise.reject(error);
     }
+
     return data;
-  });
+  } catch (error) {
+    logout();
+    return Promise.reject(error);
+  }
 };
 const login = (email, password) => {
   const requestOptions = {
@@ -26,7 +32,7 @@ const login = (email, password) => {
     body: JSON.stringify({ email, password }),
   };
 
-  return fetch(`${config.apiUrl}/auth/login`, requestOptions)
+  return fetch(`${apiUrl}/auth/login`, requestOptions)
     .then(handleResponse)
     .then(user => {
       localStorage.setItem('token', user.user.token);
@@ -36,4 +42,5 @@ const login = (email, password) => {
 export default {
   login,
   logout,
+  handleResponse,
 };
