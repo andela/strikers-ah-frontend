@@ -3,9 +3,12 @@ import React, { Component } from 'react';
 import queryString from 'query-string';
 import { connect } from 'react-redux';
 import getSocialUser from '../redux/actions/socialLogin';
+<<<<<<< HEAD
 import HomeNavBar from './homeNavBar';
 import SlideShow from './common/slideshow';
 import HomeBody from './homeBody';
+=======
+>>>>>>> Feature #164489750 Create edit form and Delete comment
 
 /**
  * @author frank harerimana
@@ -39,11 +42,17 @@ class Index extends Component {
       username = this.props.socialLoginUser.LoggedInUser.username;
     }
     return (
+<<<<<<< HEAD
       <React.Fragment>
         <HomeNavBar user={username} />
         <SlideShow />
         <HomeBody />
       </React.Fragment>
+=======
+      <div>
+        <p>home page component</p>
+      </div>
+>>>>>>> Feature #164489750 Create edit form and Delete comment
     );
   }
 }

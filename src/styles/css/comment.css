@@ -56,6 +56,7 @@ body {
 }
 
 .comments-container {
+<<<<<<< HEAD
     background: white;
     padding-bottom: 100px;
     margin-bottom: 10%;
@@ -76,6 +77,44 @@ body {
     margin-right: auto;
 }
 
+=======
+  background: white;
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> Feature #164489750 Create edit form and Delete comment
+  padding-bottom: 100px;
+  margin-bottom: 10%;
+}
+
+.comment-container {
+  position: relative;
+<<<<<<< HEAD
+=======
+}
+
+.comment-container {
+>>>>>>> Feature #164489750 Comment Crud
+=======
+>>>>>>> Feature #164489750 Create edit form and Delete comment
+  background: white;
+  display: grid;
+  grid-template-columns: 4em 1fr;
+  margin: 1em;
+  border-radius: 10px;
+  box-shadow: 0px 0px 3px rgba(212, 220, 221, 0.658);
+  padding-left: 1.2em;
+  padding-top: 5px;
+<<<<<<< HEAD
+<<<<<<< HEAD
+  width: 99%;
+  margin-left: auto;
+  margin-right: auto;
+=======
+  width: 100%;
+>>>>>>> Feature #164489750 Create edit form and Delete comment
+}
+>>>>>>> Feature #164489750 Create edit form and Delete comment
 .comment-container .comment-form {
     position: absolute;
     width: 80%;
@@ -84,8 +123,18 @@ body {
 }
 
 .comment-container .comment-form .input-container {
+<<<<<<< HEAD
     background: green;
     position: relative;
+=======
+  background: green;
+  position: relative;
+<<<<<<< HEAD
+=======
+>>>>>>> Feature #164489750 Comment Crud
+=======
+>>>>>>> Feature #164489750 Create edit form and Delete comment
+>>>>>>> Feature #164489750 Create edit form and Delete comment
 }
 
 .comment-container .comment-author {
@@ -139,11 +188,28 @@ body {
 .edit:hover {
     color: yellowgreen;
 }
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> Feature #164489750 Create edit form and Delete comment
+>>>>>>> Feature #164489750 Create edit form and Delete comment
 
 .color-success {
     color: #3f6408;
 }
+<<<<<<< HEAD
 
 .edit-form-container {
+<<<<<<< HEAD
     transition: 0.5s;
 }
+=======
+  transition: 0.5s;
+}
+=======
+>>>>>>> Feature #164489750 Comment Crud
+=======
+>>>>>>> Feature #164489750 Create edit form and Delete comment
+>>>>>>> Feature #164489750 Create edit form and Delete comment
