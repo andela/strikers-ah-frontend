@@ -43,6 +43,11 @@
     "html-webpack-plugin": "4.0.0-beta.5",
     "identity-obj-proxy": "3.0.0",
     "is-wsl": "^1.1.0",
+    "jest": "24.7.1",
+    "jest-environment-jsdom-fourteen": "0.1.0",
+    "jest-localstorage-mock": "^2.4.0",
+    "jest-resolve": "24.7.1",
+    "jest-watch-typeahead": "0.3.0",
     "joi-browser": "^13.4.0",
     "jwt-decode": "^2.2.0",
     "mini-css-extract-plugin": "0.5.0",
@@ -90,7 +95,7 @@
   "scripts": {
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
-    "test": "node scripts/test.js --env=jsdom --coverage -u",
+    "test": "node scripts/test.js --env=jsdom --coverage -u --watchAll=true",
     "precommit": "NODE_ENV=production lint-staged",
     "scss:watch": "node-sass --watch src/styles/scss -o src/styles/css",
     "scss": "node-sass src/styles/scss -o src/styles/css"
@@ -133,7 +138,7 @@
       "src/**/*.{js,jsx,ts,tsx}",
       "!src/**/*.d.ts"
     ],
-    "setupFiles": ["react-app-polyfill/jsdom"],
+    "setupFiles": ["react-app-polyfill/jsdom", "jest-localstorage-mock"],
     "setupFilesAfterEnv": [],
     "testMatch": ["<rootDir>/src/**/__tests__/**/*.{js,jsx,ts,tsx}", "<rootDir>/src/**/*.{spec,test}.{js,jsx,ts,tsx}"],
     "testEnvironment": "jest-environment-jsdom-fourteen",

@@ -50,8 +50,11 @@ body {
 }
 .comments-container {
   background: white;
+  padding-bottom: 100px;
+  margin-bottom: 10%;
 }
 .comment-container {
+  position: relative;
   background: white;
   display: grid;
   grid-template-columns: 4em 1fr;
@@ -60,6 +63,18 @@ body {
   box-shadow: 0px 0px 3px rgba(212, 220, 221, 0.658);
   padding-left: 1.2em;
   padding-top: 5px;
+  width: 100%;
+  .comment-form {
+    position: absolute;
+    width: 80%;
+    background: #444;
+    .input-container {
+      background: green;
+      position: relative;
+    }
+    clear: both;
+  }
+
   .comment-author {
     position: relative;
     height: 3em;
@@ -96,4 +111,7 @@ body {
   &:hover {
     color: yellowgreen;
   }
+}
+.color-success {
+  color: rgb(63, 100, 8);
 }

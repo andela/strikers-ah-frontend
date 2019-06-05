@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import queryString from 'query-string';
 import { connect } from 'react-redux';
 import getSocialUser from '../redux/actions/socialLogin';
-import CommentForm from './comment/commentForm';
+
 /**
  * @author frank harerimana
  */
@@ -36,7 +36,6 @@ class Index extends Component {
     return (
       <div>
         <p>home page component</p>
-        <CommentForm />
       </div>
     );
   }

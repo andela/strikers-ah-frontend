@@ -18,9 +18,13 @@ import Comment from '../comment/comment';
 
 /**
  *@author: Innocent Nkunzi
+ @param { Integer } commentId --
+ @param { Boolaen } cancel
  * @returns {*} Articleform
  */
 export class ReadArticle extends Component {
+  state = { commentEditMode: false, editCommentId: 0 };
+
   /**
    * @author Innocent Nkunzi
    * @returns {*} componentDidmount
@@ -40,10 +44,14 @@ export class ReadArticle extends Component {
     if (nextProps.comment) {
       this.props.comments.unshift(nextProps.comment);
     }
-    if (nextProps.deletedComment) {
-      console.log('deleted', nextProps.deletedComment);
-    }
   }
+
+  toggleEditCommentForm = (commentId, cancel) => {
+    this.setState({
+      commentEditMode: true && !cancel,
+      editCommentId: commentId,
+    });
+  };
 
   /**
    * @author Innocent Nkunzi
@@ -55,6 +63,7 @@ export class ReadArticle extends Component {
       deleteComment: removeComment,
       editComment: modifyComment,
     } = this.props;
+    const { commentEditMode, editCommentId } = this.state;
     const { slug } = this.props.match.params;
     const singleArticle = this.props.article.article;
     if (singleArticle !== null && singleArticle !== undefined) {
@@ -79,12 +88,29 @@ export class ReadArticle extends Component {
                 </p>
               </div>
             </div>
-            <CommentForm slug={slug} saveComment={saveComment} />
+            <CommentForm
+              slug={slug}
+              saveComment={saveComment}
+              buttonLabel="Comment"
+            />
             <div className="comments-container">
               {comments && (
                 <span className="comment-count">
-                  {' '}
-                  {commentList.length} Comments
+                  {commentList.length > 0 && (
+                    <span>
+                      {commentList.length > 1
+                        ? `${commentList.length} Comments`
+                        : `${commentList.length} Comment`}
+                    </span>
+                  )}
+                </span>
+              )}
+              {comments && (
+                <span>
+                  {commentList.length === 0 && (
+                    <span>Be the first to add a comment</span>
+                  )}
+                  <br />
                 </span>
               )}
               {comments
@@ -92,11 +118,17 @@ export class ReadArticle extends Component {
                   commentList.map(comment => {
                     return (
                       <Comment
+                        formId={editCommentId}
                         comment={comment}
                         key={comment.id}
                         editComment={modifyComment}
                         deleteComment={removeComment}
                         slug={slug}
+                        toggleEditCommentForm={(cancel = false) =>
+                          this.toggleEditCommentForm(comment.id, cancel)
+                        }
+                        editMode={commentEditMode}
+                        test-data="commentComponent"
                       />
                     );
                   })

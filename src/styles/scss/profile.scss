@@ -30,7 +30,9 @@
     }
     .user-account-flex {
       position: relative;
-      display: flex;
+      display: grid;
+      grid-template-columns: 10em 1fr;
+      grid-column-gap: 10px;
       .img-container {
         position: relative;
         height: 10em;
@@ -233,9 +235,7 @@
       display: grid;
       grid-template-columns: 1fr;
       grid-column-gap: 0px;
-      grid-template-areas:
-        'image-container'
-        'info-container';
+      grid-template-areas: 'image-container' 'info-container';
       .info-container {
         display: block;
         width: 100%;

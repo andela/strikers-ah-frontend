@@ -8,6 +8,13 @@ class CommentForm extends Component {
     comment: '',
   };
 
+  componentDidMount() {
+    const { currentValue } = this.props;
+    if (currentValue) {
+      this.setState({ comment: currentValue });
+    }
+  }
+
   handleChange = e => {
     this.setState({ [e.target.name]: e.target.value });
   };
@@ -25,6 +32,8 @@ class CommentForm extends Component {
 
   render() {
     const { comment } = this.state;
+    const { buttonLabel } = this.props || { buttonLabel: 'Comment' };
+
     return (
       <div className="comment-form">
         <form onSubmit={this.handleSubmit}>
@@ -34,7 +43,7 @@ class CommentForm extends Component {
             name="comment"
             value={comment}
           />
-          <SubmitButton type="submit" name="comment" value="Comment" />
+          <SubmitButton type="submit" name="comment" value={buttonLabel} />
         </form>
       </div>
     );

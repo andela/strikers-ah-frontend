@@ -61,7 +61,9 @@ body {
 .profile-grid-off .user-account-info .user-account-flex,
 .profile-grid .user-account-info .user-account-flex {
   position: relative;
-  display: flex;
+  display: grid;
+  grid-template-columns: 10em 1fr;
+  grid-column-gap: 10px;
 }
 .profile-grid-off .user-account-info .user-account-flex .img-container,
 .profile-grid .user-account-info .user-account-flex .img-container {

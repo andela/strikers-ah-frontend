@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TEST COMMENT Should render a comment component 1`] = `ShallowWrapper {}`;
+
+exports[`TEST COMMENT Should render a comment component 2`] = `ShallowWrapper {}`;
