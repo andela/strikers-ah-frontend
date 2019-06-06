@@ -3,6 +3,9 @@ import React, { Component } from 'react';
 import queryString from 'query-string';
 import { connect } from 'react-redux';
 import getSocialUser from '../redux/actions/socialLogin';
+import HomeNavBar from './homeNavBar';
+import SlideShow from './common/slideshow';
+import HomeBody from './homeBody';
 
 /**
  * @author frank harerimana
@@ -29,14 +32,18 @@ class Index extends Component {
    * @returns {*} render
    */
   render() {
+    let username = '';
     if (this.props.socialLoginUser.length !== 0) {
       // eslint-disable-next-line no-unused-vars
-      const { user } = this.props.socialLoginUser;
+      // eslint-disable-next-line prefer-destructuring
+      username = this.props.socialLoginUser.LoggedInUser.username;
     }
     return (
-      <div>
-        <p>home page component</p>
-      </div>
+      <React.Fragment>
+        <HomeNavBar user={username} />
+        <SlideShow />
+        <HomeBody />
+      </React.Fragment>
     );
   }
 }

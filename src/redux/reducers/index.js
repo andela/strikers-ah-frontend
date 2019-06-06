@@ -10,6 +10,7 @@ import userArticles from './userArticles';
 import alertReducer from './alertReducer';
 import { following } from './Following';
 import commentReducer from './comment';
+import { homePageReducer } from './homeReducer';
 
 const rootReducer = combineReducers({
   Article,
@@ -23,6 +24,7 @@ const rootReducer = combineReducers({
   alertReducer,
   following,
   comments: commentReducer,
+  homePageReducer,
 });
 
 export default rootReducer;

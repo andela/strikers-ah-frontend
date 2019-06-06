@@ -1,0 +1,74 @@
+$color: (
+  primary: darken(#f1f1f1, 15%),
+  form: #fff,
+  shadow1: rgba(0, 0, 0, 0.1),
+  shadow2: rgba(0, 0, 0, 0.19),
+  brand: #00aef9,
+  categories: #8a8585,
+);
+
+@function colors($color-name) {
+  @return map-get($color, $color-name);
+}
+
+body {
+  background-color: #fff !important;
+}
+.home-navigation {
+  width: 100%;
+  background-color: colors(form);
+  height: 120px;
+
+  .logo-style {
+    width: 180px;
+    height: 30px;
+    margin: 1%;
+    cursor: pointer;
+  }
+
+  .nav-bar {
+    margin-left: 10%;
+    margin-right: 13%;
+  }
+
+  .home-nav-link {
+    text-decoration: none;
+    color: colors(brand);
+    float: right;
+    margin: 1%;
+    border: 2px solid colors(brand);
+    border-radius: 8px;
+    padding: 10px;
+  }
+
+  .icons-style {
+    width: 50px;
+    height: 25px;
+    border: none;
+    padding: 0;
+    margin-top: 15px;
+    float: right;
+  }
+
+  .user-profile {
+    width: 40px;
+  }
+
+  .nav-categories {
+    list-style-type: none;
+    margin-left: 10%;
+
+    li {
+      display: inline-block;
+      margin-right: 3%;
+      margin-top: 1%;
+      font-family: Georgia;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 14px;
+      line-height: normal;
+      color: colors(categories);
+      cursor: pointer;
+    }
+  }
+}

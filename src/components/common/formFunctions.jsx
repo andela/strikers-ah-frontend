@@ -31,7 +31,6 @@ class FormFunctions extends Component {
     const error = this.validate();
     stateChange({ errors: error || {} });
     if (error) return null;
-
     this.submit();
   };
 

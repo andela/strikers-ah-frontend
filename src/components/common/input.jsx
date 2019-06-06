@@ -15,7 +15,6 @@ class Input extends Component {
       labelStyle,
       name,
       onChange,
-      type = 'text',
       inputStyle,
       label,
       innerLabelStyle,
@@ -23,10 +22,11 @@ class Input extends Component {
       borderStyle,
       errorStyle,
     } = this.props;
+
     return (
       <label htmlFor={name} className={labelStyle}>
         <input
-          type={type}
+          type="text"
           id={name}
           name={name}
           placeholder="&nbsp;"

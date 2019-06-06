@@ -2,9 +2,12 @@ import React from 'react';
 import Joi from 'joi-browser';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import dotenv from 'dotenv';
 import Input from './common/input';
 import FormFunctions from './common/formFunctions';
 import '../styles/css/signup-style/signup-style.css';
+
+dotenv.config();
 
 /**
  * @author Clet Mwunguzi
@@ -38,15 +41,19 @@ class Form extends FormFunctions {
   };
 
   submit = async () => {
+    // console.log('props', this.props.isSubmitted);
     const { data: userInfo } = this.props;
-    const URL = 'https://strikers-ah-backend.herokuapp.com/api/auth/signup';
+    const URL = `${process.env.REACT_APP_BACKEND}auth/signup`;
 
     try {
       const { data } = await axios.post(URL, userInfo);
-      if (data) this.props.isSubmitted();
+      if (data) {
+        this.props.isSubmitted();
+      }
     } catch ({ response }) {
       const obj = {};
       const { error } = response.data;
+
       const splitError = error.split(' ')[0];
       if (splitError === 'email' || splitError === 'username') {
         obj[splitError] = error;
