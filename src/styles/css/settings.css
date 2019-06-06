@@ -1,21 +1,17 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto');
+@import url("https://fonts.googleapis.com/css?family=Roboto");
 .settings {
   width: 80%;
   padding: 10px;
   margin: auto;
   font-family: sans-serif;
   text-align: center;
-  background: #f9f8f9;
-}
+  background: #f9f8f9; }
 
 .notifications-block {
-  display: block;
-}
+  display: block; }
 
 @media only screen and (max-width: 600px) {
   .settings {
     width: 100%;
     padding: 0;
-    margin: 0;
-  }
-}
+    margin: 0; } }

@@ -1,24 +1,20 @@
 *,
 *::before,
 *::after {
-    box-sizing: border-box;
-}
+  box-sizing: border-box; }
 
 body {
-    margin: 0;
-    padding: 0;
-}
+  margin: 0;
+  padding: 0; }
 
 .comment-form {
-    width: 80%;
-    margin-left: auto;
-    margin-right: auto;
-    border-radius: 10px;
-    border: none;
-    margin-top: 1%;
-}
-
-.comment-form textarea {
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 10px;
+  border: none;
+  margin-top: 1%; }
+  .comment-form textarea {
     width: 100%;
     resize: none;
     min-height: 4em;
@@ -28,10 +24,8 @@ body {
     color: #444;
     box-shadow: 0px 0px 14px #f5f3f3;
     border-radius: 5px;
-    padding: 1%;
-}
-
-.comment-form .form-button {
+    padding: 1%; }
+  .comment-form .form-button {
     font-size: 1.2em;
     line-height: 2em;
     width: 6em;
@@ -41,62 +35,27 @@ body {
     background: #0396eb;
     color: white;
     transition: 0.5s;
-    margin-top: 1%;
-}
-
-.comment-form .form-button:hover {
-    transform: translateY(-2px);
-    background: #15a1f1;
-}
-
-.comment-form .text-area-label {
+    margin-top: 1%; }
+    .comment-form .form-button:hover {
+      transform: translateY(-2px);
+      background: #15a1f1; }
+  .comment-form .text-area-label {
     color: #292828;
     font-weight: bold;
-    line-height: 40px;
-}
+    line-height: 40px; }
 
 .comments-container {
-<<<<<<< HEAD
-    background: white;
-    padding-bottom: 100px;
-    margin-bottom: 10%;
-}
+  background: white;
+  padding-bottom: 100px;
+  margin-bottom: 10%; }
 
 .comment-container {
-    position: relative;
-    background: white;
-    display: grid;
-    grid-template-columns: 4em 1fr;
-    margin: 1em;
-    border-radius: 10px;
-    box-shadow: 0px 0px 3px rgba(212, 220, 221, 0.658);
-    padding-left: 1.2em;
-    padding-top: 5px;
-    width: 99%;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-=======
   background: white;
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> Feature #164489750 Create edit form and Delete comment
   padding-bottom: 100px;
-  margin-bottom: 10%;
-}
+  margin-bottom: 10%; }
 
 .comment-container {
   position: relative;
-<<<<<<< HEAD
-=======
-}
-
-.comment-container {
->>>>>>> Feature #164489750 Comment Crud
-=======
->>>>>>> Feature #164489750 Create edit form and Delete comment
   background: white;
   display: grid;
   grid-template-columns: 4em 1fr;
@@ -105,111 +64,77 @@ body {
   box-shadow: 0px 0px 3px rgba(212, 220, 221, 0.658);
   padding-left: 1.2em;
   padding-top: 5px;
-<<<<<<< HEAD
-<<<<<<< HEAD
   width: 99%;
   margin-left: auto;
   margin-right: auto;
-=======
-  width: 100%;
->>>>>>> Feature #164489750 Create edit form and Delete comment
-}
->>>>>>> Feature #164489750 Create edit form and Delete comment
-.comment-container .comment-form {
+  width: 100%; }
+
+.comment-form {
+  position: absolute;
+  width: 80%;
+  background: #444;
+  clear: both; }
+  .comment-form .input-container {
+    background: green;
+    position: relative; }
+
+.comment-author {
+  position: relative;
+  background: white;
+  display: grid;
+  grid-template-columns: 4em 1fr;
+  margin: 1em;
+  border-radius: 10px;
+  box-shadow: 0px 0px 3px rgba(212, 220, 221, 0.658);
+  padding-left: 1.2em;
+  padding-top: 5px;
+  width: 99%;
+  margin-left: auto;
+  margin-right: auto; }
+  .comment-author .comment-form {
     position: absolute;
     width: 80%;
     background: #444;
-    clear: both;
-}
-
-.comment-container .comment-form .input-container {
-<<<<<<< HEAD
-    background: green;
-    position: relative;
-=======
-  background: green;
-  position: relative;
-<<<<<<< HEAD
-=======
->>>>>>> Feature #164489750 Comment Crud
-=======
->>>>>>> Feature #164489750 Create edit form and Delete comment
->>>>>>> Feature #164489750 Create edit form and Delete comment
-}
-
-.comment-container .comment-author {
+    clear: both; }
+    .comment-author .comment-form .input-container {
+      background: green;
+      position: relative; }
+  .comment-author .comment-author {
     position: relative;
     height: 3em;
     width: 3em;
     border-radius: 10px;
-    margin-right: 1em;
-}
-
-.comment-container .comment-author img {
-    width: 100%;
-    height: 100%;
-    border-radius: 100%;
-}
-
-.comment-container .author-name {
+    margin-right: 1em; }
+    .comment-author .comment-author img {
+      width: 100%;
+      height: 100%;
+      border-radius: 100%; }
+  .comment-author .author-name {
     text-transform: capitalize;
     font-size: 1em;
     color: #43c0f1;
     font-weight: 520;
     line-height: 30px;
-    cursor: pointer;
-}
-
-.comment-container .comment-body {
+    cursor: pointer; }
+  .comment-author .comment-body {
     width: 100%;
-    padding: 0 1% 0 0;
-}
-
-.comment-container .comment-body p .time-stamp {
-    color: darkgray;
-}
+    padding: 0 1% 0 0; }
+    .comment-author .comment-body p .time-stamp {
+      color: darkgray; }
 
 .delete {
-    color: #d1cccc;
-    margin: 0 5px;
-    cursor: pointer;
-}
-
-.delete:hover {
-    color: red;
-}
+  color: #d1cccc;
+  margin: 0 5px;
+  cursor: pointer; }
+  .delete:hover {
+    color: red; }
 
 .edit {
-    color: #b3afaf;
-    margin: 0 5px;
-    cursor: pointer;
-}
-
-.edit:hover {
-    color: yellowgreen;
-}
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> Feature #164489750 Create edit form and Delete comment
->>>>>>> Feature #164489750 Create edit form and Delete comment
-
-.color-success {
-    color: #3f6408;
-}
-<<<<<<< HEAD
+  color: #b3afaf;
+  margin: 0 5px;
+  cursor: pointer; }
+  .edit:hover {
+    color: yellowgreen; }
 
 .edit-form-container {
-<<<<<<< HEAD
-    transition: 0.5s;
-}
-=======
-  transition: 0.5s;
-}
-=======
->>>>>>> Feature #164489750 Comment Crud
-=======
->>>>>>> Feature #164489750 Create edit form and Delete comment
->>>>>>> Feature #164489750 Create edit form and Delete comment
+  transition: 0.5s; }
