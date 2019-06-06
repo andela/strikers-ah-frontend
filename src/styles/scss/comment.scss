@@ -63,7 +63,9 @@ body {
   box-shadow: 0px 0px 3px rgba(212, 220, 221, 0.658);
   padding-left: 1.2em;
   padding-top: 5px;
-  width: 100%;
+  width: 99%;
+  margin-left: auto;
+  margin-right: auto;
   .comment-form {
     position: absolute;
     width: 80%;
@@ -95,6 +97,10 @@ body {
     line-height: 30px;
     cursor: pointer;
   }
+  .comment-body {
+    width: 100%;
+    padding: 0 1% 0 0;
+  }
 }
 .delete {
   color: rgb(209, 204, 204);
@@ -114,4 +120,7 @@ body {
 }
 .color-success {
   color: rgb(63, 100, 8);
+}
+.edit-form-container {
+  transition: 0.5s;
 }
