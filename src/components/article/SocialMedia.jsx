@@ -1,22 +1,99 @@
-import React, { Fragment } from 'react';
-import heart from '../../styles/img/heart.svg';
-import bookmark from '../../styles/img/bookmark.svg';
-import facebook from '../../styles/img/facebook.svg';
-import linked from '../../styles/img/linked-in.svg';
-import twitter from '../../styles/img/twitter.svg';
+/* eslint-disable react/destructuring-assignment */
+import React, { Component, Fragment } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
+  faFacebook,
+  faTwitter,
+  faLinkedin,
+  faWhatsapp,
+  faGoogle,
+} from '@fortawesome/free-brands-svg-icons';
+import {
+  FacebookShareButton,
+  LinkedinShareButton,
+  TwitterShareButton,
+  WhatsappShareButton,
+  EmailShareButton,
+} from 'react-share';
+import '../../styles/scss/article.scss';
 
-const SocialMedia = () => {
-  return (
-    <Fragment>
-      <div className="article-icons center-text">
-        <img src={heart} alt="Like" className="icon" />
-        <img src={bookmark} alt="bookmark" className="icon" />
-        <img src={facebook} alt="share on facebook" className="icon" />
-        <img src={linked} alt="share on linked-in" className="icon" />
-        <img src={twitter} alt="share on twitter" className="icon" />
-      </div>
-    </Fragment>
-  );
-};
+/**
+ * @description this class create the share buttons
+ * @returns {*} buttons
+ */
+class SocialMedia extends Component {
+  /**
+   *
+   * @param {*} props
+   */
+  constructor(props) {
+    super(props);
+    this.state = {};
+    this.onSubmit = this.onSubmit.bind(this);
+  }
+
+  onSubmit = () => {
+    const url = window.location.href;
+    return url;
+  };
+
+  /**
+   * @author Innocent Nkunzi
+   * @returns {*} the buttons
+   */
+  render() {
+    return (
+      <Fragment>
+        <div className="socialMedia">
+          <FacebookShareButton
+            url={this.onSubmit()}
+            className="facebookButton is-outlined is-rounded facebook"
+          >
+            <span className="faIcon">
+              <FontAwesomeIcon icon={faFacebook} size="1x" />
+            </span>
+            <span className="text">Facebook</span>
+          </FacebookShareButton>
+          <TwitterShareButton
+            url={this.onSubmit()}
+            className="twitterButton is-outlined is-rounded facebook"
+          >
+            <span className="twitterIcon">
+              <FontAwesomeIcon icon={faTwitter} size="1x" />
+            </span>
+            <span className="text">Twitter</span>
+          </TwitterShareButton>
+          <LinkedinShareButton
+            url={this.onSubmit()}
+            className="linkedinButton is-outlined is-rounded facebook"
+          >
+            <span className="linkedinIcon">
+              <FontAwesomeIcon icon={faLinkedin} size="1x" />
+            </span>
+            <span className="text">Linkedin</span>
+          </LinkedinShareButton>
+          <WhatsappShareButton
+            url={this.onSubmit()}
+            className="whatsappButton is-outlined is-rounded facebook"
+          >
+            <span className="whatsappIcon">
+              <FontAwesomeIcon icon={faWhatsapp} size="1x" />
+            </span>
+            <span className="text">Whatsapp</span>
+          </WhatsappShareButton>
+          <EmailShareButton
+            url={this.onSubmit()}
+            className="emailButton is-outlined is-rounded facebook"
+          >
+            <span className="emailIcon">
+              <FontAwesomeIcon icon={faGoogle} size="1x" />
+            </span>
+            <span className="text">Email</span>
+          </EmailShareButton>
+        </div>
+      </Fragment>
+    );
+  }
+}
 
 export default SocialMedia;
