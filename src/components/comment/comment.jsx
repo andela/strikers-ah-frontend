@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import Moment from 'react-moment';
+import 'moment-timezone';
 import {
   faTrash,
   faPencilAlt,
@@ -29,7 +31,7 @@ class Comment extends Component {
       formId,
       toggleEditCommentForm,
     } = this.props;
-    const { author, comment: body, id } = comment;
+    const { author, comment: body, id, updatedAt } = comment;
     if (user) {
       user.role = user.role ? user.role : 'User';
     }
@@ -65,7 +67,12 @@ class Comment extends Component {
 
         <div className="comment-body">
           <span className="author-name">{author.username}</span>
-          <p className="comment-body">{body}</p>
+          <p className="comment-body">
+            {body} <br />
+            <Moment className="time-stamp" fromNow>
+              {updatedAt}
+            </Moment>
+          </p>
           {user && (
             <div>
               {(user.username === author.username || user.role !== 'User') && (
