@@ -9,7 +9,7 @@ import axios from '../../helpers/axios';
 
 export const main = () => async dispatch => {
   try {
-    const { data } = await axios.get('/articles/all');
+    const { data } = await axios.get('api/articles/all');
 
     const { article } = data;
     dispatch({
@@ -27,7 +27,7 @@ export const featured = () => {
       type: FETCH_ARTICLES_REQUESTED,
     });
     try {
-      const { data } = await axios.get('/articles/latest');
+      const { data } = await axios.get('api/articles/latest');
       dispatch({
         type: FETCH_FEATURED_ARTICLES,
         payload: data,
@@ -47,7 +47,7 @@ export const latest = () => {
       type: FETCH_ARTICLES_REQUESTED,
     });
     try {
-      const { data } = await axios.get('/articles/latest');
+      const { data } = await axios.get('api/articles/latest');
       dispatch({
         type: FETCH_LATEST_ARTICLES,
         payload: data,

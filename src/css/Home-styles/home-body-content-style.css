@@ -38,6 +38,11 @@
   line-height: normal;
 }
 
+.container-1 .other-articles .article-link {
+  text-decoration: none;
+  color: black;
+}
+
 .container-1 .other-articles .article {
   display: -ms-grid;
   display: grid;

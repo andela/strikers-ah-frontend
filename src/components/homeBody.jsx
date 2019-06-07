@@ -69,33 +69,39 @@ class HomeBody extends Component {
 
             {articles &&
               articles.map(element => (
-                <div key={element.id} className="article">
-                  <div className="article-element">
-                    <img
-                      src={element.image === 'null' ? nature : element.image}
-                      alt="article"
-                      className="article-picture"
-                    />
-                  </div>
-                  <div className="article-content article-element">
-                    <div className="article-head">{element.title}</div>
-                    <div className="article-mark">
-                      <span className="author-name">
-                        {element.user.username}
-                      </span>
-                      <span className="article-time time-style">{`| ${this.handleDateDisplay(
-                        element,
-                      )}`}</span>
-                      <span className="read-time time-style">
-                        {' '}
-                        . 4 min Read
-                      </span>
+                <a
+                  className="article-link"
+                  key={element.id}
+                  href={`article/${element.slug}`}
+                >
+                  <div className="article">
+                    <div className="article-element">
+                      <img
+                        src={element.image === 'null' ? nature : element.image}
+                        alt="article"
+                        className="article-picture"
+                      />
                     </div>
-                    <div className="article-excerpt time-style">
-                      {element.description}
+                    <div className="article-content article-element">
+                      <div className="article-head">{element.title}</div>
+                      <div className="article-mark">
+                        <span className="author-name">
+                          {element.user.username}
+                        </span>
+                        <span className="article-time time-style">{`| ${this.handleDateDisplay(
+                          element,
+                        )}`}</span>
+                        <span className="read-time time-style">
+                          {' '}
+                          . 4 min Read
+                        </span>
+                      </div>
+                      <div className="article-excerpt time-style">
+                        {element.description}
+                      </div>
                     </div>
                   </div>
-                </div>
+                </a>
               ))}
           </div>
           <div className="featured grid-element">
@@ -106,21 +112,27 @@ class HomeBody extends Component {
             <hr className="h-line" />
             {featuredArticles &&
               featuredArticles.map(element => (
-                <div key={element.id} className="side-article">
-                  <div className="side-article-head">{element.title}</div>
-                  <div className="side-article-mark">
-                    <span className="author-name side-author-name">
-                      {element.username}
-                    </span>
-                    <span className="article-time time-style side-time-style">
-                      {this.handleDateDisplay(element)}
-                    </span>
-                    <span className="read-time time-style side-time-style">
-                      {' '}
-                      . 4 min Read
-                    </span>
+                <a
+                  className="article-link"
+                  key={element.id}
+                  href={`article/${element.slug}`}
+                >
+                  <div className="side-article">
+                    <div className="side-article-head">{element.title}</div>
+                    <div className="side-article-mark">
+                      <span className="author-name side-author-name">
+                        {element.username}
+                      </span>
+                      <span className="article-time time-style side-time-style">
+                        {this.handleDateDisplay(element)}
+                      </span>
+                      <span className="read-time time-style side-time-style">
+                        {' '}
+                        . 4 min Read
+                      </span>
+                    </div>
                   </div>
-                </div>
+                </a>
               ))}
           </div>
           <div className="latest grid-element">
@@ -131,21 +143,27 @@ class HomeBody extends Component {
             <hr className="h-line" />
             {latestArticles &&
               latestArticles.map(element => (
-                <div key={element.id} className="side-article">
-                  <div className="side-article-head">{element.title}</div>
-                  <div className="side-article-mark">
-                    <span className="author-name side-author-name">
-                      {element.username}
-                    </span>
-                    <span className="article-time time-style side-time-style">
-                      {this.handleDateDisplay(element)}
-                    </span>
-                    <span className="read-time time-style side-time-style">
-                      {' '}
-                      . 4 min Read
-                    </span>
+                <a
+                  className="article-link"
+                  key={element.id}
+                  href={`article/${element.slug}`}
+                >
+                  <div className="side-article">
+                    <div className="side-article-head">{element.title}</div>
+                    <div className="side-article-mark">
+                      <span className="author-name side-author-name">
+                        {element.username}
+                      </span>
+                      <span className="article-time time-style side-time-style">
+                        {this.handleDateDisplay(element)}
+                      </span>
+                      <span className="read-time time-style side-time-style">
+                        {' '}
+                        . 4 min Read
+                      </span>
+                    </div>
                   </div>
-                </div>
+                </a>
               ))}
           </div>
         </div>

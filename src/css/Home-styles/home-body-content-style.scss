@@ -31,6 +31,10 @@
       line-height: normal;
     }
 
+    .article-link {
+      text-decoration: none;
+      color: black;
+    }
     .article {
       display: grid;
       grid-template-columns: 25% 74%;
