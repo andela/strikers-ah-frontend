@@ -1,6 +1,7 @@
 /* eslint-disable react/destructuring-assignment */
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import _ from 'lodash';
 import '../css/Home-styles/home-body-content-style.css';
 import nature from '../img/traveling.jpg';
 import { main, featured, latest } from '../redux/actions/HomeAction';
@@ -15,81 +16,87 @@ class HomeBody extends Component {
    * @param {*} props
    * @returns {*} Home body content
    */
-  constructor(props) {
-    super(props);
+
+  /**
+   * @author Clet Mwunguzi
+   * @param {*} props
+   * @returns {*} latest action
+   */
+  componentDidMount() {
     this.props.main();
+    this.props.latest();
+    this.props.featured();
   }
+
+  /**
+   * @author Clet Mwunguzi
+   * @returns {*} formated date
+   */
+
+  handleDateDisplay = element => {
+    const month = new Date(element.createdAt).toDateString().split(' ')[1];
+    const day = new Date(element.createdAt).toDateString().split(' ')[2];
+    const date = `${month} ${day}`;
+    return date;
+  };
 
   /**
    * @author Clet Mwunguzi
    * @returns {*} Home body content
    */
   render() {
-    // if (this.props.homePageReducer.main != null) {
+    let articles;
+    if (this.props.homePageReducer) {
+      const { homePageReducer } = this.props;
+      articles = _.take(homePageReducer, 4);
+    }
+    let latestArticles;
+    if (this.props.latestReducer) {
+      const { latestReducer } = this.props;
+      latestArticles = latestReducer.data;
+    }
 
-    // }
+    let featuredArticles;
+    if (this.props.featuredReducer) {
+      const { featuredReducer } = this.props;
+      featuredArticles = featuredReducer.data;
+    }
     return (
       <div className="container-1">
         <div className="other-articles">
           <div className="reading-history grid-element">
             <div className="article-header">From your Reading History</div>
-            <div className="article">
-              <div className="article-element">
-                <img src={nature} alt="article" className="article-picture" />
-              </div>
-              <div className="article-content article-element">
-                <div className="article-head">
-                  At Vero Eos Et Accusamus Et Iusto Odio Dignissimos.
+
+            {articles &&
+              articles.map(element => (
+                <div key={element.id} className="article">
+                  <div className="article-element">
+                    <img
+                      src={element.image === 'null' ? nature : element.image}
+                      alt="article"
+                      className="article-picture"
+                    />
+                  </div>
+                  <div className="article-content article-element">
+                    <div className="article-head">{element.title}</div>
+                    <div className="article-mark">
+                      <span className="author-name">
+                        {element.user.username}
+                      </span>
+                      <span className="article-time time-style">{`| ${this.handleDateDisplay(
+                        element,
+                      )}`}</span>
+                      <span className="read-time time-style">
+                        {' '}
+                        . 4 min Read
+                      </span>
+                    </div>
+                    <div className="article-excerpt time-style">
+                      {element.description}
+                    </div>
+                  </div>
                 </div>
-                <div className="article-mark">
-                  <span className="author-name">Sergey Brot</span>
-                  <span className="article-time time-style"> | Mar 14</span>
-                  <span className="read-time time-style"> . 4 min Read</span>
-                </div>
-                <div className="article-excerpt time-style">
-                  Ea commodo consequat. Duis aute irure dolor in reprehenderit
-                  in voluptate velit esse. Read more...
-                </div>
-              </div>
-            </div>
-            <div className="article">
-              <div className="article-element">
-                <img src={nature} alt="article" className="article-picture" />
-              </div>
-              <div className="article-content article-element">
-                <div className="article-head">
-                  At Vero Eos Et Accusamus Et Iusto Odio Dignissimos.
-                </div>
-                <div className="article-mark">
-                  <span className="author-name">Sergey Brot</span>
-                  <span className="article-time time-style"> | Mar 14</span>
-                  <span className="read-time time-style"> . 4 min Read</span>
-                </div>
-                <div className="article-excerpt time-style">
-                  Ea commodo consequat. Duis aute irure dolor in reprehenderit
-                  in voluptate velit esse. Read more...
-                </div>
-              </div>
-            </div>
-            <div className="article">
-              <div className="article-element">
-                <img src={nature} alt="article" className="article-picture" />
-              </div>
-              <div className="article-content article-element">
-                <div className="article-head">
-                  At Vero Eos Et Accusamus Et Iusto Odio Dignissimos.
-                </div>
-                <div className="article-mark">
-                  <span className="author-name">Sergey Brot</span>
-                  <span className="article-time time-style"> | Mar 14</span>
-                  <span className="read-time time-style"> . 4 min Read</span>
-                </div>
-                <div className="article-excerpt time-style">
-                  Ea commodo consequat. Duis aute irure dolor in reprehenderit
-                  in voluptate velit esse. Read more...
-                </div>
-              </div>
-            </div>
+              ))}
           </div>
           <div className="featured grid-element">
             <div className="article-header">
@@ -97,24 +104,24 @@ class HomeBody extends Component {
               <span className="side-link">SEE ALL</span>
             </div>
             <hr className="h-line" />
-            <div className="side-article">
-              <div className="side-article-head">
-                Sed ut perspiciatis unde omnis iste natus error sit.
-              </div>
-              <div className="side-article-mark">
-                <span className="author-name side-author-name">
-                  Sergey Brot
-                </span>
-                <span className="article-time time-style side-time-style">
-                  {' '}
-                  | Mar 14
-                </span>
-                <span className="read-time time-style side-time-style">
-                  {' '}
-                  . 4 min Read
-                </span>
-              </div>
-            </div>
+            {featuredArticles &&
+              featuredArticles.map(element => (
+                <div key={element.id} className="side-article">
+                  <div className="side-article-head">{element.title}</div>
+                  <div className="side-article-mark">
+                    <span className="author-name side-author-name">
+                      {element.username}
+                    </span>
+                    <span className="article-time time-style side-time-style">
+                      {this.handleDateDisplay(element)}
+                    </span>
+                    <span className="read-time time-style side-time-style">
+                      {' '}
+                      . 4 min Read
+                    </span>
+                  </div>
+                </div>
+              ))}
           </div>
           <div className="latest grid-element">
             <div className="article-header">
@@ -122,24 +129,24 @@ class HomeBody extends Component {
               <span className="side-link">SEE ALL</span>
             </div>
             <hr className="h-line" />
-            <div className="side-article">
-              <div className="side-article-head">
-                Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-              </div>
-              <div className="side-article-mark">
-                <span className="author-name side-author-name">
-                  Sergey Brot
-                </span>
-                <span className="article-time time-style side-time-style">
-                  {' '}
-                  | Mar 14
-                </span>
-                <span className="read-time time-style side-time-style">
-                  {' '}
-                  . 4 min Read
-                </span>
-              </div>
-            </div>
+            {latestArticles &&
+              latestArticles.map(element => (
+                <div key={element.id} className="side-article">
+                  <div className="side-article-head">{element.title}</div>
+                  <div className="side-article-mark">
+                    <span className="author-name side-author-name">
+                      {element.username}
+                    </span>
+                    <span className="article-time time-style side-time-style">
+                      {this.handleDateDisplay(element)}
+                    </span>
+                    <span className="read-time time-style side-time-style">
+                      {' '}
+                      . 4 min Read
+                    </span>
+                  </div>
+                </div>
+              ))}
           </div>
         </div>
       </div>
@@ -147,7 +154,9 @@ class HomeBody extends Component {
   }
 }
 const mapStateToProps = state => ({
-  homePageReducer: state.homePageReducer,
+  homePageReducer: state.homePageReducer.main,
+  latestReducer: state.homePageReducer.latest,
+  featuredReducer: state.homePageReducer.featured,
 });
 export default connect(
   mapStateToProps,
