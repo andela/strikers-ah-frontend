@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<SlideShow/> Should render slideshow without crashing 1`] = `ShallowWrapper {}`;

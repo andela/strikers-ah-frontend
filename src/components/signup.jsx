@@ -43,7 +43,6 @@ class Signup extends Component {
               isSubmitted={this.handleSubmitedForm}
             />
           )}
-          {/* <Route path="/login" component={}/> */}
           <SocialLogin />
         </div>
       </div>

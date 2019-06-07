@@ -9,7 +9,6 @@ export default axios.create({
   baseURL: DEV_BASE_URL,
   headers: {
     'x-access-token': `${token}`,
-    'x-auth-token': `${token}`,
     Authorization: `Bearer ${token}`,
   },
 });
