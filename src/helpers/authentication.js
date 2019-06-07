@@ -1,7 +1,7 @@
 import jwtDecode from 'jwt-decode';
 
 export const getUserToken = () => {
-  const token = localStorage.getItem('token') || false;
+  const token = localStorage.getItem('token');
   return token;
 };
 const myHeaders = new Headers();
@@ -14,7 +14,12 @@ export const headers = myHeaders;
 export const getLoggedInUser = () => {
   const userToken = getUserToken();
   if (userToken) {
-    return jwtDecode(token);
+    try {
+      const user = jwtDecode(token);
+      return user;
+    } catch (err) {
+      return err;
+    }
   }
   return false;
 };

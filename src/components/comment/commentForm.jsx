@@ -1,6 +1,5 @@
 /* eslint-disable require-jsdoc */
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 import TextArea from '../common/textArea';
 import SubmitButton from '../common/SubmitButton';
 
@@ -9,6 +8,13 @@ class CommentForm extends Component {
     comment: '',
   };
 
+  componentDidMount() {
+    const { currentValue } = this.props;
+    if (currentValue) {
+      this.setState({ comment: currentValue });
+    }
+  }
+
   handleChange = e => {
     this.setState({ [e.target.name]: e.target.value });
   };
@@ -16,16 +22,18 @@ class CommentForm extends Component {
   handleSubmit = e => {
     e.preventDefault();
     const { comment } = this.state;
-    const { addComment: saveComment } = this.props;
-    const { match } = this.props;
-    const { slug } = match.params;
+    const { saveComment } = this.props;
+    const { slug } = this.props;
     if (comment.length) {
       saveComment(comment, slug);
     }
+    this.setState({ comment: '' });
   };
 
   render() {
     const { comment } = this.state;
+    const { buttonLabel } = this.props || { buttonLabel: 'Comment' };
+
     return (
       <div className="comment-form">
         <form onSubmit={this.handleSubmit}>
@@ -35,18 +43,10 @@ class CommentForm extends Component {
             name="comment"
             value={comment}
           />
-          <SubmitButton type="submit" name="comment" value="Comment" />
+          <SubmitButton type="submit" name="comment" value={buttonLabel} />
         </form>
       </div>
     );
   }
 }
-const mapStateToProps = state => {
-  return {
-    comment: state.comments,
-  };
-};
-export default connect(
-  mapStateToProps,
-  {},
-)(CommentForm);
+export default CommentForm;

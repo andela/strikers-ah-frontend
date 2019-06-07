@@ -36,9 +36,25 @@ export const getConnectedComponent = (
   const wrapper = shallow(
     <Component
       store={store}
+      comments={[]}
       {...props}
       match={{ params: { username: 'Mwibutsa' } }}
     />,
   );
   return wrapper.childAt(0).dive();
+};
+export const getConnectedComponentNoDive = (
+  Component,
+  initialState = {},
+  props = {},
+) => {
+  const store = testStore(initialState);
+  const wrapper = shallow(
+    <Component
+      store={store}
+      {...props}
+      match={{ params: { username: 'Mwibutsa' } }}
+    />,
+  );
+  return wrapper;
 };

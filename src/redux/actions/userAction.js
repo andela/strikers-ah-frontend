@@ -10,67 +10,53 @@ import {
   GET_USER_ARTICLES_ERROR,
 } from '../actionTypes/articleType';
 
-export const getUserProfile = username => {
-  return dispatch => {
-    axios
-      .get(`/api/profiles/${username}`)
-      .then(res => {
-        const { data } = res;
-        delete data.profile.password;
-        dispatch({
-          type: GET_USER_PROFILE,
-          payload: data,
-        });
-      })
-      .catch(err => {
-        dispatch({
-          type: USER_PROFILE_NOT_FOUND,
-          payload: err,
-        });
-      });
-  };
+export const getUserProfile = username => async dispatch => {
+  try {
+    const { data } = await axios.get(`/api/profiles/${username}`);
+    dispatch({
+      type: GET_USER_PROFILE,
+      payload: data,
+    });
+  } catch (err) {
+    dispatch({
+      type: USER_PROFILE_NOT_FOUND,
+      payload: err,
+    });
+  }
 };
-export const editLoggedInUserProfile = user => {
-  return dispatch => {
-    axios
-      .put(`/api/profiles/${user.username}`, user)
-      .then(res => {
-        dispatch({
-          type: EDIT_USER_PROFILE,
-          payload: { ...res.data },
-        });
-      })
-      .catch(err => {
-        dispatch({
-          type: EDIT_PROFILE_ERROR,
-          payload: err,
-        });
-      });
-  };
+export const editLoggedInUserProfile = user => async dispatch => {
+  try {
+    const { data } = await axios.put(`/api/profiles/${user.username}`, user);
+    dispatch({
+      type: EDIT_USER_PROFILE,
+      payload: data,
+    });
+  } catch (err) {
+    dispatch({
+      type: EDIT_PROFILE_ERROR,
+      payload: err,
+    });
+  }
 };
 
-export const getUserArticles = username => {
-  return async dispatch => {
+export const getUserArticles = username => async dispatch => {
+  try {
     const { data: user } = await axios.get(`/api/profiles/${username}`);
     if (user && user.profile) {
-      axios
-        .get(`/api/articles/all`)
-        .then(res => {
-          const { article: articles } = res.data;
-          const userArticles = articles.filter(
-            article => article.authorid === user.profile.id,
-          );
-          dispatch({
-            type: GET_USER_ARTICLES,
-            payload: userArticles,
-          });
-        })
-        .catch(err => {
-          dispatch({
-            type: GET_USER_ARTICLES_ERROR,
-            payload: err,
-          });
-        });
+      const { data } = await axios.get(`/api/articles/all`);
+      const { article: articles } = data;
+      const userArticles = articles.filter(
+        article => article.authorid === user.profile.id,
+      );
+      dispatch({
+        type: GET_USER_ARTICLES,
+        payload: userArticles,
+      });
     }
-  };
+  } catch (err) {
+    dispatch({
+      type: GET_USER_ARTICLES_ERROR,
+      payload: err,
+    });
+  }
 };

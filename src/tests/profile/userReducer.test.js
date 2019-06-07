@@ -4,6 +4,7 @@ import userReducer from '../../redux/reducers/userReducer';
 import {
   GET_USER_PROFILE,
   EDIT_USER_PROFILE,
+  USER_PROFILE_NOT_FOUND,
 } from '../../redux/actionTypes/userTypes';
 
 describe('User Reducer', () => {
@@ -24,5 +25,10 @@ describe('User Reducer', () => {
     const action = { type: EDIT_USER_PROFILE, payload: expectedState };
     const newState = userReducer({ user: { profile: {} } }, action);
     expect(Object.keys(newState.user)).toContain('name');
+  });
+  it('Should update user state on edit user action', () => {
+    const action = { type: USER_PROFILE_NOT_FOUND, payload: expectedState };
+    const newState = userReducer({ user: { profile: {} } }, action);
+    expect(Object.keys(newState.error)).toBeDefined();
   });
 });
