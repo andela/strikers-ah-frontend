@@ -7,7 +7,11 @@ import {
   faTrash,
   faPencilAlt,
   faTimes,
+  faHistory,
+  faEyeSlash,
 } from '@fortawesome/free-solid-svg-icons';
+import EditHistory from './editHistory';
+
 import { getLoggedInUser } from '../../helpers/authentication';
 import CommentForm from './commentForm';
 import '../../styles/css/comment.css';
@@ -47,8 +51,11 @@ class Comment extends Component {
       editComment,
       formId,
       toggleEditCommentForm,
+      toggleEditHistory,
+      editHistoryMode,
+      commentHistoryId,
     } = this.props;
-    const { author, comment: body, id, updatedAt } = comment;
+    const { author, comment: body, id, updatedAt, history } = comment;
     if (user) {
       user = this.assignRole(user, 'User');
     }
@@ -117,9 +124,34 @@ class Comment extends Component {
                   test-data="editButton"
                 />
               )}
+              {history.length !== 0 && (
+                <FontAwesomeIcon
+                  icon={faHistory}
+                  className="edit editHistory"
+                  onClick={() => toggleEditHistory()}
+                  test-data="editButton"
+                />
+              )}
             </div>
           )}
           <br />
+          {editHistoryMode && history.length > 0 && commentHistoryId === id && (
+            <div className="edit-history-section">
+              <FontAwesomeIcon
+                icon={faEyeSlash}
+                className="delete hideButton"
+                onClick={() => toggleEditHistory(true)}
+                test-data="closeButton"
+              />
+              {history.length > 0 &&
+                history
+                  .reverse()
+                  .slice(0, 5)
+                  .map(oneHistory => {
+                    return <EditHistory history={oneHistory} />;
+                  })}
+            </div>
+          )}
         </div>
       </div>
     );

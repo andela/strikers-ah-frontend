@@ -18,7 +18,12 @@ import Comment from '../comment/comment';
  * @returns {*} Articleform
  */
 export class ReadArticle extends Component {
-  state = { commentEditMode: false, editCommentId: 0 };
+  state = {
+    commentEditMode: false,
+    editCommentId: 0,
+    editHistoryMode: false,
+    commentHistoryId: 0,
+  };
 
   /**
    * @author Innocent Nkunzi
@@ -49,12 +54,33 @@ export class ReadArticle extends Component {
   };
 
   /**
+   * @param {* } commentId --
+   * @param { * } cancel --
+   * @returns { * } --
+   */
+  toggleEditHistory = (commentId, cancel) => {
+    this.setState({
+      editHistoryMode: true && !cancel,
+      commentHistoryId: commentId,
+    });
+  };
+
+  /**
    * @author Innocent Nkunzi
    * @returns {*} component
    */
   render() {
-    const { addComment: saveComment, deleteComment: removeComment, editComment: modifyComment } = this.props;
-    const { commentEditMode, editCommentId } = this.state;
+    const {
+      addComment: saveComment,
+      deleteComment: removeComment,
+      editComment: modifyComment,
+    } = this.props;
+    const {
+      commentEditMode,
+      editCommentId,
+      editHistoryMode,
+      commentHistoryId,
+    } = this.state;
     const { slug } = this.props.match.params;
     const singleArticle = this.props.article.article;
     if (singleArticle !== null && singleArticle !== undefined) {
@@ -96,26 +122,31 @@ export class ReadArticle extends Component {
                   <br />
                 </span>
               )}
-              {comments ? (
-                commentList.length > 0 &&
-                commentList.map((comment) => {
-                  return (
-                    <Comment
-                      formId={editCommentId}
-                      comment={comment}
-                      key={comment.id}
-                      editComment={modifyComment}
-                      deleteComment={removeComment}
-                      slug={slug}
-                      toggleEditCommentForm={(cancel = false) => this.toggleEditCommentForm(comment.id, cancel)}
-                      editMode={commentEditMode}
-                      test-data='commentComponent'
-                    />
-                  );
-                })
-              ) : (
-                ''
-              )}
+              {comments
+                ? commentList.length > 0 &&
+                  commentList.map(comment => {
+                    return (
+                      <Comment
+                        formId={editCommentId}
+                        comment={comment}
+                        key={comment.id}
+                        editComment={modifyComment}
+                        deleteComment={removeComment}
+                        slug={slug}
+                        toggleEditCommentForm={(cancel = false) =>
+                          this.toggleEditCommentForm(comment.id, cancel)
+                        }
+                        editMode={commentEditMode}
+                        test-data="commentComponent"
+                        editHistoryMode={editHistoryMode}
+                        commentHistoryId={commentHistoryId}
+                        toggleEditHistory={(cancel = false) =>
+                          this.toggleEditHistory(comment.id, cancel)
+                        }
+                      />
+                    );
+                  })
+                : ''}
             </div>
           </div>
         </Fragment>

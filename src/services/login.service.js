@@ -1,5 +1,5 @@
 const config = {
-  apiUrl: 'https://strikers-ah-backend.herokuapp.com/api',
+  apiUrl: 'http://localhost:5000/api',
 };
 
 const logout = () => {
