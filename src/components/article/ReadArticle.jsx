@@ -1,3 +1,4 @@
+/* eslint-disable import/no-named-as-default */
 /* eslint-disable react/destructuring-assignment */
 import reactHtml from 'html-react-parser';
 import React, { Component, Fragment } from 'react';
@@ -8,7 +9,12 @@ import { getOneArticle } from '../../redux/actions/articleAction';
 import Author from './Author';
 import SocialMedia from './SocialMedia';
 import CommentForm from '../comment/commentForm';
-import { addComment, getComments, deleteComment, editComment } from '../../redux/actions/commentAction';
+import {
+  addComment,
+  getComments,
+  deleteComment,
+  editComment,
+} from '../../redux/actions/commentAction';
 import Comment from '../comment/comment';
 
 /**
@@ -90,25 +96,29 @@ export class ReadArticle extends Component {
       return (
         <Fragment>
           <Header />
-          <div className='container'>
-            <div className='contents'>
-              <div className='contentTitle'>
+          <div className="container">
+            <div className="contents">
+              <div className="contentTitle">
                 {/* {article.title && <p>{reactHtmlparser(article.title)}</p>} */}
                 <h1>{reactHtml(singleArticle.title || '')}</h1>
                 <Author />
                 <SocialMedia />
               </div>
-              <div className='contentBody'>
+              <div className="contentBody">
                 <p>{reactHtml(singleArticle.body || '')}</p>
-                <p id='styleImage'>
-                  <img src={singleArticle.image} alt='Article' />
+                <p id="styleImage">
+                  <img src={singleArticle.image} alt="Article" />
                 </p>
               </div>
             </div>
-            <CommentForm slug={slug} saveComment={saveComment} buttonLabel='Comment' />
-            <div className='comments-container'>
+            <CommentForm
+              slug={slug}
+              saveComment={saveComment}
+              buttonLabel="Comment"
+            />
+            <div className="comments-container">
               {comments && (
-                <span className='comment-count'>
+                <span className="comment-count">
                   {commentList.length > 0 && (
                     <span test-data="count-comment">
                       {commentList.length > 1
@@ -120,7 +130,9 @@ export class ReadArticle extends Component {
               )}
               {comments && (
                 <span>
-                  {commentList.length === 0 && <span>Be the first to add a comment</span>}
+                  {commentList.length === 0 && (
+                    <span>Be the first to add a comment</span>
+                  )}
                   <br />
                 </span>
               )}
@@ -161,12 +173,13 @@ export class ReadArticle extends Component {
     );
   }
 }
-const mapStateToprops = (state) => ({
+const mapStateToprops = state => ({
   article: state.Article,
   comments: state.comments.comments,
   comment: state.comments.comment,
 });
 
-export default connect(mapStateToprops, { getOneArticle, addComment, getComments, deleteComment, editComment })(
-  ReadArticle
-);
+export default connect(
+  mapStateToprops,
+  { getOneArticle, addComment, getComments, deleteComment, editComment },
+)(ReadArticle);

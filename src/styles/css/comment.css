@@ -50,35 +50,6 @@ body {
   margin-bottom: 10%; }
 
 .comment-container {
-  background: white;
-  padding-bottom: 100px;
-  margin-bottom: 10%; }
-
-.comment-container {
-  position: relative;
-  background: white;
-  display: grid;
-  grid-template-columns: 4em 1fr;
-  margin: 1em;
-  border-radius: 10px;
-  box-shadow: 0px 0px 3px rgba(212, 220, 221, 0.658);
-  padding-left: 1.2em;
-  padding-top: 5px;
-  width: 99%;
-  margin-left: auto;
-  margin-right: auto;
-  width: 100%; }
-
-.comment-form {
-  position: absolute;
-  width: 80%;
-  background: #444;
-  clear: both; }
-  .comment-form .input-container {
-    background: green;
-    position: relative; }
-
-.comment-author {
   position: relative;
   background: white;
   display: grid;
@@ -91,35 +62,35 @@ body {
   width: 99%;
   margin-left: auto;
   margin-right: auto; }
-  .comment-author .comment-form {
+  .comment-container .comment-form {
     position: absolute;
     width: 80%;
     background: #444;
     clear: both; }
-    .comment-author .comment-form .input-container {
+    .comment-container .comment-form .input-container {
       background: green;
       position: relative; }
-  .comment-author .comment-author {
+  .comment-container .comment-author {
     position: relative;
     height: 3em;
     width: 3em;
     border-radius: 10px;
     margin-right: 1em; }
-    .comment-author .comment-author img {
+    .comment-container .comment-author img {
       width: 100%;
       height: 100%;
       border-radius: 100%; }
-  .comment-author .author-name {
+  .comment-container .author-name {
     text-transform: capitalize;
     font-size: 1em;
     color: #43c0f1;
     font-weight: 520;
     line-height: 30px;
     cursor: pointer; }
-  .comment-author .comment-body {
+  .comment-container .comment-body {
     width: 100%;
     padding: 0 1% 0 0; }
-    .comment-author .comment-body p .time-stamp {
+    .comment-container .comment-body p .time-stamp {
       color: darkgray; }
 
 .delete {
@@ -135,6 +106,9 @@ body {
   cursor: pointer; }
   .edit:hover {
     color: yellowgreen; }
+
+.color-success {
+  color: #3f6408; }
 
 .edit-form-container {
   transition: 0.5s; }

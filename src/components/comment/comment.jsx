@@ -3,25 +3,43 @@ import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Moment from 'react-moment';
 import 'moment-timezone';
+/* eslint-disable react/destructuring-assignment */
+import { connect } from 'react-redux';
 import {
   faTrash,
   faPencilAlt,
   faTimes,
   faHistory,
   faEyeSlash,
+  faThumbsUp,
 } from '@fortawesome/free-solid-svg-icons';
 import EditHistory from './editHistory';
 
 import { getLoggedInUser } from '../../helpers/authentication';
 import CommentForm from './commentForm';
 import '../../styles/css/comment.css';
+import LikeComment from '../../redux/actions/commentLike';
 
 /**
  * @author Mwibutsa Floribert
  * @param {Integer} id  --
  * @returns { * } --
  */
-class Comment extends Component {
+export class Comment extends Component {
+  /**
+   *
+   * @param {*} props
+   */
+  constructor(props) {
+    super(props);
+    this.likeComment = this.likeComment.bind(this);
+  }
+
+  likeComment = id => {
+    const { slug } = this.props;
+    this.props.LikeComment(slug, id);
+  };
+
   handleEditComment = () => {
     const { toggleEditCommentForm } = this.props;
     toggleEditCommentForm(true);
@@ -60,7 +78,8 @@ class Comment extends Component {
       editHistoryMode,
       commentHistoryId,
     } = this.props;
-    const { author, comment: body, id, updatedAt, history } = comment;
+    const { author, comment: body, id, updatedAt, history, likes } = comment;
+
     if (user) {
       user = this.assignRole(user, 'User');
     }
@@ -137,8 +156,22 @@ class Comment extends Component {
                   test-data="trackEditButton"
                 />
               )}
+              <span className="buttonSpan">
+                <button
+                  type="button"
+                  onClick={() => this.likeComment(id)}
+                  id="like"
+                  className="likeButton"
+                >
+                  <FontAwesomeIcon size="lg" icon={faThumbsUp} />
+                </button>
+              </span>
+              <span>{likes}</span>
             </div>
           )}
+          <div>
+            <br />
+          </div>
           <br />
           {editHistoryMode && history.length !== 0 && commentHistoryId === id && (
             <div
@@ -162,4 +195,10 @@ class Comment extends Component {
     );
   }
 }
-export default Comment;
+export const mapStateToprops = state => ({
+  likecomment: state.like,
+});
+export default connect(
+  mapStateToprops,
+  { LikeComment },
+)(Comment);

@@ -401,3 +401,20 @@ div.alert {
     color: #9c9c9c;
     font-size: 12px;
     font-weight: bold; }
+
+.emailButton:hover {
+  color: #fff;
+  background-color: #dd4b39; }
+
+.likeButton {
+  border: none;
+  color: #9c9c9c;
+  cursor: pointer;
+  width: 15px;
+  height: 15px; }
+
+.likeButton:hover {
+  color: #43c0f1; }
+
+.buttonSpan {
+  margin-right: 5px; }

@@ -34,334 +34,6 @@ body {
 
 .profile-grid-off,
 .profile-grid {
-<<<<<<< HEAD
-  position: relative;
-}
-.profile-grid-off .user-account-info,
-.profile-grid .user-account-info {
-  padding: 1.5%;
-  box-shadow: 0px 0px 14px rgba(191, 191, 191, 0.24);
-  border-radius: 10px;
-  background: white;
-}
-.profile-grid-off .user-account-info .statistics,
-.profile-grid .user-account-info .statistics {
-  width: 100%;
-  border-top: 2px solid #ddd;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  text-align: center;
-  margin-top: 1%;
-  padding-top: 1%;
-}
-.profile-grid-off .user-account-info .statistics .stat-label,
-.profile-grid .user-account-info .statistics .stat-label {
-  text-decoration: none;
-  color: #949292;
-  display: inline-block;
-}
-.profile-grid-off .user-account-info .statistics .stat-label .value,
-.profile-grid .user-account-info .statistics .stat-label .value {
-  color: #333;
-  font-weight: bold;
-  font-size: 1.2em;
-}
-.profile-grid-off .user-account-info .user-account-flex,
-.profile-grid .user-account-info .user-account-flex {
-  position: relative;
-  display: grid;
-  grid-template-columns: 10em 1fr;
-  grid-column-gap: 10px;
-}
-.profile-grid-off .user-account-info .user-account-flex .img-container,
-.profile-grid .user-account-info .user-account-flex .img-container {
-  position: relative;
-  height: 10em;
-  width: 10em;
-  margin-right: 2em;
-  text-align: center;
-}
-.profile-grid-off
-  .user-account-info
-  .user-account-flex
-  .img-container
-  .add-img-toggler,
-.profile-grid
-  .user-account-info
-  .user-account-flex
-  .img-container
-  .add-img-toggler {
-  position: absolute;
-  background: #ddd;
-  bottom: 0;
-  border: none;
-  outline: none;
-  left: 0;
-  width: 100%;
-  background: transparent;
-  font-weight: bolder;
-  color: transparent;
-  font-size: 2em;
-}
-.profile-grid-off
-  .user-account-info
-  .user-account-flex
-  .img-container
-  .add-img-toggler:hover,
-.profile-grid
-  .user-account-info
-  .user-account-flex
-  .img-container
-  .add-img-toggler:hover {
-  animation-name: showAddImage;
-  animation-duration: 0.5s;
-  animation-iteration-count: 1;
-  animation-fill-mode: forwards;
-  color: white;
-}
-.profile-grid-off .user-account-info .user-account-flex .img-container img,
-.profile-grid .user-account-info .user-account-flex .img-container img {
-  width: 100%;
-  height: 100%;
-  cursor: pointer;
-}
-.profile-grid-off
-  .user-account-info
-  .user-account-flex
-  .img-container
-  img:hover
-  ~ .add-img-toggler,
-.profile-grid
-  .user-account-info
-  .user-account-flex
-  .img-container
-  img:hover
-  ~ .add-img-toggler {
-  z-index: 1;
-}
-.profile-grid-off
-  .user-account-info
-  .user-account-flex
-  .img-container:hover
-  .profile-image-label,
-.profile-grid
-  .user-account-info
-  .user-account-flex
-  .img-container:hover
-  .profile-image-label {
-  display: inline-block;
-}
-.profile-grid-off .user-account-info .user-account-flex .info-container,
-.profile-grid .user-account-info .user-account-flex .info-container {
-  padding: 1em 0;
-  grid-area: 'info-container';
-  text-align: justify;
-}
-.profile-grid-off .user-account-info .user-account-flex .info-container .name,
-.profile-grid .user-account-info .user-account-flex .info-container .name {
-  font-weight: 500;
-  font-size: 2em;
-  text-transform: capitalize;
-}
-.profile-grid-off
-  .user-account-info
-  .user-account-flex
-  .info-container
-  .username,
-.profile-grid .user-account-info .user-account-flex .info-container .username {
-  line-height: 40px;
-  color: #949292;
-}
-.profile-grid-off .user-account-info .user-account-flex .info-container .bio,
-.profile-grid .user-account-info .user-account-flex .info-container .bio {
-  padding: 1% 10px 1% 0px;
-  line-height: 30px;
-  color: #535353;
-}
-.profile-grid-off
-  .user-account-info
-  .user-account-flex
-  .info-container
-  .btn-follow,
-.profile-grid
-  .user-account-info
-  .user-account-flex
-  .info-container
-  .btn-follow {
-  margin-left: 2em;
-  border: 1px solid #079bfd;
-  width: 100px;
-  padding: 5px;
-  border-radius: 5px;
-  color: #079bfd;
-  margin-top: 10px;
-  outline: none;
-  font-size: 0.9em;
-  transition: 0.2s;
-}
-.profile-grid-off
-  .user-account-info
-  .user-account-flex
-  .info-container
-  .btn-follow:hover,
-.profile-grid
-  .user-account-info
-  .user-account-flex
-  .info-container
-  .btn-follow:hover {
-  box-shadow: 0px 0px 14px rgba(191, 191, 191, 0.24);
-  background: #079bfd;
-  color: white;
-  transform: translateY(-2px);
-}
-.profile-grid-off .upload-image-modal,
-.profile-grid .upload-image-modal {
-  position: absolute;
-  width: 100%;
-  height: 70vh;
-  top: 0;
-  left: 50%;
-  background: rgba(86, 86, 87, 0.7);
-  transform: translateX(-50%);
-  z-index: 100;
-}
-.profile-grid-off .upload-image-modal .upload-page,
-.profile-grid .upload-image-modal .upload-page {
-  position: relative;
-  width: 90%;
-  margin-top: 3%;
-  margin-left: auto;
-  margin-right: auto;
-  background: #eff2f5;
-  min-height: 90%;
-  box-shadow: 0px 0px 14px #333;
-  border-radius: 10px;
-  animation-name: modal;
-  animation-duration: 0.3s;
-}
-.profile-grid-off .upload-image-modal .btn,
-.profile-grid .upload-image-modal .btn {
-  font-size: 18px;
-  line-height: 18px;
-  height: 30px;
-  padding: 0 10px;
-  border-radius: 1px;
-  margin: 1%;
-}
-.profile-grid-off .upload-image-modal .btn-cancel,
-.profile-grid .upload-image-modal .btn-cancel {
-  margin-left: 10%;
-  border: 1px solid brown;
-  color: #f38b8b;
-}
-.profile-grid-off .upload-image-modal .btn-cancel:hover,
-.profile-grid .upload-image-modal .btn-cancel:hover {
-  background: brown;
-  color: white;
-}
-.profile-grid-off .upload-image-modal .btn-upload,
-.profile-grid .upload-image-modal .btn-upload {
-  background: white;
-  border: 1px solid #079bfd;
-  color: #079bfd;
-}
-.profile-grid-off .upload-image-modal .btn-upload:hover,
-.profile-grid .upload-image-modal .btn-upload:hover {
-  background: #079bfd;
-  color: white;
-}
-.profile-grid-off .upload-image-modal .dropzone,
-.profile-grid .upload-image-modal .dropzone {
-  width: 100%;
-  background: #e1f0ff;
-  height: 100px;
-  margin-bottom: 1%;
-  position: relative;
-}
-.profile-grid-off .upload-image-modal .dropzone p,
-.profile-grid .upload-image-modal .dropzone p {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-.profile-grid-off .upload-image-modal .crop .crop-section,
-.profile-grid .upload-image-modal .crop .crop-section {
-  width: 100%;
-  display: grid;
-  grid-template-columns: 60% 1% 30%;
-  grid-column-gap: 1em;
-}
-.profile-grid-off .upload-image-modal .crop .cropper,
-.profile-grid .upload-image-modal .crop .cropper {
-  width: 100%;
-  overflow: auto;
-  height: 400px;
-  text-align: center;
-  border-radius: 10px;
-}
-.profile-grid-off .upload-image-modal .crop .separator,
-.profile-grid .upload-image-modal .crop .separator {
-  background: #dde4e9;
-}
-.profile-grid-off .upload-image-modal .crop .crop-preview,
-.profile-grid .upload-image-modal .crop .crop-preview {
-  width: 100%;
-  overflow: hidden;
-  text-align: center;
-}
-.profile-grid-off .upload-image-modal .crop .crop-preview canvas,
-.profile-grid .upload-image-modal .crop .crop-preview canvas {
-  border-radius: 10px;
-  box-shadow: 0px 0px 14px #949292;
-  border: 5px solid #ddd;
-}
-.profile-grid-off .left-profile,
-.profile-grid .left-profile {
-  background: white;
-  box-shadow: 0px 0px 14px rgba(191, 191, 191, 0.24);
-  border-radius: 10px;
-}
-.profile-grid-off .left-profile li,
-.profile-grid .left-profile li {
-  list-style-type: none;
-  border-top: 1px solid #f0f0f0;
-  line-height: 35px;
-  padding-left: 10px;
-}
-.profile-grid-off .left-profile li .link,
-.profile-grid .left-profile li .link {
-  text-decoration: none;
-  color: #949292;
-}
-.profile-grid-off .left-profile li .active,
-.profile-grid .left-profile li .active {
-  color: #079bfd;
-}
-.profile-grid-off .left-profile h3,
-.profile-grid .left-profile h3 {
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
-  line-height: 40px;
-  padding-left: 10px;
-  background: rgba(9, 129, 241, 0.89);
-  color: white;
-}
-
-.profile-grid {
-  display: block;
-  width: 100%;
-}
-
-@media screen and (max-width: 1500px) {
-  .profile-grid {
-    width: 100%;
-    margin: 0 auto 2em auto;
-    margin: 2em auto;
-  }
-}
-=======
-  padding: 2%;
   position: relative; }
   .profile-grid-off .user-account-info,
   .profile-grid .user-account-info {
@@ -435,7 +107,8 @@ body {
       .profile-grid-off .user-account-info .user-account-flex .info-container,
       .profile-grid .user-account-info .user-account-flex .info-container {
         padding: 1em 0;
-        grid-area: 'info-container'; }
+        grid-area: 'info-container';
+        text-align: justify; }
         .profile-grid-off .user-account-info .user-account-flex .info-container .name,
         .profile-grid .user-account-info .user-account-flex .info-container .name {
           font-weight: 500;
@@ -452,8 +125,7 @@ body {
           color: #535353; }
         .profile-grid-off .user-account-info .user-account-flex .info-container .btn-follow,
         .profile-grid .user-account-info .user-account-flex .info-container .btn-follow {
-          float: right;
-          margin-right: 10px;
+          margin-left: 2em;
           border: 1px solid #079bfd;
           width: 100px;
           padding: 5px;
@@ -473,7 +145,7 @@ body {
   .profile-grid .upload-image-modal {
     position: absolute;
     width: 100%;
-    height: 100%;
+    height: 70vh;
     top: 0;
     left: 50%;
     background: rgba(86, 86, 87, 0.7);
@@ -585,20 +257,14 @@ body {
       color: white; }
 
 .profile-grid {
-  display: grid;
-  grid-template-columns: 1fr 3fr;
-  grid-column-gap: 2em;
-  grid-template-areas: 'left-profile user-account-flex'; }
+  display: block;
+  width: 100%; }
 
 @media screen and (max-width: 1500px) {
   .profile-grid {
-    width: 80%;
-    margin: 2em auto;
-    display: grid;
-    grid-template-columns: 1fr 3fr;
-    grid-column-gap: 10px;
+    width: 100%;
+    margin: 0 auto 2em auto;
     margin: 2em auto; } }
->>>>>>> Feature add css styles
 
 @media screen and (max-width: 1000px) {
   .profile-grid {
@@ -607,24 +273,10 @@ body {
 
 @media screen and (max-width: 815px) {
   .profile-grid {
-<<<<<<< HEAD
     width: 100%;
-    margin: 2em auto;
-  }
-  .profile-grid .left-profile {
-    display: none;
-  }
-}
-=======
-    width: 80%;
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-column-gap: 4px;
-    width: 98%;
     margin: 2em auto; }
     .profile-grid .left-profile {
       display: none; } }
->>>>>>> Feature add css styles
 
 @media screen and (max-width: 500px) {
   .profile-grid-off {
@@ -647,15 +299,9 @@ body {
     display: block; } }
 
 .text-center {
-<<<<<<< HEAD
-  text-align: center;
-}
+  text-align: center; }
 
 .friend-profile {
   width: 60%;
   margin-left: auto;
-  margin-right: auto;
-}
-=======
-  text-align: center; }
->>>>>>> Feature add css styles
+  margin-right: auto; }

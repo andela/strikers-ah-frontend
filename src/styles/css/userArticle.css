@@ -1,13 +1,7 @@
 *,
 *::before,
 *::after {
-<<<<<<< HEAD
   box-sizing: border-box;
-=======
-  box-sizing: border-box; }
-
-body {
->>>>>>> Feature add css styles
   margin: 0;
   padding: 0; }
 
@@ -18,94 +12,36 @@ body {
   grid-column-gap: 1em;
   height: 200px;
   background: white;
-<<<<<<< HEAD
   box-shadow: 0px 0px 14px #e6e6e6;
   padding: 1%;
-  margin: 1%;
-}
-.article img {
-  width: 100%;
-  height: 100%;
-}
-.article .user-article-content {
-  text-align: justify;
-}
-.article .user-article-content .article-content {
-  width: 90%;
-  position: relative;
-  top: 10%;
-  transform: translateY(-10%);
-}
-.article .user-article-content .article-content h3 {
-  line-height: 40px;
-  border-bottom: 2px solid #bdbbbb;
-  display: inline-block;
-  margin-bottom: 2px;
-}
-.article .user-article-content .article-content h3 a {
-  text-decoration: none;
-  color: #4987ce;
-}
-.article .stats {
-  margin: 1%;
-  color: #c5c5c5;
-}
-.article .stats span {
-  margin-left: 1%;
-  padding: 1%;
-}
-.article .stats .views {
-  font-size: 1.1em;
-  font-weight: 550;
-}
-.article .stats .time-stamp {
-  font-size: 1.1em;
-  font-weight: bold;
-}
-=======
-  margin-top: 1%;
-  border-radius: 1%;
-  padding: 1%; }
-  .user-articles .title {
-    background: #eee;
-    line-height: 40px; }
-  .user-articles .user-article {
-    background: white;
-    padding: 1%;
-    display: grid;
-    grid-template-columns: 5fr 1fr;
-    transition: 0.3s;
-    border-bottom: 2px solid #eee; }
-    .user-articles .user-article:hover {
-      box-shadow: 0px 1px 8px white;
-      background: rgba(228, 242, 255, 0.5); }
-    .user-articles .user-article .article {
-      padding: 1%; }
-      .user-articles .user-article .article h3 {
-        margin-bottom: 0.5em; }
-        .user-articles .user-article .article h3 a {
-          text-decoration: none;
-          color: #1883ca; }
-        .user-articles .user-article .article h3:hover {
-          text-decoration: underline; }
-    .user-articles .user-article p {
-      color: #5f5e5e;
-      font-style: italic; }
-    .user-articles .user-article .stats-container {
+  margin: 1%; }
+  .article img {
+    width: 100%;
+    height: 100%; }
+  .article .user-article-content {
+    text-align: justify; }
+    .article .user-article-content .article-content {
+      width: 90%;
       position: relative;
-      top: 50%;
-      left: 50%;
-      box-shadow: 0px 0px 2px #ced6d6;
-      text-align: center;
-      border-radius: 40%;
-      width: 5em;
-      height: 3em;
-      transform: translate(-50%, -50%); }
-      .user-articles .user-article .stats-container h3 {
-        color: #422c10; }
-      .user-articles .user-article .stats-container .stats {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%); }
->>>>>>> Feature add css styles
+      top: 10%;
+      transform: translateY(-10%); }
+      .article .user-article-content .article-content h3 {
+        line-height: 40px;
+        border-bottom: 2px solid #bdbbbb;
+        display: inline-block;
+        margin-bottom: 2px; }
+        .article .user-article-content .article-content h3 a {
+          text-decoration: none;
+          color: #4987ce; }
+  .article .stats {
+    margin: 1%;
+    color: #c5c5c5; }
+    .article .stats span {
+      margin-left: 1%;
+      padding: 1%; }
+    .article .stats .views {
+      font-size: 1.1em;
+      font-weight: 550; }
+    .article .stats .time-stamp {
+      font-size: 1.1em;
+      font-weight: bold; }
