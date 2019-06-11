@@ -22,6 +22,11 @@ import '../../styles/css/comment.css';
  * @returns { * } --
  */
 class Comment extends Component {
+  handleEditComment = () => {
+    const { toggleEditCommentForm } = this.props;
+    toggleEditCommentForm(true);
+  };
+
   /**
    * @author Mwibutsa Floribert
    * @param { object } object --
@@ -67,7 +72,7 @@ class Comment extends Component {
           <FontAwesomeIcon
             icon={faTimes}
             className="delete"
-            onClick={() => toggleEditCommentForm(true)}
+            onClick={this.handleEditComment}
             test-data="closeButton"
           />
           {'   '}
@@ -124,32 +129,32 @@ class Comment extends Component {
                   test-data="editButton"
                 />
               )}
-              {history.length !== 0 && (
+              {history && history.length !== 0 && (
                 <FontAwesomeIcon
                   icon={faHistory}
                   className="edit editHistory"
                   onClick={() => toggleEditHistory()}
-                  test-data="editButton"
+                  test-data="trackEditButton"
                 />
               )}
             </div>
           )}
           <br />
-          {editHistoryMode && history.length > 0 && commentHistoryId === id && (
-            <div className="edit-history-section">
+          {editHistoryMode && history.length !== 0 && commentHistoryId === id && (
+            <div
+              className="edit-history-section"
+              test-data="edit-history-section"
+            >
               <FontAwesomeIcon
                 icon={faEyeSlash}
                 className="delete hideButton"
                 onClick={() => toggleEditHistory(true)}
-                test-data="closeButton"
+                test-data="closeButtonEditHistory"
               />
               {history.length > 0 &&
-                history
-                  .reverse()
-                  .slice(0, 5)
-                  .map(oneHistory => {
-                    return <EditHistory history={oneHistory} />;
-                  })}
+                history.map(oneHistory => {
+                  return <EditHistory history={oneHistory} />;
+                })}
             </div>
           )}
         </div>

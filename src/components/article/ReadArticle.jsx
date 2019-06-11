@@ -110,8 +110,10 @@ export class ReadArticle extends Component {
               {comments && (
                 <span className='comment-count'>
                   {commentList.length > 0 && (
-                    <span>
-                      {commentList.length > 1 ? `${commentList.length} Comments` : `${commentList.length} Comment`}
+                    <span test-data="count-comment">
+                      {commentList.length > 1
+                        ? `${commentList.length} Comments`
+                        : `${commentList.length} Comment`}
                     </span>
                   )}
                 </span>
