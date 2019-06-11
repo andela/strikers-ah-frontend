@@ -20,10 +20,26 @@ import '../../styles/css/comment.css';
 class Comment extends Component {
   /**
    * @author Mwibutsa Floribert
+   * @param { object } object --
+   * @param { string } role --
+   * @returns { object } --
+   */
+  assignRole = (object, role) => (object.role ? object : { ...object, role });
+
+  /**
+   * @author Mwibutsa Floribert
+   * @param { * } first --
+   * @param {*} second --
+   * @returns{ boolean } --
+   */
+  canEdit = (first, second) => first || second;
+
+  /**
+   * @author Mwibutsa Floribert
    * @returns { * } ---
    */
   render() {
-    const user = getLoggedInUser();
+    let user = getLoggedInUser();
     const {
       comment,
       deleteComment,
@@ -34,9 +50,10 @@ class Comment extends Component {
     } = this.props;
     const { author, comment: body, id, updatedAt } = comment;
     if (user) {
-      user.role = user.role ? user.role : 'User';
+      user = this.assignRole(user, 'User');
     }
     const { editMode } = this.props;
+
     if (editMode && formId === id) {
       return (
         <div className="edit-form-container">
@@ -78,7 +95,10 @@ class Comment extends Component {
           </p>
           {user && (
             <div>
-              {(user.username === author.username || user.role !== 'User') && (
+              {this.canEdit(
+                user.username === author.username,
+                user.role !== 'User',
+              ) && (
                 <FontAwesomeIcon
                   icon={faTrash}
                   className="delete"
@@ -86,7 +106,10 @@ class Comment extends Component {
                   test-data="deleteButton"
                 />
               )}
-              {(user.username === author.username || user.role !== 'User') && (
+              {this.canEdit(
+                user.username === author.username,
+                user.role !== 'User',
+              ) && (
                 <FontAwesomeIcon
                   icon={faPencilAlt}
                   className="edit"

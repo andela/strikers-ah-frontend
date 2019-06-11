@@ -1,3 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`TEST USER ARTICLE it should render user article component 1`] = `ShallowWrapper {}`;
+
+exports[`TEST USER ARTICLE it should render user article component 2`] = `ShallowWrapper {}`;

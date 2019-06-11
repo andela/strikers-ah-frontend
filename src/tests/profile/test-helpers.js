@@ -1,5 +1,6 @@
 import React from 'react';
 import checkPropTypes from 'check-prop-types';
+import 'jest-canvas-mock';
 import { applyMiddleware, createStore } from 'redux';
 import { shallow } from 'enzyme';
 import { middlewares } from '../../redux/store';

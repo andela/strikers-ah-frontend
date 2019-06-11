@@ -13,10 +13,10 @@ const UserArticle = ({ articles }) => {
         <div>
           <img src={image || 'http://lorempixel.com/400/200'} alt="" />
         </div>
-        <p className="description">
+        <div className="description">
           {image && <img src={image} alt="" className="image" />}
           {description}
-        </p>
+        </div>
       </div>
       <div className="stats-container">
         <div className="stats">

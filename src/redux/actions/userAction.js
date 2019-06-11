@@ -41,18 +41,11 @@ export const editLoggedInUserProfile = user => async dispatch => {
 
 export const getUserArticles = username => async dispatch => {
   try {
-    const { data: user } = await axios.get(`/api/profiles/${username}`);
-    if (user && user.profile) {
-      const { data } = await axios.get(`/api/articles/all`);
-      const { article: articles } = data;
-      const userArticles = articles.filter(
-        article => article.authorid === user.profile.id,
-      );
-      dispatch({
-        type: GET_USER_ARTICLES,
-        payload: userArticles,
-      });
-    }
+    const { data } = await axios.get(`/api/articles/user-articles/${username}`);
+    dispatch({
+      type: GET_USER_ARTICLES,
+      payload: data.articles,
+    });
   } catch (err) {
     dispatch({
       type: GET_USER_ARTICLES_ERROR,
