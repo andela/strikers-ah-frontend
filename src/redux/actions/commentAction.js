@@ -31,6 +31,7 @@ export const addComment = (comment, slug) => async dispatch => {
     const { data } = await axios.post(`/api/articles/${slug}/comments`, {
       comment: { body: comment },
     });
+
     dispatch({
       type: ADD_COMMENT,
       payload: data.comment,

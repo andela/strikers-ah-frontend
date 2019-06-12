@@ -7,7 +7,11 @@ import {
   faTrash,
   faPencilAlt,
   faTimes,
+  faHistory,
+  faEyeSlash,
 } from '@fortawesome/free-solid-svg-icons';
+import EditHistory from './editHistory';
+
 import { getLoggedInUser } from '../../helpers/authentication';
 import CommentForm from './commentForm';
 import '../../styles/css/comment.css';
@@ -18,6 +22,11 @@ import '../../styles/css/comment.css';
  * @returns { * } --
  */
 class Comment extends Component {
+  handleEditComment = () => {
+    const { toggleEditCommentForm } = this.props;
+    toggleEditCommentForm(true);
+  };
+
   /**
    * @author Mwibutsa Floribert
    * @param { object } object --
@@ -47,8 +56,11 @@ class Comment extends Component {
       editComment,
       formId,
       toggleEditCommentForm,
+      toggleEditHistory,
+      editHistoryMode,
+      commentHistoryId,
     } = this.props;
-    const { author, comment: body, id, updatedAt } = comment;
+    const { author, comment: body, id, updatedAt, history } = comment;
     if (user) {
       user = this.assignRole(user, 'User');
     }
@@ -60,7 +72,7 @@ class Comment extends Component {
           <FontAwesomeIcon
             icon={faTimes}
             className="delete"
-            onClick={() => toggleEditCommentForm(true)}
+            onClick={this.handleEditComment}
             test-data="closeButton"
           />
           {'   '}
@@ -117,9 +129,34 @@ class Comment extends Component {
                   test-data="editButton"
                 />
               )}
+              {history && history.length !== 0 && (
+                <FontAwesomeIcon
+                  icon={faHistory}
+                  className="edit editHistory"
+                  onClick={() => toggleEditHistory()}
+                  test-data="trackEditButton"
+                />
+              )}
             </div>
           )}
           <br />
+          {editHistoryMode && history.length !== 0 && commentHistoryId === id && (
+            <div
+              className="edit-history-section"
+              test-data="edit-history-section"
+            >
+              <FontAwesomeIcon
+                icon={faEyeSlash}
+                className="delete hideButton"
+                onClick={() => toggleEditHistory(true)}
+                test-data="closeButtonEditHistory"
+              />
+              {history.length > 0 &&
+                history.map(oneHistory => {
+                  return <EditHistory history={oneHistory} />;
+                })}
+            </div>
+          )}
         </div>
       </div>
     );

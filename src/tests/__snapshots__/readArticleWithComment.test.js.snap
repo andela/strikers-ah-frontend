@@ -1,3 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`TEST READ ARTICLE WITH COMMENTS it should render 1`] = `ShallowWrapper {}`;
+
+exports[`TEST READ ARTICLE WITH COMMENTS should be able to add comments to the list when created1 1`] = `ShallowWrapper {}`;
+
+exports[`TEST READ ARTICLE WITH COMMENTS should be able to add comments to the list when created1 2`] = `ShallowWrapper {}`;
+
+exports[`TEST READ ARTICLE WITH COMMENTS should be able to add comments to the list when created1 3`] = `ShallowWrapper {}`;
