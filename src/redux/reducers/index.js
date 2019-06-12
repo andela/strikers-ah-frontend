@@ -12,6 +12,7 @@ import { following } from './Following';
 import commentReducer from './comment';
 import { homePageReducer } from './homeReducer';
 import bookmarkedArticlesReducer from './bookmarkedArticles';
+import notifications from './notifications';
 
 const rootReducer = combineReducers({
   Article,
@@ -27,6 +28,7 @@ const rootReducer = combineReducers({
   comments: commentReducer,
   homePageReducer,
   bookmarkedArticles: bookmarkedArticlesReducer,
+  notifications,
 });
 
 export default rootReducer;

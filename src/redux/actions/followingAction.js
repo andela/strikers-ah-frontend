@@ -1,7 +1,5 @@
 /* eslint-disable no-unused-expressions */
 /* eslint-disable react/jsx-filename-extension */
-import React from 'react';
-import { Redirect } from 'react-router-dom';
 import axios from '../../helpers/axios';
 import { FOLLOW, UNFOLLOW, FOLLOW_STATUS } from '../actionTypes/userTypes';
 
@@ -13,7 +11,9 @@ export const followUser = username => async dispatch => {
       payload: 'following',
     });
   } catch (error) {
-    <Redirect to="login" />;
+    return {
+      error: error.response,
+    };
   }
 };
 
@@ -25,7 +25,9 @@ export const unfollowUser = username => async dispatch => {
       payload: 'follow',
     });
   } catch (error) {
-    <Redirect to="login" />;
+    return {
+      error: error.response,
+    };
   }
 };
 
@@ -37,6 +39,8 @@ export const checkProfileFollowStatus = username => async dispatch => {
       payload: response.data.response === 'true' ? 'following' : 'follow',
     });
   } catch (error) {
-    <Redirect to="login" />;
+    return {
+      error: error.response,
+    };
   }
 };

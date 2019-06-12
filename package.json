@@ -1,6 +1,6 @@
 {
   "name": "strickers-ah-frontend",
-  "version": "0.1.0",
+  "version": "6.4.1",
   "private": true,
   "dependencies": {
     "@babel/core": "7.4.3",
@@ -81,6 +81,7 @@
     "react-router-dom": "^5.0.0",
     "react-scripts": "^3.0.1",
     "react-share": "^3.0.0",
+    "react-web-tabs": "^1.0.1",
     "redux": "^4.0.1",
     "redux-devtools-extension": "^2.13.8",
     "redux-thunk": "^2.3.0",
@@ -109,6 +110,10 @@
     "scss:watch": "node-sass --watch src/styles/scss -o src/styles/css",
     "scss": "node-sass src/styles/scss -o src/styles/css"
   },
+  "engines": {
+    "node": "10.15.1",
+    "yarn": "1.16.0"
+  },
   "lint-staged": {
     "*.{js,jsx}": [
       "pretty-quick --staged",
@@ -134,6 +139,11 @@
   "devDependencies": {
     "babel-jest": "^24.8.0",
     "enzyme": "^3.9.0",
+    "chai": "^4.2.0",
+    "eslint": "^5.16.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-config-prettier": "^4.3.0",
+    "eslint-plugin-prettier": "^3.1.0",
     "husky": "^2.3.0",
     "jest": "24.7.1",
     "jest-environment-jsdom-fourteen": "0.1.0",

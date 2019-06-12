@@ -11,6 +11,7 @@ const menuList = [
   { id: '1', link: '/bookmarked-articles', label: 'Bookmarked Articles' },
   { id: '2', link: '/reading-history', label: 'Reading History' },
   { id: '4', link: '/logout', label: 'Sign Out' },
+  { id: '5', link: '/settings', label: 'settings' },
 ];
 
 /**
