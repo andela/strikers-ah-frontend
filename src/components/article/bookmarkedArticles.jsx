@@ -33,10 +33,10 @@ class BookmarkedArticles extends Component {
    */
   render() {
     const { bookmarkedArticles } = this.props;
-    const hasBoookmarks = this.hasBookmarkedArticles(bookmarkedArticles);
+    const hasBookmarks = this.hasBookmarkedArticles(bookmarkedArticles);
     return (
       <div>
-        {hasBoookmarks && (
+        {hasBookmarks && (
           <div className="bookmarked-article">
             <h1 className="text-center">Bookmarked articles</h1>
 

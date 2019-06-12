@@ -8,9 +8,12 @@ describe('TEST READ ARTICLE WITH COMMENTS', () => {
   let props;
   beforeEach(() => {
     props = {
-      bookmarkedArticles: { bookmarkedArticles: { id: 1, slug: 'slug' } },
+      bookmarkedArticles: {
+        bookmarkedArticles: [{ id: 1, article: { id: 1, slug: 'this' } }],
+      },
     };
     wrapper = getConnectedComponent(BookmarkedArticles, {}, props);
+    wrapper.setProps(props);
     instance = wrapper.instance();
     instance.hasBookmarkedArticles(props.bookmarkedArticles);
   });

@@ -105,7 +105,7 @@ describe('action tests', () => {
     const user = {
       username: 'username',
       email: 'email@host.com',
-      firstnae: 'firstname',
+      firstname: 'firstname',
     };
     return store.dispatch(getUserArticles(user.username)).then(() => {
       expect(store.getActions().length).toBeDefined();
