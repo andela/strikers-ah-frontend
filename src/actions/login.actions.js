@@ -8,7 +8,7 @@ const logout = () => {
   return loginService.logout();
 };
 const login = (email, password) => {
-  return dispatch => {
+  return dispatch =>
     loginService.login(email, password).then(
       user => {
         dispatch({
@@ -23,7 +23,6 @@ const login = (email, password) => {
         });
       },
     );
-  };
 };
 
 export { login, logout };
