@@ -7,7 +7,7 @@ describe('TEST COMMENT FORM', () => {
   let wrapper;
   let instance;
   let props;
-  const event = {
+  let event = {
     target: { name: 'comment', value: 'comment value' },
     preventDefault: jest.fn(),
   };
@@ -40,6 +40,26 @@ describe('TEST COMMENT FORM', () => {
     });
     it('should generate a default button label', () => {
       expect(instance.props.buttonLabel).toBeUndefined();
+    });
+  });
+
+  describe('COMMENT FROM ELSE CONDITIONS', () => {
+    beforeEach(() => {
+      event = {
+        target: { name: 'comment', value: null },
+        preventDefault: jest.fn(),
+      };
+      props = {
+        buttonLabel: 'Comment',
+        saveComment: jest.fn(),
+      };
+      wrapper = getComponent(<CommentForm {...props} />);
+      instance = wrapper.instance();
+    });
+
+    test('when no comment is supplied', () => {
+      instance.handleSubmit(event);
+      expect(instance.state.comment).toBe('');
     });
   });
 });

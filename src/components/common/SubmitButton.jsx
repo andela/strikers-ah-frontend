@@ -10,7 +10,7 @@ const SubmitButton = ({ type, name, value, ...props }) => (
     test-data="submitButtonComponent"
     className="form-button"
   >
-    {value}
+    {value || 'Comment'}
   </button>
 );
 

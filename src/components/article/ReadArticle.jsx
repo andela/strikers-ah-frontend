@@ -8,12 +8,7 @@ import { getOneArticle } from '../../redux/actions/articleAction';
 import Author from './Author';
 import SocialMedia from './SocialMedia';
 import CommentForm from '../comment/commentForm';
-import {
-  addComment,
-  getComments,
-  deleteComment,
-  editComment,
-} from '../../redux/actions/commentAction';
+import { addComment, getComments, deleteComment, editComment } from '../../redux/actions/commentAction';
 import Comment from '../comment/comment';
 
 /**
@@ -58,11 +53,7 @@ export class ReadArticle extends Component {
    * @returns {*} component
    */
   render() {
-    const {
-      addComment: saveComment,
-      deleteComment: removeComment,
-      editComment: modifyComment,
-    } = this.props;
+    const { addComment: saveComment, deleteComment: removeComment, editComment: modifyComment } = this.props;
     const { commentEditMode, editCommentId } = this.state;
     const { slug } = this.props.match.params;
     const singleArticle = this.props.article.article;
@@ -73,66 +64,58 @@ export class ReadArticle extends Component {
       return (
         <Fragment>
           <Header />
-          <div className="container">
-            <div className="contents">
-              <div className="contentTitle">
+          <div className='container'>
+            <div className='contents'>
+              <div className='contentTitle'>
                 {/* {article.title && <p>{reactHtmlparser(article.title)}</p>} */}
                 <h1>{reactHtml(singleArticle.title || '')}</h1>
                 <Author />
                 <SocialMedia />
               </div>
-              <div className="contentBody">
+              <div className='contentBody'>
                 <p>{reactHtml(singleArticle.body || '')}</p>
-                <p id="styleImage">
-                  <img src={singleArticle.image} alt="Article" />
+                <p id='styleImage'>
+                  <img src={singleArticle.image} alt='Article' />
                 </p>
               </div>
             </div>
-            <CommentForm
-              slug={slug}
-              saveComment={saveComment}
-              buttonLabel="Comment"
-            />
-            <div className="comments-container">
+            <CommentForm slug={slug} saveComment={saveComment} buttonLabel='Comment' />
+            <div className='comments-container'>
               {comments && (
-                <span className="comment-count">
+                <span className='comment-count'>
                   {commentList.length > 0 && (
                     <span>
-                      {commentList.length > 1
-                        ? `${commentList.length} Comments`
-                        : `${commentList.length} Comment`}
+                      {commentList.length > 1 ? `${commentList.length} Comments` : `${commentList.length} Comment`}
                     </span>
                   )}
                 </span>
               )}
               {comments && (
                 <span>
-                  {commentList.length === 0 && (
-                    <span>Be the first to add a comment</span>
-                  )}
+                  {commentList.length === 0 && <span>Be the first to add a comment</span>}
                   <br />
                 </span>
               )}
-              {comments
-                ? commentList.length > 0 &&
-                  commentList.map(comment => {
-                    return (
-                      <Comment
-                        formId={editCommentId}
-                        comment={comment}
-                        key={comment.id}
-                        editComment={modifyComment}
-                        deleteComment={removeComment}
-                        slug={slug}
-                        toggleEditCommentForm={(cancel = false) =>
-                          this.toggleEditCommentForm(comment.id, cancel)
-                        }
-                        editMode={commentEditMode}
-                        test-data="commentComponent"
-                      />
-                    );
-                  })
-                : ''}
+              {comments ? (
+                commentList.length > 0 &&
+                commentList.map((comment) => {
+                  return (
+                    <Comment
+                      formId={editCommentId}
+                      comment={comment}
+                      key={comment.id}
+                      editComment={modifyComment}
+                      deleteComment={removeComment}
+                      slug={slug}
+                      toggleEditCommentForm={(cancel = false) => this.toggleEditCommentForm(comment.id, cancel)}
+                      editMode={commentEditMode}
+                      test-data='commentComponent'
+                    />
+                  );
+                })
+              ) : (
+                ''
+              )}
             </div>
           </div>
         </Fragment>
@@ -145,13 +128,12 @@ export class ReadArticle extends Component {
     );
   }
 }
-const mapStateToprops = state => ({
+const mapStateToprops = (state) => ({
   article: state.Article,
   comments: state.comments.comments,
   comment: state.comments.comment,
 });
 
-export default connect(
-  mapStateToprops,
-  { getOneArticle, addComment, getComments, deleteComment, editComment },
-)(ReadArticle);
+export default connect(mapStateToprops, { getOneArticle, addComment, getComments, deleteComment, editComment })(
+  ReadArticle
+);

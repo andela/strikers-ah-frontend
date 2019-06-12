@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`test profile right side Render profile right side  should render profile right side 1`] = `ShallowWrapper {}`;
+
+exports[`test profile right side Render profile right side should render profile right side 1`] = `ShallowWrapper {}`;

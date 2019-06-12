@@ -17,13 +17,16 @@ const RightProfile = ({ accountInfo, editProfile, userArticles }) => {
   } = accountInfo;
   const { length: totalFollowers } = followers;
   const { length: totalFollowings } = followings;
+  const { showForm } = editProfile;
+  const name = firstname || '';
+  const prename = lastname || '';
   return (
     <div className="right-profile" test-data="rightProfileComponent">
       <AccountInfo
         image={
           image || 'https://img.icons8.com/bubbles/200/000000/add-user-male.png'
         }
-        name={`${lastname} ${firstname}`}
+        name={`${name} ${prename}`}
         bio={bio}
         username={username}
         totalFollowers={totalFollowers}
@@ -34,7 +37,7 @@ const RightProfile = ({ accountInfo, editProfile, userArticles }) => {
         currentValues={accountInfo}
         articles={userArticles}
       />
-      {owner && editProfile.showForm && (
+      {owner && showForm && (
         <EditProfile
           currentValues={accountInfo}
           toggleEditProfile={editProfile.toggleEditProfile}

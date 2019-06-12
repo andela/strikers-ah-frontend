@@ -32,7 +32,7 @@ class CommentForm extends Component {
 
   render() {
     const { comment } = this.state;
-    const { buttonLabel } = this.props || { buttonLabel: 'Comment' };
+    const { buttonLabel } = this.props;
 
     return (
       <div className="comment-form">

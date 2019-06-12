@@ -14,6 +14,7 @@ import AllArticles from './components/article/AllArticlesComponents';
 import getOneArticle from './components/article/ReadArticle';
 import OneArticle from './components/article/EditArticle';
 import PrivateRoute from './PrivateRoute';
+import BookmarkedArticles from './components/article/bookmarkedArticles';
 
 const routes = () => (
   <Switch>
@@ -30,6 +31,10 @@ const routes = () => (
       exact
       path="/articlesedit/:slug/edit"
       component={OneArticle}
+    />
+    <Route
+      path="/bookmarked-articles"
+      render={props => <BookmarkedArticles {...props} />}
     />
   </Switch>
 );

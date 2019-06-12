@@ -1,4 +1,3 @@
-/* eslint-disable require-jsdoc */
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import LeftProfile from './common/leftProfile';
@@ -13,12 +12,21 @@ const menuList = [
   { id: '2', link: '/reading-history', label: 'Reading History' },
   { id: '4', link: '/logout', label: 'Sign Out' },
 ];
-class Profile extends Component {
-  state = {
-    editProfile: { showForm: false, showImageForm: false },
-  };
 
-  componentWillMount() {
+/**
+ * @author Mwibutsa FLoribert
+ * @returns { * } --
+ */
+class Profile extends Component {
+  /**
+   * @author Mwibutsa Floribert
+   * @param {*} props
+   */
+  constructor(props) {
+    super(props);
+    this.state = {
+      editProfile: { showForm: false, showImageForm: false },
+    };
     const {
       getUserProfile: getProfile,
       getUserArticles: getArticles,
@@ -40,7 +48,21 @@ class Profile extends Component {
       editProfile: { showImageForm: !editProfile.showImageForm },
     });
   };
+  /**
+   * @author Mwibutsa FLoribert
+   * @param { Integer } loggedInUserId --
+   * @param { Integer } userProfileId --
+   * @returns { Boolean } returns the comparison of logged in user id and user profile
+   */
 
+  isOwner = (loggedInUserId, userProfileId) => {
+    return loggedInUserId === userProfileId;
+  };
+
+  /**
+   * @author Mwibutsa FLoribert
+   * @returns { JSX } --
+   */
   render() {
     const { accountInfo: user } = this.props;
     const { articles } = this.props;
@@ -66,10 +88,10 @@ class Profile extends Component {
     }
     const { editProfile } = this.state;
     return (
-      <div className="profile-page" test-data="profile-page">
+      <div className="profile-page" test-data="profile-page" id="profile-page">
         <div className={containerClass}>
           {owner && <LeftProfile menuList={menuList} owner />}
-          {profile.username && (
+          {profile.email && (
             <RightProfile
               accountInfo={{
                 ...defaultUser,

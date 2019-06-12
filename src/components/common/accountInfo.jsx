@@ -32,20 +32,19 @@ const AccountInfo = ({
               +
             </button>
           )}
-
-          {owner && showAddImageForm.visible && (
-            <UploadImageForm
-              toggleForm={showAddImageForm.toggleForm}
-              currentUserInfo={currentUserInfo}
-            />
-          )}
         </div>
+
         <div>
           <div className="info-container">
-            <span className="name">{name}</span>
+            <span className="name">{name.trim().length ? name : username}</span>
             <br />
-            <span className="username">{`@${username}`}</span>
-              {owner ? <ProfileButton label='Edit Profile' handleClick={handleClick}></ProfileButton> : <FollowButton className='btn btn-follow'/>}
+            <span className="username">{`@${username ||
+              name.split(' ')[0]}`}</span>
+            {owner ? (
+              <ProfileButton label="Edit Profile" handleClick={handleClick} />
+            ) : (
+              <FollowButton className="btn btn-follow" />
+            )}
             <br />
             <span className="bio">{bio}</span>
           </div>
@@ -68,6 +67,12 @@ const AccountInfo = ({
           <span className="value">{articles.length}</span>
         </Link>
       </div>
+      {owner && showAddImageForm.visible && (
+        <UploadImageForm
+          toggleForm={showAddImageForm.toggleForm}
+          currentUserInfo={currentUserInfo}
+        />
+      )}
     </div>
   );
 };

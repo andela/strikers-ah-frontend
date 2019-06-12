@@ -9,3 +9,15 @@
     opacity: 0.7;
   }
 }
+@keyframes modal {
+  from {
+    margin-top: 0;
+    border-radius: 0;
+    box-shadow: none;
+  }
+  to {
+    margin-top: 3%;
+    border-radius: 10px;
+    box-shadow: 0px 0px 14px #333;
+  }
+}

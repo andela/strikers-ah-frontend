@@ -1,23 +1,25 @@
 /* eslint-disable no-undef */
 import '../../enzymeConfig';
 import RightProfile from '../../components/common/profileRightSide';
-import { findByTestAttribute, getConnectedComponent } from './test-helpers';
+import { getConnectedComponent } from './test-helpers';
 
 describe('test profile right side', () => {
   describe('Render profile right side', () => {
     let wrapper;
+    let props;
     beforeEach(() => {
-      const props = {
+      props = {
         accountInfo: {
           firstname: 'Mwibutsa',
           lastname: 'floribert',
           username: 'fmwibutsa',
           followers: [],
           followings: [],
+          owner: true,
         },
         editProfile: {
           toggleShowImage: { toggleForm: jest.fn() },
-          showForm: false,
+          showForm: true,
           toggleEditProfile: jest.fn(),
         },
         userArticles: [
@@ -31,34 +33,17 @@ describe('test profile right side', () => {
       wrapper = getConnectedComponent(RightProfile, {}, props);
     });
     it('should render profile right side', () => {
-      const profile = findByTestAttribute(wrapper, 'accountInfoComponent');
-      expect(profile.length).toBe(1);
+      expect(wrapper).toMatchSnapshot();
     });
-  });
-  describe('Render profile right side', () => {
-    let wrapper;
-    beforeEach(() => {
-      const props = {
-        accountInfo: {
-          firstname: 'Mwibutsa',
-          lastname: 'floribert',
-          username: 'fmwibutsa',
-          followers: [],
-          followings: [],
-          onwer: true,
-        },
-        editProfile: {
-          toggleShowImage: { toggleForm: jest.fn() },
-          showForm: false,
-          toggleEditProfile: jest.fn(),
-        },
-        userArticles: [],
-      };
-      wrapper = getConnectedComponent(RightProfile, {}, props);
-    });
-    it('should render profile right side', () => {
-      const profile = findByTestAttribute(wrapper, 'accountInfoComponent');
-      expect(profile.length).toBe(1);
+    describe('', () => {
+      beforeEach(() => {
+        props.accountInfo.firstname = null;
+        props.accountInfo.lastname = null;
+        wrapper = getConnectedComponent(RightProfile, {}, props);
+      });
+      it('should render profile right side', () => {
+        expect(wrapper).toMatchSnapshot();
+      });
     });
   });
 });
