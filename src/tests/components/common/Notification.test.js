@@ -6,7 +6,7 @@ import { NotificationOption } from '../../../components/common/NotificationButto
 const props = {
   notifications: {
     emails: {
-      status: true,
+      status: 'false',
     },
   },
   handleChange: jest.fn(),
@@ -20,4 +20,23 @@ describe('`Notification.jsx`', () => {
   test('should render', () => {
     expect(wrapper).toMatchSnapshot();
   });
+
+  // // props = {
+  // //   notifications: {
+  // //     emails: {
+  // //       status : 'false'
+  // //     }
+  // //   },
+  // //    handleChange: jest.fn(),
+  // //    emailNotifications: jest.fn(),
+  // //    emailNotificationsStatus: jest.fn(),
+  // // }
+  // // wrapper = shallow(<NotificationOption {...props} />);
+  //  test('should render', () => {
+  //   const spy = jest.spyOn(wrapper.instance(), 'handleChange');
+  //   const IsForm = wrapper.find('notificationBtn');
+  //   IsForm.simulate('change', spy);
+  //   wrapper.instance().forceUpdate();
+  //   expect(spy).toHaveBeenCalled();
+  // });
 });

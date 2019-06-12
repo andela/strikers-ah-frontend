@@ -22,14 +22,14 @@ export class NotificationOption extends Component {
    */
   constructor(props) {
     super(props);
-    this.handleStatus();
+    this.displayStatus();
   }
 
   /**
    * handleClick
    * @returns {*} action
    */
-  handleStatus = () => {
+  displayStatus = () => {
     this.props.emailNotificationsStatus();
   };
 
@@ -37,7 +37,7 @@ export class NotificationOption extends Component {
    * handleClick
    * @returns {*} action
    */
-  handleChange = () => {
+  handleStatusChange = () => {
     this.props.emailNotifications();
   };
 
@@ -53,8 +53,9 @@ export class NotificationOption extends Component {
           <input
             className="switch-input"
             type="checkbox"
+            id="notificationBtn"
             checked={JSON.parse(status)}
-            onChange={this.handleChange}
+            onChange={this.handleStatusChange}
           />
           <span className="switch-label" checked data-on="On" data-off="Off" />
           <span className="switch-handle" />
