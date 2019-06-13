@@ -85,7 +85,7 @@ describe('TEST COMMENT', () => {
     // it('should be able to track comment edit history', () => {
     //   const button = findByTestAttribute(wrapper, 'trackEditButton');
     //   button.simulate('click', {});
-    //   expect(commentComponent.props.toggleEditHistory).toHaveBeenCalled();
+    //   expect(commentComponent.props().toggleEditHistory).toHaveBeenCalled();
     // });
     it('should show track edit history section', () => {
       jest.spyOn(wrapper.instance(), 'handleEditComment');

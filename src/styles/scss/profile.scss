@@ -7,7 +7,6 @@ $color-brown: brown;
 }
 .profile-grid-off,
 .profile-grid {
-  padding: 2%;
   position: relative;
   .user-account-info {
     padding: 1.5%;
@@ -79,6 +78,7 @@ $color-brown: brown;
       .info-container {
         padding: 1em 0;
         grid-area: 'info-container';
+        text-align: justify;
         .name {
           font-weight: 500;
           font-size: 2em;
@@ -94,8 +94,8 @@ $color-brown: brown;
           color: $color-dark-text-gray;
         }
         .btn-follow {
-          float: right;
-          margin-right: 10px;
+          // float: right;
+          margin-left: 2em;
           border: 1px solid $color-blue;
           width: 100px;
           padding: 5px;
@@ -234,37 +234,37 @@ $color-brown: brown;
   }
 }
 .profile-grid {
-  display: grid;
-  grid-template-columns: 1fr 3fr;
-  grid-column-gap: 2em;
-  grid-template-areas: 'left-profile user-account-flex';
+  display: block;
+  width: 100%;
+  // grid-template-columns: 1fr 3fr;
+  // grid-column-gap: 2em;
+  // grid-template-areas: 'left-profile user-account-flex';
 }
 @media screen and (max-width: 1500px) {
   .profile-grid {
-    width: 80%;
-    margin: 2em auto;
-    display: grid;
-    grid-template-columns: 1fr 3fr;
-    grid-column-gap: 10px;
+    width: 100%;
+    margin: 0 auto 2em auto;
+    // display: grid;
+    // grid-template-columns: 1fr 3fr;
+    // grid-column-gap: 10px;
     margin: 2em auto;
   }
 }
 @media screen and (max-width: 1000px) {
   .profile-grid {
-    display: grid;
-    grid-template-columns: 1fr 3fr;
-    grid-column-gap: 4px;
+    // display: grid;
+    // grid-template-columns: 1fr 3fr;
+    // grid-column-gap: 4px;
     width: 98%;
     margin: 2em auto;
   }
 }
 @media screen and (max-width: 815px) {
   .profile-grid {
-    width: 80%;
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-column-gap: 4px;
-    width: 98%;
+    width: 100%;
+    // display: grid;
+    // grid-template-columns: 1fr;
+    // grid-column-gap: 4px;
     margin: 2em auto;
     .left-profile {
       display: none;
@@ -299,9 +299,8 @@ $color-brown: brown;
 .text-center {
   text-align: center;
 }
-// .crop-tool {
-//   transform: rotate(180deg);
-//   img {
-//     transform: rotate(180deg);
-//   }
-// }
+.friend-profile {
+  width: 60%;
+  margin-left: auto;
+  margin-right: auto;
+}

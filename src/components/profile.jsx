@@ -1,18 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import LeftProfile from './common/leftProfile';
+// import LeftProfile from './common/leftProfile';
 import RightProfile from './common/profileRightSide';
 import { getUserProfile, getUserArticles } from '../redux/actions/userAction';
 import '../styles/css/profile.css';
 import { getLoggedInUser } from '../helpers/authentication';
-// import TextCard from './common/textCard';
-
-const menuList = [
-  { id: '1', link: '/bookmarked-articles', label: 'Bookmarked Articles' },
-  { id: '2', link: '/reading-history', label: 'Reading History' },
-  { id: '4', link: '/logout', label: 'Sign Out' },
-  { id: '5', link: '/settings', label: 'settings' },
-];
 
 /**
  * @author Mwibutsa FLoribert
@@ -33,8 +25,7 @@ class Profile extends Component {
       getUserProfile: getProfile,
       getUserArticles: getArticles,
     } = this.props;
-    const { match } = this.props;
-    const { username } = match.params;
+    const { username } = this.props;
     getProfile(username);
     getArticles(username);
   }
@@ -107,15 +98,14 @@ class Profile extends Component {
     };
     const isLoggedIn = !!getLoggedInUser();
     const owner = getLoggedInUser().id === profile.id;
-    let containerClass = 'profile-grid';
+    let ownerClass = 'profile-page';
     if (!isLoggedIn || !owner) {
-      containerClass += '-off';
+      ownerClass += ' friend-profile';
     }
     const { editProfile, pagination } = this.state;
     return (
-      <div className="profile-page" test-data="profile-page" id="profile-page">
-        <div className={containerClass}>
-          {owner && <LeftProfile menuList={menuList} owner />}
+      <div className={ownerClass} test-data="profile-page" id="profile-page">
+        <div className="profile-grid">
           {profile.email && (
             <RightProfile
               accountInfo={{

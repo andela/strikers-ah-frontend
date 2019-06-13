@@ -165,7 +165,6 @@
       "!src/tests/**/*.js",
       "!src/encymeConfig.js",
       "!src/index.js",
-      "!src/router.js",
       "src/**/*.{js,jsx,ts,tsx}",
       "!src/**/*.d.ts"
     ],

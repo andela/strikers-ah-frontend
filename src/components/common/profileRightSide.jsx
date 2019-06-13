@@ -55,8 +55,7 @@ const RightProfile = ({
         <div className="user-articles">
           <h1 className="title">Articles created</h1>
 
-          {!editProfile.visible &&
-            userArticles &&
+          {userArticles &&
             paginate(
               pagination.pageSize,
               pagination.currentPage,
