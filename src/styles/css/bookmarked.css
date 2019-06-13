@@ -11,46 +11,7 @@ h1 {
 }
 
 .bookmarked-article {
-  position: relative;
-  padding: 1%;
-  margin-top: 20px;
-  border: 2px solid #ddd;
-  width: 80%;
+  width: 70%;
   margin-left: auto;
   margin-right: auto;
-}
-.bookmarked-article .user-article {
-  width: 48%;
-  display: inline-block;
-  margin-left: auto;
-  margin-right: auto;
-  background: white;
-  padding: 1%;
-  border-radius: 1px;
-  box-shadow: 0px 0px 6px #f1eded;
-  transition: 0.5s;
-  margin: 1%;
-}
-.bookmarked-article .user-article:hover {
-  transform: translateY(-2px);
-  background: rgba(6, 176, 255, 0.1);
-}
-.bookmarked-article .user-article h3 {
-  font-family: 'Mandali', sans-serif;
-  text-align: center;
-  text-transform: capitalize;
-}
-.bookmarked-article .user-article h3 a {
-  text-decoration: none;
-  color: #2996d4;
-  text-decoration: underline;
-}
-.bookmarked-article .user-article .description {
-  margin-bottom: 1px;
-  font-family: 'Roboto', sans-serif;
-  font-size: 1.2em;
-  letter-spacing: 1px;
-}
-.bookmarked-article .stats-container {
-  display: none;
 }

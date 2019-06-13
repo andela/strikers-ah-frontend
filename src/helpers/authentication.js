@@ -15,8 +15,7 @@ export const getLoggedInUser = () => {
   const userToken = getUserToken();
   if (userToken) {
     try {
-      const user = jwtDecode(token);
-      return user;
+      return jwtDecode(token);
     } catch (err) {
       return err;
     }

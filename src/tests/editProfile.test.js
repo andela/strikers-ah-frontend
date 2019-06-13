@@ -6,12 +6,15 @@ describe('TEST EDIT PROFILE', () => {
   let wrapper;
   let editProfileInstance;
   let event;
+  let props = {};
   beforeEach(() => {
-    wrapper = getConnectedComponent(
-      EditProfile,
-      {},
-      { editLoggedInUserProfile: jest.fn(), toggleEditProfile: jest.fn() },
-    );
+    props = {
+      editLoggedInUserProfile: jest.fn(),
+      toggleEditProfile: jest.fn(),
+      currentValues: { email: 'email', username: 'username' },
+    };
+    wrapper = getConnectedComponent(EditProfile, {}, props);
+    wrapper.setProps(props);
     editProfileInstance = wrapper.instance();
     event = { target: {}, preventDefault: jest.fn() };
   });
@@ -20,6 +23,8 @@ describe('TEST EDIT PROFILE', () => {
     editProfileInstance.handleChange(event);
   });
   test('on file change', () => {
+    delete props.currentValues;
+    wrapper.setProps(props);
     editProfileInstance.handleSubmit(event);
   });
 });

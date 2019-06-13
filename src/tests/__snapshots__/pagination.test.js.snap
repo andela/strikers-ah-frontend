@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TEST PAGINATION COMPONENT Should be able to render pagination 1`] = `ShallowWrapper {}`;
+
+exports[`TEST PAGINATION COMPONENT When page size equal to pages 1`] = `ShallowWrapper {}`;

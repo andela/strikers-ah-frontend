@@ -72,9 +72,12 @@ describe('TEST COMMENT', () => {
         editMode: true,
       };
       wrapper = getComponent(<Comment {...props} />);
+      wrapper.setProps(props);
       commentComponent = wrapper.instance();
       const button = findByTestAttribute(wrapper, 'closeButton');
       button.simulate('click', {});
+      const commentForm = findByTestAttribute(wrapper, 'commentFormComponent');
+      commentForm.props().saveComment();
       expect(commentComponent.props.toggleEditCommentForm).toHaveBeenCalledWith(
         true,
       );

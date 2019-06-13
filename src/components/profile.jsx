@@ -27,6 +27,7 @@ class Profile extends Component {
     super(props);
     this.state = {
       editProfile: { showForm: false, showImageForm: false },
+      pagination: { pageSize: 5, currentPage: 0 },
     };
     const {
       getUserProfile: getProfile,
@@ -37,6 +38,29 @@ class Profile extends Component {
     getProfile(username);
     getArticles(username);
   }
+
+  /**
+   * @author Mwibutsa Floribert
+   * @param { * } nextPage --
+   * @param { * } pages --
+   * @param { * } prev --
+   * @param { * } next --
+   * @returns { * } --
+   */
+  paginate = (nextPage, pages, prev = false, next = false) => {
+    const { pagination } = this.state;
+    let activePage = pagination.currentPage;
+    if (prev) {
+      if (pagination.currentPage === 0) activePage = pages - 1;
+      else activePage -= 1;
+    } else if (next) {
+      if (pagination.currentPage === pages - 1) activePage = 0;
+      else activePage += 1;
+    } else {
+      activePage = nextPage;
+    }
+    this.setState({ pagination: { ...pagination, currentPage: activePage } });
+  };
 
   toggleEditProfile = () => {
     const { editProfile } = this.state;
@@ -87,7 +111,7 @@ class Profile extends Component {
     if (!isLoggedIn || !owner) {
       containerClass += '-off';
     }
-    const { editProfile } = this.state;
+    const { editProfile, pagination } = this.state;
     return (
       <div className="profile-page" test-data="profile-page" id="profile-page">
         <div className={containerClass}>
@@ -108,6 +132,8 @@ class Profile extends Component {
                 },
               }}
               userArticles={userArticles}
+              pagination={pagination}
+              paginate={this.paginate}
             />
           )}
         </div>

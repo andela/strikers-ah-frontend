@@ -42,7 +42,11 @@ class BookmarkedArticles extends Component {
 
             {bookmarkedArticles &&
               bookmarkedArticles.bookmarkedArticles.map(article => (
-                <UserArticle articles={article.article} key={article.id} />
+                <UserArticle
+                  articles={article.article}
+                  key={article.id}
+                  author={article.user}
+                />
               ))}
           </div>
         )}
