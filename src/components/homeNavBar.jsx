@@ -6,6 +6,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import '../css/Home-styles/home-style.css';
+import '../styles/css/nav-style.css';
 import logo from '../styles/img/logo.png';
 import notifications from '../img/icons/notifications-bell-button.svg';
 import search from '../img/icons/search.svg';
@@ -134,7 +135,18 @@ export class HomeNavBar extends Component {
                   {profile && (
                     <React.Fragment>
                       <div className="arrow-up-profile" />
-                      <div className="profile-style">profile data</div>
+                      <Link className="profile-style user-menu" to={`/${user}`}>
+                        Profile
+                      </Link>
+                      <Link
+                        className="profile-style user-menu"
+                        to="/article/create"
+                      >
+                        Create Article
+                      </Link>
+                      <Link className="profile-style user-menu" to="/logout">
+                        Logout
+                      </Link>
                     </React.Fragment>
                   )}
                 </div>
