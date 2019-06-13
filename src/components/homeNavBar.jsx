@@ -73,18 +73,14 @@ export class HomeNavBar extends Component {
 
   /**
    * @author Clet Mwunguzi
-   * @param {*} nextProps
+   * @param {*} nextProps \
    * @returns {*} latest action
    */
   componentWillReceiveProps(nextProps) {
     const { NotificationReducer } = nextProps;
     if (NotificationReducer) {
       if (NotificationReducer.length === 0) {
-        this.setState({
-          notificationMsg: (
-            <div className="when-no-notification">No notification yet</div>
-          ),
-        });
+        this.setState({ notificationMsg: 'No notification yet' });
       } else {
         this.setState({
           allNotifications: NotificationReducer,
@@ -255,13 +251,13 @@ export class HomeNavBar extends Component {
                           Create Article
                         </Link>
                         {role === 'Admin' && (
-                        <Link
-                          className="profile-style user-menu"
-                          to="/articles/reported"
-                        >
-                          Reported Articles
-                        </Link>
-                      )}
+                          <Link
+                            className="profile-style user-menu"
+                            to="/articles/reported"
+                          >
+                            Reported Articles
+                          </Link>
+                        )}
                         <Link className="profile-style user-menu" to="/logout">
                           Logout
                         </Link>
