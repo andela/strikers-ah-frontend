@@ -15,18 +15,24 @@ const initialState = {
   allArticles: [],
 };
 
+/**
+ * @author Innocent Nkunzi
+ * @param {*} state
+ * @returns {*} states
+ */
 export default (state = initialState, { type, payload }) => {
   switch (type) {
     case CREATE_ARTICLE:
       return {
         ...state,
         article: payload,
+        error: '',
         loading: true,
       };
     case CREATE_ARTICLE_ERROR:
       return {
         ...state,
-        error: payload,
+        error: payload.message.error,
         loading: false,
       };
     case GET_ARTICLES:
@@ -38,10 +44,9 @@ export default (state = initialState, { type, payload }) => {
     case GET_ARTICLES_ERRORS:
       return {
         ...state,
-        article: [],
         loading: true,
         success: false,
-        message: payload,
+        message: payload.message.error,
       };
     case GET_ONE_ARTICLE:
       return {
@@ -52,8 +57,7 @@ export default (state = initialState, { type, payload }) => {
     case GET_ONE_ARTICLE_ERROR:
       return {
         ...state,
-        article: [],
-        message: payload,
+        message: payload.message.error,
       };
     case DELETE_ARTICLE:
       return {
@@ -78,8 +82,7 @@ export default (state = initialState, { type, payload }) => {
     case UPDATE_ARTICLE_ERROR:
       return {
         ...state,
-        error: payload,
-        loading: false,
+        error: payload.message.error,
       };
     default:
       return state;

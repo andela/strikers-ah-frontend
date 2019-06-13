@@ -1,22 +1,141 @@
+/* eslint-disable no-plusplus */
+/* eslint-disable no-lone-blocks */
+/* eslint-disable no-unused-expressions */
 /* eslint-disable react/destructuring-assignment */
 /* eslint-disable no-unused-vars */
+/* eslint-disable prefer-destructuring */
+/* eslint-disable react/no-access-state-in-setstate */
+/* eslint-disable jsx-a11y/label-has-associated-control */
+/* eslint-disable jsx-a11y/label-has-for */
+/* eslint-disable react/no-unused-state */
+/* eslint-disable react/destructuring-assignment */
+/* eslint-disable dot-notation */
+/* eslint-disable no-return-assign */
 import React, { Component, Fragment } from 'react';
+import { Redirect } from 'react-router-dom';
 import sweeetAlert from 'sweetalert';
 import reactHtmlparser from 'html-react-parser';
 import { connect } from 'react-redux';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import ReactQuill, { Quill } from 'react-quill';
+import { faImage } from '@fortawesome/free-solid-svg-icons';
+import 'react-quill/dist/quill.snow.css';
+import 'quill/dist/quill.snow.css';
+import 'font-awesome/css/font-awesome.min.css';
 import {
   getOneArticle,
   updateArticle,
 } from '../../redux/actions/articleAction';
 import alert from '../../redux/actions/alert';
 import Header from './Header';
-import EditorBar from './EditorBar';
+import UpdateMessageDisplay from './UpdateMessageDisplay';
+
+import '../../styles/css/article.css';
+import Alerts from './Alert';
 
 /**
- *@author: Innocent Nkunzi
- * @returns {*} Articleform
+ * @description styling the bold button
  */
-export class EditArticle extends Component {
+
+export const EditorBar = () => {
+  return (
+    <div className="content">
+      <Alerts />
+      <section className="editor-tools">
+        <div className="container">
+          <div id="align-bartool">
+            <div className="bar-tool">
+              <div id="toolbar">
+                <button type="button" className="ql-bold" />
+                <button type="button" className="ql-italic" />
+                <button type="button" className="ql-underline" />
+                <button type="button" className="ql-strike" />
+                <button type="button" className="ql-blockquote" />
+                <button type="button" className="ql-code-block" />
+                <select className="ql-font">
+                  <option value="arial" selected>
+                    Arial
+                  </option>
+                  <option value="comic-sans">Comic Sans</option>
+                  <option value="courier-new">Courier New</option>
+                  <option value="georgia">Georgia</option>
+                  <option value="helvetica">Helvetica</option>
+                  <option value="lucida">Lucida</option>
+                </select>
+                <select className="ql-size">
+                  <option value="extra-small">Size 1</option>
+                  <option value="small">Size 2</option>
+                  <option value="medium" selected>
+                    Size 3
+                  </option>
+                  <option value="large">Size 4</option>
+                </select>
+                <button type="button" className="ql-link" />
+                <select className="ql-align" />
+                <select className="ql-color" />
+                <select className="ql-background" />
+                <button type="button" className="ql-clean" />
+                <button type="button" className="ql-image" />
+                <button type="button" className="ql-video" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+};
+const Size = Quill.import('formats/size');
+Size.whitelist = ['extra-small', 'small', 'medium', 'large'];
+Quill.register(Size, true);
+
+// Add fonts to whitelist and register them
+const Font = Quill.import('formats/font');
+Font.whitelist = [
+  'arial',
+  'comic-sans',
+  'courier-new',
+  'georgia',
+  'helvetica',
+  'lucida',
+];
+Quill.register(Font, true);
+
+/*
+ * Editor component with custom toolbar and content containers
+ */
+/**
+ * @author Innocent Nkunzi
+ * @param {*} slug
+ * @description editor
+ * @returns {*} class
+ *
+ */
+export class EditArticle extends React.Component {
+  static modules = {
+    toolbar: {
+      container: '#toolbar',
+    },
+  };
+
+  static formats = [
+    'header',
+    'font',
+    'size',
+    'bold',
+    'italic',
+    'underline',
+    'strike',
+    'blockquote',
+    'list',
+    'bullet',
+    'indent',
+    'link',
+    'image',
+    'color',
+    'code-block',
+  ];
+
   /**
    *
    * @param {*} props
@@ -26,19 +145,19 @@ export class EditArticle extends Component {
     this.state = {
       title: '',
       body: '',
+      image: null,
       taglist: [],
+      tagInputs: [{ name: 'input0', value: '' }],
+      slug: '',
     };
-    this.TitleContent = React.createRef();
     this.BodyContent = React.createRef();
   }
 
   /**
-   * @author Innocent Nkunzi
-   * @returns {*} componentDidmount
+   * @description it gets one article first
+   * @returns {*} --
    */
   componentWillMount() {
-    // const match = this.props.match.params.slug;
-    // this.props.getOneArticle(match);
     const {
       match: { params },
     } = this.props;
@@ -46,86 +165,161 @@ export class EditArticle extends Component {
   }
 
   /**
-   * @author Innocent Nkunzi
-   * @param {*} slug
-   * @returns {*} data
+   * @description it gets one article first
+   * @returns {*} --
+   * @param {*} nextProps
    */
+  componentWillReceiveProps(nextProps) {
+    const { article } = nextProps;
+    this.setState({
+      title: article.title,
+      body: article.body,
+      slug: article.slug,
+    });
+  }
+
   onSubmit = slug => {
-    const { title, body, taglist } = this.state;
+    const { title, body, image, taglist } = this.state;
     const data = {
-      title: this.TitleContent.current
-        ? this.TitleContent.current.innerHTML
-        : '',
-      body: this.BodyContent.current ? this.BodyContent.current.innerHTML : '',
+      title,
+      body,
       taglist,
+      image,
     };
-    if (data.title === '') {
-      return this.props.alert("title can't be empty", 'danger');
-    }
-    if (data.body === '') {
-      return this.props.alert("body can't be empty", 'danger');
-    }
+
     this.props.updateArticle(data, slug);
-    sweeetAlert('Article updated', 'success');
   };
 
-  handleChange = ({ target: { name, value } }) => {
+  handleChange = ({ target }) => {
+    const { value, name } = target;
     this.setState({ [name]: value });
+  };
+
+  handleImage = ({ target }) => {
+    this.setState({ image: target.files[0] });
+  };
+
+  /**
+   * @param { * } body --
+   * @returns { * }--
+   */
+  handleQuillChange = body => {
+    this.setState({ body });
+  };
+
+  tagInputChange = ({ target }) => {
+    const { name, value } = target;
+    const tagInput = this.state.tagInputs.find(input => input.name === name);
+    const index = this.state.tagInputs.indexOf(tagInput);
+    const { tagInputs } = this.state;
+    tagInputs[index].value = value;
+    this.setState({ tagInputs });
+  };
+
+  makeInput = () => {
+    const { tagInputs } = this.state;
+    const newInput = { name: `input${tagInputs.length}`, value: '' };
+    tagInputs.push(newInput);
+    const inputWithValues = this.state.tagInputs.filter(
+      input => input.value.length > 0,
+    );
+    const taglist = inputWithValues.map(input => input.value);
+    this.setState({ tagInputs, taglist });
   };
 
   /**
    * @author Innocent Nkunzi
-   * @returns {*} render
+   * @returns {*} editor
    */
   render() {
+    let id = 1;
     const { article } = this.props;
+    const { title, body } = this.state;
+    {
+      article === undefined || (article === null && <p>{article.error}</p>);
+    }
+
+    const { tagInputs } = this.state;
     return (
-      <Fragment>
-        <Header />
+      <div className="content">
         <EditorBar />
-        <div className="content">
-          <section className="text-area">
-            {article === undefined ||
-              (article === null && <p>{article.error}</p>)}
-            <div className="container">
-              <form className="form">
-                <div
-                  contentEditable
-                  id="title"
-                  placeholder="Title goes here..."
+        <UpdateMessageDisplay />
+        <section className="text-area">
+          <div className="topImage">
+            <label htmlFor="file-upload" className="file-upload">
+              <FontAwesomeIcon icon={faImage} className="imageIcone" />
+              <input
+                type="file"
+                id="sigleImage"
+                onChange={this.handleImage}
+                name="image"
+              />
+            </label>
+          </div>
+          <div className="container">
+            <form className="form">
+              <div>
+                <input
+                  type="text"
                   name="title"
+                  value={this.state.title || ''}
                   onChange={this.handleChange}
-                  data-text="Title goes here"
-                  ref={this.TitleContent}
-                >
-                  {article.title && <p>{reactHtmlparser(article.title)}</p>}
-                </div>
-                <div
-                  contentEditable
+                  placeholder="Title goes here"
+                  id="title"
+                  maxLength="80"
+                />
+              </div>
+              <div>
+                <ReactQuill
                   id="body"
-                  placeholder="body goes here..."
+                  value={this.state.body || ''}
+                  onChange={this.handleQuillChange}
+                  placeholder={this.props.placeholder}
+                  modules={EditArticle.modules}
+                  formats={EditArticle.formats}
                   name="body"
-                  onChange={this.handleChange}
-                  data-text="Body goes here"
-                  ref={this.BodyContent}
-                >
-                  {article.body && <p>{reactHtmlparser(article.body)}</p>}
-                </div>
+                />
+              </div>
+              <button
+                type="button"
+                onClick={() => this.onSubmit(article.slug)}
+                id="publish"
+              >
+                Publish
+              </button>
+            </form>
+            <React.Fragment>
+              <div id="addTag">
                 <button
                   type="button"
-                  onClick={() => this.onSubmit(article.slug)}
-                  id="publish"
+                  id="makeInput"
+                  onClick={this.makeInput}
+                  className="tags"
                 >
-                  Update
+                  AddTag
                 </button>
-              </form>
-            </div>
-          </section>
-        </div>
-      </Fragment>
+              </div>
+              <div id="tags">
+                {tagInputs.map(input => (
+                  <input
+                    type="text"
+                    id="tagInputchange"
+                    name={input.name}
+                    placeholder="#"
+                    onChange={this.tagInputChange}
+                    value={input.value}
+                    key={id++}
+                  />
+                ))}
+              </div>
+            </React.Fragment>
+          </div>
+        </section>
+      </div>
     );
   }
 }
+
 const mapStateToprops = state => ({
   article: { ...state.Article.article },
 });

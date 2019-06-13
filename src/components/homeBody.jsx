@@ -89,7 +89,10 @@ class HomeBody extends Component {
                       </div>
                       <div className="article-mark">
                         <span className="author-name">
-                          {element.user.username}
+                          {element.user.username !== null ||
+                          element.user.username !== undefined
+                            ? element.user.username
+                            : ''}
                         </span>
                         <span className="article-time time-style">{`| ${this.handleDateDisplay(
                           element,

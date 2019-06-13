@@ -5,7 +5,7 @@ import {
   GET_ARTICLES,
   GET_ARTICLES_ERRORS,
   GET_ONE_ARTICLE,
-  // eslint-disable-next-line no-unused-vars
+  GET_ONE_ARTICLE_ERROR,
   DELETE_ARTICLE,
   DELETE_ARTICLE_ERROR,
   UPDATE_ARTICLE,
@@ -13,8 +13,17 @@ import {
 } from '../actionTypes/articleType';
 
 export const createArticle = data => async dispatch => {
+  const formData = new FormData();
+  const { taglist = [], image, title, body } = data;
+  formData.append('image', image);
+  formData.append('title', title);
+  formData.append('body', body);
+  taglist.forEach(tag => {
+    formData.append('taglist[]', tag);
+  });
+
   try {
-    const res = await axios.post('/api/articles/', data);
+    const res = await axios.post('/api/articles', formData);
     dispatch({
       type: CREATE_ARTICLE,
       payload: res.data,
@@ -22,7 +31,10 @@ export const createArticle = data => async dispatch => {
   } catch (error) {
     dispatch({
       type: CREATE_ARTICLE_ERROR,
-      payload: { message: error.response.data, status: error.response.status },
+      payload: {
+        message: error.response.data,
+        status: error.response.status,
+      },
     });
   }
 };
@@ -35,10 +47,12 @@ export const getAllArticles = () => async dispatch => {
       payload: res.data,
     });
   } catch (error) {
-    dispatch({
-      type: GET_ARTICLES_ERRORS,
-      payload: { message: error.response },
-    });
+    if (error.response) {
+      dispatch({
+        type: GET_ARTICLES_ERRORS,
+        payload: { message: error.response.data },
+      });
+    }
   }
 };
 
@@ -50,10 +64,12 @@ export const getOneArticle = slug => async dispatch => {
       payload: res.data.article,
     });
   } catch (error) {
-    dispatch({
-      type: GET_ARTICLES_ERRORS,
-      payload: { message: error.response },
-    });
+    if (error.response) {
+      dispatch({
+        type: GET_ONE_ARTICLE_ERROR,
+        payload: { message: error.response.data },
+      });
+    }
   }
 };
 
@@ -76,16 +92,30 @@ export const deleteArticle = slug => async dispatch => {
 };
 
 export const updateArticle = (data, slug) => async dispatch => {
+  const formData = new FormData();
+  const { taglist = [], image, title, body } = data;
+  formData.append('image', image);
+  formData.append('title', title);
+  formData.append('body', body);
+  if (taglist.length !== 0) {
+    taglist.forEach(tag => {
+      formData.append('taglist[]', tag);
+    });
+  } else {
+    formData.append('taglist', []);
+  }
   try {
-    const res = await axios.put(`/api/articles/${slug}`, data);
+    const res = await axios.put(`/api/articles/${slug}`, formData);
     dispatch({
       type: UPDATE_ARTICLE,
       payload: res.data,
     });
   } catch (error) {
-    dispatch({
-      type: UPDATE_ARTICLE_ERROR,
-      payload: { message: error.response.data },
-    });
+    if (error.response) {
+      dispatch({
+        type: UPDATE_ARTICLE_ERROR,
+        payload: error.response.data,
+      });
+    }
   }
 };

@@ -1,3 +1,4 @@
+/* eslint-disable class-methods-use-this */
 /* eslint-disable no-return-assign */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
@@ -5,6 +6,7 @@
 /* eslint-disable react/destructuring-assignment */
 import React, { Component, Fragment } from 'react';
 import dotenv from 'dotenv';
+import { Redirect } from 'react-router-dom';
 import sweeetAlert from 'sweetalert';
 import decodeToken from 'jwt-decode';
 import reactParser from 'html-react-parser';
@@ -17,10 +19,12 @@ import {
   getOneArticle,
   deleteArticle,
 } from '../../redux/actions/articleAction';
+import Spinner from './Spinner';
+import MessageDisplay from './MessageDisplay';
 
 dotenv.config();
 
-const REACT_APP_FRONTENT = process.env.REACT_APP_BACKEND;
+const { REACT_APP_FRONTENT } = process.env;
 /**
  *@author: Innocent Nkunzi
  * @returns {*} Articleform
@@ -30,12 +34,7 @@ export class AllArticles extends Component {
    *
    * @param {*} props
    */
-  constructor(props) {
-    super(props);
-    this.state = {};
-    this.handleOpen = this.handleOpen.bind(this);
-    this.handleDelete = this.handleDelete.bind(this);
-  }
+  state = {};
 
   /**
    *@author: Innocent Nkunzi
@@ -45,15 +44,6 @@ export class AllArticles extends Component {
   componentDidMount() {
     this.props.getAllArticles();
   }
-
-  /**
-   *@author: Innocent Nkunzi
-   * @returns {*} Articleform
-   * @param {*} slug
-   */
-  handleOpen = slug => {
-    this.props.getOneArticle(slug);
-  };
 
   /**
    *@author: Innocent Nkunzi
@@ -84,6 +74,18 @@ export class AllArticles extends Component {
   };
 
   /**
+   *
+   * @param {*} item
+   * @returns {*} image
+   */
+  handleImage = item => {
+    const image1 = samplePic;
+    const { image } = item;
+    const image3 = image === 'null' ? image1 : image;
+    return image3;
+  };
+
+  /**
    * @author Innocent Nkunzi
    * @returns {*} component
    */
@@ -95,8 +97,11 @@ export class AllArticles extends Component {
     }
     let allArticle;
     const {
-      article: { allArticles },
+      article: { allArticles, message },
     } = this.props;
+    if (message !== undefined && message === 'Not article found for now') {
+      return <Redirect to="/not-found" />;
+    }
     if (allArticles !== undefined && allArticles.length !== 0) {
       const arr = allArticles;
       return (
@@ -106,15 +111,15 @@ export class AllArticles extends Component {
             <div className="allArticlecontents">
               {
                 (allArticle = arr.map(item => (
-                  <Fragment>
-                    <div key={item.id} className="card">
+                  <Fragment key={item.id}>
+                    <div className="card">
                       <img
                         className="image"
                         alt="articleImage"
-                        src={samplePic}
+                        src={this.handleImage(item)}
                       />
                       <div className="contentDescription">
-                        <a href={`${REACT_APP_FRONTENT}/article/${item.slug}`}>
+                        <a href={`/article/${item.slug}`}>
                           <div className="articleCardHeader">
                             <p>{reactParser(item.title)}</p>
                           </div>
@@ -123,22 +128,21 @@ export class AllArticles extends Component {
                           </div>
                         </a>
                         <div className="buttons">
-                          {decodedToken.id === item.authorid ? (
+                          {decodedToken !== undefined &&
+                          decodedToken.id === item.authorid ? (
                             <div>
                               <button
                                 type="submit"
                                 className="redButton"
                                 onClick={() => this.handleDelete(item.slug)}
+                                id="submit-data"
+                                data-test="submit-data"
                               >
                                 Delete
                               </button>
 
                               <button type="submit" className="lightBlueButton">
-                                <a
-                                  href={`${REACT_APP_FRONTENT}/articlesedit/${
-                                    item.slug
-                                  }/edit`}
-                                >
+                                <a href={`/articlesedit/${item.slug}/edit`}>
                                   Edit
                                 </a>
                               </button>
@@ -157,7 +161,12 @@ export class AllArticles extends Component {
         </div>
       );
     }
-    return <div>{allArticle}</div>;
+
+    return (
+      <div>
+        <Spinner />
+      </div>
+    );
   }
 }
 const mapStateToprops = state => ({

@@ -1,18 +1,19 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 // eslint-disable-next-line import/no-named-as-default
 import HomeNavBar from './homeNavBar';
 import { getLoggedInUser } from '../helpers/authentication';
-import '../styles/css/notfound.css';
+import '../styles/scss/notfound.scss';
+import notfound from '../styles/img/notfound.png';
 
 const NotFound = () => {
   const { username } = getLoggedInUser();
   return (
-    <div className="notfound">
+    <Fragment>
       <HomeNavBar user={username} />
-      <h1 className="text-center" style={{ color: 'red' }}>
-        404 ERROR: This page is not available
-      </h1>
-    </div>
+      <div className="notfound">
+        <img src={notfound} alt="not-found" />
+      </div>
+    </Fragment>
   );
 };
 

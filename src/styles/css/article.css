@@ -1,4 +1,12 @@
 @import url("https://fonts.googleapis.com/css?family=Raleway&display=swap");
+.spiner {
+  position: fixed;
+  z-index: 1031;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #43c0f1; }
+
 .comments-container {
   padding: 1%;
   margin-top: 1%;
@@ -78,8 +86,6 @@ header .icons {
 
 .content .editor-tools .container .bar-tool {
   margin-top: 10px;
-  margin-left: 30%;
-  margin-right: 30%;
   margin-bottom: 10px;
   background-color: #ffffff;
   border-radius: 8px;
@@ -91,6 +97,11 @@ header .icons {
     .content .editor-tools .container .bar-tool {
       margin: auto;
       padding: 5px; } }
+
+.content .editor-tools .container .bar-tool {
+  margin-bottom: 100px;
+  margin-left: 10%;
+  margin-right: 10%; }
 
 input[type='color'] {
   border: none; }
@@ -161,6 +172,7 @@ input[type='color'] {
   min-height: 800px; }
 
 .content .text-area .form #publish {
+  cursor: pointer;
   border: none;
   background: #808e9b;
   font-size: 16px;
@@ -246,11 +258,19 @@ div.alert {
   text-align: center;
   padding: 10px; }
 
+.contents .contentBody #articleBody {
+  clear: both;
+  float: left;
+  margin-top: 15px;
+  padding-left: 10%;
+  padding-right: 10%; }
+
 .contents .contentBody p {
   padding-left: 50px;
   padding-right: 50px;
   font-size: 20px;
-  word-wrap: break-word; }
+  word-wrap: break-word;
+  line-height: 1.5em; }
 
 .contents .contentBody p img {
   width: 80%;
@@ -418,3 +438,64 @@ div.alert {
 
 .buttonSpan {
   margin-right: 5px; }
+
+.topImage input[type='file'] {
+  cursor: inherit;
+  display: block;
+  min-height: 100%;
+  min-width: 100%;
+  opacity: 0;
+  position: absolute;
+  right: 0;
+  text-align: right;
+  top: 0;
+  float: right; }
+
+.topImage .file-upload {
+  overflow: hidden;
+  position: absolute;
+  width: 100px;
+  height: 100px; }
+
+.topImage .file-upload .imageIcone {
+  min-height: 100%;
+  min-width: 100%;
+  margin-left: 20%;
+  color: #3b5998; }
+
+.tags {
+  padding: 10px;
+  margin-left: 20px;
+  background-color: #3b5998;
+  color: #fff;
+  border-radius: 5px;
+  display: inline-block;
+  cursor: pointer; }
+
+#tags > input {
+  border-radius: 5px;
+  border: none;
+  width: 178px;
+  height: 36px;
+  margin-bottom: 5px;
+  padding: 10px;
+  font-size: 15px;
+  margin-right: 5px; }
+
+#tags {
+  width: 75%;
+  float: left; }
+
+#addTag {
+  width: 10%;
+  float: left; }
+
+.tagList {
+  padding: 2px;
+  margin: 0.5rem 0.25rem;
+  border-radius: 2px;
+  background-color: #4b4b4b;
+  color: #fff;
+  display: inline-block;
+  padding: 5px;
+  cursor: pointer; }

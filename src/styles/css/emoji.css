@@ -1,15 +1,13 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto');
+@import url("https://fonts.googleapis.com/css?family=Roboto");
 .mood-btn {
   margin: 1em;
   padding: 0;
   background-color: transparent;
   border: none;
-  cursor: pointer;
-}
+  cursor: pointer; }
 
 .emojiValue {
-  display: table-cell;
-}
+  display: table-cell; }
 
 .rate-btn {
   width: 3%;
@@ -17,55 +15,45 @@
   margin: 7px 8%;
   padding-right: 2em;
   border: none;
-  font-size: medium;
-}
+  font-size: medium; }
 
 .ratingIcons {
-  width: 23px;
-}
+  width: 23px; }
 
 .ratingIcons:hover {
   -ms-transform: scale(1.3);
   -webkit-transform: scale(1.3);
-  transform: scale(1.3);
-}
+  transform: scale(1.3); }
 
 .ratings {
-  float: right;
-}
+  float: right; }
 
 .ratings {
   display: flex;
   float: right;
-  margin-top: -3%;
-}
+  margin-top: -3%; }
 
 .Good {
   color: #57943f;
   font-size: 1em;
-  font-family: monospace;
-}
+  font-family: monospace; }
 
 .Terrible {
   color: red;
   font-size: 1em;
-  font-family: monospace;
-}
+  font-family: monospace; }
 
 .Bad {
   color: #f4a742;
   font-size: 1em;
-  font-family: monospace;
-}
+  font-family: monospace; }
 
 .Okay {
   color: #aac663;
   font-size: 1em;
-  font-family: monospace;
-}
+  font-family: monospace; }
 
 .Great {
   color: #0c680c;
   font-size: 1em;
-  font-family: monospace;
-}
+  font-family: monospace; }

@@ -8,10 +8,7 @@ const Header = () => {
         <div className="container">
           <div className="brand">
             <img src={logo} alt="logo" className="brandLogo" />
-            <a
-              href="../../components/article/CreateArticle"
-              className="brandName"
-            >
+            <a href="/" className="brandName">
               Author Haven
             </a>
           </div>
