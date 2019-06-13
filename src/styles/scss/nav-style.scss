@@ -1,0 +1,19 @@
+.user-menu {
+  display: block;
+  text-decoration: none;
+  color: rgb(116, 113, 113);
+  height: 30px;
+  line-height: 30px;
+  margin-bottom: 1%;
+  border-bottom: 2px solid rgb(251, 248, 248);
+  text-align: center;
+  width: 100%;
+
+  &:hover {
+    color: rgb(20, 122, 238);
+    background: rgba(123, 179, 253, 0.02);
+  }
+}
+.popup-style {
+  z-index: 100;
+}
