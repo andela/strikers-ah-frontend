@@ -51,17 +51,17 @@ const AccountInfo = ({
         </div>
       </div>
       <div className="statistics">
-        <Link to="/profile" className="stat-label">
+        <Link to={`/${username}`} className="stat-label">
           <span className="label">Followers</span>
           <br />
           <span className="value">{totalFollowers}</span>
         </Link>
-        <Link to="/profile" className="stat-label">
+        <Link to={`/${username}`} className="stat-label">
           <span className="label">Following</span>
           <br />
           <span className="value">{totalFollowings}</span>
         </Link>
-        <Link to="/profile" className="stat-label">
+        <Link to={`/${username}`} className="stat-label">
           <span className="label">Articles</span>
           <br />
           <span className="value">{articles.length}</span>
