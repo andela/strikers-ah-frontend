@@ -15,6 +15,41 @@ body {
   cursor: pointer;
 }
 
+.home-navigation .user-sm-dashboard {
+  position: relative;
+  top: -30px;
+}
+
+.home-navigation .user-sm-dashboard .notified {
+  position: absolute;
+  top: 1px;
+  right: 54px;
+  content: ' ';
+  background-color: #00aef9;
+  border-radius: 50%;
+  width: 11px;
+  height: 11px;
+}
+
+.home-navigation .nav-categories {
+  list-style-type: none;
+  margin-left: 11%;
+  margin-top: 1.5%;
+}
+
+.home-navigation .nav-categories li {
+  display: inline-block;
+  margin-right: 30px;
+  margin-top: 1%;
+  font-family: Georgia;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: normal;
+  color: #8a8585;
+  cursor: pointer;
+}
+
 .home-navigation .nav-bar {
   margin-left: 10%;
   margin-right: 13%;
@@ -46,11 +81,11 @@ body {
 .home-navigation .popup-style {
   position: absolute;
   right: 0;
+  z-index: 20;
   margin-top: 40px;
   width: auto;
   height: auto;
   border-radius: 4px;
-  padding: 20px;
   background-color: white;
   -webkit-box-shadow: 1px 1px 5px 1px #888888;
   box-shadow: 1px 1px 5px 1px #888888;
@@ -61,30 +96,106 @@ body {
   width: 300px;
 }
 
-.home-navigation .popup-style .profile-style {
-  width: 200px;
+.home-navigation .popup-style .notification-style .when-no-notification {
+  padding: 15px;
+  font-size: 16px;
+}
+
+.home-navigation .popup-style .notification-style .seeAll-style {
+  padding: 10px;
+  text-align: center;
+}
+
+.home-navigation .popup-style .notification-style .seeAll-style .seeAll-link {
+  text-decoration: none;
+  color: #00aef9;
 }
 
 .home-navigation .popup-style .arrow-up-notification {
   width: 0;
   height: 0;
   position: absolute;
-  top: -12%;
-  left: 78%;
+  top: -9px;
+  left: 225px;
   border-left: 9px solid transparent;
   border-right: 9px solid transparent;
   border-bottom: 9px solid white;
+}
+
+.home-navigation .popup-style .arrow-up-notification-back {
+  width: 0;
+  height: 0;
+  position: absolute;
+  top: -10px;
+  left: 224px;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 10px solid #00000029;
+}
+
+.home-navigation .popup-style .user-menu {
+  display: block;
+  text-decoration: none;
+  color: #747171;
+  height: 30px;
+  line-height: 30px;
+  margin-bottom: 1%;
+  border-bottom: 2px solid #fbf8f8;
+  text-align: center;
+  width: 100%;
+}
+
+.home-navigation .popup-style .user-menu:hover {
+  color: #147aee;
+  background: rgba(123, 179, 253, 0.02);
+}
+
+.home-navigation .popup-style .notifications {
+  padding: 30px;
+}
+
+.home-navigation .popup-style .notifications .notification-article-link {
+  text-decoration: none;
+  color: black;
 }
 
 .home-navigation .popup-style .arrow-up-profile {
   width: 0;
   height: 0;
   position: absolute;
-  top: -12%;
-  left: 88%;
+  top: -8px;
+  left: 171px;
   border-left: 9px solid transparent;
   border-right: 9px solid transparent;
   border-bottom: 9px solid white;
+}
+
+.home-navigation .popup-style .arrow-up-profile-back {
+  width: 0;
+  height: 0;
+  position: absolute;
+  top: -9px;
+  left: 171px;
+  border-left: 9px solid transparent;
+  border-right: 9px solid transparent;
+  border-bottom: 9px solid #00000029;
+}
+
+.home-navigation .popup-style .profile-style {
+  width: 200px;
+}
+
+.home-navigation .popup-style .notification-horizontal-line {
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #ccc;
+}
+
+.home-navigation .popup-style .notification-icon {
+  width: 30px;
+  height: 25px;
+  vertical-align: middle;
+  margin-right: 5px;
 }
 
 .home-navigation .user-sm-dashboard {

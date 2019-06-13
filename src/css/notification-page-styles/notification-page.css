@@ -1,0 +1,41 @@
+.notification-page {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  margin: auto;
+  width: 55%;
+  padding: 20px;
+}
+
+.notification-page .one-notification {
+  border-bottom: 1px solid #afaeae;
+  padding: 25px 25px 25px 0px;
+  width: 70%;
+}
+
+.notification-page .one-notification .notification-article-link {
+  text-decoration: none;
+  color: black;
+  font-size: 17px;
+}
+
+.notification-page .notification-title {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.notification-page .notification-img {
+  width: 40px;
+  height: 40px;
+  vertical-align: middle;
+  margin-right: 10px;
+}
+/*# sourceMappingURL=notification-page.css.map */

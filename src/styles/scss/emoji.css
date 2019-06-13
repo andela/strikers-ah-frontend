@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto');
+@import url("https://fonts.googleapis.com/css?family=Roboto");
 .mood-btn {
   margin: 1em;
   padding: 0;
@@ -14,8 +14,8 @@
 .rate-btn {
   width: 3%;
   -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   margin: 7px 8%;
   padding-right: 2em;
   border: none;

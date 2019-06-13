@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Raleway&display=swap');
+@import url("https://fonts.googleapis.com/css?family=Raleway&display=swap");
 .comments-container {
   padding: 1%;
   margin-top: 1%;
@@ -16,7 +16,7 @@ html {
 }
 
 body {
-  font-family: 'Arial', 'Helvetica', 'sans-serif';
+  font-family: "Arial", "Helvetica", "sans-serif";
   font-size: 15px;
   margin: 0;
   padding: 0;
@@ -65,11 +65,11 @@ header .icons {
   display: flex;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
-  -ms-flex-direction: row;
-  flex-direction: row;
+      -ms-flex-direction: row;
+          flex-direction: row;
   -webkit-box-pack: end;
-  -ms-flex-pack: end;
-  justify-content: flex-end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
 }
 
 @media (max-width: 768px) {
@@ -91,7 +91,7 @@ header .icons {
 .content {
   background-color: #e5e5e5;
   -ms-flex-line-pack: center;
-  align-content: center;
+      align-content: center;
   margin-right: 100px;
   margin-left: 100px;
 }
@@ -116,7 +116,7 @@ header .icons {
   background-color: #ffffff;
   border-radius: 8px;
   -webkit-box-shadow: 0px 4px 4px #c4c4c4;
-  box-shadow: 0px 4px 4px #c4c4c4;
+          box-shadow: 0px 4px 4px #c4c4c4;
   padding: 10px;
   display: inline-block;
   /* position: absolute; */
@@ -136,7 +136,7 @@ input[type='color'] {
 .content .editor-tools .container .bar-tool #border {
   border: 1px solid #c4c4c4;
   -webkit-transform: rotate(90deg);
-  transform: rotate(90deg);
+          transform: rotate(90deg);
 }
 
 .content .editor-tools .container .bar-tool > button {
@@ -174,7 +174,7 @@ input[type='color'] {
   background-color: #ffffff;
   margin-bottom: 5px;
   -ms-flex-line-pack: center;
-  align-content: center;
+      align-content: center;
   margin-top: 0%;
   width: 100%;
   height: auto;
@@ -183,7 +183,7 @@ input[type='color'] {
   padding: 30px;
   font-size: 30px;
   font-weight: 400px;
-  font-family: 'Arial', 'Helvetica', 'sans-serif';
+  font-family: "Arial", "Helvetica", "sans-serif";
   border-radius: 3px;
   line-height: 1.5em;
   color: #1e272e;
@@ -194,7 +194,7 @@ input[type='color'] {
   margin-bottom: 10px;
   background-color: #ffffff;
   -ms-flex-line-pack: center;
-  align-content: center;
+      align-content: center;
   margin-top: 0%;
   width: 100%;
   height: auto;
@@ -203,7 +203,7 @@ input[type='color'] {
   padding: 30px;
   font-size: 30px;
   font-weight: 400px;
-  font-family: 'Arial', 'Helvetica', 'sans-serif';
+  font-family: "Arial", "Helvetica", "sans-serif";
   border-radius: 3px;
   line-height: 1.5em;
   color: #1e272e;
@@ -254,7 +254,7 @@ nav.icons div.search #search-button {
   border-color: #00aef9;
   border-width: 1px;
   -webkit-box-shadow: #808e9b;
-  box-shadow: #808e9b;
+          box-shadow: #808e9b;
   margin-right: 10px;
 }
 
@@ -388,11 +388,11 @@ div.alert {
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
   -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   cursor: pointer;
 }
 

@@ -84,7 +84,9 @@ class HomeBody extends Component {
                       />
                     </div>
                     <div className="article-content article-element">
-                      <div className="article-head">{element.title}</div>
+                      <div className="article-head">
+                        {reactHtml(element.title)}
+                      </div>
                       <div className="article-mark">
                         <span className="author-name">
                           {element.user.username}
@@ -119,7 +121,9 @@ class HomeBody extends Component {
                   href={`article/${element.slug}`}
                 >
                   <div className="side-article">
-                    <div className="side-article-head">{element.title}</div>
+                    <div className="side-article-head">
+                      {reactHtml(element.title)}
+                    </div>
                     <div className="side-article-mark">
                       <span className="author-name side-author-name">
                         {element.username}
@@ -150,7 +154,9 @@ class HomeBody extends Component {
                   href={`article/${element.slug}`}
                 >
                   <div className="side-article">
-                    <div className="side-article-head">{element.title}</div>
+                    <div className="side-article-head">
+                      {reactHtml(element.title)}
+                    </div>
                     <div className="side-article-mark">
                       <span className="author-name side-author-name">
                         {element.username}
