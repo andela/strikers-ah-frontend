@@ -1,15 +1,15 @@
 @import url('https://fonts.googleapis.com/css?family=Raleway&display=swap');
-$fonts: 'Arial',
-'Helvetica',
-'sans-serif';
+$fonts: 'Arial', 'Helvetica', 'sans-serif';
 
-$colors: (headerColor: #ffffff,
+$colors: (
+  headerColor: #ffffff,
   brandNameColor: #00aef9,
   contentBackGround: #e5e5e5,
   buttonColor: #808e9b,
 );
 
-$colors: (headerColor: #ffffff,
+$colors: (
+  headerColor: #ffffff,
   brandNameColor: #00aef9,
   contentBackGround: #e5e5e5,
   buttonColor: #808e9b,
@@ -163,13 +163,13 @@ input[type='color'] {
   transform: rotate(90deg);
 }
 
-.content .editor-tools .container .bar-tool>button {
+.content .editor-tools .container .bar-tool > button {
   margin-right: 5px;
   margin-left: 5px;
   border: no;
 }
 
-.content .editor-tools .container .bar-tool>button:hover {
+.content .editor-tools .container .bar-tool > button:hover {
   background-color: #dfe6e9;
   transition: all 0.3s linear 0s;
   cursor: pointer;
@@ -259,7 +259,7 @@ nav.icons div.search #search-button {
   text-decoration: none;
 }
 
-.card>img {
+.card > img {
   width: 100%;
   height: 50%;
 }
@@ -382,7 +382,8 @@ div.alert {
 }
 
 // sharing on social media styling
-$brand-colors: (facebook: #3b5998,
+$brand-colors: (
+  facebook: #3b5998,
   twitter: #1da1f2,
   googleplus: #dd4b39,
   linkedin: #0077b5,
@@ -404,8 +405,7 @@ $brand-colors: (facebook: #3b5998,
   .facebookButton {
     @include buttonCommonStyles; // transition: all 300ms ease-out;
 
-    @each $class,
-    $color in $brand-colors {
+    @each $class, $color in $brand-colors {
       &.#{$class} {
         color: $color;
         border-color: $color;
@@ -483,4 +483,25 @@ $brand-colors: (facebook: #3b5998,
     font-size: 12px;
     font-weight: bold;
   }
+}
+
+.emailButton:hover {
+  color: #fff;
+  background-color: map-get($map: $brand-colors, $key: googleplus);
+}
+
+.likeButton {
+  border: none;
+  color: #9c9c9c;
+  cursor: pointer;
+  width: 15px;
+  height: 15px;
+}
+
+.likeButton:hover {
+  color: #43c0f1;
+}
+
+.buttonSpan {
+  margin-right: 5px;
 }

@@ -13,6 +13,7 @@ import commentReducer from './comment';
 import { homePageReducer } from './homeReducer';
 import bookmarkedArticlesReducer from './bookmarkedArticles';
 import notifications from './notifications';
+import like from './commentLike';
 
 const rootReducer = combineReducers({
   Article,
@@ -29,6 +30,7 @@ const rootReducer = combineReducers({
   homePageReducer,
   bookmarkedArticles: bookmarkedArticlesReducer,
   notifications,
+  like,
 });
 
 export default rootReducer;
