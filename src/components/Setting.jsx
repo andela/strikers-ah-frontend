@@ -7,6 +7,8 @@ import { Tab, TabPanel, Tabs, TabList } from 'react-web-tabs';
 import RadioButton from './common/NotificationButton';
 import BookmarkedArticles from './article/bookmarkedArticles';
 import Profile from './profile';
+// eslint-disable-next-line import/no-named-as-default
+
 import '../styles/css/settings.css';
 
 /**
@@ -37,27 +39,29 @@ class Settings extends Component {
   render() {
     const { username } = this.props;
     return (
-      <div className="settings">
-        <Tabs defaultTab="vertical-tab-zero" vertical className="vertical-tabs">
-          <TabList>
-            <Tab tabFor="vertical-tab-zero">Profile</Tab>
-            <Tab tabFor="vertical-tab-one">Bookmarks</Tab>
-            <Tab tabFor="vertical-tab-two">Articles</Tab>
-            <Tab tabFor="vertical-tab-three">Settings</Tab>
-          </TabList>
-          <TabPanel tabId="vertical-tab-zero">
-            <Profile username={username} />
-          </TabPanel>
-          <TabPanel tabId="vertical-tab-one">
-            <BookmarkedArticles />
-          </TabPanel>
-          <TabPanel tabId="vertical-tab-two">
-            <p>Articles</p>
-          </TabPanel>
-          <TabPanel tabId="vertical-tab-three">
-            <RadioButton />
-          </TabPanel>
-        </Tabs>
+      <div>
+        <div className="settings">
+          <Tabs
+            defaultTab="vertical-tab-zero"
+            vertical
+            className="vertical-tabs"
+          >
+            <TabList>
+              <Tab tabFor="vertical-tab-zero">About</Tab>
+              <Tab tabFor="vertical-tab-one">Bookmarks</Tab>
+              <Tab tabFor="vertical-tab-three">Settings</Tab>
+            </TabList>
+            <TabPanel tabId="vertical-tab-zero">
+              <Profile username={username} />
+            </TabPanel>
+            <TabPanel tabId="vertical-tab-one">
+              <BookmarkedArticles />
+            </TabPanel>
+            <TabPanel tabId="vertical-tab-three">
+              <RadioButton />
+            </TabPanel>
+          </Tabs>
+        </div>
       </div>
     );
   }
