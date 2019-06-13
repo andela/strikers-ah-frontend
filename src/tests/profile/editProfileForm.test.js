@@ -7,7 +7,7 @@ describe('Test Edit Profile Form', () => {
   describe('Test <EditProfile />', () => {
     let wrapper;
     beforeEach(() => {
-      const initialstate = {
+      const props = {
         values: {
           firstname: 'firstname',
           lastname: 'email',
@@ -16,7 +16,8 @@ describe('Test Edit Profile Form', () => {
           bio: 'bio',
         },
       };
-      wrapper = getConnectedComponent(EditProfile, {}, initialstate);
+      wrapper = getConnectedComponent(EditProfile, {}, {});
+      wrapper.setProps(props);
     });
 
     it('Should render a input Component', () => {

@@ -12,9 +12,10 @@ describe('TEST USER ARTICLE', () => {
         title: 'this tile',
         description: 'this description',
         views: 0,
-        slug: 'randomy-dummy-slug213',
+        slug: 'random-dummy-slug213',
         image: true,
       },
+      author: { username: 'meNow' },
     };
     wrapper = getComponent(<UserArticle {...props} />);
   });
@@ -26,6 +27,7 @@ describe('TEST USER ARTICLE', () => {
     const newProps = {
       ...props,
       articles: { ...props.articles, image: 'null' },
+      author: false,
     };
     wrapper = getComponent(<UserArticle {...newProps} />);
     expect(wrapper).toMatchSnapshot();

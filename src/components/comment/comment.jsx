@@ -65,8 +65,7 @@ class Comment extends Component {
       user = this.assignRole(user, 'User');
     }
     const { editMode } = this.props;
-
-    if (editMode && formId === id) {
+    if (editMode === true && formId === id) {
       return (
         <div className="edit-form-container">
           <FontAwesomeIcon
@@ -78,6 +77,7 @@ class Comment extends Component {
           {'   '}
           <span className="color-success">Editing</span>
           <CommentForm
+            test-data="commentFormComponent"
             buttonLabel="save"
             slug={slug}
             currentValue={body}

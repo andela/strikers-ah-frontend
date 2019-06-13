@@ -43,7 +43,6 @@ body {
 
 .profile-grid-off,
 .profile-grid {
-  padding: 2%;
   position: relative;
 }
 .profile-grid-off .user-account-info,
@@ -164,6 +163,7 @@ body {
 .profile-grid .user-account-info .user-account-flex .info-container {
   padding: 1em 0;
   grid-area: 'info-container';
+  text-align: justify;
 }
 .profile-grid-off .user-account-info .user-account-flex .info-container .name,
 .profile-grid .user-account-info .user-account-flex .info-container .name {
@@ -196,8 +196,7 @@ body {
   .user-account-flex
   .info-container
   .btn-follow {
-  float: right;
-  margin-right: 10px;
+  margin-left: 2em;
   border: 1px solid #079bfd;
   width: 100px;
   padding: 5px;
@@ -227,7 +226,7 @@ body {
 .profile-grid .upload-image-modal {
   position: absolute;
   width: 100%;
-  height: 100%;
+  height: 70vh;
   top: 0;
   left: 50%;
   background: rgba(86, 86, 87, 0.7);
@@ -358,28 +357,20 @@ body {
 }
 
 .profile-grid {
-  display: grid;
-  grid-template-columns: 1fr 3fr;
-  grid-column-gap: 2em;
-  grid-template-areas: 'left-profile user-account-flex';
+  display: block;
+  width: 100%;
 }
 
 @media screen and (max-width: 1500px) {
   .profile-grid {
-    width: 80%;
-    margin: 2em auto;
-    display: grid;
-    grid-template-columns: 1fr 3fr;
-    grid-column-gap: 10px;
+    width: 100%;
+    margin: 0 auto 2em auto;
     margin: 2em auto;
   }
 }
 
 @media screen and (max-width: 1000px) {
   .profile-grid {
-    display: grid;
-    grid-template-columns: 1fr 3fr;
-    grid-column-gap: 4px;
     width: 98%;
     margin: 2em auto;
   }
@@ -387,11 +378,7 @@ body {
 
 @media screen and (max-width: 815px) {
   .profile-grid {
-    width: 80%;
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-column-gap: 4px;
-    width: 98%;
+    width: 100%;
     margin: 2em auto;
   }
   .profile-grid .left-profile {
@@ -427,4 +414,10 @@ body {
 
 .text-center {
   text-align: center;
+}
+
+.friend-profile {
+  width: 60%;
+  margin-left: auto;
+  margin-right: auto;
 }

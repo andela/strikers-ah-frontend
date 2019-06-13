@@ -2,9 +2,17 @@ import React from 'react';
 import AccountInfo from './accountInfo';
 import EditProfile from '../editProfile';
 import UserArticle from './userArticle';
+import { paginate } from '../../helpers/functions';
+import Pagination from './pagination';
 import '../../styles/css/userArticle.css';
 
-const RightProfile = ({ accountInfo, editProfile, userArticles }) => {
+const RightProfile = ({
+  accountInfo,
+  editProfile,
+  userArticles,
+  pagination,
+  paginate: onPageChange,
+}) => {
   const {
     firstname,
     lastname,
@@ -47,11 +55,19 @@ const RightProfile = ({ accountInfo, editProfile, userArticles }) => {
         <div className="user-articles">
           <h1 className="title">Articles created</h1>
 
-          {!editProfile.showAddImageForm &&
-            userArticles &&
-            userArticles.map(article => {
-              return <UserArticle articles={article} key={article.id} />;
-            })}
+          {userArticles &&
+            paginate(
+              pagination.pageSize,
+              pagination.currentPage,
+              userArticles,
+            ).map(article => (
+              <UserArticle articles={article} key={article.id} />
+            ))}
+          <Pagination
+            changePage={onPageChange}
+            pages={Math.ceil(userArticles.length / pagination.pageSize)}
+            activePage={pagination.currentPage}
+          />
         </div>
       )}
     </div>

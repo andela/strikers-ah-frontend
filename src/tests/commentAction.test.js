@@ -9,8 +9,8 @@ import {
   getComments,
 } from '../redux/actions/commentAction';
 
-const midleware = [thunk];
-const mockStore = configureStore(midleware);
+const middleware = [thunk];
+const mockStore = configureStore(middleware);
 describe('action tests', () => {
   beforeEach(() => {
     moxios.install(axios);
@@ -22,7 +22,7 @@ describe('action tests', () => {
   test('should dispatch get comment Action', async () => {
     const store = mockStore({});
 
-    const expectedState = { comments: { id: 1, body: 'mwibutsa' } };
+    const expectedState = { comments: { id: 1, body: 'Mwibutsa' } };
     moxios.wait(() => {
       const request = moxios.requests.mostRecent();
       request.respondWith({

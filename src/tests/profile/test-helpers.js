@@ -55,6 +55,7 @@ export const getConnectedComponentNoDive = (
       store={store}
       {...props}
       match={{ params: { username: 'Mwibutsa' } }}
+      bookmarkedArticles={{ bookmarkedArticles: {} }}
     />,
   );
   return wrapper;

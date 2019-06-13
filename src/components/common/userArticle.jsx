@@ -1,27 +1,39 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import Moment from 'react-moment';
+import htmlToReact from 'html-react-parser';
 
-const UserArticle = ({ articles }) => {
+const UserArticle = ({ articles, author }) => {
   articles.image = articles.image === 'null' ? false : articles.image;
-  const { title, description, views, slug, image } = articles;
+  const { title, description, views, slug, image, createdAt } = articles;
   return (
     <div className="user-article" test-data="userArticleComponent">
       <div className="article">
-        <h3>
-          <Link to={`/article/${slug}`}>{title}</Link>
-        </h3>
-        <div>
-          <img src={image || 'http://lorempixel.com/400/200'} alt="" />
+        <div className="user-article-image">
+          <img
+            src={
+              image ||
+              'https://media.istockphoto.com/photos/abstract-network-connection-background-picture-id509731276?k=6&m=509731276&s=612x612&w=0&h=C8_3Gb8V7DHKZnO1BP-BHYKYfTvxxqJAM29OtvaC7Qs='
+            }
+            alt=""
+          />
         </div>
-        <div className="description">
-          {image && <img src={image} alt="" className="image" />}
-          {description}
-        </div>
-      </div>
-      <div className="stats-container">
-        <div className="stats">
-          <h3>Views</h3>
-          <span>{views}</span>
+        <div className="user-article-content">
+          <div className="article-content">
+            <h3>
+              <Link to={`/article/${slug}`}>{htmlToReact(title)}</Link>
+            </h3>
+            <div className="stats">
+              <span className="time-stamp">
+                {author ? `@${author.username}` : ''}
+              </span>
+              <span className="time-stamp">
+                <Moment fromNow>{createdAt}</Moment>
+              </span>
+              <span className="views">{views} Views</span>
+            </div>
+            <div className="description">{htmlToReact(description)}</div>
+          </div>
         </div>
       </div>
     </div>

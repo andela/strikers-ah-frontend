@@ -1,7 +1,7 @@
 import dotenv from 'dotenv';
 
 dotenv.config();
-const apiUrl = `${process.env.REACT_APP_BACKEND}api`;
+const apiUrl = `${process.env.REACT_APP_BACKEND}/api`;
 
 const logout = () => {
   localStorage.removeItem('token');

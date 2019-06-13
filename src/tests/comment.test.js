@@ -72,9 +72,12 @@ describe('TEST COMMENT', () => {
         editMode: true,
       };
       wrapper = getComponent(<Comment {...props} />);
+      wrapper.setProps(props);
       commentComponent = wrapper.instance();
       const button = findByTestAttribute(wrapper, 'closeButton');
       button.simulate('click', {});
+      const commentForm = findByTestAttribute(wrapper, 'commentFormComponent');
+      commentForm.props().saveComment();
       expect(commentComponent.props.toggleEditCommentForm).toHaveBeenCalledWith(
         true,
       );
@@ -82,7 +85,7 @@ describe('TEST COMMENT', () => {
     // it('should be able to track comment edit history', () => {
     //   const button = findByTestAttribute(wrapper, 'trackEditButton');
     //   button.simulate('click', {});
-    //   expect(commentComponent.props.toggleEditHistory).toHaveBeenCalled();
+    //   expect(commentComponent.props().toggleEditHistory).toHaveBeenCalled();
     // });
     it('should show track edit history section', () => {
       jest.spyOn(wrapper.instance(), 'handleEditComment');

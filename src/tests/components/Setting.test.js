@@ -13,6 +13,7 @@ const props = {
     user: 'example',
   },
   getSocialUser: jest.fn(),
+  match: { params: { username: 'username' } },
 };
 let wrapper;
 describe('`Settings.jsx`', () => {

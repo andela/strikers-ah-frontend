@@ -1,4 +1,3 @@
-/* eslint-disable no-undef */
 import '../../enzymeConfig';
 import RightProfile from '../../components/common/profileRightSide';
 import { getConnectedComponent } from './test-helpers';
@@ -22,6 +21,7 @@ describe('test profile right side', () => {
           showForm: true,
           toggleEditProfile: jest.fn(),
         },
+        pagination: { pageSize: 2, currentPage: 0 },
         userArticles: [
           {
             id: 1,

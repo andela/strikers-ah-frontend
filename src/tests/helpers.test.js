@@ -1,6 +1,7 @@
 import jwt from 'jsonwebtoken';
 import '../enzymeConfig';
 import { getLoggedInUser } from '../helpers/authentication';
+import { paginate } from '../helpers/functions';
 
 describe('Test Authentication helpers', () => {
   beforeEach(() => {
@@ -15,5 +16,9 @@ describe('Test Authentication helpers', () => {
   it('should be able to get current logged in user', () => {
     const user = getLoggedInUser();
     expect(user).toBeDefined();
+  });
+  it('should be able to paginate a certain number of elements', () => {
+    const paginated = paginate();
+    expect(paginated).toEqual([]);
   });
 });
