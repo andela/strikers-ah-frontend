@@ -1,3 +1,4 @@
+/* eslint-disable import/no-named-as-default */
 /* eslint-disable react/destructuring-assignment */
 import React, { Component } from 'react';
 import queryString from 'query-string';
@@ -10,7 +11,7 @@ import HomeBody from './homeBody';
 /**
  * @author frank harerimana
  */
-class Index extends Component {
+export class Index extends Component {
   /**
    * @author frank
    * @returns {*} state

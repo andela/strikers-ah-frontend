@@ -1,5 +1,6 @@
 /* eslint-disable react/destructuring-assignment */
 import React, { Component } from 'react';
+import reactHtml from 'html-react-parser';
 import { connect } from 'react-redux';
 import _ from 'lodash';
 import '../css/Home-styles/home-body-content-style.css';
@@ -97,7 +98,7 @@ class HomeBody extends Component {
                         </span>
                       </div>
                       <div className="article-excerpt time-style">
-                        {element.description}
+                        {reactHtml(element.description)}
                       </div>
                     </div>
                   </div>

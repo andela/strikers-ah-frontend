@@ -35,9 +35,6 @@ describe('TEST COMMENT', () => {
   it('Should render a comment component', () => {
     expect(wrapper).toMatchSnapshot();
   });
-  it('Should render a comment component', () => {
-    expect(wrapper).toMatchSnapshot();
-  });
   it('should be able to delete a comment', () => {
     const button = findByTestAttribute(wrapper, 'deleteButton');
     button.simulate('click', {});
