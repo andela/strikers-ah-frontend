@@ -5,6 +5,9 @@ import Moment from 'react-moment';
 import 'moment-timezone';
 /* eslint-disable react/destructuring-assignment */
 import { connect } from 'react-redux';
+import { confirmAlert } from 'react-confirm-alert';
+import 'react-confirm-alert/src/react-confirm-alert.css';
+
 import {
   faTrash,
   faPencilAlt,
@@ -40,6 +43,33 @@ export class Comment extends Component {
     this.props.LikeComment(slug, id);
   };
 
+  /**
+   * @author Mwibtusa Floribert
+   * @param { * } slug --
+   * @param { * } id --
+   * @returns { * } --
+   */
+  handleDeleteComment = (slug, id) => {
+    const { deleteComment } = this.props;
+    const options = {
+      title: 'Confirm Delete',
+      message: 'Are you Sure you want ot delete this comment?',
+      buttons: [
+        {
+          label: 'Delete',
+          onClick: () => deleteComment(slug, id),
+        },
+        {
+          label: 'Cancel',
+          onClick: () => {},
+        },
+      ],
+      closeOnEscape: true,
+      closeOnClickOutside: true,
+    };
+    confirmAlert(options);
+  };
+
   handleEditComment = () => {
     const { toggleEditCommentForm } = this.props;
     toggleEditCommentForm(true);
@@ -69,7 +99,6 @@ export class Comment extends Component {
     let user = getLoggedInUser();
     const {
       comment,
-      deleteComment,
       slug,
       editComment,
       formId,
@@ -115,7 +144,7 @@ export class Comment extends Component {
         </div>
 
         <div className="comment-body">
-          <Link className="author-name" to={`/profile/${author.username}`}>
+          <Link className="author-name" to={`/${author.username}`}>
             {author.username}
           </Link>
           <p className="comment-body">
@@ -133,7 +162,7 @@ export class Comment extends Component {
                 <FontAwesomeIcon
                   icon={faTrash}
                   className="delete"
-                  onClick={() => deleteComment(slug, id)}
+                  onClick={() => this.handleDeleteComment(slug, id)}
                   test-data="deleteButton"
                 />
               )}
