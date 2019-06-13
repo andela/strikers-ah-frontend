@@ -73,6 +73,7 @@
     "react": "^16.8.6",
     "react-app-env": "^1.2.3",
     "react-app-polyfill": "^1.0.1",
+    "react-confirm-alert": "^2.4.1",
     "react-dev-utils": "^9.0.1",
     "react-dom": "^16.8.6",
     "react-dropzone": "^10.1.5",
