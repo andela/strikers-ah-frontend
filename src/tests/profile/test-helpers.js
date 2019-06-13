@@ -1,3 +1,4 @@
+/* eslint-disable react/forbid-foreign-prop-types */
 import React from 'react';
 import checkPropTypes from 'check-prop-types';
 import 'jest-canvas-mock';

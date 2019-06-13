@@ -35,17 +35,67 @@ body {
   height: 25px;
   border: none;
   padding: 0;
-  margin-top: 15px;
   float: right;
+  cursor: pointer;
 }
 
 .home-navigation .user-profile {
   width: 40px;
 }
 
+.home-navigation .popup-style {
+  position: absolute;
+  right: 0;
+  margin-top: 40px;
+  width: auto;
+  height: auto;
+  border-radius: 4px;
+  padding: 20px;
+  background-color: white;
+  -webkit-box-shadow: 1px 1px 5px 1px #888888;
+  box-shadow: 1px 1px 5px 1px #888888;
+}
+
+.home-navigation .popup-style .notification-style {
+  position: relative;
+  width: 300px;
+}
+
+.home-navigation .popup-style .profile-style {
+  width: 200px;
+}
+
+.home-navigation .popup-style .arrow-up-notification {
+  width: 0;
+  height: 0;
+  position: absolute;
+  top: -12%;
+  left: 78%;
+  border-left: 9px solid transparent;
+  border-right: 9px solid transparent;
+  border-bottom: 9px solid white;
+}
+
+.home-navigation .popup-style .arrow-up-profile {
+  width: 0;
+  height: 0;
+  position: absolute;
+  top: -12%;
+  left: 88%;
+  border-left: 9px solid transparent;
+  border-right: 9px solid transparent;
+  border-bottom: 9px solid white;
+}
+
+.home-navigation .user-sm-dashboard {
+  position: relative;
+  top: -30px;
+}
+
 .home-navigation .nav-categories {
   list-style-type: none;
-  margin-left: 10%;
+  margin-left: 11%;
+  margin-top: 1.5%;
 }
 
 .home-navigation .nav-categories li {

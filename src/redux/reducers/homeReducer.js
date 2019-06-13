@@ -5,6 +5,7 @@ import {
   FETCH_LATEST_ARTICLES,
   FETCH_ARTICLES_REQUESTED,
   ARTICLE_ERROR,
+  FETCH_USER_NOTIFICATIONS,
 } from '../actionTypes/homeTypes';
 
 const initialState = {};
@@ -39,6 +40,11 @@ export const homePageReducer = (state = initialState, action) => {
       return {
         ...state,
         error: payload,
+      };
+    case FETCH_USER_NOTIFICATIONS:
+      return {
+        ...state,
+        notification: payload,
       };
     default:
       return state;
