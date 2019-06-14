@@ -1,0 +1,55 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+.mood-btn {
+  margin: 1em;
+  padding: 0;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.emojiValue {
+  display: table-cell;
+}
+
+.rate-btn {
+  width: 3%;
+  justify-content: center;
+  margin: 7px 8%;
+  padding-right: 2em;
+  border: none;
+  font-size: medium;
+}
+
+.ratings {
+  float: right;
+}
+
+.ratings {
+  display: flex;
+  float: right;
+  margin-top: -3%;
+}
+
+.Good {
+  color: #53a831;
+  font-size: 1em;
+  font-family: monospace;
+}
+
+.Terrible {
+  color: red;
+  font-size: 1em;
+  font-family: monospace;
+}
+
+.Bad {
+  color: #f4a742;
+  font-size: 1em;
+  font-family: monospace;
+}
+
+.Okay {
+  color: #aac663;
+  font-size: 1em;
+  font-family: monospace;
+}

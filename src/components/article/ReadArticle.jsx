@@ -16,6 +16,8 @@ import {
   editComment,
 } from '../../redux/actions/commentAction';
 import Comment from '../comment/comment';
+import Rate from '../common/Rate';
+import Ratings from '../common/Ratings';
 
 /**
  *@author: Innocent Nkunzi
@@ -109,6 +111,11 @@ export class ReadArticle extends Component {
                 <p id="styleImage">
                   <img src={singleArticle.image} alt="Article" />
                 </p>
+                <hr />
+                <div className="rating">
+                  <Rate slug={singleArticle.slug} />
+                  <Ratings slug={singleArticle.slug} />
+                </div>
               </div>
             </div>
             <CommentForm

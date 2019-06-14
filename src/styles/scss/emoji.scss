@@ -1,0 +1,64 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+$color: (
+  primary: #f7f7f7,
+  accent: #ffffff,
+  bord: #aaaaaa,
+  okay: #aac663,
+  darker: #000,
+  logbtn: #00aef9,
+  moderate: #f4a742,
+  greeners: #53a831,
+  danger: red,
+);
+
+$max-width: 100%;
+
+@function color($name) {
+  @return map-get($color, $name);
+}
+.mood-btn {
+  margin: 1em;
+  padding: 0;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+.emojiValue {
+  display: table-cell;
+}
+.rate-btn {
+  width: 3%;
+  justify-content: center;
+  margin: 7px 8%;
+  padding-right: 2em;
+  border: none;
+  font-size: medium;
+}
+.ratings {
+  float: right;
+}
+.ratings {
+  display: flex;
+  float: right;
+  margin-top: -3%;
+}
+.Good {
+  color: color(greeners);
+  font-size: 1em;
+  font-family: monospace;
+}
+.Terrible {
+  color: color(danger);
+  font-size: 1em;
+  font-family: monospace;
+}
+.Bad {
+  color: color(moderate);
+  font-size: 1em;
+  font-family: monospace;
+}
+.Okay {
+  color: color(okay);
+  font-size: 1em;
+  font-family: monospace;
+}
