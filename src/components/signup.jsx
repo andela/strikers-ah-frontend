@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import EmailNotification from './sendEmailNotification';
 import '../css/signup-style/signup-style.css';
+import bgOne from '../styles/img/backgound-one.jpg';
+import bgTwo from '../styles/img/background-two.jpg';
+import bgThree from '../styles/img/background-three.jpg';
 import SocialLogin from './SocialButtons';
 import Form from './form';
 
@@ -29,8 +32,10 @@ class Signup extends Component {
    */
   render() {
     const { data, errors, isFormSubmitted } = this.state;
+    const bgImages = [bgOne, bgTwo, bgThree];
+    const bgImage = bgImages[Math.floor(Math.random() * bgImages.length)];
     return (
-      <div className="aligner">
+      <div className="aligner" style={{ backgroundImage: `url(${bgImage})` }}>
         <div className="form_wrapper">
           <h1 className="header_style">Author&apos;s Haven</h1>
           {isFormSubmitted ? (

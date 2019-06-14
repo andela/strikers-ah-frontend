@@ -43,6 +43,7 @@ body {
     margin-bottom: 7%;
     justify-content: center;
     width: 100%;
+
     .social-login-btn {
       cursor: pointer;
       display: flex;
@@ -86,6 +87,7 @@ body {
     width: 90%;
     margin-bottom: 30px;
   }
+
   .text_inputs {
     position: relative;
     width: 100%;
@@ -101,6 +103,7 @@ body {
     transform-origin: 0 0;
     transition: all 0.2s ease;
   }
+
   .errorStyle {
     position: absolute;
     top: 33px;
@@ -140,16 +143,20 @@ body {
     background: none;
     color: #223254;
     transition: all 0.15s ease;
+
     &:hover {
       background: rgba(#223254, 0.03);
     }
+
     &:not(:placeholder-shown) + span {
       color: #5a667f;
       transform: translateY(-30px) scale(0.85);
     }
+
     &:focus {
       outline: none;
       background: none;
+
       + span {
         color: colors(brand);
         transform: translateY(-30px) scale(0.85);
@@ -160,6 +167,7 @@ body {
   #fogetpasswordFormAlign {
     margin: 5em 0 0;
   }
+
   #fo-btn {
     position: static;
     float: right;
@@ -168,6 +176,7 @@ body {
     margin: 4.8em 0 0;
     bottom: 0%;
   }
+
   #forgetPasswordSubmitBtn {
     float: left;
     background: colors(brand);
@@ -183,6 +192,7 @@ body {
     width: 50%;
     cursor: pointer;
   }
+
   #btn {
     float: left;
     background: colors(brand);
@@ -198,6 +208,7 @@ body {
     width: 50%;
     cursor: pointer;
   }
+
   .button_style {
     position: absolute;
     left: 14%;
@@ -210,6 +221,7 @@ body {
     font-size: 15px;
     margin-top: 15px;
     box-shadow: 0 3px 5px 0 colors(shadow1), 0 3px 5px 0 colors(shadow2);
+    cursor: pointer;
 
     &:hover {
       background: colors(brand);
@@ -232,6 +244,7 @@ body {
       width: 50%;
     }
   }
+
   .sub_header_style {
     text-align: center;
     font-size: 18px;
@@ -248,9 +261,6 @@ body {
     }
 
     a {
-      position: absolute;
-      right: 12%;
-      bottom: 27%;
       font-size: 14px;
       text-decoration: none;
       color: colors(brand);

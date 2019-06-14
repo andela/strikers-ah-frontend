@@ -46,6 +46,7 @@ body {
     width: 90%;
     margin-bottom: 30px;
   }
+
   .text_inputs {
     position: relative;
     width: 100%;
@@ -61,6 +62,7 @@ body {
     transform-origin: 0 0;
     transition: all 0.2s ease;
   }
+
   .errorStyle {
     position: absolute;
     top: 33px;
@@ -100,16 +102,20 @@ body {
     background: none;
     color: #223254;
     transition: all 0.15s ease;
+
     &:hover {
       background: rgba(#223254, 0.03);
     }
+
     &:not(:placeholder-shown) + span {
       color: #5a667f;
       transform: translateY(-30px) scale(0.85);
     }
+
     &:focus {
       outline: none;
       background: none;
+
       + span {
         color: colors(brand);
         transform: translateY(-30px) scale(0.85);
@@ -129,6 +135,7 @@ body {
     font-size: 15px;
     margin-top: 15px;
     box-shadow: 0 3px 5px 0 colors(shadow1), 0 3px 5px 0 colors(shadow2);
+    cursor: pointer;
 
     &:hover {
       background: colors(brand);
@@ -146,6 +153,7 @@ body {
     color: colors(brand);
     margin: 15px;
   }
+
   .sub_header_style {
     text-align: center;
     font-size: 18px;
@@ -161,10 +169,11 @@ body {
       padding: 5px 30px 200px 30px;
     }
 
+    .login-action-links {
+      float: right;
+    }
+
     a {
-      position: absolute;
-      right: 12%;
-      bottom: 14%;
       font-size: 14px;
       text-decoration: none;
       color: colors(brand);

@@ -223,6 +223,7 @@ body {
   -webkit-box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.1),
     0 3px 5px 0 rgba(0, 0, 0, 0.19);
   box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.1), 0 3px 5px 0 rgba(0, 0, 0, 0.19);
+  cursor: pointer;
 }
 
 .form_wrapper .button_style:hover {
@@ -267,9 +268,6 @@ body {
 }
 
 .form_wrapper .signup_form_style a {
-  position: absolute;
-  right: 12%;
-  bottom: 27%;
   font-size: 14px;
   text-decoration: none;
   color: #00aef9;

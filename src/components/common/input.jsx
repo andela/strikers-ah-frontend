@@ -14,6 +14,7 @@ class Input extends Component {
     const {
       labelStyle,
       name,
+      type = 'text',
       onChange,
       inputStyle,
       label,
@@ -26,7 +27,7 @@ class Input extends Component {
     return (
       <label htmlFor={name} className={labelStyle}>
         <input
-          type="text"
+          type={type}
           id={name}
           name={name}
           placeholder="&nbsp;"

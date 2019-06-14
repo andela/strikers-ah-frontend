@@ -138,7 +138,11 @@ export class Login extends PureComponent {
                 {Object.keys(errors).length > 0 && `Invalid email or password`}
               </div>
               <input type="submit" value="Login" className="button_style" />
-              <Link to="/forgotpassword">Forgot password?</Link>
+              <div className="login-action-links">
+                <Link to="/forgotpassword">Forgot password?</Link>
+                &nbsp;&nbsp; | &nbsp;&nbsp;
+                <Link to="/signup">Signup</Link>
+              </div>
             </form>
           </div>
           <SocialButtons />
