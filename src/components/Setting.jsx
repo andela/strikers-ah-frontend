@@ -1,3 +1,4 @@
+/* eslint-disable react/destructuring-assignment */
 /* eslint-disable class-methods-use-this */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable jsx-a11y/label-has-for */
@@ -52,7 +53,11 @@ class Settings extends Component {
               <Tab tabFor="vertical-tab-three">Settings</Tab>
             </TabList>
             <TabPanel tabId="vertical-tab-zero">
-              <Profile username={username} />
+              <Profile
+                redirect="true"
+                notFound={() => this.props.history.replace('not-found')}
+                username={username}
+              />
             </TabPanel>
             <TabPanel tabId="vertical-tab-one">
               <BookmarkedArticles />

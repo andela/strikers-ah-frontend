@@ -17,6 +17,7 @@ import PrivateRoute from './PrivateRoute';
 import Settings from './components/Setting';
 import Logout from './components/logout';
 import HomeNavBar from './components/homeNavBar';
+import NotFound from './components/notfound';
 
 const routes = () => (
   <Switch>
@@ -38,10 +39,11 @@ const routes = () => (
     <Route
       test-data="profileRouter"
       path="/:username"
+      exact
       render={props => {
         const { username } = props.match.params;
         const loggedInUser = getLoggedInUser();
-        if (username === loggedInUser.username) {
+        if (username === loggedInUser.username && username !== 'not-found') {
           return (
             <div>
               <HomeNavBar user={username} />
@@ -49,14 +51,24 @@ const routes = () => (
             </div>
           );
         }
+
+        if (username === 'not-found') {
+          return <Route path="/not-found" component={NotFound} />;
+        }
         return (
           <div>
-            <HomeNavBar user="" />
-            <Profile username={username} />;
+            {username !== 'not-found' && (
+              <React.Fragment>
+                <HomeNavBar user={username} />
+                <Profile username={username} />;
+              </React.Fragment>
+            )}
           </div>
         );
       }}
     />
+    <Route path="/not-found" component={NotFound} />
+    <Route path="*" component={NotFound} />
   </Switch>
 );
 
