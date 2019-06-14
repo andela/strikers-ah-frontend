@@ -1,6 +1,6 @@
+/* eslint-disable react/destructuring-assignment */
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-// import LeftProfile from './common/leftProfile';
 import RightProfile from './common/profileRightSide';
 import { getUserProfile, getUserArticles } from '../redux/actions/userAction';
 import '../styles/css/profile.css';
@@ -80,7 +80,7 @@ class Profile extends Component {
    * @returns { JSX } --
    */
   render() {
-    const { accountInfo: user } = this.props;
+    const { accountInfo: user, error } = this.props;
     const { articles } = this.props;
     let userArticles = [];
     if (Object.keys(articles).length) {
@@ -103,6 +103,9 @@ class Profile extends Component {
       ownerClass += ' friend-profile';
     }
     const { editProfile, pagination } = this.state;
+    if (error) {
+      window.location.replace('/not-found');
+    }
     return (
       <div className={ownerClass} test-data="profile-page" id="profile-page">
         <div className="profile-grid">
@@ -135,6 +138,7 @@ const mapStateToProps = state => {
   return {
     accountInfo: state.userProfile.user,
     articles: state.userArticles,
+    error: state.userProfile.error,
   };
 };
 export default connect(

@@ -17,6 +17,7 @@ import PrivateRoute from './PrivateRoute';
 import Settings from './components/Setting';
 import Logout from './components/logout';
 import HomeNavBar from './components/homeNavBar';
+import NotFound from './components/notfound';
 
 const routes = () => (
   <Switch>
@@ -28,6 +29,7 @@ const routes = () => (
     <Route path="/signup" component={Signup} />
     <Route path="/profile/:username" component={Profile} />
     <Route path="/logout" component={Logout} />
+    <Route exact path="/not-found" component={NotFound} />
     <Route path="/" exact component={Index} />
     <PrivateRoute exact path="/article/:slug" component={getOneArticle} />
     <PrivateRoute
@@ -38,6 +40,7 @@ const routes = () => (
     <Route
       test-data="profileRouter"
       path="/:username"
+      exact
       render={props => {
         const { username } = props.match.params;
         const loggedInUser = getLoggedInUser();
@@ -51,7 +54,7 @@ const routes = () => (
         }
         return (
           <div>
-            <HomeNavBar user="" />
+            <HomeNavBar user={username} />
             <Profile username={username} />;
           </div>
         );

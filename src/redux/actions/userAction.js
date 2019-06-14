@@ -20,7 +20,7 @@ export const getUserProfile = username => async dispatch => {
   } catch (err) {
     dispatch({
       type: USER_PROFILE_NOT_FOUND,
-      payload: err,
+      payload: err.response.data,
     });
   }
 };
@@ -34,7 +34,7 @@ export const editLoggedInUserProfile = user => async dispatch => {
   } catch (err) {
     dispatch({
       type: EDIT_PROFILE_ERROR,
-      payload: err,
+      payload: err.response.data,
     });
   }
 };
@@ -49,7 +49,7 @@ export const getUserArticles = username => async dispatch => {
   } catch (err) {
     dispatch({
       type: GET_USER_ARTICLES_ERROR,
-      payload: err,
+      payload: err.response.data,
     });
   }
 };
