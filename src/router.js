@@ -15,6 +15,9 @@ import getOneArticle from './components/article/ReadArticle';
 import OneArticle from './components/article/EditArticle';
 import PrivateRoute from './PrivateRoute';
 import Settings from './components/Setting';
+import Logout from './components/logout';
+import HomeNavBar from './components/homeNavBar';
+import NotFound from './components/notfound';
 
 const routes = () => (
   <Switch>
@@ -24,6 +27,8 @@ const routes = () => (
     <Route path="/forgotpassword" component={ForgotPassword} />
     <Route path="/resetpassword" component={ResetPassword} />
     <Route path="/signup" component={Signup} />
+    <Route path="/profile/:username" component={Profile} />
+    <Route path="/logout" component={Logout} />
     <Route path="/" exact component={Index} />
     <PrivateRoute exact path="/article/:slug" component={getOneArticle} />
     <PrivateRoute
@@ -34,15 +39,36 @@ const routes = () => (
     <Route
       test-data="profileRouter"
       path="/:username"
+      exact
       render={props => {
         const { username } = props.match.params;
         const loggedInUser = getLoggedInUser();
-        if (username === loggedInUser.username) {
-          return <Settings username={username} />;
+        if (username === loggedInUser.username && username !== 'not-found') {
+          return (
+            <div>
+              <HomeNavBar user={username} />
+              <Settings username={username} />;
+            </div>
+          );
         }
-        return <Profile username={username} />;
+
+        if (username === 'not-found') {
+          return <Route path="/not-found" component={NotFound} />;
+        }
+        return (
+          <div>
+            {username !== 'not-found' && (
+              <React.Fragment>
+                <HomeNavBar user={username} />
+                <Profile username={username} />;
+              </React.Fragment>
+            )}
+          </div>
+        );
       }}
     />
+    <Route path="/not-found" component={NotFound} />
+    <Route path="*" component={NotFound} />
   </Switch>
 );
 

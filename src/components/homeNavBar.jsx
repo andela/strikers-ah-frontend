@@ -1,15 +1,22 @@
+/* eslint-disable react/destructuring-assignment */
+/* eslint-disable eqeqeq */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-noninteractive-element-to-interactive-role */
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import '../css/Home-styles/home-style.css';
+import '../styles/css/nav-style.css';
 import logo from '../styles/img/logo.png';
-import notification from '../img/icons/notifications-bell-button.svg';
+import notifications from '../img/icons/notifications-bell-button.svg';
 import search from '../img/icons/search.svg';
 import userProfile from '../img/icons/user.svg';
+import { notification } from '../redux/actions/HomeAction';
 /**
  * @author Clet Mwunguzi
  *
  */
-class HomeNavBar extends Component {
+export class HomeNavBar extends Component {
   state = {
     categories: [
       'HOME',
@@ -22,6 +29,59 @@ class HomeNavBar extends Component {
       'POLITICS',
       'BUSINESS',
     ],
+    popup: false,
+    profile: false,
+    notificationMsg: '',
+    allNotifications: [],
+  };
+
+  /**
+   * @author Clet Mwunguzi
+   * @param {*} props
+   * @returns {*} latest action
+   */
+  componentDidMount() {
+    this.props.notification();
+  }
+
+  /**
+   * @author Clet Mwunguzi
+   * @param {*} nextProps \
+   * @returns {*} latest action
+   */
+  componentWillReceiveProps(nextProps) {
+    const { NotificationReducer } = nextProps;
+    if (NotificationReducer) {
+      if (NotificationReducer.length === 0) {
+        this.setState({ notificationMsg: 'No notification yet' });
+      } else {
+        this.setState({ allNotifications: NotificationReducer });
+      }
+    }
+  }
+
+  /**
+   * @author Clet Mwunguzi
+   * @returns {*} NavBar component
+   */
+
+  openToggle = e => {
+    if (e.target.name === 'notification') {
+      // eslint-disable-next-line react/destructuring-assignment
+      this.setState(prevState => ({
+        popup: !prevState.popup,
+        userNotification: true,
+        profile: false,
+      }));
+    }
+    if (e.target.name === 'profile') {
+      // eslint-disable-next-line react/destructuring-assignment
+      this.setState(prevState => ({
+        popup: !prevState.popup,
+        userNotification: false,
+        profile: true,
+      }));
+    }
   };
 
   /**
@@ -29,26 +89,69 @@ class HomeNavBar extends Component {
    * @returns {*} NavBar component
    */
   render() {
-    const { categories } = this.state;
+    const {
+      categories,
+      popup,
+      userNotification,
+      profile,
+      notificationMsg,
+      allNotifications,
+    } = this.state;
     const { user } = this.props;
     return (
       <div className="home-navigation">
         <div className="nav-bar">
           <img className="logo-style" src={logo} alt="Authors Haven logo" />
           {user ? (
-            <React.Fragment>
+            <div className="user-sm-dashboard">
               <img
                 className="icons-style user-profile"
                 src={userProfile}
                 alt="profile"
+                onClick={this.openToggle.bind(this)}
+                name="profile"
+                role="button"
               />
               <img
                 className="icons-style"
-                src={notification}
+                src={notifications}
                 alt="notification"
+                onClick={this.openToggle.bind(this)}
+                role="button"
+                name="notification"
               />
               <img className="icons-style" src={search} alt="search" />
-            </React.Fragment>
+              {popup && (
+                <div className="popup-style">
+                  {userNotification && (
+                    <React.Fragment>
+                      <div className="arrow-up-notification" />
+                      <div className="notification-style">
+                        {notificationMsg ||
+                          allNotifications.map(element => element.message)}
+                      </div>
+                    </React.Fragment>
+                  )}
+                  {profile && (
+                    <React.Fragment>
+                      <div className="arrow-up-profile" />
+                      <Link className="profile-style user-menu" to={`/${user}`}>
+                        Profile
+                      </Link>
+                      <Link
+                        className="profile-style user-menu"
+                        to="/article/create"
+                      >
+                        Create Article
+                      </Link>
+                      <Link className="profile-style user-menu" to="/logout">
+                        Logout
+                      </Link>
+                    </React.Fragment>
+                  )}
+                </div>
+              )}
+            </div>
           ) : (
             <React.Fragment>
               <Link className="home-nav-link" to="/signup">
@@ -70,4 +173,12 @@ class HomeNavBar extends Component {
   }
 }
 
-export default HomeNavBar;
+const mapStateToProps = state => ({
+  NotificationReducer: state.homePageReducer.notification,
+  ErrorReducer: state.homePageReducer.error,
+});
+
+export default connect(
+  mapStateToProps,
+  { notification },
+)(HomeNavBar);

@@ -3,6 +3,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import configureStore from 'redux-mock-store';
 import '../../enzymeConfig';
+// eslint-disable-next-line import/no-named-as-default
 import Index from '../../components/Index';
 
 const mockStore = configureStore();
