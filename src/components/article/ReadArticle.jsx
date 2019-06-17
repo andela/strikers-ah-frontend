@@ -5,6 +5,12 @@ import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import Header from './Header';
 import '../../styles/css/article.css';
+import '../../styles/css/highlight.css';
+// import '../../helpers/highlight';
+import twitterIcon from '../../styles/img/twitter-icon.png';
+import facebookIcon from '../../styles/img/facebook-icon.png';
+import copyIcon from '../../styles/img/copy-icon.png';
+import commentIcon from '../../styles/img/commenting-icon.png';
 import { getOneArticle } from '../../redux/actions/articleAction';
 import Author from './Author';
 import SocialMedia from './SocialMedia';
@@ -35,7 +41,7 @@ export class ReadArticle extends Component {
 
   /**
    * @author Innocent Nkunzi
-   * @returns {*} componentDidmount
+   * @returns {*} componentWillmount
    */
   componentWillMount() {
     const { slug } = this.props.match.params;
@@ -95,19 +101,93 @@ export class ReadArticle extends Component {
       let commentList = [];
       const { comments } = this.props;
       commentList = comments;
+      import('../../helpers/highlight');
       return (
         <Fragment>
           <Header />
+          <div className="comment-box-content-container">
+            <p className="comment-box-content-container-text" />
+            <fieldset>
+              <button type="button" className="contact-cancel cancelCommentBox">
+                Exit
+              </button>
+              <button
+                type="button"
+                className="contact-cancel"
+                id="deletecommentBtn"
+              >
+                Delete
+              </button>
+            </fieldset>
+          </div>
+          <div className="comment-box-container">
+            <form id="comment-box">
+              <fieldset>
+                <textarea
+                  id="comment"
+                  placeholder="Type your comment here...."
+                  required
+                />
+              </fieldset>
+              <fieldset>
+                <button
+                  type="button"
+                  className="contact-cancel hideCommentBoxBtn"
+                >
+                  Cancel
+                </button>
+                <button type="button" className="contact-submit addCommentBtn">
+                  Submit
+                </button>
+              </fieldset>
+            </form>
+          </div>
+
+          <div className="highlight">
+            <span className="section twitter">
+              <img
+                src={twitterIcon}
+                alt="Twitter Icon"
+                width="512.002px"
+                height="512.002px"
+              />
+            </span>
+            <span className="section facebook">
+              <img
+                src={facebookIcon}
+                alt="Facebook Icon"
+                width="512.002px"
+                height="512.002px"
+              />
+            </span>
+            <span className="section copyclipboard">
+              <img
+                src={copyIcon}
+                alt="Copy Icon"
+                width="512.002px"
+                height="512.002px"
+              />
+            </span>
+            <span className="section comment">
+              <img
+                src={commentIcon}
+                alt="Comment Icon"
+                width="512.002px"
+                height="512.002px"
+              />
+            </span>
+          </div>
           <div className="container">
             <div className="contents">
               <div className="contentTitle">
-                {/* {article.title && <p>{reactHtmlparser(article.title)}</p>} */}
                 <h1>{reactHtml(singleArticle.title || '')}</h1>
                 <Author />
                 <SocialMedia />
               </div>
               <div className="contentBody">
-                <p>{reactHtml(singleArticle.body || '')}</p>
+                <p id="articleBody" className="articleBody">
+                  {reactHtml(singleArticle.body || '')}
+                </p>
                 <p id="styleImage">
                   <img src={singleArticle.image} alt="Article" />
                 </p>

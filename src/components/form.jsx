@@ -145,9 +145,11 @@ class Form extends FormFunctions {
         <br />
         <span className="errorStyle AfterSubmitError">{errors.error}</span>
         <input type="submit" value="Sign Up" className="button_style" />
-        <Link to="/login">
-          Already have an account? <span>SIGN IN</span>
-        </Link>
+        <div className="login-action-links">
+          <Link to="/login">
+            Already have an account? <span>Sign In</span>
+          </Link>
+        </div>
       </form>
     );
   }

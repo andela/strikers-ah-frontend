@@ -1,0 +1,163 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Highlighth Section */
+.highlight {
+  width: fit-content;
+  border-radius: 10px;
+  padding: 7px 10px 4px 10px;
+  display: block;
+  visibility: hidden;
+  background: #fff;
+  position: fixed;
+  text-align: center;
+  -webkit-box-shadow: 10px 10px 70px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 10px 10px 70px 0px rgba(0, 0, 0, 0.75);
+  box-shadow: 10px 10px 70px 0px rgba(0, 0, 0, 0.75);
+}
+
+.highlight .section {
+  width: 25%;
+  padding: 0px 3px;
+  cursor: pointer;
+}
+
+.highlight .section.twitter :hover {
+  fill: #1da1f2;
+}
+
+.highlight .section.facebook :hover {
+  fill: #3b5998;
+}
+
+.highlight .section.copyclipboard :hover {
+  fill: #00b496;
+}
+
+.highlight .section.comment :hover {
+  fill: #00aef9;
+}
+
+.highlight .section img {
+  height: 25px;
+  width: auto;
+}
+
+/* Comment Box CSS */
+.comment-box-container {
+  max-width: 400px;
+  width: 100%;
+  visibility: hidden;
+  background: #fff;
+  position: fixed;
+  text-align: center;
+  -webkit-box-shadow: 10px 10px 70px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 10px 10px 70px 0px rgba(0, 0, 0, 0.75);
+  box-shadow: 10px 10px 70px 0px rgba(0, 0, 0, 0.75);
+}
+
+.comment-box-content-container {
+  max-width: 400px;
+  width: 100%;
+  visibility: hidden;
+  background: #fff;
+  position: fixed;
+  text-align: center;
+  -webkit-box-shadow: 10px 10px 70px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 10px 10px 70px 0px rgba(0, 0, 0, 0.75);
+  box-shadow: 10px 10px 70px 0px rgba(0, 0, 0, 0.75);
+}
+
+#comment-box textarea,
+#comment-box button[type='submit'] {
+  font: 400 12px/16px 'Roboto', Helvetica, Arial, sans-serif;
+}
+
+#comment-box {
+  background: #f9f9f9;
+  padding: 15px;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+
+fieldset {
+  border: medium none !important;
+  margin: 0px;
+  min-width: 100%;
+  padding: 0;
+  width: 100%;
+}
+
+#comment-box textarea {
+  width: 100%;
+  border: 1px solid #ccc;
+  background: #fff;
+  margin: 0 0 5px;
+  padding: 10px;
+}
+
+#comment-box textarea:hover {
+  -webkit-transition: border-color 0.3s ease-in-out;
+  -moz-transition: border-color 0.3s ease-in-out;
+  transition: border-color 0.3s ease-in-out;
+  border: 1px solid #aaa;
+}
+
+#comment-box textarea {
+  height: 70px;
+  max-width: 100%;
+  resize: none;
+}
+
+fieldset button {
+  cursor: pointer;
+  width: 50%;
+  float: left;
+  border: none;
+  color: #fff;
+  padding: 5px;
+  font-size: 15px;
+  outline: none;
+}
+
+fieldset button {
+  transition: background-color 0.3s ease-in-out;
+}
+
+.contact-cancel {
+  background: #c71e00;
+  border-right: 1px solid #000;
+}
+
+.contact-cancel:hover {
+  background: #971801;
+}
+
+.contact-submit {
+  background: #007eb5;
+}
+
+.contact-submit:hover {
+  background: #006692;
+}
+
+#comment-box button:active {
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+#comment-box textarea:focus {
+  outline: 0;
+  border: 1px solid #aaa;
+}
+
+.highlight-me {
+  background: #00b496;
+  cursor: pointer;
+}
+
+.highlight-me:hover {
+  background: #008d76;
+  cursor: pointer;
+}
