@@ -2,7 +2,6 @@
 /* eslint-disable react/destructuring-assignment */
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-// import { Redirect } from 'react-router-dom';
 import '../../styles/css/followBtn.css';
 import {
   followUser,
