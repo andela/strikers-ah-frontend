@@ -43,7 +43,7 @@ describe('`login.jsx`', () => {
   test('should redirect to the homepage when user is already logged in', () => {
     props.login.user.user = { email: 'john' };
     const wrapper = shallow(<Login {...props} />);
-    expect(wrapper.debug()).toBe('<Redirect to="/" />');
+    expect(wrapper.debug()).toBe('');
   });
 
   test('should check if email is provided', () => {

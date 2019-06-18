@@ -1,10 +1,11 @@
 import dotenv from 'dotenv';
+import axios from '../helpers/axios';
 
 dotenv.config();
 const apiUrl = `${process.env.REACT_APP_BACKEND}/api`;
 
 const logout = () => {
-  localStorage.removeItem('token');
+  return axios.get(`/api/auth/logout`);
 };
 
 const handleResponse = async response => {

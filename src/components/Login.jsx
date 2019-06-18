@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import { Redirect, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { login as loginAction } from '../actions/login.actions';
 import { valueChange } from '../actions/loginForm';
@@ -82,7 +82,9 @@ export class Login extends PureComponent {
     const { errors } = propLogin;
     // eslint-disable-next-line react/destructuring-assignment
     if (this.props.login.user.user) {
-      return <Redirect to="/" />;
+      window.location = '/';
+      return;
+      // return <Redirect to="/" />;
     }
 
     return (
