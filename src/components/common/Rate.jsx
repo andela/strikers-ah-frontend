@@ -1,14 +1,14 @@
 /* eslint-disable react/destructuring-assignment */
-/* eslint-disable react/button-has-type */
-/* eslint-disable class-methods-use-this */
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import swal from '@sweetalert/with-react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faStar } from '@fortawesome/free-solid-svg-icons';
-import {} from '@fortawesome/free-brands-svg-icons';
 import '../../styles/css/emoji.css';
 import { ratingArticle } from '../../redux/actions/rateArticle';
+import good from '../../styles/img/good.png';
+import great from '../../styles/img/great.png';
+import bad from '../../styles/img/bad.png';
+import terrible from '../../styles/img/terrible.png';
+import okay from '../../styles/img/okay.png';
 
 /**
  * Rating Component
@@ -51,11 +51,12 @@ export class Rate extends Component {
    */
   MoodButton = ({ rating, onClick, value, icon }) => (
     <button
+      type="button"
       data-rating={rating}
       className="mood-btn"
       onClick={() => onClick(rating)}
     >
-      <FontAwesomeIcon className="terrible fa-2x" icon={icon} />
+      <img className="ratingIcons" src={icon} alt={icon} />
       <span className="emojiValue"> {value}</span>
     </button>
   );
@@ -71,28 +72,35 @@ export class Rate extends Component {
           rating="Terrible"
           onClick={this.onPick}
           value="Terrible"
-          icon={faStar}
+          icon={terrible}
         />
         <this.MoodButton
           id="Bad"
           rating="Bad"
           onClick={this.onPick}
           value="Bad"
-          icon={faStar}
+          icon={bad}
         />
         <this.MoodButton
           id="Okay"
           rating="Okay"
           onClick={this.onPick}
           value="Okay"
-          icon={faStar}
+          icon={okay}
         />
         <this.MoodButton
           id="Good"
           rating="Good"
           onClick={this.onPick}
           value="Good"
-          icon={faStar}
+          icon={good}
+        />
+        <this.MoodButton
+          id="Great"
+          rating="Great"
+          onClick={this.onPick}
+          value="Great"
+          icon={great}
         />
       </div>
     );
