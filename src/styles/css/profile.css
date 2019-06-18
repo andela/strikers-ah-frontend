@@ -19,7 +19,7 @@ body {
     opacity: 0;
   }
   to {
-    background: #0788f1;
+    background: #1e7ed8;
     opacity: 0.7;
   }
 }
@@ -34,6 +34,15 @@ body {
     margin-top: 3%;
     border-radius: 10px;
     box-shadow: 0px 0px 14px #333;
+  }
+}
+
+@keyframes growInput {
+  from {
+    width: 200px;
+  }
+  to {
+    width: 400px;
   }
 }
 

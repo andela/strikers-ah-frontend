@@ -18,6 +18,7 @@ import Settings from './components/Setting';
 import Logout from './components/logout';
 import HomeNavBar from './components/homeNavBar';
 import NotFound from './components/notfound';
+import SearchResults from './components/search';
 
 const routes = () => (
   <Switch>
@@ -37,6 +38,7 @@ const routes = () => (
       path="/articlesedit/:slug/edit"
       component={OneArticle}
     />
+    <Route exact path="/search" component={SearchResults} />
     <Route
       test-data="profileRouter"
       path="/:username"

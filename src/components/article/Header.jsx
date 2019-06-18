@@ -1,5 +1,6 @@
 import React from 'react';
 import logo from '../../styles/img/icon/icon.svg';
+import SearchForm from '../search/searchForm';
 
 const Header = () => {
   return (
@@ -17,15 +18,7 @@ const Header = () => {
           </div>
           <nav className="icons">
             <div className="search">
-              <input
-                type="text"
-                name="search"
-                className="search-text"
-                placeholder="Search..."
-              />
-            </div>
-            <div id="search-button">
-              <i className="fas fa-search" />
+              <SearchForm />
             </div>
             <div className="bell">
               <a href="#notifications">

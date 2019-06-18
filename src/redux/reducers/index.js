@@ -15,6 +15,7 @@ import bookmarkedArticlesReducer from './bookmarkedArticles';
 import notifications from './notifications';
 import like from './commentLike';
 import rateArticle from './rateArticle';
+import searchReducer from './searchReducer';
 
 const rootReducer = combineReducers({
   Article,
@@ -33,6 +34,7 @@ const rootReducer = combineReducers({
   notifications,
   like,
   rateArticle,
+  searchResult: searchReducer,
 });
 
 export default rootReducer;
