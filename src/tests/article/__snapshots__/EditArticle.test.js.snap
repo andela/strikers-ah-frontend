@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Edit article test should render the \`EditArticle\` component 1`] = `ShallowWrapper {}`;
+
+exports[`Edit article test should render the \`EditArticle\` component 2`] = `ShallowWrapper {}`;

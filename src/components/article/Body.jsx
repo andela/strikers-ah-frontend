@@ -1,9 +1,9 @@
 /* eslint-disable import/no-named-as-default */
 import React from 'react';
+import 'react-quill/dist/quill.snow.css';
 import '../../styles/css/article.css';
 import Header from './Header';
 import ArticleForm from './ArticleForm';
-import EditorBar from './EditorBar';
 
 /**
  *@author: Innocent Nkunzi
@@ -15,7 +15,6 @@ const Body = () => {
   return (
     <React.Fragment>
       <Header />
-      <EditorBar />
       <ArticleForm />
     </React.Fragment>
   );

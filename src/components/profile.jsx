@@ -109,7 +109,7 @@ class Profile extends Component {
     return (
       <div className={ownerClass} test-data="profile-page" id="profile-page">
         <div className="profile-grid">
-          {profile.email && (
+          {profile.id && (
             <RightProfile
               accountInfo={{
                 ...defaultUser,

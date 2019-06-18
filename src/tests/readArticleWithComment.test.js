@@ -1,3 +1,4 @@
+/* eslint-disable no-dupe-keys */
 import React from 'react';
 import '../enzymeConfig';
 import { ReadArticle } from '../components/article/ReadArticle';
@@ -16,6 +17,11 @@ describe('TEST READ ARTICLE WITH COMMENTS', () => {
       article: { article: [{ id: 1, slug: 'slug' }] },
       toggleEditCommentForm: jest.fn(),
       toggleEditHistory: jest.fn(),
+      article: {
+        article: {
+          taglist: ['tag1', 'tag2'],
+        },
+      },
     };
     wrapper = getComponent(<ReadArticle {...props} />, {}, { ...props });
     instance = wrapper.instance();

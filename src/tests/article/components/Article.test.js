@@ -1,25 +1,26 @@
 /* eslint-disable react/jsx-filename-extension */
 import React from 'react';
-import { shallow } from 'enzyme';
+import { shallow, mount } from 'enzyme';
 import '../../../enzymeConfig';
-import { ArticleForm } from '../../../components/article/ArticleForm';
+import { EditorBar, Editor } from '../../../components/article/ArticleForm';
 import Body from '../../../components/article/Body';
 import {
   CreateArticle,
   NoMatch,
 } from '../../../components/article/CreateArticle';
-import EditorBar from '../../../components/article/EditorBar';
+
 import Header from '../../../components/article/Header';
 import { AllArticles } from '../../../components/article/AllArticlesComponents';
 import initialState from '../../../redux/reducers/ArticleInitialState';
 import PrivateRoute from '../../../PrivateRoute';
-// import { EditArticle } from '../../../components/article/EditArticle';
+import { Author } from '../../../components/article/Author';
+import { Alert } from '../../../components/article/Alert';
 
 const submitData = jest.fn();
 const createArticle = jest.fn();
 const handleChange = jest.fn();
 const alert = jest.fn();
-const props = {
+const globalprops = {
   title: 'Lorem Ipsum is simply dummy text of the printing',
   body:
     "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
@@ -37,10 +38,33 @@ const AllArticlesProps = {
   getOneArticle: jest.fn(),
   article: initialState,
   allArticles,
+  state: {
+    tagInputs: [{ name: 'input0', value: '' }],
+  },
 };
 
-const event = { target: { name: 'special', value: 'party' } };
-const wrapper = shallow(<ArticleForm {...props} />);
+const proviteprops = {
+  jwtDecode: jest.fn(),
+};
+
+const alertProps = {
+  alert: [],
+};
+const event = {
+  target: { value: 'title', name: 'input0' },
+  state: {
+    tagInputs: [{ name: 'input0', value: 'fasdf' }],
+  },
+};
+
+const imageEvent = {
+  target: {
+    files: ['just an array'],
+  },
+  image: [],
+};
+
+const wrapper = shallow(<Editor {...globalprops} />);
 
 describe('snapshot testing', () => {
   test('should render the article form', () => {
@@ -64,6 +88,17 @@ describe('snapshot testing', () => {
   });
   test("should render the editor bar when a route don't exist", () => {
     const Wrapper = shallow(<Header />);
+    expect(Wrapper).toMatchSnapshot();
+  });
+  test('should render the author', () => {
+    const props = {
+      article: {},
+    };
+    const Wrapper = shallow(<Author {...props} />);
+    expect(Wrapper).toMatchSnapshot();
+  });
+  test('should render the alert', () => {
+    const Wrapper = mount(<Alert {...alertProps} />);
     expect(Wrapper).toMatchSnapshot();
   });
 });
@@ -110,81 +145,47 @@ describe('Test the article component', () => {
     expect(AllArticlesProps.getAllArticles).toHaveBeenCalled();
   });
   test('test the localstorage', () => {
-    // const localStorageMock = {
-    //   getItem: jest.fn(),
-    //   setItem: jest.fn(),
-    //   clear: jest.fn(),
-    // };
     localStorage.setItem(
       'token',
       'fafjasfnlkajcoi9rq87450r0ufjc0asd8tfijfashfknuq47y8hfajhk',
     );
     Storage.prototype.getItem = jest.fn(() => 'token');
-    // const token = localStorage.getItem('token');
-    // global.localStorage = localStorageMock;
-    // expect(localStorage.getItem.mock.calls.length).toBe(1);
-    // jest.spyOn(localStorageMock, 'setItem');
-    // global.localStorage.setItem = jest.fn();
 
-    // // assertions as usual:
-    // expect(localStorage.getItem).toHaveBeenCalledWith('token');
-
-    Wrapper = shallow(<PrivateRoute />);
+    Wrapper = shallow(<PrivateRoute {...proviteprops} />);
     expect(Wrapper).toMatchSnapshot();
   });
+  test('should test the `handleImage` method', () => {
+    const spy = jest.spyOn(wrapper.instance(), 'handleImage');
+    wrapper.instance().forceUpdate();
+    const handlechange = wrapper.find('#sigleImage');
+    handlechange.simulate('change', imageEvent);
+    expect(spy).toHaveBeenCalled();
+    spy.mockClear();
+  });
+  test('should test the `handleQuillChange` method', () => {
+    const spy = jest.spyOn(wrapper.instance(), 'handleQuillChange');
+    wrapper.instance().forceUpdate();
+    const handlechange = wrapper.find('#body');
+    handlechange.simulate('change', event);
+    expect(spy).toHaveBeenCalled();
+    spy.mockClear();
+  });
+  test('should test the `makeInput` method', () => {
+    const spy = jest.spyOn(wrapper.instance(), 'makeInput');
+    wrapper.instance().forceUpdate();
+    const handlechange = wrapper.find('#makeInput');
+    handlechange.simulate('click');
+    expect(spy).toHaveBeenCalled();
+    spy.mockClear();
+  });
+  test('should test the `tagInputChange` method', () => {
+    const spy = jest.spyOn(wrapper.instance(), 'tagInputChange');
+    wrapper.instance().forceUpdate();
+    wrapper
+      .find('#tagInputchange')
+      .at(0)
+      .simulate('change', event);
+    expect(spy).toHaveBeenCalled();
+    spy.mockClear();
+  });
 });
-
-// describe('test the `EditArticle.jsx`', () => {
-//   const EditArticleProps = {
-//     title: 'fafaf',
-//     body: 'fasfas',
-//     slug: 'jfasfafasofsofjasf-jfa09909',
-//     params: '',
-//     taglist: [],
-//     handleChange: jest.fn(),
-//     onSubmit: jest.fn(),
-//     componentWillMount: jest.fn(),
-//   };
-//   test('test the `snapshot`', () => {
-//     const Wrapper = shallow(<EditArticle {...EditArticleProps} />);
-//     expect(Wrapper).toMatchSnapshot();
-//   });
-//   test('test the `componentwillmount`', () => {
-//     const match = {
-//       params: {
-//         slug: 'ofjasljasjl-9990909',
-//       },
-//     };
-//     const Wrapper = shallow(<EditArticle match={match} />);
-//     const instance = Wrapper.instance();
-//     jest.spyOn(instance, 'getOneArticle');
-//     instance.componentDidMount();
-//     expect(instance.getOneArticle.toHaveBeenCalled());
-//   });
-// });
-// describe('testing the buttons', () => {
-//   const EditArticleProps = {
-//     title: 'fafaf',
-//     body: 'fasfas',
-//     slug: 'jfasfafasofsofjasf-jfa09909',
-//     params: '',
-//     taglist: [],
-//     handleChange: jest.fn(),
-//     onSubmit: jest.fn(),
-//     componentWillMount: jest.fn(),
-//   };
-//   test('should test the `onsubmit` button', () => {
-//     const match = {
-//       params: {
-//         slug: 'ofjasljasjl-9990909',
-//       },
-//     };
-//     const Wrapper = shallow(<EditArticle match={match} />);
-//     const instance = Wrapper.instance();
-//     const spy = jest.spyOn(instance, 'onSubmit');
-//     const button = Wrapper.find('#publish');
-
-//     button.simulate('click');
-//     expect(spy).toHaveBeenCalled();
-//   });
-// });

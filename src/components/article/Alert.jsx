@@ -3,7 +3,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-const Alert = ({ alert }) =>
+export const Alert = ({ alert }) =>
   alert !== null &&
   alert.length > 0 &&
   alert.map(alt => (
@@ -17,4 +17,5 @@ Alert.propTypes = {
 const mapStateToProps = state => ({
   alert: state.alertReducer,
 });
+
 export default connect(mapStateToProps)(Alert);

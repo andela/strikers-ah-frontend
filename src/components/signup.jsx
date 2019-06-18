@@ -12,6 +12,18 @@ import Form from './form';
  * @returns {*} signup form
  */
 class Signup extends Component {
+  /**
+   * @author Jacques Nyilinkindi
+   * @returns {*} Constructor
+   * @param {Object} props
+   */
+  constructor(props) {
+    super(props);
+
+    const bgImages = [bgOne, bgTwo, bgThree];
+    this.bgImage = bgImages[Math.floor(Math.random() * bgImages.length)];
+  }
+
   state = {
     data: {},
     errors: {},
@@ -32,10 +44,11 @@ class Signup extends Component {
    */
   render() {
     const { data, errors, isFormSubmitted } = this.state;
-    const bgImages = [bgOne, bgTwo, bgThree];
-    const bgImage = bgImages[Math.floor(Math.random() * bgImages.length)];
     return (
-      <div className="aligner" style={{ backgroundImage: `url(${bgImage})` }}>
+      <div
+        className="aligner"
+        style={{ backgroundImage: `url(${this.bgImage})` }}
+      >
         <div className="form_wrapper">
           <a href="/" className="logo-link">
             <h1 className="header_style">Author&apos;s Haven</h1>

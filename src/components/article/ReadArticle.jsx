@@ -1,7 +1,9 @@
 /* eslint-disable import/no-named-as-default */
 /* eslint-disable react/destructuring-assignment */
 import reactHtml from 'html-react-parser';
+import uuid from 'uuid';
 import React, { Component, Fragment } from 'react';
+import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Header from './Header';
 import '../../styles/css/article.css';
@@ -15,6 +17,7 @@ import { getOneArticle } from '../../redux/actions/articleAction';
 import Author from './Author';
 import SocialMedia from './SocialMedia';
 import CommentForm from '../comment/commentForm';
+import Spinner from './Spinner';
 import {
   addComment,
   getComments,
@@ -84,6 +87,7 @@ export class ReadArticle extends Component {
    * @returns {*} component
    */
   render() {
+    const id = uuid.v4();
     const {
       addComment: saveComment,
       deleteComment: removeComment,
@@ -97,6 +101,15 @@ export class ReadArticle extends Component {
     } = this.state;
     const { slug } = this.props.match.params;
     const singleArticle = this.props.article.article;
+    const {
+      article: { message },
+    } = this.props;
+    if (
+      message !== undefined &&
+      message === 'No article found with the slug provided'
+    ) {
+      return <Redirect to="/not-found" />;
+    }
     if (singleArticle !== null && singleArticle !== undefined) {
       let commentList = [];
       const { comments } = this.props;
@@ -180,16 +193,29 @@ export class ReadArticle extends Component {
           <div className="container">
             <div className="contents">
               <div className="contentTitle">
-                <h1>{reactHtml(singleArticle.title || '')}</h1>
+                <h1>{singleArticle.title && reactHtml(singleArticle.title)}</h1>
                 <Author />
                 <SocialMedia />
+                {singleArticle.taglist !== undefined &&
+                singleArticle.taglist.length !== 0
+                  ? singleArticle.taglist.map(tag => (
+                      <div className="tagList" key={id}>
+                        #{tag}
+                      </div>
+                    ))
+                  : ''}
               </div>
               <div className="contentBody">
+                {singleArticle.image !== 'null' &&
+                singleArticle.image !== undefined ? (
+                  <p id="styleImage">
+                    <img src={singleArticle.image} alt="Article" />
+                  </p>
+                ) : (
+                  ''
+                )}
                 <p id="articleBody" className="articleBody">
-                  {reactHtml(singleArticle.body || '')}
-                </p>
-                <p id="styleImage">
-                  <img src={singleArticle.image} alt="Article" />
+                  {singleArticle.body && reactHtml(singleArticle.body)}
                 </p>
                 <hr />
                 <div className="rating">
@@ -255,7 +281,7 @@ export class ReadArticle extends Component {
     }
     return (
       <div>
-        <p>Single article</p>
+        <Spinner />
       </div>
     );
   }

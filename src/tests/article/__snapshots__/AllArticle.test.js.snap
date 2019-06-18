@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should test the  \`AllArticles\` should render the  \`AllArticles\` component 1`] = `ReactWrapper {}`;

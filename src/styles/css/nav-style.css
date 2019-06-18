@@ -7,13 +7,10 @@
   margin-bottom: 1%;
   border-bottom: 2px solid #fbf8f8;
   text-align: center;
-  width: 100%;
-}
-.user-menu:hover {
-  color: #147aee;
-  background: rgba(123, 179, 253, 0.02);
-}
+  width: 100%; }
+  .user-menu:hover {
+    color: #147aee;
+    background: rgba(123, 179, 253, 0.02); }
 
 .popup-style {
-  z-index: 100;
-}
+  z-index: 100; }
