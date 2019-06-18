@@ -4,24 +4,23 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import '../enzymeConfig';
 import { HomeNavBar } from '../components/homeNavBar';
+import { getLoggedInUser } from '../helpers/authentication';
 
 const props = {
-  user: 'uiii',
   notification: jest.fn(),
+  nextProps: { NotificationReducer: [] },
 };
+
+jest.mock('../helpers/authentication');
+let wrapper;
 describe('<HomeNavBar/>', () => {
-  let wrapper;
   beforeEach(() => {
     wrapper = shallow(<HomeNavBar {...props} />);
   });
-  it('Should render navbar with user logged in', () => {
-    const navBar = shallow(<HomeNavBar {...props} />);
-    expect(navBar).toMatchSnapshot();
-  });
 
-  it('Should render navbar without user logged in', () => {
-    const navBar = shallow(<HomeNavBar {...props} />);
-    expect(navBar).toMatchSnapshot();
+  getLoggedInUser.mockImplementation(() => ({ username: 'john' }));
+  it('Should render navbar with user logged in', () => {
+    expect(wrapper).toMatchSnapshot();
   });
   it('should openToggle', () => {
     const instance = wrapper.instance();
@@ -38,6 +37,89 @@ describe('<HomeNavBar/>', () => {
     });
     instance.componentWillReceiveProps({ NotificationReducer: false });
     instance.componentWillReceiveProps({ NotificationReducer: [] });
-    expect(instance.state.notificationMsg).toBe('No notification yet');
+    expect(instance.state.notificationMsg).toEqual(
+      <div className="when-no-notification">No notification yet</div>,
+    );
+  });
+
+  it('Should test componentWillReceiveProps if set a notification state', () => {
+    wrapper.instance().componentWillReceiveProps(props.nextProps);
+    expect(wrapper.state().notificationMsg).toEqual(
+      <div className="when-no-notification">No notification yet</div>,
+    );
+  });
+
+  it('Should store notifications through componentWillReceiveProps', () => {
+    props.nextProps.NotificationReducer = [
+      { id: 1, message: 'user signup', userId: 3 },
+    ];
+    wrapper.instance().componentWillReceiveProps(props.nextProps);
+    expect(wrapper.state().allNotifications).toEqual(
+      props.nextProps.NotificationReducer,
+    );
+  });
+
+  it('Should show a popup when a user click on notification image/icon', () => {
+    getLoggedInUser.mockImplementation(() => ({ username: 'john' }));
+    wrapper
+      .find('.notification-icon')
+      .simulate('click', { target: { name: 'notification' } });
+    expect(wrapper.state().userNotification).toBeTruthy();
+    expect(wrapper.state().profile).not.toBeTruthy();
+  });
+
+  it('Should display all notifications when a user click on notification image/icon', () => {
+    getLoggedInUser.mockImplementation(() => ({ username: 'john' }));
+    wrapper.instance().componentWillReceiveProps({
+      NotificationReducer: [
+        { id: 3, message: 'hello world', link: 'https://ji.me/io/lk' },
+      ],
+    });
+    wrapper
+      .find('.notification-icon')
+      .simulate('click', { target: { name: 'notification' } });
+    expect(wrapper.state().popup).toBeTruthy();
+  });
+
+  it('should display login and register when a user is not logged in', () => {
+    getLoggedInUser.mockImplementation(() => ({ username: '' }));
+    expect(getLoggedInUser().username).toEqual('');
+  });
+  it('Should not display SEE ALL  when there is  no notification ', () => {
+    getLoggedInUser.mockImplementation(() => ({ username: 'john' }));
+    wrapper.instance().componentWillReceiveProps({ NotificationReducer: [] });
+    wrapper
+      .find('.notification-icon')
+      .simulate('click', { target: { name: 'notification' } });
+    expect(wrapper.state().notificationMsg).toEqual(
+      <div className="when-no-notification">No notification yet</div>,
+    );
+  });
+
+  it('Should show a popup when a user click on profile image/icon', () => {
+    wrapper
+      .find('.user-profile')
+      .simulate('click', { target: { name: 'profile' } });
+    expect(wrapper.state().userNotification).not.toBeTruthy();
+    expect(wrapper.state().profile).toBeTruthy();
+  });
+
+  it('should openToggle', () => {
+    const instance = wrapper.instance();
+    instance.openToggle({ target: { name: 'notification' } });
+    expect(instance.state.popup).toBe(true);
+    instance.openToggle({ target: { name: 'profile' } });
+    expect(instance.state.profile).toBe(true);
+  });
+
+  it('should be able to update notifications', () => {
+    const instance = wrapper.instance();
+    instance.componentWillReceiveProps({
+      NotificationReducer: [{ message: 'message' }],
+    });
+    instance.componentWillReceiveProps({ NotificationReducer: [] });
+    expect(instance.state.notificationMsg.props.children).toBe(
+      'No notification yet',
+    );
   });
 });

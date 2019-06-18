@@ -2,7 +2,12 @@ import storeConfig from 'redux-mock-store';
 import moxios from 'moxios';
 import thunk from 'redux-thunk';
 import axios from '../helpers/axios';
-import { latest, featured, main } from '../redux/actions/HomeAction';
+import {
+  latest,
+  featured,
+  main,
+  notification,
+} from '../redux/actions/HomeAction';
 
 const middleware = [thunk];
 const mockStore = storeConfig(middleware);
@@ -125,6 +130,43 @@ describe('Test Homepage Actions', () => {
 
     return store.dispatch(latest()).then(() => {
       expect(store.getActions()[1].payload).toEqual(error);
+    });
+  });
+
+  it('Should test if FETCH_USER_NOTIFICATIONS  is dispatched', () => {
+    const store = mockStore({});
+    const newState = {
+      notifications: [{ id: 3, message: 'Loren ipsum lorehjd', userId: 3 }],
+    };
+    moxios.wait(() => {
+      const request = moxios.requests.mostRecent();
+      request.respondWith({
+        status: 200,
+        response: newState,
+      });
+    });
+
+    return store.dispatch(notification()).then(() => {
+      expect(store.getActions()[0].payload).toEqual(newState.notifications);
+    });
+  });
+
+  it('Should test if notification action will dispatch an error when request is not perfomed', () => {
+    const store = mockStore({});
+    const error = {
+      error:
+        'There was an error connecting to the server. Check your internet and try again',
+    };
+    moxios.wait(() => {
+      const request = moxios.requests.mostRecent();
+      request.respondWith({
+        status: 500,
+        response: error,
+      });
+    });
+
+    return store.dispatch(notification()).then(() => {
+      expect(store.getActions()[0].payload.data).toEqual(error);
     });
   });
 });

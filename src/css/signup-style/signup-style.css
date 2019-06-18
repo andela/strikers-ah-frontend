@@ -31,6 +31,10 @@ body {
   }
 }
 
+.form_wrapper .logo-link {
+  text-decoration: none;
+}
+
 .form_wrapper .textboxStyle {
   width: 90%;
   margin-bottom: 30px;
@@ -65,8 +69,8 @@ body {
 
 .form_wrapper .AfterSubmitError {
   position: absolute;
-  left: 15%;
-  top: 63%;
+  left: 14%;
+  top: 72%;
 }
 
 .form_wrapper .border {

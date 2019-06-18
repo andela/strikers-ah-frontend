@@ -1,12 +1,33 @@
-[type='radio'] {
-  display: none;
+.first {
+  position: absolute;
+  left: 700px;
+  top: 530px;
+}
+.second {
+  @extend .first;
+  left: 720px;
+}
+
+.third {
+  @extend .first;
+  left: 740px;
+}
+
+.fourth {
+  @extend .first;
+  left: 760px;
+}
+
+.fifth {
+  @extend .first;
+  left: 780px;
 }
 #slider {
   height: 35vw;
   position: relative;
   perspective: 1000px;
   transform-style: preserve-3d;
-  margin-top: 30px;
+  margin-top: 20px;
 
   label {
     margin: auto;

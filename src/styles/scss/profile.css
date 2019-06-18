@@ -1,11 +1,11 @@
-@import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap');
+@import url("https://fonts.googleapis.com/css?family=Open+Sans&display=swap");
 *,
 *::before,
 *::after {
   margin: 0;
   padding: 0;
   -webkit-box-sizing: border-box;
-  box-sizing: border-box;
+          box-sizing: border-box;
   font-family: 'Roboto Condensed', sans-serif;
 }
 
@@ -41,13 +41,13 @@ body {
     margin-top: 0;
     border-radius: 0;
     -webkit-box-shadow: none;
-    box-shadow: none;
+            box-shadow: none;
   }
   to {
     margin-top: 3%;
     border-radius: 10px;
     -webkit-box-shadow: 0px 0px 14px #333;
-    box-shadow: 0px 0px 14px #333;
+            box-shadow: 0px 0px 14px #333;
   }
 }
 
@@ -56,13 +56,13 @@ body {
     margin-top: 0;
     border-radius: 0;
     -webkit-box-shadow: none;
-    box-shadow: none;
+            box-shadow: none;
   }
   to {
     margin-top: 3%;
     border-radius: 10px;
     -webkit-box-shadow: 0px 0px 14px #333;
-    box-shadow: 0px 0px 14px #333;
+            box-shadow: 0px 0px 14px #333;
   }
 }
 
@@ -79,7 +79,7 @@ body {
 .profile-grid .user-account-info {
   padding: 1.5%;
   -webkit-box-shadow: 0px 0px 14px rgba(191, 191, 191, 0.24);
-  box-shadow: 0px 0px 14px rgba(191, 191, 191, 0.24);
+          box-shadow: 0px 0px 14px rgba(191, 191, 191, 0.24);
   border-radius: 10px;
   background: white;
 }
@@ -91,7 +91,7 @@ body {
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: 1fr 1fr 1fr;
-  grid-template-columns: 1fr 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr;
   text-align: center;
   margin-top: 1%;
   padding-top: 1%;
@@ -113,11 +113,10 @@ body {
 
 .profile-grid-off .user-account-info .user-account-flex,
 .profile-grid .user-account-info .user-account-flex {
-  position: relative;
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: 10em 1fr;
-  grid-template-columns: 10em 1fr;
+      grid-template-columns: 10em 1fr;
   grid-column-gap: 10px;
 }
 
@@ -130,16 +129,8 @@ body {
   text-align: center;
 }
 
-.profile-grid-off
-  .user-account-info
-  .user-account-flex
-  .img-container
-  .add-img-toggler,
-.profile-grid
-  .user-account-info
-  .user-account-flex
-  .img-container
-  .add-img-toggler {
+.profile-grid-off .user-account-info .user-account-flex .img-container .add-img-toggler,
+.profile-grid .user-account-info .user-account-flex .img-container .add-img-toggler {
   position: absolute;
   background: #ddd;
   bottom: 0;
@@ -153,24 +144,16 @@ body {
   font-size: 2em;
 }
 
-.profile-grid-off
-  .user-account-info
-  .user-account-flex
-  .img-container
-  .add-img-toggler:hover,
-.profile-grid
-  .user-account-info
-  .user-account-flex
-  .img-container
-  .add-img-toggler:hover {
+.profile-grid-off .user-account-info .user-account-flex .img-container .add-img-toggler:hover,
+.profile-grid .user-account-info .user-account-flex .img-container .add-img-toggler:hover {
   -webkit-animation-name: showAddImage;
-  animation-name: showAddImage;
+          animation-name: showAddImage;
   -webkit-animation-duration: 0.5s;
-  animation-duration: 0.5s;
+          animation-duration: 0.5s;
   -webkit-animation-iteration-count: 1;
-  animation-iteration-count: 1;
+          animation-iteration-count: 1;
   -webkit-animation-fill-mode: forwards;
-  animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
   color: white;
 }
 
@@ -181,31 +164,13 @@ body {
   cursor: pointer;
 }
 
-.profile-grid-off
-  .user-account-info
-  .user-account-flex
-  .img-container
-  img:hover
-  ~ .add-img-toggler,
-.profile-grid
-  .user-account-info
-  .user-account-flex
-  .img-container
-  img:hover
-  ~ .add-img-toggler {
+.profile-grid-off .user-account-info .user-account-flex .img-container img:hover ~ .add-img-toggler,
+.profile-grid .user-account-info .user-account-flex .img-container img:hover ~ .add-img-toggler {
   z-index: 1;
 }
 
-.profile-grid-off
-  .user-account-info
-  .user-account-flex
-  .img-container:hover
-  .profile-image-label,
-.profile-grid
-  .user-account-info
-  .user-account-flex
-  .img-container:hover
-  .profile-image-label {
+.profile-grid-off .user-account-info .user-account-flex .img-container:hover .profile-image-label,
+.profile-grid .user-account-info .user-account-flex .img-container:hover .profile-image-label {
   display: inline-block;
 }
 
@@ -223,11 +188,7 @@ body {
   text-transform: capitalize;
 }
 
-.profile-grid-off
-  .user-account-info
-  .user-account-flex
-  .info-container
-  .username,
+.profile-grid-off .user-account-info .user-account-flex .info-container .username,
 .profile-grid .user-account-info .user-account-flex .info-container .username {
   line-height: 40px;
   color: #949292;
@@ -240,16 +201,8 @@ body {
   color: #535353;
 }
 
-.profile-grid-off
-  .user-account-info
-  .user-account-flex
-  .info-container
-  .btn-follow,
-.profile-grid
-  .user-account-info
-  .user-account-flex
-  .info-container
-  .btn-follow {
+.profile-grid-off .user-account-info .user-account-flex .info-container .btn-follow,
+.profile-grid .user-account-info .user-account-flex .info-container .btn-follow {
   margin-left: 2em;
   border: 1px solid #079bfd;
   width: 100px;
@@ -263,40 +216,29 @@ body {
   transition: 0.2s;
 }
 
-.profile-grid-off
-  .user-account-info
-  .user-account-flex
-  .info-container
-  .btn-follow:hover,
-.profile-grid
-  .user-account-info
-  .user-account-flex
-  .info-container
-  .btn-follow:hover {
+.profile-grid-off .user-account-info .user-account-flex .info-container .btn-follow:hover,
+.profile-grid .user-account-info .user-account-flex .info-container .btn-follow:hover {
   -webkit-box-shadow: 0px 0px 14px rgba(191, 191, 191, 0.24);
-  box-shadow: 0px 0px 14px rgba(191, 191, 191, 0.24);
+          box-shadow: 0px 0px 14px rgba(191, 191, 191, 0.24);
   background: #079bfd;
   color: white;
   -webkit-transform: translateY(-2px);
-  transform: translateY(-2px);
+          transform: translateY(-2px);
 }
 
 .profile-grid-off .upload-image-modal,
 .profile-grid .upload-image-modal {
   position: absolute;
   width: 100%;
-  height: 70vh;
-  top: 0;
-  left: 50%;
-  background: rgba(86, 86, 87, 0.7);
-  -webkit-transform: translateX(-50%);
-  transform: translateX(-50%);
+  height: 90vh;
+  width: 76vw;
+  top: -2em;
+  left: -4.5em;
   z-index: 100;
 }
 
 .profile-grid-off .upload-image-modal .upload-page,
 .profile-grid .upload-image-modal .upload-page {
-  position: relative;
   width: 90%;
   margin-top: 3%;
   margin-left: auto;
@@ -304,12 +246,12 @@ body {
   background: #eff2f5;
   min-height: 90%;
   -webkit-box-shadow: 0px 0px 14px #333;
-  box-shadow: 0px 0px 14px #333;
+          box-shadow: 0px 0px 14px #333;
   border-radius: 10px;
   -webkit-animation-name: modal;
-  animation-name: modal;
+          animation-name: modal;
   -webkit-animation-duration: 0.3s;
-  animation-duration: 0.3s;
+          animation-duration: 0.3s;
 }
 
 .profile-grid-off .upload-image-modal .btn,
@@ -363,7 +305,7 @@ body {
   top: 50%;
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
 }
 
 .profile-grid-off .upload-image-modal .crop .crop-section,
@@ -372,12 +314,13 @@ body {
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: 60% 1% 30%;
-  grid-template-columns: 60% 1% 30%;
+      grid-template-columns: 60% 1% 30%;
   grid-column-gap: 1em;
 }
 
 .profile-grid-off .upload-image-modal .crop .cropper,
 .profile-grid .upload-image-modal .crop .cropper {
+  margin-left: 1%;
   width: 100%;
   overflow: auto;
   height: 400px;
@@ -401,7 +344,7 @@ body {
 .profile-grid .upload-image-modal .crop .crop-preview canvas {
   border-radius: 10px;
   -webkit-box-shadow: 0px 0px 14px #949292;
-  box-shadow: 0px 0px 14px #949292;
+          box-shadow: 0px 0px 14px #949292;
   border: 5px solid #ddd;
 }
 
@@ -409,7 +352,7 @@ body {
 .profile-grid .left-profile {
   background: white;
   -webkit-box-shadow: 0px 0px 14px rgba(191, 191, 191, 0.24);
-  box-shadow: 0px 0px 14px rgba(191, 191, 191, 0.24);
+          box-shadow: 0px 0px 14px rgba(191, 191, 191, 0.24);
   border-radius: 10px;
 }
 
@@ -477,7 +420,7 @@ body {
     display: -ms-grid;
     display: grid;
     -ms-grid-columns: 1fr;
-    grid-template-columns: 1fr;
+        grid-template-columns: 1fr;
     width: 98%;
     margin: 2em auto;
   }
@@ -485,9 +428,9 @@ body {
     display: -ms-grid;
     display: grid;
     -ms-grid-columns: 1fr;
-    grid-template-columns: 1fr;
+        grid-template-columns: 1fr;
     grid-column-gap: 0px;
-    grid-template-areas: 'image-container' 'info-container';
+        grid-template-areas: 'image-container' 'info-container';
   }
   .profile-grid-off .user-account-flex .info-container {
     display: block;
@@ -510,5 +453,9 @@ body {
   width: 60%;
   margin-left: auto;
   margin-right: auto;
+}
+
+.profile-page {
+  position: relative;
 }
 /*# sourceMappingURL=profile.css.map */

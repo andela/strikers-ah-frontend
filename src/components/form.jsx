@@ -43,23 +43,26 @@ class Form extends FormFunctions {
   submit = async () => {
     // console.log('props', this.props.isSubmitted);
     const { data: userInfo } = this.props;
-    const URL = `${process.env.REACT_APP_BACKEND}auth/signup`;
+    const URL = `${process.env.REACT_APP_BACKEND}/api/auth/signup`;
 
     try {
       const { data } = await axios.post(URL, userInfo);
       if (data) {
         this.props.isSubmitted();
       }
-    } catch ({ response }) {
+    } catch (result) {
+      if (!result.response.data) {
+        const resp = { error: `${result}` };
+        return this.props.stateChange({ errors: resp });
+      }
       const obj = {};
-      const { error } = response.data;
-
+      const { error } = result.response.data;
       const splitError = error.split(' ')[0];
       if (splitError === 'email' || splitError === 'username') {
         obj[splitError] = error;
         this.props.stateChange({ errors: obj });
       } else {
-        this.props.stateChange({ errors: response.data });
+        this.props.stateChange({ errors: result.response.data });
       }
     }
   };

@@ -1,0 +1,33 @@
+.notification-page {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin: auto;
+  width: 55%;
+  padding: 20px;
+
+  .one-notification {
+    border-bottom: 1px solid #afaeae;
+    padding: 25px 25px 25px 0px;
+    width: 70%;
+
+    .notification-article-link {
+      text-decoration: none;
+      color: black;
+      font-size: 17px;
+    }
+  }
+
+  .notification-title {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+
+  .notification-img {
+    width: 40px;
+    height: 40px;
+    vertical-align: middle;
+    margin-right: 10px;
+  }
+}

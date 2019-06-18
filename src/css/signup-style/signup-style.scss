@@ -42,6 +42,10 @@ body {
     border-radius: 0px;
   }
 
+  .logo-link {
+    text-decoration: none;
+  }
+
   .textboxStyle {
     width: 90%;
     margin-bottom: 30px;
@@ -74,8 +78,8 @@ body {
 
   .AfterSubmitError {
     position: absolute;
-    left: 15%;
-    top: 63%;
+    left: 14%;
+    top: 72%;
   }
 
   .border {

@@ -37,7 +37,9 @@ class Signup extends Component {
     return (
       <div className="aligner" style={{ backgroundImage: `url(${bgImage})` }}>
         <div className="form_wrapper">
-          <h1 className="header_style">Author&apos;s Haven</h1>
+          <a href="/" className="logo-link">
+            <h1 className="header_style">Author&apos;s Haven</h1>
+          </a>
           {isFormSubmitted ? (
             <EmailNotification email={data.email} />
           ) : (

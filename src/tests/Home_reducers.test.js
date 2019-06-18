@@ -3,6 +3,7 @@ import {
   FETCH_FEATURED_ARTICLES,
   FETCH_LATEST_ARTICLES,
   FETCH_ARTICLES_REQUESTED,
+  FETCH_USER_NOTIFICATIONS,
   ARTICLE_ERROR,
 } from '../redux/actionTypes/homeTypes';
 
@@ -69,5 +70,13 @@ describe('Test home reducers', () => {
       payload,
     });
     expect(returnedState).toEqual({ error: payload });
+  });
+
+  it('Should return new state when passed with FETCH_USER_NOTIFICATIONS', () => {
+    const returnedState = homePageReducer(undefined, {
+      type: FETCH_USER_NOTIFICATIONS,
+      payload,
+    });
+    expect(returnedState).toEqual({ notification: payload });
   });
 });

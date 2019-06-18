@@ -67,7 +67,9 @@ export class ForgotPassword extends Component {
       >
         <div className="form_wrapper">
           <div className="header_style">
-            <img src={logo} alt="Logo" className="logo" />
+            <a href="/">
+              <img src={logo} alt="Logo" className="logo" />
+            </a>
           </div>
 
           <div id="fogetpasswordFormAlign" className="log-text">

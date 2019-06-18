@@ -27,7 +27,7 @@ const props = {
         id: 1,
         title: 'lorem ipsum reif kiol',
         slug: 'hello-world-123aw',
-        image: null,
+        image: 'null',
         user: {
           username: 'john',
         },
@@ -42,7 +42,7 @@ const props = {
         id: 1,
         title: 'lorem ipsum reif kiol',
         slug: 'hello-world-123aw',
-        image: null,
+        image: 'null',
         user: {
           username: 'john',
         },
@@ -59,7 +59,7 @@ describe('Test Homebody Component', () => {
   });
 
   it('Should receive render data from redux on our page', async () => {
-    const wrapper = getConnectedComponent(HomeBody, {}, {});
+    const wrapper = getConnectedComponent(HomeBody, {}, props);
     wrapper.setProps(props);
     wrapper.instance().componentDidMount();
     expect(props.main).toHaveBeenCalledTimes(1);

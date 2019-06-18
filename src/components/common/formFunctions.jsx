@@ -18,7 +18,16 @@ class FormFunctions extends Component {
     const errors = {};
 
     // eslint-disable-next-line no-restricted-syntax
-    for (const item of error.details) errors[item.path[0]] = item.message;
+    for (const item of error.details) {
+      errors[item.path[0]] = item.message;
+      if (
+        item.path[0] === 'password' &&
+        item.message !== '"password" is required'
+      ) {
+        errors[item.path[0]] =
+          '"Password" should be at 8 charcters minimum , with one capital letter, one special character, and a number';
+      }
+    }
 
     return errors;
   };
@@ -53,6 +62,18 @@ class FormFunctions extends Component {
     const obj = { [name]: value };
     const schema = { [name]: this.schema[name] };
     const { error } = Joi.validate(obj, schema);
+
+    if (name === 'password' && error === null) {
+      return null;
+    }
+
+    if (
+      name === 'password' &&
+      error.details[0].message !== '"password" is not allowed to be empty'
+    ) {
+      return ' "Password" should be at least 8 characters minimum , with one capital letter, one special character, and a number';
+    }
+
     return error ? error.details[0].message : null;
   }
 }

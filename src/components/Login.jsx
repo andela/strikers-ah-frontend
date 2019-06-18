@@ -94,7 +94,9 @@ export class Login extends PureComponent {
       >
         <div className="form_wrapper">
           <div className="header_style">
-            <img src={logo} alt="Logo" className="logo" />
+            <a href="/">
+              <img src={logo} alt="Logo" className="logo" />
+            </a>
           </div>
           <div className="log-text">
             <form
