@@ -20,6 +20,16 @@
   font-size: medium;
 }
 
+.ratingIcons {
+  width: 23px;
+}
+
+.ratingIcons:hover {
+  -ms-transform: scale(1.3);
+  -webkit-transform: scale(1.3);
+  transform: scale(1.3);
+}
+
 .ratings {
   float: right;
 }
@@ -31,7 +41,7 @@
 }
 
 .Good {
-  color: #53a831;
+  color: #57943f;
   font-size: 1em;
   font-family: monospace;
 }
@@ -50,6 +60,12 @@
 
 .Okay {
   color: #aac663;
+  font-size: 1em;
+  font-family: monospace;
+}
+
+.Great {
+  color: #0c680c;
   font-size: 1em;
   font-family: monospace;
 }
