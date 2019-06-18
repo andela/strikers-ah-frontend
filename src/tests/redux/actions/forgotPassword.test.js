@@ -6,17 +6,18 @@ import {
   forgotPassword,
   resetPassword,
 } from '../../../redux/actions/forgotPassword';
+import axios from '../../../helpers/axios';
 
 const mockStore = configureStore([thunk]);
 const store = mockStore();
 
 describe('forgot password', () => {
   beforeEach(() => {
-    moxios.install();
-    store.clearActions();
+    moxios.install(axios);
+    store.clearActions(axios);
   });
   afterEach(() => {
-    moxios.uninstall();
+    moxios.uninstall(axios);
   });
   test('should ', () => {
     const expectedState = {

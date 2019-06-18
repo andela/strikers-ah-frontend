@@ -1,12 +1,9 @@
-import axios from 'axios';
 import { FORGOT_PASSWORD, RESET_PASSWORD } from '../actionTypes/userTypes';
+import axios from '../../helpers/axios';
 
 export const forgotPassword = email => async dispatch => {
   try {
-    const { data } = await axios.post(
-      'https://strikers-ah-backend.herokuapp.com/api/auth/forgetpassword',
-      { email },
-    );
+    const { data } = await axios.post('/api/auth/forgetpassword', { email });
     dispatch({
       type: FORGOT_PASSWORD,
       payload: data,
@@ -21,10 +18,9 @@ export const forgotPassword = email => async dispatch => {
 
 export const resetPassword = (password, token) => async dispatch => {
   try {
-    const { data } = await axios.put(
-      `https://strikers-ah-backend.herokuapp.com/api/auth/resetpassword/${token}`,
-      { password },
-    );
+    const { data } = await axios.put(`/api/auth/resetpassword/${token}`, {
+      password,
+    });
     dispatch({
       type: RESET_PASSWORD,
       payload: data,

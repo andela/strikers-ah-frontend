@@ -3,6 +3,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import swal from 'sweetalert';
 import InputForm from './common/InputForm';
 import logo from '../styles/img/logo.png';
 import { forgotPassword } from '../redux/actions/forgotPassword';
@@ -23,43 +24,57 @@ export class ForgotPassword extends Component {
   constructor(props) {
     super(props);
     this.state = { value: '' };
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-
     const bgImages = [bgOne, bgTwo, bgThree];
     this.bgImage = bgImages[Math.floor(Math.random() * bgImages.length)];
   }
 
   /**
-   * @author frank harerimana
-   * @param {*} e
-   * @returns {*} action
+   *
+   *@param {*} message
+   * @memberof ResetPassword
+   * @returns {*} popup
    */
-  handleChange(e) {
-    this.setState({ value: e.target.value });
-  }
+  popUpResponse = message => {
+    if (message !== '') {
+      return swal(
+        message === 'success' ? 'Email sent to your account' : 'Try again',
+        message === 'success' ? 'Please check your email' : message,
+        message === 'success' ? 'success' : 'info',
+      );
+    }
+  };
 
   /**
    * @author frank harerimana
    * @param {*} e
    * @returns {*} action
    */
-  handleSubmit(e) {
+  handleChange = e => {
+    this.setState({ value: e.target.value });
+  };
+
+  /**
+   * @author frank harerimana
+   * @param {*} e
+   * @returns {*} action
+   */
+  handleSubmit = async e => {
     e.preventDefault();
     const email = this.state.value;
-    this.props.forgotPassword(email);
-  }
+    await this.props.forgotPassword(email);
+    let message = '';
+    if (this.props.forgetPasswordState) {
+      const { response } = this.props.forgetPasswordState;
+      message = response ? response.message : '';
+      this.popUpResponse(message);
+    }
+  };
 
   /**
    * @author frank
    * @returns {*} render
    */
   render() {
-    let message = '';
-    if (this.props.forgetPasswordState) {
-      const { response } = this.props.forgetPasswordState;
-      message = response ? response.message : '';
-    }
     return (
       <div
         className="aligner"
@@ -73,7 +88,6 @@ export class ForgotPassword extends Component {
           </div>
 
           <div id="fogetpasswordFormAlign" className="log-text">
-            <p>{message}</p>
             <form
               id="forgotPasswordForm"
               className="signup_form_style"
