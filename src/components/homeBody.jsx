@@ -66,7 +66,7 @@ class HomeBody extends Component {
       <div className="container-1">
         <div className="other-articles">
           <div className="reading-history grid-element">
-            <div className="article-header">From your Reading History</div>
+            <div className="article-header">Popular Articles</div>
 
             {articles &&
               articles.map(element => (
@@ -110,7 +110,6 @@ class HomeBody extends Component {
           <div className="featured grid-element">
             <div className="article-header">
               <span className="side-header">Featured </span>
-              <span className="side-link">SEE ALL</span>
             </div>
             <hr className="h-line" />
             {featuredArticles &&
@@ -143,7 +142,6 @@ class HomeBody extends Component {
           <div className="latest grid-element">
             <div className="article-header">
               <span className="side-header">Latest</span>
-              <span className="side-link">SEE ALL</span>
             </div>
             <hr className="h-line" />
             {latestArticles &&
