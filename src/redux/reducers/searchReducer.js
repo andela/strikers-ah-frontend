@@ -7,7 +7,7 @@ export default (state = initialState, { type, payload }) => {
     case SEARCH_RESULTS:
       return {
         ...state,
-        searchResults: payload,
+        result: payload,
       };
     case NO_SEARCH_RESULT:
       return {
