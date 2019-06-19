@@ -58,6 +58,7 @@ class SearchForm extends Component {
               placeholder="Search articles"
               value={keyword}
               handleChange={this.handleValueChange}
+              required="required"
             />
           </div>
           <div className="search-input">

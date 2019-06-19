@@ -7,6 +7,7 @@ import UserArticle from '../common/userArticle';
 import searchEngine from '../../redux/actions/searchAction';
 import HomeNavBar from '../homeNavBar';
 import '../../styles/css/search.css';
+import Spinner from '../article/Spinner';
 
 /**
  * @author Mwibutsa Floribert
@@ -33,6 +34,10 @@ class SearchResults extends Component {
   render() {
     let key = 1;
     const { searchResult, searchEngine: search, history } = this.props;
+    const { location } = this.props;
+    const values = queryString.parse(location.search);
+    const filter = Object.keys(values)[0];
+    const keyword = values[filter];
     if (searchResult) {
       return (
         <div className="search-result">
@@ -49,18 +54,27 @@ class SearchResults extends Component {
               </div>
             </div>
           )}
-          {searchResult.searchArticle.length > 0 &&
-            searchResult.searchArticle.map(article => (
-              <UserArticle articles={article} key={key++} />
-            ))}
+          {searchResult.searchArticle.length > 0 && (
+            <div>
+              <h1 className="no-result__heading-a text-center">
+                {searchResult.searchArticle.length} Results for{' '}
+                <strong className="search-keyword">{keyword}</strong>
+              </h1>
+              {searchResult.searchArticle.map(article => (
+                <React.Fragment>
+                  <UserArticle articles={article} key={key++} />
+                </React.Fragment>
+              ))}
+            </div>
+          )}
           {searchResult.searchArticle.length === 0 && (
             <div className="no-result">
               <div className="center-content">
-                <h1 className="text-center">
-                  No Results were found for your search
+                <h1 className="no-result__heading-a text-center">
+                  No search results were found
                 </h1>
                 <div>
-                  <h3 className="text-center">
+                  <h3 className="no-result__heading-b text-center">
                     But the list of
                     <a
                       href="/articles"
@@ -80,15 +94,7 @@ class SearchResults extends Component {
     }
     return (
       <div>
-        <div className="atom-spinner">
-          <div className="spinner-inner">
-            <div className="spinner-line" />
-            <div className="spinner-line" />
-            <div className="spinner-line" />
-
-            <div className="spinner-circle">&#9679;</div>
-          </div>
-        </div>
+        <Spinner />
       </div>
     );
   }
