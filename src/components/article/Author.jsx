@@ -19,8 +19,12 @@ export const Author = props => {
         <span className="author">
           @{article.username} | <FollowButton className="onReadArticle" />
         </span>{' '}
-        | <span className="date"> Apr 14 . 4min read</span> |{' '}
-        <BookmarkButton article={article} className="bookmarkIcon" />
+        |
+        <span className="date">
+          {' '}
+          Apr 14 . {`${getReadingTime(article.body)} min Read`}
+        </span>
+        <span> </span>
       </div>
     </Fragment>
   );

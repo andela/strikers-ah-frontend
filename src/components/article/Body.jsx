@@ -2,8 +2,8 @@
 import React from 'react';
 import 'react-quill/dist/quill.snow.css';
 import '../../styles/css/article.css';
-import Header from './Header';
 import ArticleForm from './ArticleForm';
+import Layout from '../common/pageLayout';
 
 /**
  *@author: Innocent Nkunzi
@@ -13,10 +13,9 @@ import ArticleForm from './ArticleForm';
  */
 const Body = () => {
   return (
-    <React.Fragment>
-      <Header />
+    <Layout>
       <ArticleForm />
-    </React.Fragment>
+    </Layout>
   );
 };
 
