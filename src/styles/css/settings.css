@@ -6,22 +6,20 @@
   font-family: sans-serif;
   text-align: center;
   background: #f9f8f9;
+  margin-top: 1rem;
+}
+
+.notifications-block {
+  display: block;
 }
 
 #vertical-tab-zero,
 #vertical-tab-one,
 #vertical-tab-two,
-#vertical-tab-three,
-#vertical-tab-four {
+#vertical-tab-three {
   flex-grow: 1;
-}
-
-.vertical-tabs button {
-  cursor: pointer;
-}
-
-.notifications-block {
-  display: block;
+  text-align: justify;
+  padding-top: 1%;
 }
 
 @media only screen and (max-width: 600px) {

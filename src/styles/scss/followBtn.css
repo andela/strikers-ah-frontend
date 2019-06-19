@@ -1,0 +1,29 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto");
+#follow-btn {
+  color: #000;
+  background-color: #fbfeff;
+  border-color: #1883ca;
+  font-size: 1em;
+  font-family: auto;
+  cursor: pointer;
+}
+
+#following-btn {
+  color: #fbfeff;
+  border: none;
+  background-color: #1883ca;
+  font-size: 1em;
+  font-family: auto;
+  cursor: pointer;
+}
+
+.onReadArticle {
+  padding: 0 0.3em;
+  border: 1px #000 solid;
+  border-radius: 0.4em;
+}
+
+button:focus {
+  outline: 0;
+}
+/*# sourceMappingURL=followBtn.css.map */

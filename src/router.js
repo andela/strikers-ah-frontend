@@ -73,8 +73,6 @@ const routes = () => (
                 <Profile username={username} />;
               </React.Fragment>
             )}
-            <HomeNavBar user={username} />
-            <Profile username={username} />;
           </div>
         );
       }}

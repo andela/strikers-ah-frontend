@@ -1,0 +1,240 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto");
+body {
+  background: #f7f7f7;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  font-family: 'Roboto', sans-serif;
+}
+
+.container {
+  width: 100%;
+}
+
+.container .login-section {
+  background: #fbfeff;
+  -webkit-box-shadow: 1px 0 5px 1px #aaaaaa;
+          box-shadow: 1px 0 5px 1px #aaaaaa;
+  display: inline-block;
+  margin-left: 33.5%;
+  margin-top: 150px;
+  width: 34%;
+  margin-bottom: 5%;
+  background: #fbfeff;
+  box-shadow: 1px 0 5px 1px #aaaaaa;
+  display: inline-block;
+  margin-left: 37.5%;
+  margin-top: 150px;
+  width: 25%;
+}
+
+.container .login-section .logo {
+  margin: 30px;
+  overflow: hidden;
+}
+
+.container .login-section .log-text {
+  margin: 4%;
+}
+
+.container .login-section .log-text .divider {
+  padding: 12px 0;
+}
+
+.container .login-section .log-text input[type] {
+  background: #ffffff;
+  border: 1px solid #aaaaaa;
+  border-radius: 5px;
+  -webkit-box-shadow: 2px 7px 25px -15px #000;
+          box-shadow: 2px 7px 25px -15px #000;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-family: sans-serif;
+  font-size: medium;
+  margin: 10px 0;
+  outline: none;
+  padding: 10px 8px;
+  width: 100%;
+}
+
+.container .login-section .log-text .help-block {
+  color: #f00;
+  font-size: 13px;
+}
+
+.container .login-section .log-text .alert {
+  padding: 5px 20px;
+  background-color: #f44336;
+  color: white;
+}
+
+.container .login-section .log-text .closebtn {
+  margin-left: 15px;
+  color: white;
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.container .login-section .log-text .closebtn:hover {
+  color: black;
+}
+
+.container .login-section .log-text input[type]:hover {
+  border: solid 1px #000;
+}
+
+.container .login-section .log-text .fo-btn {
+  float: right;
+  text-decoration: none;
+  color: #000;
+}
+
+.container .login-section .log-text .fo-btn:hover {
+  text-decoration: underline;
+}
+
+.container .login-section .log-text .login-btn {
+  background: #00aef9;
+  border: 0;
+  border-radius: 5px;
+  -webkit-box-shadow: 2px 7px 25px -8px #000;
+          box-shadow: 2px 7px 25px -8px #000;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  color: #ffffff;
+  font-family: sans-serif;
+  font-size: medium;
+  margin: 10px 0;
+  outline: none;
+  padding: 10px 8px;
+  width: 100%;
+  cursor: pointer;
+}
+
+.container .login-section img {
+  max-width: 100%;
+}
+
+.container .login-section .log-btn {
+  width: 100%;
+}
+
+.container .login-section .log-btn .title-login {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-bottom: 2%;
+}
+
+.container .login-section .log-btn .login-button-section {
+  width: 100%;
+  margin-bottom: 37%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-bottom: 7%;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  border-top: 1px solid #000;
+  width: 100%;
+}
+
+.container .login-section .log-btn .login-button-section .title-login {
+  margin-left: 30px;
+}
+
+.container .login-section .log-btn .login-button-section .login-button-section {
+  float: left;
+  width: 80%;
+  margin-left: 10%;
+  margin-bottom: 30px;
+}
+
+.container .login-section .log-btn .login-button-section .login-button-section .fo-btn:hover {
+  text-decoration: underline;
+}
+
+.container .login-section .log-btn .login-button-section .login-button-section .fa-twitter {
+  color: #00acee;
+}
+
+.container .login-section .log-btn .login-button-section .login-button-section .fa-github {
+  color: #000;
+}
+
+.container .login-section .log-btn .login-button-section .login-button-section .fa-facebook-f {
+  color: #3b5998;
+}
+
+.container .login-section .log-btn .login-button-section .login-button-section .fa-google-plus-g {
+  color: red;
+}
+
+.container .login-section .log-btn .login-button-section .login-button-section .social-login-btn {
+  background: #ffffff;
+  cursor: pointer;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  float: left;
+  height: 30px;
+  margin-right: 6px;
+  padding: 0 3%;
+  width: 5%;
+  background: #ffffff;
+}
+
+.container .login-section .log-btn .createAccount {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-bottom: 6%;
+  border-radius: 5px;
+  -webkit-box-shadow: 0 2px 3px 1px #aaaaaa;
+          box-shadow: 0 2px 3px 1px #aaaaaa;
+  cursor: pointer;
+  float: left;
+  height: 30px;
+  margin-right: 6px;
+  padding: 15px;
+  text-align: center;
+  width: 10%;
+}
+
+.container .login-section .log-btn .createAccount .makespace {
+  display: inline-block;
+  margin-left: 5px;
+}
+
+@media only screen and (max-width: 1200px) {
+  .login-section {
+    margin-left: 30%;
+    width: 40%;
+  }
+  .login-section .log-btn .login-button-section .social-login-btn {
+    padding: 0 7%;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .login-section {
+    margin-left: 20%;
+    width: 60%;
+  }
+  .login-section .log-btn .login-button-section .social-login-btn {
+    padding: 0 7%;
+  }
+}
+/*# sourceMappingURL=login.css.map */

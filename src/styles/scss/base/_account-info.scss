@@ -1,0 +1,55 @@
+html {
+  font-size: 62.5%;
+}
+.user-account-info {
+  margin-left: auto;
+  margin-right: auto;
+  padding: 1rem;
+  position: relative;
+  margin-top: 3rem;
+  margin-top: 1rem;
+  .user-account-flex {
+    position: relative;
+    width: 100%;
+    background: #fff;
+    display: grid;
+    grid-template-columns: 20rem 1fr;
+    .img-container {
+      width: 20rem;
+      height: 20rem;
+      overflow: hidden;
+      img {
+        width: 100%;
+      }
+    }
+  }
+
+  .info-container {
+    position: absolute;
+    top: 50%;
+    margin-left: 1rem;
+    transform: translateY(-50%);
+    .name,
+    .username {
+      position: relative;
+    }
+    .bio {
+      color: #777;
+      margin-top: 1rem;
+      display: inline-block;
+      text-align: justify;
+    }
+  }
+  .btn {
+    height: 3rem;
+    padding: 0 1rem;
+    line-height: 3rem;
+    border: 1px solid #f7f7f7;
+    background: #1ab2ff;
+    color: white;
+    font-size: 1.7rem;
+    cursor: pointer;
+    border-radius: 0.3rem;
+    margin: 1rem;
+  }
+}

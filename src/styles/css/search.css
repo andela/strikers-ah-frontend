@@ -39,10 +39,56 @@ body {
   font-size: 1.7rem;
 }
 
+.no-result {
+  position: relative;
+  min-height: 70vh;
+  margin: 1%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: bottom;
+}
+.no-result .btn {
+  transition: all 0.5s;
+}
+.no-result .btn-link {
+  text-decoration: none;
+  color: transparent;
+  border: 1px solid #0f7ce2;
+  display: inline-block;
+  margin: 1rem 2rem;
+  color: #0f7ce2;
+  padding: 0.5rem;
+  border-radius: 3px;
+  text-transform: uppercase;
+  font-size: 1.7rem;
+}
+.no-result .btn-link:hover {
+  box-shadow: 0rem 0.4rem 0.8rem #2a2a2a94;
+  transform: translateY(-3px);
+  background: #0f7ce2;
+  color: white;
+}
+.no-result .btn-link:active {
+  transform: translateY(0);
+  box-shadow: 0rem 0.2rem 0.4rem #2a2a2a94;
+}
+.no-result .center-content {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 2rem;
+  width: 100%;
+  color: white;
+  background-image: url(https://media.istockphoto.com/photos/abstract-background-picture-id537447438?k=6&m=537447438&s=612x612&w=0&h=YF98lsh0OIxChOs4XmOFmuzLxSj8sieD-CiK-V8iGfU=);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
 .search-result {
   width: 75%;
   margin: 0 auto;
-  margin-top: 2rem;
 }
 .search-result .user-article .user-article-image {
   overflow: hidden;
@@ -54,52 +100,6 @@ body {
 .search-result .user-article .user-article-image .article-image {
   object-fit: contain;
   height: 100%;
-}
-.search-result .search-form {
-  position: absolute;
-  background: red;
-}
-.search-result .search-form .search-input {
-  display: inline-block;
-}
-.search-result .search-form .search-input input[type='search'] {
-  height: 40px;
-  color: #333;
-  width: 200px;
-  background: #eee;
-  font-size: 1.7rem;
-  outline: none;
-  border: 2px solid #fff;
-  padding: 0 1rem;
-  border-radius: 3px;
-  transition: all 0.5s;
-  animation-duration: 0.4s;
-  animation-fill-mode: forwards;
-}
-.search-result .search-form .search-input input[type='search']:focus {
-  background: #f7f7f7;
-}
-.search-result .search-form .search-input select {
-  height: 40px;
-  outline: none;
-  border: 2px solid #fff;
-  font-size: 1.7rem;
-}
-.search-result .search-form .search-input button {
-  height: 36px;
-  width: 40px;
-  border: 2px solid #fff;
-  background: #eee;
-  border-radius: 3px;
-  transition: all 0.2s;
-  color: #9b9b9b;
-  background: transparent;
-  cursor: pointer;
-}
-.search-result .search-form .search-input button:hover {
-  background: #049aff;
-  color: white;
-  border-radius: 5px;
 }
 
 .atom-spinner,

@@ -1,23 +1,31 @@
+.nav-categories {
+  position: absolute;
+  width: 100%;
+  text-align: left;
+  overflow: hidden;
+  display: table;
+  left: 10rem;
+  top: 4rem;
+}
 .search-form {
-  background: red;
+  display: flex;
+  width: fit-content;
+  float: right;
+  margin-top: -6px;
   .search-input {
-    display: inline-block;
-    float: left;
     input[type='search'] {
       height: 40px;
       color: #333;
       width: 200px;
-      background: #eee;
+      background: #f9f9f9;
       font-size: 1.7rem;
       outline: none;
       border: 2px solid #fff;
       padding: 0 1rem;
       border-radius: 3px;
-      transition: all 0.5s;
-      animation-duration: 0.4s;
-      animation-fill-mode: forwards;
+      transition: all 0.2s;
       &:focus {
-        background: #f7f7f7;
+        background: #f1eaeb55;
       }
     }
     select {
@@ -28,7 +36,7 @@
     }
 
     button {
-      height: 36px;
+      height: 40px;
       width: 40px;
       border: 2px solid #fff;
       background: #eee;
@@ -44,5 +52,11 @@
         border-radius: 5px;
       }
     }
+  }
+}
+
+@media screen and (max-width: 1050px) {
+  .search-form {
+    margin-top: 20px;
   }
 }

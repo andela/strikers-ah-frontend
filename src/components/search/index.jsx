@@ -1,10 +1,11 @@
+/* eslint-disable import/no-named-as-default */
 /* eslint-disable no-plusplus */
 import React, { Component } from 'react';
 import queryString from 'query-string';
 import { connect } from 'react-redux';
 import UserArticle from '../common/userArticle';
 import searchEngine from '../../redux/actions/searchAction';
-import SearchForm from './searchForm';
+import HomeNavBar from '../homeNavBar';
 import '../../styles/css/search.css';
 
 /**
@@ -35,7 +36,8 @@ class SearchResults extends Component {
     if (searchResult) {
       return (
         <div className="search-result">
-          <SearchForm search={search} history={history} />
+          <HomeNavBar search={search} history={history} />
+          <br /> <br />
           {!searchResult && (
             <div className="atom-spinner">
               <div className="spinner-inner">
@@ -47,10 +49,32 @@ class SearchResults extends Component {
               </div>
             </div>
           )}
-          {searchResult &&
+          {searchResult.searchArticle.length > 0 &&
             searchResult.searchArticle.map(article => (
               <UserArticle articles={article} key={key++} />
             ))}
+          {searchResult.searchArticle.length === 0 && (
+            <div className="no-result">
+              <div className="center-content">
+                <h1 className="text-center">
+                  No Results were found for your search
+                </h1>
+                <div>
+                  <h3 className="text-center">
+                    But the list of
+                    <a
+                      href="/articles"
+                      className="btn btn-link"
+                      title="Click to see a list of all articles"
+                    >
+                      all articles &rarr;
+                    </a>
+                    can be helpful
+                  </h3>
+                </div>
+              </div>
+            </div>
+          )}
         </div>
       );
     }

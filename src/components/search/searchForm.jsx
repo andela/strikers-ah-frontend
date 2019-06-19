@@ -49,8 +49,8 @@ class SearchForm extends Component {
       return <Redirect to={redirectTo} />;
     }
     return (
-      <div className="search-form">
-        <form onSubmit={this.handleSubmit}>
+      <div className="search-form-container">
+        <form onSubmit={this.handleSubmit} className="search-form">
           <div className="search-input">
             <TextInput
               type="search"
