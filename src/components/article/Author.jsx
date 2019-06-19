@@ -4,6 +4,7 @@ import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
 import FollowButton from '../common/FollowButton';
 import BookmarkButton from '../common/BookmarkButton';
+import getReadingTime from '../../helpers/getReadingTime';
 
 /**
  * @author Innocent Nkunzi

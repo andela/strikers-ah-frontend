@@ -1,3 +1,4 @@
+/* eslint-disable no-plusplus */
 let nbr = 1;
 const autoSlide = () => {
   nbr = nbr > 5 ? 1 : nbr;
@@ -5,7 +6,7 @@ const autoSlide = () => {
   if (next) {
     next.click();
   }
-  nbr += 1;
+  nbr++;
 };
 
 setInterval(autoSlide, 4000);
