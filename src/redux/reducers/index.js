@@ -16,6 +16,7 @@ import notifications from './notifications';
 import like from './commentLike';
 import rateArticle from './rateArticle';
 import readingStats from './readingStatsArticles';
+import articleByCategory from './articleByCategory';
 
 const rootReducer = combineReducers({
   Article,
@@ -35,6 +36,7 @@ const rootReducer = combineReducers({
   like,
   rateArticle,
   readingStats,
+  articleByCategory,
 });
 
 export default rootReducer;
