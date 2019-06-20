@@ -20,7 +20,7 @@ class FollowButton extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      username: 'frank',
+      username: '',
     };
     this.handleClick = this.handleClick.bind(this);
   }
@@ -43,13 +43,13 @@ class FollowButton extends Component {
    * @returns {*} button
    */
   checkUsername() {
-    // let username;
-    // if (this.props.Article.article.authorid != null) {
-    //   username = this.props.articleAuthor.article[0].user.username;
-    // } else if (this.props.userProfile != null) {
-    // const username = this.props.userProfile.user.profile.username;
-    // }
-    return this.state.username;
+    let username = this.state.username;
+    if (this.props.userProfile.user.profile != null) {
+      username = this.props.userProfile.user.profile.username;
+    } else if (this.props.Article.article.username != null) {
+      username = this.props.Article.article.username;
+    }
+    return username;
   }
 
   /**
@@ -91,7 +91,6 @@ class FollowButton extends Component {
   render() {
     const { status } = this.props.following[0];
     return (
-      // <div className="follow-btn-div">
       <button
         type="button"
         id={status === 'following' ? 'following-btn' : 'follow-btn'}
@@ -100,7 +99,6 @@ class FollowButton extends Component {
       >
         {status}
       </button>
-      // </div>
     );
   }
 }
