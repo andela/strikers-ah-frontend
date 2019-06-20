@@ -1,7 +1,9 @@
+/* eslint-disable import/no-named-as-default */
 /* eslint-disable react/destructuring-assignment */
 import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
 import FollowButton from '../common/FollowButton';
+import BookmarkButton from '../common/BookmarkButton';
 
 /**
  * @author Innocent Nkunzi
@@ -16,8 +18,8 @@ export const Author = props => {
         <span className="author">
           @{article.username} | <FollowButton className="onReadArticle" />
         </span>{' '}
-        |<span className="date"> Apr 14 . 4min read</span>
-        <span> </span>
+        | <span className="date"> Apr 14 . 4min read</span> |{' '}
+        <BookmarkButton article={article} className="bookmarkIcon" />
       </div>
     </Fragment>
   );

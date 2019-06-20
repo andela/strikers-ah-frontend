@@ -9,6 +9,7 @@ import {
   DELETE_ARTICLE_ERROR,
   UPDATE_ARTICLE,
   UPDATE_ARTICLE_ERROR,
+  BOOKMARK,
 } from '../actionTypes/articleType';
 
 const initialState = {
@@ -83,6 +84,11 @@ export default (state = initialState, { type, payload }) => {
       return {
         ...state,
         error: payload.message.error,
+      };
+    case BOOKMARK:
+      return {
+        ...state,
+        bookmarked: payload,
       };
     default:
       return state;
