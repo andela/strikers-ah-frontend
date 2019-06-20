@@ -22,6 +22,14 @@ describe('<HomeNavBar/>', () => {
   it('Should render navbar with user logged in', () => {
     expect(wrapper).toMatchSnapshot();
   });
+  it('Should reload the page when user is logged in with social network', () => {
+    delete window.location;
+    window.location = { search: '?token=hfhhfhhfhhfhhh' };
+    window.location.replace = jest.fn();
+    localStorage.setItem('token', 'hfhhfhhfhhfhhh');
+    wrapper.instance().componentWillMount();
+    expect(window.location.replace).toHaveBeenCalled();
+  });
   it('should openToggle', () => {
     const instance = wrapper.instance();
     instance.openToggle({ target: { name: 'notification' } });
