@@ -80,7 +80,11 @@ export class HomeNavBar extends Component {
     const { NotificationReducer } = nextProps;
     if (NotificationReducer) {
       if (NotificationReducer.length === 0) {
-        this.setState({ notificationMsg: 'No notification yet' });
+        this.setState({
+          notificationMsg: (
+            <div className="when-no-notification">No notification yet</div>
+          ),
+        });
       } else {
         this.setState({
           allNotifications: NotificationReducer,
@@ -146,7 +150,6 @@ export class HomeNavBar extends Component {
       isNotified,
     } = this.state;
     const { username, role } = getLoggedInUser();
-    const { search, history } = this.props;
     return (
       <div className="home-navigation">
         <div className="nav-bar">
@@ -171,7 +174,10 @@ export class HomeNavBar extends Component {
                 role="button"
                 name="notification"
               />
-              <SearchForm history={history} search={search} />
+              <SearchForm
+                search={this.props.search}
+                history={this.props.history}
+              />
               {isNotified && <div className="notified"> </div>}
               {popup && (
                 <OutsideClickHandler

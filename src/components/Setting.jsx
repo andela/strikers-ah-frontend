@@ -18,22 +18,23 @@ import '../styles/css/settings.css';
  * Settings component
  */
 class Settings extends Component {
-  /**
-   * @param {*} props
-   */
-  constructor(props) {
-    super(props);
-    this.protectComponent();
-  }
+  state = {};
+  // /**
+  //  * @param {*} props
+  //  */
+  // constructor(props) {
+  //   super(props);
+  //   this.protectComponent();
+  // }
 
-  /**
-   * @author frank harerimana
-   * @returns {*} component
-   */
-  protectComponent() {
-    const user = localStorage.getItem('token');
-    if (user === null) window.location.assign = '/login';
-  }
+  // /**
+  //  * @author frank harerimana
+  //  * @returns {*} component
+  //  */
+  // protectComponent() {
+  //   const user = localStorage.getItem('token');
+  //   if (user === null) window.location.assign = '/login';
+  // }
 
   /**
    * @returns {*} component

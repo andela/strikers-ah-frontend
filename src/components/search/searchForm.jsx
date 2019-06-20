@@ -8,7 +8,12 @@ import '../../styles/css/search-form.css';
  * @author Mwibutsa Floribert
  */
 class SearchForm extends Component {
-  state = { filter: 'keyword', keyword: '', redirectTo: false };
+  state = {
+    filter: 'keyword',
+    keyword: '',
+    redirectTo: false,
+    isOnSearchPage: false,
+  };
 
   /**
    * @author Mwibutsa Floribert
@@ -21,21 +26,35 @@ class SearchForm extends Component {
 
   /**
    * @author Mwibutsa Floribert
+   * @returns { * } --
+   */
+  isSearch = () => {
+    const { filter, keyword } = this.state;
+    const onSearchPage = window.location.href.includes('search');
+    if (!onSearchPage) {
+      this.setState({
+        redirectTo: `/search?${filter.toLowerCase()}=${keyword}`,
+        isOnSearchPage: false,
+      });
+    } else {
+      this.setState({ isOnSearchPage: true });
+    }
+  };
+
+  /**
+   * @author Mwibutsa Floribert
    * @param { * } event -- event paramteter
    * @returns { * } --
    */
   handleSubmit = event => {
     event.preventDefault();
-    const { filter, keyword } = this.state;
-    if (!window.location.href.includes('search')) {
-      this.setState({
-        redirectTo: `/search?${filter.toLowerCase()}=${keyword}`,
-      });
-    } else {
+    const { filter, keyword, isOnSearchPage } = this.state;
+    if (isOnSearchPage) {
       const { search, history } = this.props;
       search({ filter: filter.toLowerCase(), keyword });
       history.push(`/search?${filter.toLowerCase()}=${keyword}`);
     }
+    this.isSearch();
   };
 
   /**

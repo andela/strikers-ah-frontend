@@ -8,6 +8,7 @@ import searchEngine from '../../redux/actions/searchAction';
 import HomeNavBar from '../homeNavBar';
 import '../../styles/css/search.css';
 import Spinner from '../article/Spinner';
+import Author from '../common/author';
 
 /**
  * @author Mwibutsa Floribert
@@ -34,6 +35,9 @@ class SearchResults extends Component {
   render() {
     let key = 1;
     const { searchResult, searchEngine: search, history } = this.props;
+    const articles = searchResult
+      ? searchResult.searchArticle.concat(searchResult.searchTag)
+      : '';
     const { location } = this.props;
     const values = queryString.parse(location.search);
     const filter = Object.keys(values)[0];
@@ -43,31 +47,30 @@ class SearchResults extends Component {
         <div className="search-result">
           <HomeNavBar search={search} history={history} />
           <br /> <br />
-          {!searchResult && (
-            <div className="atom-spinner">
-              <div className="spinner-inner">
-                <div className="spinner-line" />
-                <div className="spinner-line" />
-                <div className="spinner-line" />
-
-                <div className="spinner-circle">&#9679;</div>
-              </div>
-            </div>
-          )}
-          {searchResult.searchArticle.length > 0 && (
-            <div>
+          {articles.length > 0 && (
+            <div className="search-result__articles">
               <h1 className="no-result__heading-a text-center">
-                {searchResult.searchArticle.length} Results for{' '}
+                {articles.length} Result(s) for{' '}
                 <strong className="search-keyword">{keyword}</strong>
               </h1>
-              {searchResult.searchArticle.map(article => (
-                <React.Fragment>
-                  <UserArticle articles={article} key={key++} />
-                </React.Fragment>
+              {articles.map(article => (
+                <UserArticle articles={article} key={key++} />
               ))}
             </div>
           )}
-          {searchResult.searchArticle.length === 0 && (
+          {searchResult.searchAuthor.length > 0 && (
+            <React.Fragment key={key++}>
+              <h2 className="no-result__heading-a text-center">
+                {searchResult.searchAuthor.length} Authors found
+              </h2>
+              <div className="search-result__authors">
+                {searchResult.searchAuthor.map(author => (
+                  <Author {...author} key={key++} />
+                ))}
+              </div>
+            </React.Fragment>
+          )}
+          {articles.length === 0 && searchResult.searchAuthor.length === 0 && (
             <div className="no-result">
               <div className="center-content">
                 <h1 className="no-result__heading-a text-center">
