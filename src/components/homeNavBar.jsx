@@ -6,6 +6,7 @@ import React, { Component } from 'react';
 import _ from 'lodash';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import queryString from 'query-string';
 import { getLoggedInUser } from '../helpers/authentication';
 import '../css/Home-styles/home-style.css';
 import logo from '../styles/img/logo.png';
@@ -34,7 +35,9 @@ export class HomeNavBar extends Component {
     ],
     popup: false,
     profile: false,
-    notificationMsg: '',
+    notificationMsg: (
+      <div className="when-no-notification">No notification yet</div>
+    ),
     allNotifications: [],
     isNotified: false,
   };
@@ -46,6 +49,12 @@ export class HomeNavBar extends Component {
    */
   componentWillMount() {
     document.addEventListener('mouseDown', this.openToggle, false);
+    const url = window.location.search;
+    const params = queryString.parse(url);
+    if (params.token != null) {
+      window.location.replace('/');
+      localStorage.setItem('token', params.token);
+    }
   }
 
   /**
@@ -177,29 +186,30 @@ export class HomeNavBar extends Component {
                       <div className="arrow-up-notification-back" />
                       <div className="arrow-up-notification" />
                       <div className="notification-style">
-                        {notificationMsg ||
-                          _.take(allNotifications, 5).map(element => (
-                            <React.Fragment key={element.id}>
-                              <div className="notifications">
-                                <img
-                                  className="notification-icon"
-                                  src={notificationIcon}
-                                  alt="new notification"
-                                />
-                                <Link
-                                  className="notification-article-link"
-                                  to={_.takeRight(
-                                    element.link.split('/'),
-                                    2,
-                                  ).join('/')}
-                                >
-                                  <span>{element.message}</span>
-                                </Link>
-                              </div>
-                              <hr className="notification-horizontal-line" />
-                            </React.Fragment>
-                          ))}
-                        {notificationMsg ? (
+                        {allNotifications.length === 0
+                          ? notificationMsg
+                          : _.take(allNotifications, 5).map(element => (
+                              <React.Fragment key={element.id}>
+                                <div className="notifications">
+                                  <img
+                                    className="notification-icon"
+                                    src={notificationIcon}
+                                    alt="new notification"
+                                  />
+                                  <Link
+                                    className="notification-article-link"
+                                    to={_.takeRight(
+                                      element.link.split('/'),
+                                      2,
+                                    ).join('/')}
+                                  >
+                                    <span>{element.message}</span>
+                                  </Link>
+                                </div>
+                                <hr className="notification-horizontal-line" />
+                              </React.Fragment>
+                            ))}
+                        {allNotifications.length === 0 ? (
                           ' '
                         ) : (
                           <div className="seeAll-style">
