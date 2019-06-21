@@ -20,6 +20,22 @@ $max-width: 100%;
   background: color(settingBackground);
 }
 
+#vertical-tab {
+  &-zero,
+  &-one,
+  &-two,
+  &-three,
+  &-four {
+    flex-grow: 1;
+  }
+}
+
+.vertical-tabs {
+  button {
+    cursor: pointer;
+  }
+}
+
 .notifications-block {
   display: block;
 }
