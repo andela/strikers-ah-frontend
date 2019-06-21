@@ -3,12 +3,17 @@ import React from 'react';
 import configureStore from 'redux-mock-store';
 import { shallow } from 'enzyme';
 import '../../enzymeConfig';
-import { ResetPassword } from '../../components/ResetPassword';
+import { ResetPassword, mapStateToProps } from '../../components/ResetPassword';
 
 const mockStore = configureStore();
 const initialState = [{}];
 let props, store, wrapper;
 props = {
+  match: {
+    params: {
+      token: '',
+    },
+  },
   handleSubmit: jest.fn(),
   resetPassword: jest.fn(),
   handleChange: jest.fn(),
@@ -38,6 +43,11 @@ describe('`resetpassword.jsx`', () => {
     expect(spy).toHaveBeenCalled();
   });
   props = {
+    match: {
+      params: {
+        token: '',
+      },
+    },
     handleSubmit: jest.fn(),
     resetPassword: jest.fn(),
     handleChange: jest.fn(),
@@ -63,5 +73,15 @@ describe('`resetpassword.jsx`', () => {
     IsForm.simulate('change', fakeEmail);
     expect(IsForm.length).toBe(1);
     expect(spy).toHaveBeenCalled();
+  });
+  test('should call the function ', () => {
+    const state = {
+      rateArticle: {
+        rate: {
+          error: '',
+        },
+      },
+    };
+    mapStateToProps(state);
   });
 });

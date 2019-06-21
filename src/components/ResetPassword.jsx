@@ -1,9 +1,11 @@
+/* eslint-disable no-return-assign */
 /* eslint-disable react/destructuring-assignment */
 /* eslint-disable class-methods-use-this */
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import swal from 'sweetalert';
 import { connect } from 'react-redux';
-import queryString from 'query-string';
+// import queryString from 'query-string';
 import InputForm from './common/InputForm';
 import logo from '../styles/img/logo.png';
 import { resetPassword } from '../redux/actions/forgotPassword';
@@ -24,59 +26,77 @@ export class ResetPassword extends Component {
     super(props);
     this.state = {
       value: '',
-      token: '',
+      token: this.checkToken(),
     };
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
 
     const bgImages = [bgOne, bgTwo, bgThree];
     this.bgImage = bgImages[Math.floor(Math.random() * bgImages.length)];
   }
 
   /**
-   * @author frank
-   * @returns {*} state
+   *
+   *@param {*} message
+   * @memberof ResetPassword
+   * @returns {*} popup
    */
-  componentWillMount() {
-    const url = this.props.location.search;
-    const params = queryString.parse(url);
-    if (params.token != null) {
-      this.setState({ token: params.token });
+  popUpResponse = message => {
+    if (message !== '') {
+      return swal(
+        message === 'success' ? 'Email sent to your account' : 'Try again',
+        message === 'success' ? 'Please check your email' : message,
+        message === 'success' ? 'success' : 'info',
+      );
     }
-  }
+  };
+
+  /**
+   * @author frank harerimana
+   * @returns {*} token
+   */
+  checkToken = () => {
+    const url = this.props.match;
+    const { token } = url.params;
+    return token;
+  };
 
   /**
    * @author frank harerimana
    * @param {*} e
    * @returns {*} action
    */
-  handleChange(e) {
+  handleChange = e => {
     this.setState({ value: e.target.value });
-  }
+  };
 
   /**
    * @author frank harerimana
    * @param {*} e
    * @returns {*} action
    */
-  handleSubmit(e) {
+  handleSubmit = async e => {
     e.preventDefault();
     const password = this.state.value;
     const { token } = this.state;
-    this.props.resetPassword(password, token);
-  }
+    await this.props.resetPassword(password, token);
+    let message = '';
+    if (this.props.forgetPasswordState) {
+      const { response } = this.props.forgetPasswordState;
+      message = response ? response.message : '';
+      if (response.data) {
+        this.popUpResponse('Password Updated successfully');
+        setTimeout(() => {
+          return (window.location.href = '/login');
+        }, 2000);
+      }
+      this.popUpResponse(message);
+    }
+  };
 
   /**
    * @author frank
    * @returns {*} render
    */
   render() {
-    // eslint-disable-next-line no-unused-vars
-    let message = '';
-    if (this.props.forgetPasswordState) {
-      const { response } = this.props.forgetPasswordState;
-      message = response ? response.message : '';
-    }
     return (
       <div
         className="aligner"
@@ -87,7 +107,6 @@ export class ResetPassword extends Component {
             <img src={logo} alt="Logo" className="logo" />
           </div>
           <div id="fogetpasswordFormAlign" className="log-text">
-            <p>{message}</p>
             <form
               id="resetPasswordForm"
               className="signup_form_style"
@@ -105,6 +124,7 @@ export class ResetPassword extends Component {
                 Back To Login
               </Link>
               <SubmitButton
+                onclick={this.handleSubmit}
                 className="login-btn"
                 id="btn"
                 type="submit"
@@ -117,7 +137,7 @@ export class ResetPassword extends Component {
     );
   }
 }
-const mapStateToProps = state => ({
+export const mapStateToProps = state => ({
   forgetPasswordState: state.forgotPassword,
 });
 

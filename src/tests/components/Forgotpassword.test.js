@@ -2,7 +2,10 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import '../../enzymeConfig';
-import { ForgotPassword } from '../../components/ForgotPassword';
+import {
+  ForgotPassword,
+  mapStateToProps,
+} from '../../components/ForgotPassword';
 
 let props = {
   handleSubmit: jest.fn(),
@@ -49,5 +52,15 @@ describe('`ForgotPassword.jsx`', () => {
     IsForm.simulate('change', fakeEmail);
     expect(IsForm.length).toBe(1);
     expect(spy).toHaveBeenCalled();
+  });
+  test('should call the function ', () => {
+    const state = {
+      rateArticle: {
+        rate: {
+          error: '',
+        },
+      },
+    };
+    mapStateToProps(state);
   });
 });

@@ -28,7 +28,7 @@ const routes = () => (
     <Route exact path="/articles" component={AllArticles} />
     <PrivateRoute exact path="/article/create" component={CreateArticle} />
     <Route path="/forgotpassword" component={ForgotPassword} />
-    <Route path="/resetpassword" component={ResetPassword} />
+    <Route path="/resetpassword/:token" component={ResetPassword} />
     <Route path="/signup" component={Signup} />
     <Route path="/profile/:username" component={Profile} />
     <Route path="/logout" component={Logout} />
