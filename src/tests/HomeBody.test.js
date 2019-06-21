@@ -53,13 +53,15 @@ const props = {
   },
 };
 describe('Test Homebody Component', () => {
+  let wrapper;
+  beforeEach(() => {
+    wrapper = getConnectedComponent(HomeBody, {}, props);
+  });
   it('Should render HomeBody without crashing', () => {
-    const wrapper = getConnectedComponent(HomeBody, {}, props);
     expect(wrapper).toMatchSnapshot();
   });
 
   it('Should receive render data from redux on our page', async () => {
-    const wrapper = getConnectedComponent(HomeBody, {}, props);
     wrapper.setProps(props);
     wrapper.instance().componentDidMount();
     expect(props.main).toHaveBeenCalledTimes(1);

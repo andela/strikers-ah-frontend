@@ -18,7 +18,10 @@ describe('<HomeNavBar/>', () => {
     wrapper = shallow(<HomeNavBar {...props} />);
   });
 
-  getLoggedInUser.mockImplementation(() => ({ username: 'john' }));
+  getLoggedInUser.mockImplementation(() => ({
+    username: 'john',
+    role: 'Admin',
+  }));
   it('Should render navbar with user logged in', () => {
     expect(wrapper).toMatchSnapshot();
   });
@@ -68,7 +71,10 @@ describe('<HomeNavBar/>', () => {
   });
 
   it('Should show a popup when a user click on notification image/icon', () => {
-    getLoggedInUser.mockImplementation(() => ({ username: 'john' }));
+    getLoggedInUser.mockImplementation(() => ({
+      username: 'john',
+      role: 'Admin',
+    }));
     wrapper
       .find('.notification-icon')
       .simulate('click', { target: { name: 'notification' } });
@@ -94,7 +100,10 @@ describe('<HomeNavBar/>', () => {
     expect(getLoggedInUser().username).toEqual('');
   });
   it('Should not display SEE ALL  when there is  no notification ', () => {
-    getLoggedInUser.mockImplementation(() => ({ username: 'john' }));
+    getLoggedInUser.mockImplementation(() => ({
+      username: 'john',
+      role: 'Admin',
+    }));
     wrapper.instance().componentWillReceiveProps({ NotificationReducer: [] });
     wrapper
       .find('.notification-icon')

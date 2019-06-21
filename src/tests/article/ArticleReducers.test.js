@@ -3,6 +3,7 @@ import * as actionTypes from '../../redux/actionTypes/articleType';
 
 const initialState = {
   allArticles: [],
+  report: '',
 };
 describe('Article reducers', () => {
   test('should return an initialState if no state and action were defined', () => {
@@ -53,6 +54,7 @@ describe('Article reducers', () => {
         authorid: 1,
       },
     };
+
     const newstate = createArticle(initialState, {
       type: actionTypes.GET_ARTICLES,
       payload,
@@ -169,5 +171,24 @@ describe('Article reducers', () => {
     });
 
     expect(newState).toEqual({ ...newState, bookmarked: payload });
+  });
+  test('should handle REPORTED_ARTICLES', () => {
+    const payload = [
+      {
+        id: 2,
+        article: {
+          image: 'http://me.u',
+          slug: 'Hello-world-123rtr',
+          title: 'Hello world',
+        },
+        category: 'Copywrite',
+        description: 'for newbies',
+      },
+    ];
+    const returnedState = createArticle(initialState, {
+      type: actionTypes.REPORTED_ARTICLES,
+      payload,
+    });
+    expect(returnedState).toEqual({ allArticles: [], report: payload });
   });
 });
