@@ -130,4 +130,30 @@ describe('<HomeNavBar/>', () => {
       'No notification yet',
     );
   });
+  it('should test if a notification can be clicked by a user in oerder to mark the m as read', () => {
+    const instance = wrapper.instance();
+    instance.componentWillReceiveProps({
+      NotificationReducer: [
+        { message: 'message', link: 'http://me.u', status: 'Unread', id: 1 },
+      ],
+    });
+    wrapper
+      .find('.user-profile')
+      .simulate('click', { target: { name: 'notification' } });
+    wrapper.find('.notifications').simulate('click', 1);
+    expect(wrapper.state().isNotified).toBeTruthy();
+  });
+
+  it('should test if a notification will be displayed as read when retrieving them from the DB', () => {
+    const instance = wrapper.instance();
+    instance.componentWillReceiveProps({
+      NotificationReducer: [
+        { message: 'message', link: 'http://me.u', status: 'Read', id: 1 },
+      ],
+    });
+    wrapper
+      .find('.user-profile')
+      .simulate('click', { target: { name: 'notification' } });
+    expect(wrapper.state().isNotified).toBeFalsy();
+  });
 });

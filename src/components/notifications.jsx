@@ -55,7 +55,14 @@ class Notifications extends Component {
           <div className="notification-title">Your notifications</div>
           {notificationMsg ||
             allNotifications.map(element => (
-              <div className="one-notification" key={element.id}>
+              <div
+                className={
+                  element.status === 'Read'
+                    ? 'read_notification'
+                    : 'one-notification'
+                }
+                key={element.id}
+              >
                 <img
                   className="notification-img"
                   src={notificationIcon}

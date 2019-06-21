@@ -1,3 +1,6 @@
+/* eslint-disable no-unused-expressions */
+/* eslint-disable no-useless-return */
+/* eslint-disable jsx-a11y/interactive-supports-focus */
 /* eslint-disable react/destructuring-assignment */
 /* eslint-disable eqeqeq */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
@@ -7,9 +10,12 @@ import _ from 'lodash';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import queryString from 'query-string';
+import OutsideClickHandler from 'react-outside-click-handler';
+import Moment from 'react-moment';
 import { getLoggedInUser } from '../helpers/authentication';
 import '../css/Home-styles/home-style.css';
 import logo from '../styles/img/logo.png';
+import axios from '../helpers/axios';
 import notifications from '../img/icons/notifications-bell-button.svg';
 import notificationIcon from '../img/icons/notification.png';
 import search from '../img/icons/search.svg';
@@ -48,7 +54,6 @@ export class HomeNavBar extends Component {
    * @returns {*} username if logged in.
    */
   componentWillMount() {
-    document.addEventListener('mouseDown', this.openToggle, false);
     const url = window.location.search;
     const params = queryString.parse(url);
     if (params.token != null) {
@@ -83,20 +88,18 @@ export class HomeNavBar extends Component {
       } else {
         this.setState({
           allNotifications: NotificationReducer,
-          isNotified: true,
         });
+        const unReadNotification = NotificationReducer.filter(
+          x => x.status === 'Unread',
+        );
+        if (unReadNotification.length) {
+          this.setState({
+            isNotified: true,
+          });
+        }
       }
     }
   }
-
-  // /**
-  //  * @author Clet Mwunguzi
-  //  * @param {*} props
-  //  * @returns {*} latest action
-  //  */
-  // componentWillUnmount() {
-  //   document.removeEventListener('mouseDown', this.openToggle, false);
-  // }
 
   /**
    * @author Clet Mwunguzi
@@ -121,22 +124,16 @@ export class HomeNavBar extends Component {
         profile: true,
       }));
     }
-
-    // }
-    // else{
-    //   console.log('missed');
-    //   this.handleClickedOutside()
-    // }
   };
 
-  // /**
-  //  * @author Clet Mwunguzi
-  //  * @param {*} nextProps \
-  //  * @returns {*} latest action
-  //  */
-  // handleClickedOutside = () =>{
-  //   this.setState({userNotification: false, profile: false });
-  // }
+  /**
+   * @author Clet Mwunguzi
+   * @returns {*}
+   */
+
+  handleClickNotification = async id => {
+    await axios.put(`/api/profiles/notifications/${id}`);
+  };
 
   /**
    * @author Clet Mwunguzi
@@ -161,22 +158,34 @@ export class HomeNavBar extends Component {
           </Link>
           {username ? (
             <div className="user-sm-dashboard">
-              <img
-                className="icons-style user-profile"
-                src={userProfile}
-                alt="profile"
-                onClick={this.openToggle.bind(this)}
-                name="profile"
-                role="button"
-              />
-              <img
-                className="icons-style notification-icon"
-                src={notifications}
-                alt="notification"
-                onClick={this.openToggle.bind(this)}
-                role="button"
-                name="notification"
-              />
+              <OutsideClickHandler
+                onOutsideClick={() => {
+                  popup && this.setState({ popup: false });
+                }}
+              >
+                <img
+                  className="icons-style user-profile"
+                  src={userProfile}
+                  alt="profile"
+                  onClick={this.openToggle.bind(this)}
+                  name="profile"
+                  role="button"
+                />
+              </OutsideClickHandler>
+              <OutsideClickHandler
+                onOutsideClick={() => {
+                  popup && this.setState({ popup: false });
+                }}
+              >
+                <img
+                  className="icons-style notification-icon"
+                  src={notifications}
+                  alt="notification"
+                  onClick={this.openToggle.bind(this)}
+                  role="button"
+                  name="notification"
+                />
+              </OutsideClickHandler>
               <img className="icons-style" src={search} alt="search" />
               {isNotified && <div className="notified"> </div>}
               {popup && (
@@ -190,7 +199,17 @@ export class HomeNavBar extends Component {
                           ? notificationMsg
                           : _.take(allNotifications, 5).map(element => (
                               <React.Fragment key={element.id}>
-                                <div className="notifications">
+                                <div
+                                  className={
+                                    element.status === 'Read'
+                                      ? 'read_notification'
+                                      : 'notifications'
+                                  }
+                                  onClick={() =>
+                                    this.handleClickNotification(element.id)
+                                  }
+                                  role="button"
+                                >
                                   <img
                                     className="notification-icon"
                                     src={notificationIcon}
@@ -204,6 +223,11 @@ export class HomeNavBar extends Component {
                                     ).join('/')}
                                   >
                                     <span>{element.message}</span>
+                                    <div className="notification-time">
+                                      <Moment fromNow>
+                                        {element.createdAt}
+                                      </Moment>
+                                    </div>
                                   </Link>
                                 </div>
                                 <hr className="notification-horizontal-line" />

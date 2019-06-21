@@ -160,13 +160,35 @@ body {
     // .popup-style {
     //   z-index: 100;
     // }
+    .read_notification {
+      padding: 30px;
+      background: #44444429;
 
+      .notification-article-link {
+        text-decoration: none;
+        color: black;
+      }
+      .notification-time {
+        font-size: 11px;
+        color: #0000008c;
+        margin-left: 2.2rem;
+        padding-top: 0.5rem;
+        font-family: sans-serif;
+      }
+    }
     .notifications {
       padding: 30px;
 
       .notification-article-link {
         text-decoration: none;
         color: black;
+      }
+      .notification-time {
+        font-size: 11px;
+        color: #ccc;
+        margin-left: 2.2rem;
+        padding-top: 0.5rem;
+        font-family: sans-serif;
       }
     }
 
