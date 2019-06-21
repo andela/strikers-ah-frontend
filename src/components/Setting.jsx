@@ -7,6 +7,7 @@ import 'react-web-tabs/dist/react-web-tabs.css';
 import { Tab, TabPanel, Tabs, TabList } from 'react-web-tabs';
 import RadioButton from './common/NotificationButton';
 import BookmarkedArticles from './article/bookmarkedArticles';
+import ReadingStatsArticles from './article/readingStatsArticles';
 import Profile from './profile';
 // eslint-disable-next-line import/no-named-as-default
 
@@ -50,6 +51,7 @@ class Settings extends Component {
             <TabList>
               <Tab tabFor="vertical-tab-zero">About</Tab>
               <Tab tabFor="vertical-tab-one">Bookmarks</Tab>
+              <Tab tabFor="vertical-tab-four">Reading Stats</Tab>
               <Tab tabFor="vertical-tab-three">Settings</Tab>
             </TabList>
             <TabPanel tabId="vertical-tab-zero">
@@ -61,6 +63,9 @@ class Settings extends Component {
             </TabPanel>
             <TabPanel tabId="vertical-tab-one">
               <BookmarkedArticles />
+            </TabPanel>
+            <TabPanel tabId="vertical-tab-four">
+              <ReadingStatsArticles username={username} />
             </TabPanel>
             <TabPanel tabId="vertical-tab-three">
               <RadioButton />

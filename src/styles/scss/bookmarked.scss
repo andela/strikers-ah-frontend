@@ -1,15 +1,70 @@
 @import url('https://fonts.googleapis.com/css?family=Mandali&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+
 *,
 *::before,
 *::after {
   box-sizing: border-box;
 }
+
 h1 {
   font-family: 'Mandali', sans-serif;
 }
+
 .bookmarked-article {
   width: 90%;
   margin-left: auto;
   margin-right: auto;
+}
+
+.stats-list {
+  padding-left: 32.5% !important;
+}
+
+.stats-card {
+  float: left;
+  width: auto;
+  /* Set width of cards */
+  display: flex;
+  /* Children use Flexbox */
+  flex-direction: column;
+  /* Rotate Axis */
+  border: 1px solid #9bd4ec;
+  /* Set up Border */
+  border-radius: 4px;
+  /* Slightly Curve edges */
+  overflow: hidden;
+  /* Fixes the corners */
+  margin: 5px;
+  /* Add space between cards */
+}
+
+.card-header {
+  color: #12b0f9;
+  text-align: center;
+  font-size: 12px;
+  font-weight: 600;
+  border-bottom: 1px solid #9bd4ec;
+  background-color: #e3ebef;
+  padding: 5px 10px;
+}
+
+.card-main {
+  display: flex;
+  /* Children use Flexbox */
+  flex-direction: column;
+  /* Rotate Axis to Vertical */
+  justify-content: center;
+  /* Group Children in Center */
+  align-items: center;
+  /* Group Children in Center (on cross axis) */
+  padding: 15px 0;
+  /* Add padding to the top/bottom */
+}
+
+.main-description {
+  color: #000;
+  font-size: 40px;
+  font-weight: bold;
+  text-align: center;
 }
