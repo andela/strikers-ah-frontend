@@ -6,6 +6,17 @@
   width: 55%;
   padding: 20px;
 
+  .read_notification {
+    border-bottom: 1px solid #afaeae;
+    padding: 25px 25px 25px 0px;
+    width: 70%;
+    background: #44444429;
+    .notification-article-link {
+      text-decoration: none;
+      color: black;
+      font-size: 17px;
+    }
+  }
   .one-notification {
     border-bottom: 1px solid #afaeae;
     padding: 25px 25px 25px 0px;

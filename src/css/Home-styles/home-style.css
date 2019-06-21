@@ -150,6 +150,24 @@ body {
   background: rgba(123, 179, 253, 0.02);
 }
 
+.home-navigation .popup-style .read_notification {
+  padding: 30px;
+  background: #44444429;
+}
+
+.home-navigation .popup-style .read_notification .notification-article-link {
+  text-decoration: none;
+  color: black;
+}
+
+.home-navigation .popup-style .read_notification .notification-time {
+  font-size: 11px;
+  color: #0000008c;
+  margin-left: 2.2rem;
+  padding-top: 0.5rem;
+  font-family: sans-serif;
+}
+
 .home-navigation .popup-style .notifications {
   padding: 30px;
 }
@@ -157,6 +175,14 @@ body {
 .home-navigation .popup-style .notifications .notification-article-link {
   text-decoration: none;
   color: black;
+}
+
+.home-navigation .popup-style .notifications .notification-time {
+  font-size: 11px;
+  color: #ccc;
+  margin-left: 2.2rem;
+  padding-top: 0.5rem;
+  font-family: sans-serif;
 }
 
 .home-navigation .popup-style .arrow-up-profile {
