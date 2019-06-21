@@ -49,7 +49,10 @@ describe('TEST READ ARTICLE WITH COMMENTS', () => {
     instance.toggleEditHistory(1, true);
   });
   it('should be able to add comments to the list when created', () => {
-    instance.componentWillReceiveProps({ comment: 'this comment' });
+    instance.componentWillReceiveProps({
+      comment: 'this comment',
+      article: { bookmarked: true },
+    });
   });
   it('should be able to add comments to the list when created1', () => {
     props.comments = [

@@ -161,4 +161,13 @@ describe('Article reducers', () => {
 
     expect(newState.article).toEqual(payload);
   });
+  test('should handle BOOKMARK', () => {
+    const payload = 'Bookmarked';
+    const newState = createArticle(initialState, {
+      type: actionTypes.BOOKMARK,
+      payload,
+    });
+
+    expect(newState).toEqual({ ...newState, bookmarked: payload });
+  });
 });

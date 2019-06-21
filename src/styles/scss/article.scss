@@ -591,9 +591,20 @@ $brand-colors: (
   cursor: pointer;
 }
 
-// #tagInputchange {
-//     width: 178px;
-//     height: 36px;
-//     margin-bottom: 5px;
-//     margin-right: 5px;
-// }
+button.bookmarkIcon {
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+button.bookmarkIcon .active {
+  path {
+    fill: #00aef9;
+  }
+}
+
+.bookmarkIcon:hover {
+  path {
+    fill: #00aef9;
+  }
+}

@@ -61,6 +61,11 @@ export class ReadArticle extends Component {
     if (nextProps.comment) {
       this.props.comments.unshift(nextProps.comment);
     }
+
+    if (nextProps.article.bookmarked) {
+      this.props.article.article.bookmark = !this.props.article.article
+        .bookmark;
+    }
   }
 
   toggleEditCommentForm = (commentId, cancel) => {
