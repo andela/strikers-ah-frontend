@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`test for \`UpdateMessageDisplay\` component should render \`UpdateMessageDisplay\` 1`] = `ShallowWrapper {}`;

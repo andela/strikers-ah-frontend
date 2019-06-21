@@ -1,8 +1,12 @@
 /* eslint-disable react/jsx-filename-extension */
 import React from 'react';
-import { shallow, mount } from 'enzyme';
+import { shallow } from 'enzyme';
 import '../../../enzymeConfig';
-import { EditorBar, Editor } from '../../../components/article/ArticleForm';
+import {
+  EditorBar,
+  Editor,
+  mapStateToprops,
+} from '../../../components/article/ArticleForm';
 import Body from '../../../components/article/Body';
 import {
   CreateArticle,
@@ -14,7 +18,6 @@ import { AllArticles } from '../../../components/article/AllArticlesComponents';
 import initialState from '../../../redux/reducers/ArticleInitialState';
 import PrivateRoute from '../../../PrivateRoute';
 import { Author } from '../../../components/article/Author';
-import { Alert } from '../../../components/article/Alert';
 
 const submitData = jest.fn();
 const createArticle = jest.fn();
@@ -28,9 +31,14 @@ const globalprops = {
   submitData,
   createArticle,
   alert,
+  articleCategories: {
+    articleCategory: [{ id: 1, name: 'culture' }],
+  },
+  getArticleCategory: jest.fn(),
 };
 const allArticles = ['jkjkj'];
 const AllArticlesProps = {
+  articleCategory: [{ id: 1, name: 'culture' }],
   componentDidMount: jest.fn(),
   getAllArticles: jest.fn(),
   handleOpen: jest.fn(),
@@ -47,9 +55,6 @@ const proviteprops = {
   jwtDecode: jest.fn(),
 };
 
-const alertProps = {
-  alert: [],
-};
 const event = {
   target: { value: 'title', name: 'input0' },
   state: {
@@ -95,10 +100,6 @@ describe('snapshot testing', () => {
       article: {},
     };
     const Wrapper = shallow(<Author {...props} />);
-    expect(Wrapper).toMatchSnapshot();
-  });
-  test('should render the alert', () => {
-    const Wrapper = mount(<Alert {...alertProps} />);
     expect(Wrapper).toMatchSnapshot();
   });
 });
@@ -187,5 +188,14 @@ describe('Test the article component', () => {
       .simulate('change', event);
     expect(spy).toHaveBeenCalled();
     spy.mockClear();
+  });
+  test('should test `mapstatetoprops`', () => {
+    const mockedState = {
+      Article: {
+        article: {},
+      },
+    };
+    const state = mapStateToprops(mockedState);
+    expect(state).toBeTruthy();
   });
 });

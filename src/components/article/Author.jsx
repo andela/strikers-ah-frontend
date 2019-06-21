@@ -2,6 +2,7 @@
 /* eslint-disable react/destructuring-assignment */
 import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import FollowButton from '../common/FollowButton';
 // import BookmarkButton from '../common/BookmarkButton';
 import getReadingTime from '../../helpers/getReadingTime';
@@ -17,7 +18,8 @@ export const Author = props => {
     <Fragment>
       <div className="author-info center-text">
         <span className="author">
-          @{article.username} | <FollowButton className="onReadArticle" />
+          <Link to={`/${article.username}`}>@{article.username}</Link> |{' '}
+          <FollowButton className="onReadArticle" />
         </span>{' '}
         |
         <span className="date">

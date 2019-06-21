@@ -1,5 +1,6 @@
 /* eslint-disable react/destructuring-assignment */
 import React, { Component, Fragment } from 'react';
+import { connect } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faFacebook,
@@ -21,7 +22,7 @@ import '../../styles/scss/article.scss';
  * @description this class create the share buttons
  * @returns {*} buttons
  */
-class SocialMedia extends Component {
+export class SocialMedia extends Component {
   /**
    *
    * @param {*} props
@@ -47,6 +48,7 @@ class SocialMedia extends Component {
         <div className="socialMedia">
           <FacebookShareButton
             url={this.onSubmit()}
+            quote={this.props.article.title}
             className="facebookButton is-outlined is-rounded facebook"
           >
             <span className="faIcon">
@@ -96,4 +98,8 @@ class SocialMedia extends Component {
   }
 }
 
-export default SocialMedia;
+export const mapStateToprops = state => ({
+  article: { ...state.Article.article },
+});
+
+export default connect(mapStateToprops)(SocialMedia);

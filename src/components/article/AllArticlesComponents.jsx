@@ -1,3 +1,4 @@
+/* eslint-disable import/no-named-as-default */
 /* eslint-disable class-methods-use-this */
 /* eslint-disable no-return-assign */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
@@ -11,7 +12,7 @@ import sweeetAlert from 'sweetalert';
 import decodeToken from 'jwt-decode';
 import reactParser from 'html-react-parser';
 import { connect } from 'react-redux';
-import Header from './Header';
+import Layout from '../common/pageLayout';
 import '../../styles/css/article.css';
 import samplePic from '../../styles/img/headBook.jpeg';
 import {
@@ -24,7 +25,6 @@ import MessageDisplay from './MessageDisplay';
 
 dotenv.config();
 
-const { REACT_APP_FRONTENT } = process.env;
 /**
  *@author: Innocent Nkunzi
  * @returns {*} Articleform
@@ -105,60 +105,64 @@ export class AllArticles extends Component {
     if (allArticles !== undefined && allArticles.length !== 0) {
       const arr = allArticles;
       return (
-        <div>
-          <Header />
-          <div className="container">
-            <div className="allArticlecontents">
-              {
-                (allArticle = arr.map(item => (
-                  <Fragment key={item.id}>
-                    <div className="card">
-                      <img
-                        className="image"
-                        alt="articleImage"
-                        src={this.handleImage(item)}
-                      />
-                      <div className="contentDescription">
-                        <a href={`/article/${item.slug}`}>
-                          <div className="articleCardHeader">
-                            <p>{reactParser(item.title)}</p>
-                          </div>
-                          <div className="articleDescription">
-                            <p>{reactParser(item.description)}</p>
-                          </div>
-                        </a>
-                        <div className="buttons">
-                          {decodedToken !== undefined &&
-                          decodedToken.id === item.authorid ? (
-                            <div>
-                              <button
-                                type="submit"
-                                className="redButton"
-                                onClick={() => this.handleDelete(item.slug)}
-                                id="submit-data"
-                                data-test="submit-data"
-                              >
-                                Delete
-                              </button>
-
-                              <button type="submit" className="lightBlueButton">
-                                <a href={`/articlesedit/${item.slug}/edit`}>
-                                  Edit
-                                </a>
-                              </button>
+        <Layout>
+          <div>
+            <div className="container">
+              <div className="allArticlecontents">
+                {
+                  (allArticle = arr.map(item => (
+                    <Fragment key={item.id}>
+                      <div className="card">
+                        <img
+                          className="image"
+                          alt="articleImage"
+                          src={this.handleImage(item)}
+                        />
+                        <div className="contentDescription">
+                          <a href={`/article/${item.slug}`}>
+                            <div className="articleCardHeader">
+                              <p>{reactParser(item.title)}</p>
                             </div>
-                          ) : (
-                            ''
-                          )}
+                            <div className="articleDescription">
+                              <p>{reactParser(item.description)}</p>
+                            </div>
+                          </a>
+                          <div className="buttons">
+                            {decodedToken !== undefined &&
+                            decodedToken.id === item.authorid ? (
+                              <div>
+                                <button
+                                  type="submit"
+                                  className="redButton"
+                                  onClick={() => this.handleDelete(item.slug)}
+                                  id="submit-data"
+                                  data-test="submit-data"
+                                >
+                                  Delete
+                                </button>
+
+                                <button
+                                  type="submit"
+                                  className="lightBlueButton"
+                                >
+                                  <a href={`/articlesedit/${item.slug}/edit`}>
+                                    Edit
+                                  </a>
+                                </button>
+                              </div>
+                            ) : (
+                              ''
+                            )}
+                          </div>
                         </div>
                       </div>
-                    </div>
-                  </Fragment>
-                )))
-              }
+                    </Fragment>
+                  )))
+                }
+              </div>
             </div>
           </div>
-        </div>
+        </Layout>
       );
     }
 
@@ -169,7 +173,7 @@ export class AllArticles extends Component {
     );
   }
 }
-const mapStateToprops = state => ({
+export const mapStateToprops = state => ({
   article: state.Article,
 });
 

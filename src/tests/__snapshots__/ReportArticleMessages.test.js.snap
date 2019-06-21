@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should test report form should render report form 1`] = `ShallowWrapper {}`;

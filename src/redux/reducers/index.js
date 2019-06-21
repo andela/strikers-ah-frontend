@@ -7,7 +7,6 @@ import valueChange from './loginForm';
 import userReducer from './userReducer';
 import profileFormReducer from './profileFormReducer';
 import userArticles from './userArticles';
-import alertReducer from './alertReducer';
 import { following } from './Following';
 import commentReducer from './comment';
 import { homePageReducer } from './homeReducer';
@@ -18,6 +17,8 @@ import rateArticle from './rateArticle';
 import readingStats from './readingStatsArticles';
 import articleByCategory from './articleByCategory';
 import searchReducer from './searchReducer';
+import getCategory from './reportReducer';
+import articleCategory from './articleCategory';
 
 const rootReducer = combineReducers({
   Article,
@@ -28,7 +29,6 @@ const rootReducer = combineReducers({
   userProfile: userReducer,
   profileForm: profileFormReducer,
   userArticles,
-  alertReducer,
   following,
   comments: commentReducer,
   homePageReducer,
@@ -39,6 +39,8 @@ const rootReducer = combineReducers({
   readingStats,
   articleByCategory,
   searchResult: searchReducer,
+  getCategory,
+  articleCategory,
 });
 
 export default rootReducer;

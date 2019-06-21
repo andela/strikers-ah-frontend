@@ -1,3 +1,4 @@
+/* eslint-disable import/no-named-as-default */
 /* eslint-disable no-plusplus */
 /* eslint-disable prefer-destructuring */
 /* eslint-disable react/no-access-state-in-setstate */
@@ -16,9 +17,9 @@ import 'react-quill/dist/quill.snow.css';
 import 'quill/dist/quill.snow.css';
 import 'font-awesome/css/font-awesome.min.css';
 import '../../styles/css/article.css';
-import Alerts from './Alert';
 import { createArticle } from '../../redux/actions/articleAction';
 import MessageDisplay from './MessageDisplay';
+import getArticleCategory from '../../redux/actions/articleCategory';
 /**
  * @description styling the bold button
  */
@@ -26,7 +27,6 @@ import MessageDisplay from './MessageDisplay';
 export const EditorBar = () => {
   return (
     <div className="content">
-      <Alerts />
       <section className="editor-tools">
         <div className="container">
           <div id="align-bartool">
@@ -130,6 +130,7 @@ export class Editor extends React.Component {
     this.state = {
       title: '',
       body: '',
+      category: '',
       image: null,
       taglist: [],
       tagInputs: [{ name: 'input0', value: '' }],
@@ -137,13 +138,18 @@ export class Editor extends React.Component {
     this.BodyContent = React.createRef();
   }
 
+  componentDidMount = () => {
+    this.props.getArticleCategory();
+  };
+
   onSubmit = () => {
-    const { title, body, image, taglist } = this.state;
+    const { title, body, image, taglist, category } = this.state;
     const data = {
       title,
       body,
       taglist,
       image,
+      category,
     };
 
     this.props.createArticle(data);
@@ -193,6 +199,11 @@ export class Editor extends React.Component {
   render() {
     const { tagInputs } = this.state;
     let id = 1;
+    const { articleCategory } = this.props.articleCategories;
+    let articleCategories;
+    if (articleCategory !== null && articleCategory !== undefined) {
+      articleCategories = articleCategory;
+    }
     return (
       <div className="content">
         <MessageDisplay />
@@ -227,7 +238,7 @@ export class Editor extends React.Component {
                   id="body"
                   value={this.state.body || ''}
                   onChange={this.handleQuillChange}
-                  placeholder={this.props.placeholder}
+                  placeholder="body..."
                   modules={Editor.modules}
                   formats={Editor.formats}
                   name="body"
@@ -265,6 +276,22 @@ export class Editor extends React.Component {
                   />
                 ))}
               </div>
+              <div className="">
+                <form>
+                  <select
+                    name="category"
+                    className="articleCategory"
+                    onChange={this.handleChange}
+                  >
+                    <option value="0">select category</option>
+                    {articleCategories.map(cate => (
+                      <option key={id++} value={cate.id}>
+                        {cate.name}
+                      </option>
+                    ))}
+                  </select>
+                </form>
+              </div>
             </React.Fragment>
           </div>
         </section>
@@ -273,11 +300,12 @@ export class Editor extends React.Component {
   }
 }
 
-const mapStateToprops = state => ({
+export const mapStateToprops = state => ({
   article: state.Article,
+  articleCategories: state.articleCategory,
 });
 
 export default connect(
   mapStateToprops,
-  { createArticle, alert },
+  { createArticle, alert, getArticleCategory },
 )(Editor);

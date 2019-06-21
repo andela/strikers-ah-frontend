@@ -1,8 +1,11 @@
 import React from 'react';
-import { mount } from 'enzyme';
+import { shallow } from 'enzyme';
 import '../../enzymeConfig';
 
-import { AllArticles } from '../../components/article/AllArticlesComponents';
+import {
+  AllArticles,
+  mapStateToprops,
+} from '../../components/article/AllArticlesComponents';
 
 const token =
   'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OCwiZmlyc3RuYW1lIjpudWxsLCJsYXN0bmFtZSI6bnVsbCwidXNlcm5hbWUiOiJmcmFuayIsImVtYWlsIjoiaGFyZnJhazNAZ21haWwuY29tIiwiaW1hZ2UiOm51bGwsImlhdCI6MTU1OTU2NjY4NCwiZXhwIjoxNTU5NjUzMDg0fQ.aW1TnCYURFsV38nRwrPMuOHJhr1yLtu1BdDhqfi1UkY';
@@ -40,7 +43,7 @@ const props = {
   willDelete: jest.fn(),
 };
 
-const wrapper = mount(<AllArticles {...props} />);
+const wrapper = shallow(<AllArticles {...props} />);
 
 describe('should test the  `AllArticles`', () => {
   test('should render the  `AllArticles` component', () => {
@@ -49,10 +52,18 @@ describe('should test the  `AllArticles`', () => {
   test('should test the  `handleDelete` component', () => {
     const spy = jest.spyOn(wrapper.instance(), 'handleDelete');
     wrapper.instance().forceUpdate();
-    // const formInput = wrapper.find('#submit-data');
     const submitBtn = wrapper.find('[data-test="submit-data"]');
     submitBtn.simulate('click');
     expect(spy).toHaveBeenCalled();
     spy.mockClear();
+  });
+  test('should test `mapstatetoprops`', () => {
+    const mockedState = {
+      Article: {
+        article: {},
+      },
+    };
+    const state = mapStateToprops(mockedState);
+    expect(state).toBeTruthy();
   });
 });

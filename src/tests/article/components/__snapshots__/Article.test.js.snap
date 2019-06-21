@@ -8,8 +8,6 @@ exports[`snapshot testing should render the CreateArticle 1`] = `ShallowWrapper 
 
 exports[`snapshot testing should render the NoMatch when a route don't exist 1`] = `ShallowWrapper {}`;
 
-exports[`snapshot testing should render the alert 1`] = `ReactWrapper {}`;
-
 exports[`snapshot testing should render the article form 1`] = `ShallowWrapper {}`;
 
 exports[`snapshot testing should render the author 1`] = `ShallowWrapper {}`;

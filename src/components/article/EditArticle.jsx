@@ -1,3 +1,4 @@
+/* eslint-disable import/no-named-as-default */
 /* eslint-disable no-plusplus */
 /* eslint-disable no-lone-blocks */
 /* eslint-disable no-unused-expressions */
@@ -26,12 +27,10 @@ import {
   getOneArticle,
   updateArticle,
 } from '../../redux/actions/articleAction';
-import alert from '../../redux/actions/alert';
 import Header from './Header';
 import UpdateMessageDisplay from './UpdateMessageDisplay';
-
+import Layout from '../common/pageLayout';
 import '../../styles/css/article.css';
-import Alerts from './Alert';
 
 /**
  * @description styling the bold button
@@ -40,7 +39,6 @@ import Alerts from './Alert';
 export const EditorBar = () => {
   return (
     <div className="content">
-      <Alerts />
       <section className="editor-tools">
         <div className="container">
           <div id="align-bartool">
@@ -241,90 +239,92 @@ export class EditArticle extends React.Component {
 
     const { tagInputs } = this.state;
     return (
-      <div className="content">
-        <EditorBar />
-        <UpdateMessageDisplay />
-        <section className="text-area">
-          <div className="topImage">
-            <label htmlFor="file-upload" className="file-upload">
-              <FontAwesomeIcon icon={faImage} className="imageIcone" />
-              <input
-                type="file"
-                id="sigleImage"
-                onChange={this.handleImage}
-                name="image"
-              />
-            </label>
-          </div>
-          <div className="container">
-            <form className="form">
-              <div>
+      <Layout>
+        <div className="content">
+          <EditorBar />
+          <UpdateMessageDisplay />
+          <section className="text-area">
+            <div className="topImage">
+              <label htmlFor="file-upload" className="file-upload">
+                <FontAwesomeIcon icon={faImage} className="imageIcone" />
                 <input
-                  type="text"
-                  name="title"
-                  value={this.state.title || ''}
-                  onChange={this.handleChange}
-                  placeholder="Title goes here"
-                  id="title"
-                  maxLength="80"
+                  type="file"
+                  id="sigleImage"
+                  onChange={this.handleImage}
+                  name="image"
                 />
-              </div>
-              <div>
-                <ReactQuill
-                  id="body"
-                  value={this.state.body || ''}
-                  onChange={this.handleQuillChange}
-                  placeholder={this.props.placeholder}
-                  modules={EditArticle.modules}
-                  formats={EditArticle.formats}
-                  name="body"
-                />
-              </div>
-              <button
-                type="button"
-                onClick={() => this.onSubmit(article.slug)}
-                id="publish"
-              >
-                Publish
-              </button>
-            </form>
-            <React.Fragment>
-              <div id="addTag">
-                <button
-                  type="button"
-                  id="makeInput"
-                  onClick={this.makeInput}
-                  className="tags"
-                >
-                  AddTag
-                </button>
-              </div>
-              <div id="tags">
-                {tagInputs.map(input => (
+              </label>
+            </div>
+            <div className="container">
+              <form className="form">
+                <div>
                   <input
                     type="text"
-                    id="tagInputchange"
-                    name={input.name}
-                    placeholder="#"
-                    onChange={this.tagInputChange}
-                    value={input.value}
-                    key={id++}
+                    name="title"
+                    value={this.state.title || ''}
+                    onChange={this.handleChange}
+                    placeholder="Title goes here"
+                    id="title"
+                    maxLength="80"
                   />
-                ))}
-              </div>
-            </React.Fragment>
-          </div>
-        </section>
-      </div>
+                </div>
+                <div>
+                  <ReactQuill
+                    id="body"
+                    value={this.state.body || ''}
+                    onChange={this.handleQuillChange}
+                    placeholder={this.props.placeholder}
+                    modules={EditArticle.modules}
+                    formats={EditArticle.formats}
+                    name="body"
+                  />
+                </div>
+                <button
+                  type="button"
+                  onClick={() => this.onSubmit(article.slug)}
+                  id="publish"
+                >
+                  Publish
+                </button>
+              </form>
+              <React.Fragment>
+                <div id="addTag">
+                  <button
+                    type="button"
+                    id="makeInput"
+                    onClick={this.makeInput}
+                    className="tags"
+                  >
+                    AddTag
+                  </button>
+                </div>
+                <div id="tags">
+                  {tagInputs.map(input => (
+                    <input
+                      type="text"
+                      id="tagInputchange"
+                      name={input.name}
+                      placeholder="#"
+                      onChange={this.tagInputChange}
+                      value={input.value}
+                      key={id++}
+                    />
+                  ))}
+                </div>
+              </React.Fragment>
+            </div>
+          </section>
+        </div>
+      </Layout>
     );
   }
 }
 
-const mapStateToprops = state => ({
+export const mapStateToprops = state => ({
   article: { ...state.Article.article },
 });
 
 export default connect(
   mapStateToprops,
-  { alert, getOneArticle, updateArticle },
+  { getOneArticle, updateArticle },
 )(EditArticle);
