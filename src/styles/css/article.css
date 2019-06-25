@@ -587,11 +587,6 @@ div.alert {
 }
 
 .tagList {
-  padding: 2px;
-  margin: 0.5rem 0.25rem;
-  border-radius: 2px;
-  background-color: #4b4b4b;
-  color: #fff;
   display: inline-block;
   padding: 5px;
   cursor: pointer;

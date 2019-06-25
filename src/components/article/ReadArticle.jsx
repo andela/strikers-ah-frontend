@@ -201,14 +201,6 @@ export class ReadArticle extends Component {
                 <h1>{singleArticle.title && reactHtml(singleArticle.title)}</h1>
                 <Author />
                 <SocialMedia />
-                {singleArticle.taglist !== undefined &&
-                singleArticle.taglist.length !== 0
-                  ? singleArticle.taglist.map(tag => (
-                      <div className="tagList" key={id}>
-                        #{tag}
-                      </div>
-                    ))
-                  : ''}
               </div>
               <div className="contentBody">
                 {singleArticle.image !== 'null' &&
@@ -221,6 +213,16 @@ export class ReadArticle extends Component {
                 )}
                 <p id="articleBody" className="articleBody">
                   {singleArticle.body && reactHtml(singleArticle.body)}
+                  <br />
+                  {singleArticle.taglist !== undefined &&
+                  singleArticle.taglist.length !== 0
+                    ? singleArticle.taglist.map(tag => (
+                        <span className="tagList" key={id}>
+                          #{tag}
+                        </span>
+                      ))
+                    : ''}
+                  <br />
                 </p>
                 <hr />
                 <div className="rating">
