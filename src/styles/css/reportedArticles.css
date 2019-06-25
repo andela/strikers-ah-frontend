@@ -1,0 +1,46 @@
+.report-line {
+  margin: auto;
+  width: 7%;
+  border-color: #00aef9;
+  margin-bottom: 2%; }
+
+.report-header {
+  margin-top: 1%; }
+
+.reported-layout {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  margin: auto;
+  width: 80%;
+  padding: 20px 0 20px 0; }
+  .reported-layout .reported-article {
+    background: white;
+    border-radius: 10px;
+    min-height: 230px;
+    margin-right: 5%;
+    width: 320px;
+    margin-bottom: 4%;
+    padding-bottom: 20px;
+    box-shadow: 0px 10px 8px 0px #888888; }
+    .reported-layout .reported-article .article-link {
+      text-decoration: none;
+      color: black; }
+  .reported-layout .report-img {
+    width: 320px;
+    box-shadow: 0px 10px 8px 0px #88888800;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px; }
+  .reported-layout .report-title {
+    margin-top: 15px;
+    text-align: center;
+    font-weight: bold; }
+  .reported-layout .report-issue {
+    margin-top: 10px;
+    text-align: center;
+    color: #8a8585;
+    font-weight: 500; }
+  .reported-layout .report-description {
+    margin-top: 10px;
+    text-align: center; }

@@ -22,12 +22,14 @@ import HomeNavBar from './components/homeNavBar';
 import NotFound from './components/notfound';
 import Notifications from './components/notifications';
 import Category from './components/Category';
+import ReportedArticles from './components/reportedArticles';
 
 const routes = () => (
   <Switch>
     <Route path="/login" component={Login} />
     <Route exact path="/articles" component={AllArticles} />
     <PrivateRoute exact path="/article/create" component={CreateArticle} />
+    <Route path="/articles/reported" component={ReportedArticles} />
     <Route path="/forgotpassword" component={ForgotPassword} />
     <Route path="/resetpassword/:token" component={ResetPassword} />
     <Route path="/signup" component={Signup} />

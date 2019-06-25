@@ -10,6 +10,7 @@ import {
   DELETE_ARTICLE_ERROR,
   UPDATE_ARTICLE,
   UPDATE_ARTICLE_ERROR,
+  REPORTED_ARTICLES,
 } from '../actionTypes/articleType';
 
 export const createArticle = data => async dispatch => {
@@ -115,6 +116,23 @@ export const updateArticle = (data, slug) => async dispatch => {
       dispatch({
         type: UPDATE_ARTICLE_ERROR,
         payload: error.response.data,
+      });
+    }
+  }
+};
+
+export const getReportedArticles = () => async dispatch => {
+  try {
+    const res = await axios.get('/api/articles/reports');
+    dispatch({
+      type: REPORTED_ARTICLES,
+      payload: res.data,
+    });
+  } catch (error) {
+    if (error.response) {
+      dispatch({
+        type: GET_ARTICLES_ERRORS,
+        payload: { message: error.response.data },
       });
     }
   }

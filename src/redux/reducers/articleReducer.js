@@ -10,10 +10,12 @@ import {
   UPDATE_ARTICLE,
   UPDATE_ARTICLE_ERROR,
   BOOKMARK,
+  REPORTED_ARTICLES,
 } from '../actionTypes/articleType';
 
 const initialState = {
   allArticles: [],
+  report: '',
 };
 
 /**
@@ -89,6 +91,11 @@ export default (state = initialState, { type, payload }) => {
       return {
         ...state,
         bookmarked: payload,
+      }
+    case REPORTED_ARTICLES:
+      return {
+        ...state,
+        report: payload,
       };
     default:
       return state;

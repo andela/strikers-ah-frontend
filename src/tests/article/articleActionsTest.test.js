@@ -8,6 +8,7 @@ import {
   getOneArticle,
   deleteArticle,
   updateArticle,
+  getReportedArticles,
 } from '../../redux/actions/articleAction';
 // import * as actions from '../../redux/actionTypes/articleType';
 
@@ -234,6 +235,54 @@ describe('action tests', () => {
     });
     return store.dispatch(updateArticle(slug)).then(() => {
       expect(store.getActions().length).toBe(1);
+    });
+  });
+
+  test('should test if reported articles are dispatched', () => {
+    const store = mockStore({});
+
+    const expectedState = {
+      data: [
+        {
+          id: 2,
+          article: {
+            title: 'Hello world',
+            slug: 'Hello-World-345ert',
+          },
+          category: 'Copywrite',
+          description: 'hey there',
+        },
+      ],
+    };
+
+    moxios.wait(() => {
+      const request = moxios.requests.mostRecent();
+      request.respondWith({
+        status: 200,
+        response: expectedState,
+      });
+    });
+    return store.dispatch(getReportedArticles()).then(() => {
+      expect(store.getActions()[0].payload).toEqual(expectedState);
+    });
+  });
+
+  test('should test if reported articles dispatches an error', () => {
+    const store = mockStore({});
+
+    const expectedState = {
+      response: { data: 'we had an issue connecting to the internet' },
+    };
+
+    moxios.wait(() => {
+      const request = moxios.requests.mostRecent();
+      request.respondWith({
+        status: 400,
+        response: expectedState,
+      });
+    });
+    return store.dispatch(getReportedArticles()).then(() => {
+      expect(store.getActions()[0].payload).toEqual({ message: expectedState });
     });
   });
 });

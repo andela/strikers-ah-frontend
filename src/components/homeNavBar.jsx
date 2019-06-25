@@ -149,13 +149,13 @@ export class HomeNavBar extends Component {
       allNotifications,
       isNotified,
     } = this.state;
-    const { username } = getLoggedInUser();
+    const { username, role } = getLoggedInUser();
     return (
       <div className="home-navigation">
         <div className="nav-bar">
-          <Link to="/">
+          <a href="/">
             <img className="logo-style" src={logo} alt="Authors Haven logo" />
-          </Link>
+          </a>
           {username ? (
             <div className="user-sm-dashboard">
               <img
@@ -254,6 +254,14 @@ export class HomeNavBar extends Component {
                         >
                           Create Article
                         </Link>
+                        {role === 'Admin' && (
+                        <Link
+                          className="profile-style user-menu"
+                          to="/articles/reported"
+                        >
+                          Reported Articles
+                        </Link>
+                      )}
                         <Link className="profile-style user-menu" to="/logout">
                           Logout
                         </Link>
