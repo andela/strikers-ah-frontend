@@ -30,14 +30,14 @@ export class HomeNavBar extends Component {
   state = {
     categories: [
       { name: 'HOME', reference: '/' },
-      { name: 'SPORT', reference: '#' },
-      { name: 'CULTURE', reference: '#' },
-      { name: 'ENTERTAINMENT', reference: '#' },
-      { name: 'ECONOMICS', reference: '#' },
-      { name: 'TECH', reference: '#' },
-      { name: 'HEALTH', reference: '#' },
-      { name: 'POLITICS', reference: '#' },
-      { name: 'BUSINESS', reference: '#' },
+      { name: 'SPORT', reference: '/topic/Sport' },
+      { name: 'CULTURE', reference: '/topic/Culture' },
+      { name: 'ENTERTAINMENT', reference: '/topic/Entertainment' },
+      { name: 'ECONOMICS', reference: '/topic/Economics' },
+      { name: 'TECH', reference: '/topic/Tech' },
+      { name: 'HEALTH', reference: '/topic/Health' },
+      { name: 'POLITICS', reference: '/topic/Politics' },
+      { name: 'BUSINESS', reference: '/topic/Business' },
     ],
     popup: false,
     profile: false,
@@ -276,9 +276,9 @@ export class HomeNavBar extends Component {
         </div>
         <ul className="nav-categories">
           {categories.map(x => (
-            <Link to={x.reference} key={categories.indexOf(x)}>
+            <a href={x.reference} key={categories.indexOf(x)}>
               <li>{x.name}</li>
-            </Link>
+            </a>
           ))}
         </ul>
       </div>

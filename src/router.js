@@ -21,6 +21,7 @@ import Logout from './components/logout';
 import HomeNavBar from './components/homeNavBar';
 import NotFound from './components/notfound';
 import Notifications from './components/notifications';
+import Category from './components/Category';
 
 const routes = () => (
   <Switch>
@@ -35,6 +36,7 @@ const routes = () => (
     <Route path="/notifications" component={Notifications} />
     <Route path="/" exact component={Index} />
     <PrivateRoute exact path="/article/:slug" component={getOneArticle} />
+    <Route path="/topic/:category" component={Category} />
     <PrivateRoute
       exact
       path="/articlesedit/:slug/edit"

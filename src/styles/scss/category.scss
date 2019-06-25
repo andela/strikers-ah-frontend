@@ -1,0 +1,148 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+$color: (
+  primary: #f7f7f7,
+  accent: #ffffff,
+  bord: #aaaaaa,
+  card: #fbfeff,
+  darker: #000,
+  AppColor: #00aef9,
+  twitter: #00acee,
+  description: rgb(76, 80, 85),
+  google: red,
+);
+
+$max-width: 100%;
+
+@function color($name) {
+  @return map-get($color, $name);
+}
+
+.container {
+  width: 78%;
+  .topArticle {
+    display: inline-block;
+    width: 69%;
+    .topArticleImage {
+      width: 82%;
+      max-height: 20em;
+      overflow: hidden;
+    }
+    .titleDiv {
+      width: 35%;
+      display: inline-block;
+      position: absolute;
+      padding: 0 2em;
+    }
+    .title {
+      font-size: 1.4em;
+      font-weight: bold;
+      color: color(darker);
+      text-transform: capitalize;
+    }
+    .owner {
+      padding: 2em 0.4em;
+      text-transform: capitalize;
+      color: color(bord);
+    }
+    .description {
+      padding: 1em 0.4em;
+      color: color(description);
+      font-size: larger;
+    }
+  }
+  .popular {
+    width: 24.2%;
+    position: absolute;
+    display: inline-flex;
+  }
+  .articles {
+    margin: 2em 0;
+    max-width: 69%;
+    .categoryTitle {
+      text-transform: capitalize;
+    }
+  }
+
+  .cardContainer {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(32%, 1fr));
+    grid-auto-rows: minmax(7.99%, auto);
+    grid-gap: 1.9em;
+    #cardLink {
+      all: unset;
+      cursor: pointer;
+    }
+    .articleCard {
+      max-width: 100%;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(32%, 1fr));
+      grid-auto-rows: minmax(7.99%, auto);
+      grid-gap: 1.9em;
+      margin-bottom: 3em;
+      overflow: hidden;
+      margin-top: 1em;
+
+      .cardTitle {
+        width: 90%;
+        display: inline-block;
+        text-align: justify;
+        margin-right: 1em;
+        .articleTitle {
+          font-size: 15px;
+          font-weight: bold;
+          margin-bottom: 1em;
+        }
+        .articleDescription {
+          font-size: 1em;
+          margin-bottom: 1em;
+        }
+      }
+      .likeAndBookMarkDiv {
+        display: inline-block;
+        .bookmark {
+          border: none;
+          margin-left: 2em;
+          color: color(AppColor);
+        }
+        #views {
+          color: color(AppColor);
+        }
+      }
+      .articleImage {
+        position: absolute;
+        width: 18.7%;
+        height: 10.4em;
+        border-radius: 0.2em;
+      }
+    }
+  }
+  .center {
+    text-align: center;
+    margin: 5% auto;
+  }
+
+  .pagination {
+    display: inline-block;
+    margin-bottom: 3em;
+  }
+
+  .pagination a {
+    color: black;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+    border: 1px solid #ddd;
+    margin: 0 4px;
+  }
+
+  .pagination a.active {
+    background-color: #4caf50;
+    color: white;
+    border: 1px solid #4caf50;
+  }
+
+  .pagination a:hover:not(.active) {
+    background-color: #ddd;
+  }
+}
