@@ -1,10 +1,17 @@
 /* eslint-disable import/no-named-as-default */
 /* eslint-disable react/jsx-filename-extension */
 /* eslint-disable no-undef */
+import rewire from 'rewire';
 import '../enzymeConfig';
 import SlideShow from '../components/common/slideshow';
 import { getConnectedComponent } from './profile/test-helpers';
 
+const rewired = rewire('../helpers/autoSlider');
+const click = jest.fn();
+jest.useFakeTimers();
+document.getElementById = jest.fn().mockImplementationOnce(() => ({
+  click,
+}));
 const props = {
   main: jest.fn(),
   user: ['ui'],
@@ -71,5 +78,14 @@ describe('<SlideShow/>', () => {
   it('Should render slideshow without crashing', () => {
     const wrapper = getConnectedComponent(SlideShow, {}, props);
     expect(wrapper).toMatchSnapshot();
+  });
+  it('should expect call next slide', () => {
+    jest.advanceTimersByTime(4000);
+    expect(click).toBeCalled();
+  });
+
+  it("should test if number return to 1 when it' above 5", () => {
+    rewired.__set__({ nbr: 6 });
+    expect(click).toHaveBeenCalled();
   });
 });

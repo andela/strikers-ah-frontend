@@ -6,6 +6,7 @@ import _ from 'lodash';
 import '../css/Home-styles/home-body-content-style.css';
 import nature from '../img/traveling.jpg';
 import { main, featured, latest } from '../redux/actions/HomeAction';
+import getReadingTime from '../helpers/getReadingTime';
 
 /**
  * @author Clet Mwunguzi
@@ -99,7 +100,7 @@ class HomeBody extends Component {
                         )}`}</span>
                         <span className="read-time time-style">
                           {' '}
-                          . 4 min Read
+                          . {`${getReadingTime(element.body)} min Read`}
                         </span>
                       </div>
                       <div className="article-excerpt time-style">
@@ -135,7 +136,7 @@ class HomeBody extends Component {
                       </span>
                       <span className="read-time time-style side-time-style">
                         {' '}
-                        . 4 min Read
+                        . {`${getReadingTime(element.body)} min Read`}
                       </span>
                     </div>
                   </div>
@@ -167,7 +168,7 @@ class HomeBody extends Component {
                       </span>
                       <span className="read-time time-style side-time-style">
                         {' '}
-                        . 4 min Read
+                        . {`${getReadingTime(element.body)} min Read`}
                       </span>
                     </div>
                   </div>

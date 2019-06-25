@@ -2,10 +2,9 @@
 /* eslint-disable react/destructuring-assignment */
 import reactHtml from 'html-react-parser';
 import uuid from 'uuid';
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
-import Header from './Header';
 import '../../styles/css/article.css';
 import '../../styles/css/highlight.css';
 // import '../../helpers/highlight';
@@ -18,6 +17,7 @@ import Author from './Author';
 import SocialMedia from './SocialMedia';
 import CommentForm from '../comment/commentForm';
 import Spinner from './Spinner';
+import Layout from '../common/pageLayout';
 import {
   addComment,
   getComments,
@@ -121,8 +121,7 @@ export class ReadArticle extends Component {
       commentList = comments;
       import('../../helpers/highlight');
       return (
-        <Fragment>
-          <Header />
+        <Layout>
           <div className="comment-box-content-container">
             <p className="comment-box-content-container-text" />
             <fieldset>
@@ -283,7 +282,7 @@ export class ReadArticle extends Component {
                 : ''}
             </div>
           </div>
-        </Fragment>
+        </Layout>
       );
     }
     return (

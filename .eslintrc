@@ -57,6 +57,7 @@
   },
   "globals": {
     "window": true,
+    "document":true,
     "FormData": true,
     "FileReader": true,
     "Blob": true,
