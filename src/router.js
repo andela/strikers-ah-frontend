@@ -7,8 +7,6 @@ import Index from './components/Index';
 import Signup from './components/signup';
 import { getLoggedInUser } from './helpers/authentication';
 import { CreateArticle } from './components/article/CreateArticle';
-
-// import { CreateArticle } from './components/article/CreateArticle';
 import ForgotPassword from './components/ForgotPassword';
 import ResetPassword from './components/ResetPassword';
 import Profile from './components/profile';
@@ -23,6 +21,7 @@ import NotFound from './components/notfound';
 import Notifications from './components/notifications';
 import Category from './components/Category';
 import ReportedArticles from './components/reportedArticles';
+import SearchResults from './components/search';
 
 const routes = () => (
   <Switch>
@@ -44,6 +43,7 @@ const routes = () => (
       path="/articlesedit/:slug/edit"
       component={OneArticle}
     />
+    <Route exact path="/search" component={SearchResults} />
     <Route
       test-data="profileRouter"
       path="/:username"

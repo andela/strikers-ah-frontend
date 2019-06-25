@@ -42,7 +42,6 @@ const props = {
         id: 1,
         title: 'lorem ipsum reif kiol',
         slug: 'hello-world-123aw',
-        image: 'null',
         user: {
           username: 'john',
         },

@@ -17,6 +17,7 @@ import like from './commentLike';
 import rateArticle from './rateArticle';
 import readingStats from './readingStatsArticles';
 import articleByCategory from './articleByCategory';
+import searchReducer from './searchReducer';
 
 const rootReducer = combineReducers({
   Article,
@@ -37,6 +38,7 @@ const rootReducer = combineReducers({
   rateArticle,
   readingStats,
   articleByCategory,
+  searchResult: searchReducer,
 });
 
 export default rootReducer;

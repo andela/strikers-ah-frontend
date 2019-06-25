@@ -1,0 +1,210 @@
+@keyframes showAddImage {
+  from {
+    background: transparent;
+    opacity: 0;
+  }
+  to {
+    background: #1e7ed8;
+    opacity: 0.7;
+  }
+}
+
+@keyframes modal {
+  from {
+    margin-top: 0;
+    border-radius: 0;
+    box-shadow: none;
+  }
+  to {
+    margin-top: 3%;
+    border-radius: 10px;
+    box-shadow: 0px 0px 14px #333;
+  }
+}
+
+@keyframes growInput {
+  from {
+    width: 200px;
+  }
+  to {
+    width: 400px;
+  }
+}
+
+@keyframes atom-spinner-animation-1 {
+  100% {
+    transform: rotateZ(120deg) rotateX(66deg) rotateZ(360deg);
+  }
+}
+
+@keyframes atom-spinner-animation-2 {
+  100% {
+    transform: rotateZ(240deg) rotateX(66deg) rotateZ(360deg);
+  }
+}
+
+@keyframes atom-spinner-animation-3 {
+  100% {
+    transform: rotateZ(360deg) rotateX(66deg) rotateZ(360deg);
+  }
+}
+
+@keyframes moveInLeft {
+  from {
+    transform: translateX(-200px);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes moveInRight {
+  from {
+    transform: translateX(100px);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.search-result__authors {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.author {
+  position: relative;
+  display: grid;
+  grid-template-columns: 20rem 1fr;
+  margin: 1rem;
+  cursor: pointer;
+  text-decoration: none;
+  width: 48%;
+  align-items: center;
+  background: #ffffff55;
+  border-radius: 0.4rem;
+  box-shadow: 0 0 1rem #c3c3c3;
+  transition: all 0.4s;
+}
+.author:hover {
+  background: rgba(202, 229, 255, 0.12);
+}
+.author__image {
+  overflow: hidden;
+  border-top-left-radius: 1rem;
+  border-bottom-left-radius: 1rem;
+}
+.author__image--figure {
+  height: 20rem;
+  width: 20rem;
+  padding: 1rem;
+}
+.author__image--figure img {
+  background-image: linear-gradient(rgba(52, 53, 0, 0.568), #220101);
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 100%;
+}
+.author__info {
+  height: fit-content;
+  flex-grow: 1;
+  margin: 1rem;
+  padding: 1rem;
+  color: #777;
+}
+.author__name {
+  text-transform: uppercase;
+  margin: 2rem 1rem;
+}
+.author__username {
+  color: #949393;
+  margin: 2rem 1rem;
+}
+.author__bio {
+  margin: 0 1rem;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-size: 1.7rem;
+}
+
+.no-result {
+  position: relative;
+  min-height: 70vh;
+  margin: 1%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: bottom;
+}
+.no-result .btn {
+  transition: transform 0.5s;
+}
+.no-result .btn-link {
+  text-decoration: none;
+  color: transparent;
+  border: 1px solid #0f7ce2;
+  display: inline-block;
+  margin: 1rem 2rem;
+  color: #0f7ce2;
+  padding: 0.5rem;
+  border-radius: 3px;
+  text-transform: uppercase;
+  font-size: 1.7rem;
+}
+.no-result .btn-link:hover {
+  box-shadow: 0rem 0.4rem 0.8rem #2a2a2a94;
+  transform: translateY(-3px);
+  background: #0f7ce2;
+  color: white;
+}
+.no-result .btn-link:active {
+  transform: translateY(0);
+  box-shadow: 0rem 0.2rem 0.4rem #2a2a2a94;
+}
+.no-result .center-content {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 2rem;
+  width: 100%;
+  background-image: url(http://media1.santabanta.com/full1/Creative/Abstract/abstract-266a.jpg);
+  background-position: center;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: rgba(0, 98, 255, 0.027);
+}
+.no-result__heading-a {
+  animation-name: moveInLeft;
+  animation-duration: 0.5s;
+}
+.no-result__heading-b {
+  animation-name: moveInRight;
+  animation-duration: 0.5s;
+}
+
+.search-result {
+  width: 75%;
+  margin: 0 auto;
+}
+.search-result .search-keyword {
+  text-transform: uppercase;
+  color: #378ad8dc;
+  font-size: 1.7rem;
+}
+.search-result .user-article .user-article-image {
+  overflow: hidden;
+  object-fit: cover;
+  text-align: right;
+  width: 25rem;
+  background-image: linear-gradient(#333, #eee);
+}
+.search-result .user-article .user-article-image .article-image {
+  object-fit: contain;
+  height: 100%;
+}

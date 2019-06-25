@@ -18,9 +18,9 @@ import logo from '../styles/img/logo.png';
 import axios from '../helpers/axios';
 import notifications from '../img/icons/notifications-bell-button.svg';
 import notificationIcon from '../img/icons/notification.png';
-import search from '../img/icons/search.svg';
 import userProfile from '../img/icons/user.svg';
 import { notification } from '../redux/actions/HomeAction';
+import SearchForm from './search/searchForm';
 
 /**
  * @author Clet Mwunguzi
@@ -174,7 +174,10 @@ export class HomeNavBar extends Component {
                 role="button"
                 name="notification"
               />
-              <img className="icons-style" src={search} alt="search" />
+              <SearchForm
+                search={this.props.search}
+                history={this.props.history}
+              />
               {isNotified && <div className="notified"> </div>}
               {popup && (
                 <OutsideClickHandler
@@ -255,13 +258,13 @@ export class HomeNavBar extends Component {
                           Create Article
                         </Link>
                         {role === 'Admin' && (
-                        <Link
-                          className="profile-style user-menu"
-                          to="/articles/reported"
-                        >
-                          Reported Articles
-                        </Link>
-                      )}
+                          <Link
+                            className="profile-style user-menu"
+                            to="/articles/reported"
+                          >
+                            Reported Articles
+                          </Link>
+                        )}
                         <Link className="profile-style user-menu" to="/logout">
                           Logout
                         </Link>

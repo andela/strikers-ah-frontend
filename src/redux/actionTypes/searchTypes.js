@@ -1,0 +1,2 @@
+export const SEARCH_RESULTS = 'SEARCH_RESULTS';
+export const NO_SEARCH_RESULT = 'NO_SEARCH_RESULT';
