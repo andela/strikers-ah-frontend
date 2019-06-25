@@ -22,6 +22,7 @@ import Notifications from './components/notifications';
 import Category from './components/Category';
 import ReportedArticles from './components/reportedArticles';
 import SearchResults from './components/search';
+import Footer from './components/Footer';
 
 const routes = () => (
   <Switch>
@@ -69,6 +70,7 @@ const routes = () => (
               <React.Fragment>
                 <HomeNavBar user={username} />
                 <Profile username={username} />;
+                <Footer />
               </React.Fragment>
             )}
           </div>

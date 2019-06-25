@@ -27,6 +27,7 @@ import Comment from '../comment/comment';
 import Rate from '../common/Rate';
 import Ratings from '../common/Ratings';
 import ReportForm from '../ReportArticle/ReportForm';
+import Footer from '../Footer';
 
 /**
  *@author: Innocent Nkunzi
@@ -286,6 +287,7 @@ export class ReadArticle extends Component {
               </div>
             </div>
           </Layout>
+          <Footer />
         </Fragment>
       );
     }
