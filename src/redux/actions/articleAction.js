@@ -15,14 +15,14 @@ import {
 
 export const createArticle = data => async dispatch => {
   const formData = new FormData();
-  const { taglist = [], image, title, body } = data;
+  const { taglist = [], image, title, body, category } = data;
   formData.append('image', image);
   formData.append('title', title);
   formData.append('body', body);
+  formData.append('category', category);
   taglist.forEach(tag => {
     formData.append('taglist[]', tag);
   });
-
   try {
     const res = await axios.post('/api/articles', formData);
     dispatch({

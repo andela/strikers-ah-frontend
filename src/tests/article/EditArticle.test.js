@@ -2,7 +2,11 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import '../../enzymeConfig';
 
-import { EditArticle, EditorBar } from '../../components/article/EditArticle';
+import {
+  EditArticle,
+  EditorBar,
+  mapStateToprops,
+} from '../../components/article/EditArticle';
 
 const event = {
   target: { value: 'title', name: 'input0' },
@@ -96,5 +100,14 @@ describe('Edit article test', () => {
       .simulate('change', event);
     expect(spy).toHaveBeenCalled();
     spy.mockClear();
+  });
+  test('should test `mapstatetoprops`', () => {
+    const mockedState = {
+      Article: {
+        article: {},
+      },
+    };
+    const state = mapStateToprops(mockedState);
+    expect(state).toBeTruthy();
   });
 });

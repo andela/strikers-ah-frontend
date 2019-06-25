@@ -29,20 +29,19 @@ describe('Article reducers', () => {
       error: '',
     });
   });
-  // test('should handle create article error', () => {
-  //   const payload = {
-  //     error: {
-  //       error: 'error',
-  //     },
-  //     loading: false,
-  //   };
-  // const newState = createArticle(initialState, {
-  //   type: actionTypes.CREATE_ARTICLE_ERROR,
-  //   payload,
-  // });
-  // console.log(newState);
-  // expect(newState.error).toEqual(payload);
-  // });
+  test('should handle create article error', () => {
+    const payload = {
+      message: {
+        error: 'error',
+        loading: false,
+      },
+    };
+    const newState = createArticle(initialState, {
+      type: actionTypes.CREATE_ARTICLE_ERROR,
+      payload,
+    });
+    expect(newState.error).toEqual(payload.message.error);
+  });
   test('should handle getAll article reducer', () => {
     const payload = {
       article: {
@@ -148,7 +147,8 @@ describe('Article reducers', () => {
       type: actionTypes.UPDATE_ARTICLE,
       payload,
     });
-    expect(newState.article.article).toEqual(payload.article);
+
+    expect(newState.article).toEqual(payload);
   });
   test('should handle UPDATE_ARTICLE_ERROR', () => {
     const payload = {

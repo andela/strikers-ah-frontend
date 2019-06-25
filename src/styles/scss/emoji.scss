@@ -17,6 +17,7 @@ $max-width: 100%;
 @function color($name) {
   @return map-get($color, $name);
 }
+
 .mood-btn {
   margin: 1em;
   padding: 0;
@@ -24,9 +25,11 @@ $max-width: 100%;
   border: none;
   cursor: pointer;
 }
+
 .emojiValue {
   display: table-cell;
 }
+
 .rate-btn {
   width: 3%;
   justify-content: center;
@@ -35,42 +38,47 @@ $max-width: 100%;
   border: none;
   font-size: medium;
 }
+
 .ratingIcons {
   width: 23px;
 }
+
 .ratingIcons:hover {
   -ms-transform: scale(1.3);
   -webkit-transform: scale(1.3);
   transform: scale(1.3);
 }
+
 .ratings {
+  display: block;
   float: right;
+  margin-top: -6%;
 }
-.ratings {
-  display: flex;
-  float: right;
-  margin-top: -3%;
-}
+
 .Good {
   color: color(greeners);
   font-size: 1em;
   font-family: monospace;
 }
+
 .Terrible {
   color: color(danger);
   font-size: 1em;
   font-family: monospace;
 }
+
 .Bad {
   color: color(moderate);
   font-size: 1em;
   font-family: monospace;
 }
+
 .Okay {
   color: color(okay);
   font-size: 1em;
   font-family: monospace;
 }
+
 .Great {
   color: color(darkGreener);
   font-size: 1em;

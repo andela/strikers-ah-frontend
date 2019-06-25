@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`test for \`MessageDisplay\` component should render the \`MessageDisplay\` 1`] = `ReactWrapper {}`;

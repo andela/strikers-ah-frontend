@@ -5,18 +5,18 @@
   }
 }
 .author {
-  position: relative;
-  display: grid;
+  // position: relative;
+// display: grid;
   grid-template-columns: 20rem 1fr;
-  margin: 1rem;
-  cursor: pointer;
-  text-decoration: none;
-  width: 48%;
-  align-items: center;
-  background: #ffffff55;
-  border-radius: 0.4rem;
-  box-shadow: 0 0 1rem rgb(195, 195, 195);
-  transition: all 0.4s;
+  // margin: 1rem;
+  // cursor: pointer;
+  // text-decoration: none;
+  // width: 48%;
+  // align-items: center;
+  // background: #ffffff55;
+  // border-radius: 0.4rem;
+  // box-shadow: 0 0 1rem rgb(195, 195, 195);
+  // transition: all 0.4s;
   &:hover {
     background: rgba(202, 229, 255, 0.12);
   }

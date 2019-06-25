@@ -3,9 +3,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import sweetalert from 'sweetalert';
-import { Redirect } from 'react-router-dom';
 
-const MessageDisplay = props => {
+export const MessageDisplay = props => {
   const {
     article: { error, article },
   } = props;
@@ -13,22 +12,20 @@ const MessageDisplay = props => {
   if (error !== undefined) {
     size = Object.keys(error).length;
     if (size !== 0) {
-      sweetalert('error', error, 'error');
+      sweetalert('error', error);
     }
   }
   if (article !== undefined) {
     size = Object.keys(article).length;
     if (article !== 0) {
-      sweetalert('Successfully!', 'Article published', 'success').then(() => {
-        return <Redirect to="/articles" />;
-      });
+      sweetalert('Successfully!', 'Article published', 'success');
     }
   }
 
   return <div />;
 };
 
-const mapStateToprops = state => ({
+export const mapStateToprops = state => ({
   article: state.Article,
 });
 

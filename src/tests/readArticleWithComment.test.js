@@ -1,7 +1,10 @@
 /* eslint-disable no-dupe-keys */
 import React from 'react';
 import '../enzymeConfig';
-import { ReadArticle } from '../components/article/ReadArticle';
+import {
+  ReadArticle,
+  mapStateToprops,
+} from '../components/article/ReadArticle';
 import { getComponent, findByTestAttribute } from './profile/test-helpers';
 
 describe('TEST READ ARTICLE WITH COMMENTS', () => {
@@ -72,5 +75,22 @@ describe('TEST READ ARTICLE WITH COMMENTS', () => {
     props.comments = false;
     wrapper = getComponent(<ReadArticle {...props} />);
     expect(wrapper).toMatchSnapshot();
+  });
+  test('should test `mapstatetoprops`', () => {
+    const mockedState = {
+      Article: {
+        article: {
+          articleUpdate: {},
+        },
+      },
+      comments: {
+        comments: {
+          comments: {},
+        },
+      },
+    };
+
+    const state = mapStateToprops(mockedState);
+    expect(state).toBeTruthy();
   });
 });
