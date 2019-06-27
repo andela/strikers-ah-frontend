@@ -1,0 +1,16 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto");
+body {
+  position: relative !important;
+  margin: 0 !important;
+  padding-bottom: 6rem;
+  min-height: 100%; }
+
+.footer {
+  height: 6em;
+  padding-top: 3em;
+  width: 100%;
+  bottom: 0;
+  margin-top: 3em;
+  text-align: center; }
+  .footer .copyright {
+    color: #4c4949; }

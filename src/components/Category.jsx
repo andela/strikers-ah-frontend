@@ -14,6 +14,7 @@ import defaultImage from '../styles/img/backgound-one.jpg';
 import Layout from './common/pageLayout';
 import { articles } from '../redux/actions/articleByCategory';
 import Spinner from './article/Spinner';
+import Footer from './Footer';
 
 /**
  * category article display
@@ -26,6 +27,7 @@ export class Category extends Component {
    */
   constructor(props) {
     super(props);
+    this.protectComponent();
     this.state = {
       currentPage: 1,
       articlePerPage: 4,
@@ -33,6 +35,15 @@ export class Category extends Component {
     this.category = this.props.match.params.category;
     this.props.articles(this.category);
   }
+
+  /**
+   * @author frank harerimana
+   * @returns {*} component
+   */
+  protectComponent = () => {
+    const user = localStorage.getItem('token');
+    if (user === null) window.location.location = '/login';
+  };
 
   /**
    *
@@ -110,6 +121,9 @@ export class Category extends Component {
       if (Articles.error) {
         return (window.location.href = '/notfound');
       }
+      if (Articles.message) {
+        return (window.location.href = '/login');
+      }
       if (Articles.length === 0) {
         return (
           swal(`Sorry! No Article found in ${this.category} category `),
@@ -174,6 +188,7 @@ export class Category extends Component {
               <div className="pagination">{renderPageNumbers}</div>
             </div>
           </div>
+          <Footer />
         </Layout>
       );
     }

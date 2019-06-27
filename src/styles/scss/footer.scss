@@ -1,0 +1,35 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+$color: (
+  primary: #f7f7f7,
+  accent: #ffffff,
+  card: #fbfeff,
+  darker: #000,
+  instagram: rgb(193, 53, 132),
+  twitter: #00acee,
+  facebook: #3b5998,
+  google: red,
+  footer: #4c4949
+);
+
+$max-width: 100%;
+
+@function color($name) {
+  @return map-get($color, $name);
+}
+body {
+  position: relative !important;
+  margin: 0 !important;
+  padding-bottom: 6rem;
+  min-height: 100%;
+}
+.footer {
+  height: 6em;
+  padding-top: 3em;
+  width: 100%;
+  bottom: 0;
+  margin-top: 3em;
+  text-align: center;
+  .copyright{
+    color: color(footer)
+  }
+}

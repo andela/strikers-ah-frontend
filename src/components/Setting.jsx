@@ -2,7 +2,7 @@
 /* eslint-disable class-methods-use-this */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable jsx-a11y/label-has-for */
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import 'react-web-tabs/dist/react-web-tabs.css';
 import { Tab, TabPanel, Tabs, TabList } from 'react-web-tabs';
 import RadioButton from './common/NotificationButton';
@@ -12,6 +12,7 @@ import Profile from './profile';
 // eslint-disable-next-line import/no-named-as-default
 
 import '../styles/css/settings.css';
+import Footer from './Footer';
 
 /**
  * @author frank harerimana
@@ -42,7 +43,7 @@ class Settings extends Component {
   render() {
     const { username } = this.props;
     return (
-      <div>
+      <Fragment>
         <div className="settings">
           <Tabs
             defaultTab="vertical-tab-zero"
@@ -73,7 +74,8 @@ class Settings extends Component {
             </TabPanel>
           </Tabs>
         </div>
-      </div>
+        <Footer />
+      </Fragment>
     );
   }
 }
