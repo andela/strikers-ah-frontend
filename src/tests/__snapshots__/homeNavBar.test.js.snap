@@ -1,3 +1,3 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<HomeNavBar/> Should render navbar with user logged in 1`] = `ShallowWrapper {}`;
+exports[`<HomeNavBar/> Should render navbar with user logged in 1`] = `undefined`;

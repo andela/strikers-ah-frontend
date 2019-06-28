@@ -88,7 +88,7 @@ body {
   border-radius: 4px;
   background-color: white;
   -webkit-box-shadow: 1px 1px 5px 1px #888888;
-          box-shadow: 1px 1px 5px 1px #888888;
+  box-shadow: 1px 1px 5px 1px #888888;
 }
 
 .home-navigation .popup-style .notification-style {
@@ -247,4 +247,9 @@ body {
   color: #8a8585;
   cursor: pointer;
 }
+
+.disabled {
+  pointer-events: none;
+}
+
 /*# sourceMappingURL=home-style.css.map */

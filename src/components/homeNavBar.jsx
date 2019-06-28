@@ -6,6 +6,7 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-noninteractive-element-to-interactive-role */
 import React, { Component } from 'react';
+import decodeToken from 'jwt-decode';
 import _ from 'lodash';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
@@ -140,6 +141,7 @@ export class HomeNavBar extends Component {
    * @returns {*} NavBar component
    */
   render() {
+    const decodedToken = decodeToken(localStorage.getItem('token'));
     const {
       categories,
       popup,
@@ -245,18 +247,54 @@ export class HomeNavBar extends Component {
                       <React.Fragment>
                         <div className="arrow-up-profile-back" />
                         <div className="arrow-up-profile" />
-                        <Link
-                          className="profile-style user-menu"
-                          to={`/${username}`}
-                        >
-                          Profile
-                        </Link>
-                        <Link
-                          className="profile-style user-menu"
-                          to="/article/create"
-                        >
-                          Create Article
-                        </Link>
+                        {decodedToken.verified !== true ? (
+                          <Link
+                            className="disabled profile-style user-menu"
+                            to={`/${username}`}
+                          >
+                            Profile
+                          </Link>
+                        ) : (
+                          <Link
+                            className="profile-style user-menu"
+                            to={`/${username}`}
+                          >
+                            Profile
+                          </Link>
+                        )}
+
+                        {decodedToken.verified !== true ? (
+                          <Link
+                            className="disabled profile-style user-menu"
+                            to="/article/create"
+                          >
+                            Create Article
+                          </Link>
+                        ) : (
+                          <Link
+                            className="profile-style user-menu"
+                            to="/article/create"
+                          >
+                            Create Article
+                          </Link>
+                        )}
+
+                        {decodedToken.verified !== true ? (
+                          <Link
+                            className="disabled profile-style user-menu"
+                            to="/articles"
+                          >
+                            Manage articles
+                          </Link>
+                        ) : (
+                          <Link
+                            className="profile-style user-menu"
+                            to="/articles"
+                          >
+                            Manage articles
+                          </Link>
+                        )}
+
                         {role === 'Admin' && (
                           <Link
                             className="profile-style user-menu"
