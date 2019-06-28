@@ -110,54 +110,59 @@ export class AllArticles extends Component {
             <div className="container">
               <div className="allArticlecontents">
                 {
-                  (allArticle = arr.map(item => (
-                    <Fragment key={item.id}>
-                      <div className="card">
-                        <img
-                          className="image"
-                          alt="articleImage"
-                          src={this.handleImage(item)}
-                        />
-                        <div className="contentDescription">
-                          <a href={`/article/${item.slug}`}>
-                            <div className="articleCardHeader">
-                              <p>{reactParser(item.title)}</p>
-                            </div>
-                            <div className="articleDescription">
-                              <p>{reactParser(item.description)}</p>
-                            </div>
-                          </a>
-                          <div className="buttons">
-                            {decodedToken !== undefined &&
-                            decodedToken.id === item.authorid ? (
-                              <div>
-                                <button
-                                  type="submit"
-                                  className="redButton"
-                                  onClick={() => this.handleDelete(item.slug)}
-                                  id="submit-data"
-                                  data-test="submit-data"
-                                >
-                                  Delete
-                                </button>
-
-                                <button
-                                  type="submit"
-                                  className="lightBlueButton"
-                                >
-                                  <a href={`/articlesedit/${item.slug}/edit`}>
-                                    Edit
-                                  </a>
-                                </button>
+                  (allArticle = arr.map(item =>
+                    decodedToken !== undefined &&
+                    decodedToken.id === item.authorid ? (
+                      <Fragment key={item.id}>
+                        <div className="card">
+                          <img
+                            className="image"
+                            alt="articleImage"
+                            src={this.handleImage(item)}
+                          />
+                          <div className="contentDescription">
+                            <a href={`/article/${item.slug}`}>
+                              <div className="articleCardHeader">
+                                <p>{reactParser(item.title)}</p>
                               </div>
-                            ) : (
-                              ''
-                            )}
+                              <div className="articleDescription">
+                                <p>{reactParser(item.description)}</p>
+                              </div>
+                            </a>
+                            <div className="buttons">
+                              {decodedToken !== undefined &&
+                              decodedToken.id === item.authorid ? (
+                                <div>
+                                  <button
+                                    type="submit"
+                                    className="redButton"
+                                    onClick={() => this.handleDelete(item.slug)}
+                                    id="submit-data"
+                                    data-test="submit-data"
+                                  >
+                                    Delete
+                                  </button>
+
+                                  <button
+                                    type="submit"
+                                    className="lightBlueButton"
+                                  >
+                                    <a href={`/articlesedit/${item.slug}/edit`}>
+                                      Edit
+                                    </a>
+                                  </button>
+                                </div>
+                              ) : (
+                                ''
+                              )}
+                            </div>
                           </div>
                         </div>
-                      </div>
-                    </Fragment>
-                  )))
+                      </Fragment>
+                    ) : (
+                      ''
+                    ),
+                  ))
                 }
               </div>
             </div>

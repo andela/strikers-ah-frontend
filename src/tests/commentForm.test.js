@@ -13,6 +13,10 @@ describe('TEST COMMENT FORM', () => {
   };
   beforeEach(() => {
     props = {
+      decodeToken: jest.fn(),
+      decodedToken: {
+        verified: true,
+      },
       currentValue: 'this value',
       buttonLabel: 'Comment',
       saveComment: jest.fn(),
@@ -50,6 +54,10 @@ describe('TEST COMMENT FORM', () => {
         preventDefault: jest.fn(),
       };
       props = {
+        decodeToken: jest.fn(),
+        decodedToken: {
+          verified: true,
+        },
         buttonLabel: 'Comment',
         saveComment: jest.fn(),
       };

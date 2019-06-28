@@ -9,6 +9,7 @@
 /* eslint-disable dot-notation */
 /* eslint-disable no-return-assign */
 import React from 'react';
+// import decodeToken from 'jwt-decode';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faImage } from '@fortawesome/free-solid-svg-icons';
 import { connect } from 'react-redux';
@@ -197,6 +198,9 @@ export class Editor extends React.Component {
    * @returns {*} editor
    */
   render() {
+    // const token = localStorage.getItem('token');
+    // const decode = decodeToken(token);
+    // console.log(decode);
     const { tagInputs } = this.state;
     let id = 1;
     const { articleCategory } = this.props.articleCategories;

@@ -69,7 +69,7 @@ export class Category extends Component {
           <div className="cardTitle">
             <span className="articleTitle">{item.title} </span>
             {/* <span className="articleDescription"> */}
-            {htmlReactParser(item.description)}
+            <span>{htmlReactParser(item.description)}</span>
             <div className="likeAndBookMarkDiv">
               <FontAwesomeIcon icon={faHeart} id="views" />
               {item.views} Views
